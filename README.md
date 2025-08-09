@@ -16,7 +16,7 @@
 ---
 
 ## 📸 Capturas de Tela
-*(Adicione aqui imagens do aplicativo em funcionamento)*
+![Captura 1](imagem_2025-08-09_112916518.png)
 
 ---
 
