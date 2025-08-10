@@ -43,7 +43,11 @@
 
 ## ⚠️ Aviso Legal
 Este projeto é **não oficial** e **não afiliado** ao Toby Fox.  
-Todos os direitos autorais das músicas e imagens pertencem aos seus respectivos detentores.  
+Todos os direitos autorais das músicas e imagens pertencem aos seus respectivos detentores.
 Se você gosta do trabalho de Toby Fox, apoie-o adquirindo as trilhas e os jogos originais.
+
+## Nomes envolvidos nas músicas
+- Toby Fox - Compositor de todas as músicas.
+- Laura Shigihara - Cantora do OST 39 do capítulo 1 de Deltarune: "Don't Forget"
 
 ---
