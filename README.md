@@ -1,4 +1,4 @@
-# 🎵 SoulTune
+# ❤️ SoulTune
 
 **SoulTune** é um aplicativo desenvolvido em **GameMaker** para que todos possam apreciar as incríveis trilhas sonoras de **Undertale** e **Deltarune**, compostas pelo lendário **Robert F. "Toby" Fox** – um verdadeiro gênio musical.
 
@@ -46,8 +46,8 @@ Este projeto é **não oficial** e **não afiliado** ao Toby Fox.
 Todos os direitos autorais das músicas e imagens pertencem aos seus respectivos detentores.
 Se você gosta do trabalho de Toby Fox, apoie-o adquirindo as trilhas e os jogos originais.
 
-## Nomes envolvidos nas músicas
+## 🎵 Nomes envolvidos nas músicas
 - Toby Fox - Compositor de todas as músicas.
-- Laura Shigihara - Cantora do OST 39 do capítulo 1 de Deltarune: "Don't Forget"
+- Laura Shigihara - Cantora do OST 39 do capítulo 1 de Deltarune: "Don't Forget".
 
 ---
