@@ -35,7 +35,8 @@
 ---
 
 ## 📜 Créditos
-- **Músicas**: Toby Fox – *Undertale* & *Deltarune*
+- **Músicas**: Toby Fox – *Undertale* & *Deltarune*  
+  Laura Shigihara – Vocal em "Don't Forget" (*Deltarune* Capítulo 1, OST 39)
 - **Desenvolvimento**: Luca Cunha (Frisk)
 - **Apoio e inspiração**: Comunidade de fãs de *Undertale* e *Deltarune*
 
