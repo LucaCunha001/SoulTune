@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"draw_button_with_border",
   "parent":{
-    "name":"draw",
-    "path":"folders/Scripts/draw.yy",
+	"name":"draw",
+	"path":"folders/Scripts/draw.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

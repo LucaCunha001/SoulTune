@@ -42,7 +42,7 @@ audio_master_gain(global.volume);
 startService();
 
 function choose_from_array(arr) {
-    return arr[irandom(array_length(arr)-1)];
+	return arr[irandom(array_length(arr)-1)];
 }
 
 var music_map = ds_map_create();
@@ -55,9 +55,9 @@ ds_map_add(music_map, 5, [[49, 59, 61, 92], 0]);
 var music_entry = ds_map_find_value(music_map, global.background_index);
 
 if (music_entry != undefined) {
-    var options = music_entry[0];
-    var loop_flag = music_entry[1];
-    var background_music = [choose_from_array(options), loop_flag];
+	var options = music_entry[0];
+	var loop_flag = music_entry[1];
+	var background_music = [choose_from_array(options), loop_flag];
 	
 	show_debug_message(global.background_index);
 	show_debug_message(background_music)

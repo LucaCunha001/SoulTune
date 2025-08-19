@@ -13,11 +13,11 @@ for (var i = 0; i < array_length(settings_buttons); i++) {
 }
 
 if ((hovered_btn != -1 || hovered_back || hovered_repo) && !hover_sound_played) {
-    audio_sound_select(snd_squeak);
-    hover_sound_played = true;
+	audio_sound_select(snd_squeak);
+	hover_sound_played = true;
 }
 if (hovered_btn == -1 && !hovered_back && !hovered_repo) {
-    hover_sound_played = false;
+	hover_sound_played = false;
 }
 
 if (mouse_check_button_pressed(mb_left) && !clicking) {
@@ -53,9 +53,9 @@ if (mouse_check_button_pressed(mb_left) && !clicking) {
 		instance_destroy();
 	}
 	else if (hovered_repo) {
-        audio_sound_select(snd_select);
-        url_open(repo_url);
-    }
+		audio_sound_select(snd_select);
+		url_open(repo_url);
+	}
 
 	alarm[0] = 5;
 }
