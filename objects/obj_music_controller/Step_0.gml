@@ -1,0 +1,42 @@
+var btn_y = menu_y + 60;
+var btn_w = 30;
+var btn_h = 30;
+var btn_x = menu_x + layout_width/2 - btn_w - 5;
+var is_hover_play = point_in_rectangle(mouse_x, mouse_y, btn_x - 10, btn_y - 10, btn_x + btn_w + 10, btn_y + btn_h + 10);
+
+if (is_hover_play && mouse_check_button_pressed(mb_left)) {
+	if (global.music_index[1] != -1) {
+		global.is_playing = !global.is_playing;
+		if (global.is_playing) {
+			var snd = scr_getmusicindex(global.music_index[1], global.music_index[0]);
+			audio_play_sound(snd, 1, false, 1, global.current_music_time);
+			audio_sound_select(snd_select);
+		} else {
+			audio_stop_all();
+		}
+	}
+}
+
+if (global.music_index[0] != -1) {
+	var snd = scr_getmusicindex(global.music_index[1], global.music_index[0]);
+	
+	if (global.is_playing) {
+		progress = global.current_music_time / global.music_duration;
+	}
+
+	if (global.is_playing && mouse_check_button(mb_left)) {
+		if (point_in_rectangle(mouse_x, mouse_y, bar_x, bar_y, bar_x + bar_w, bar_y + bar_h)) {
+			progress = clamp((mouse_x - bar_x) / bar_w, 0, 1);
+			audio_stop_all();
+			global.current_music_time = progress * global.music_duration;
+			audio_play_sound(snd, 1, false, 1, global.current_music_time);
+			global.discord_initialized = false;
+		}
+	}
+
+	if (global.is_playing) {
+		if (!instance_exists(obj_contador)) {
+			instance_create_depth(0, 0, depth, obj_contador);
+		}
+	}
+}

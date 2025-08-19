@@ -1,0 +1,46 @@
+{
+	"idioma": "Português",
+
+	"obj_discord_state": "O que achou do ícone?",
+	"obj_discord_details": "Ouvindo as músicas do Toby Fox.",
+	"obj_discord_interessou": "Interessou?",
+	"obj_discord_baixar" : "Baixar",
+
+	"obj_music_controller_nan": "Nenhuma música",
+
+	"obj_update_VMR": "Versão mais recente:",
+	"obj_update_VA": "\nVersão atual:",
+	"obj_update_RAA": "\nRecomendamos atualizar o aplicativo.",
+
+	"obj_music_controller_select": "Selecionar",
+
+	"obj_chapter_select_escolher_capitulo": "Escolha o capítulo.",
+
+	"obj_music_selector_button_switch_game": "Trocar jogo",
+	"obj_music_selector_button_switch_chapter": "Trocar capítulo",
+	"obj_music_selector_button_playlist": "Playlist",
+
+	"obj_music_selector_img_lutas": "Lutas",
+	"obj_music_selector_img_fundo": "Fundo",
+	"obj_music_selector_img_cutscenes": "Cutscenes",
+	"obj_music_selector_img_todas": "Todas",
+
+	"obj_playlist_button_new": "Nova Playlist",
+
+	"obj_config_idioma": "Idioma",
+	"obj_config_background": "Background",
+	"obj_config_voltar": "Voltar",
+	"obj_config_volume": "Volume",
+	"obj_config_sons": "Sons",
+	"obj_config_ligado": "Ligado",
+	"obj_config_desligado": "Desligado",
+    "obj_config_repo": "Repositório",
+	"obj_config_background1": "Background Deltarune",
+	"obj_config_background2": "Dualidade de Kris",
+	"obj_config_background3": "Reunidos",
+	"obj_config_background4": "Annoying Dog",
+	"obj_config_background5": "Campo de Esperanças e Sonhos",
+	"obj_config_background6": "Aniversário do Frisk",
+
+    "obj_background_annoyingdog": "* O Annoying Dog absorveu o background."
+}

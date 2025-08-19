@@ -1,0 +1,46 @@
+{
+	"idioma": "English",
+
+	"obj_discord_state": "What do you think of the icon?",
+	"obj_discord_details": "Listening to Toby Fox's music.",
+	"obj_discord_interessou": "Interested?",
+	"obj_discord_baixar" : "Download",
+
+	"obj_music_controller_nan": "No music",
+
+	"obj_update_VMR": "Latest version:",
+	"obj_update_VA": "\nAtual version:",
+	"obj_update_RAA": "\nWe recommend updating the application.",
+
+	"obj_music_controller_select": "Select",
+
+	"obj_chapter_select_escolher_capitulo": "Choose the chapter.",
+
+	"obj_music_selector_button_switch_game": "Switch game",
+	"obj_music_selector_button_switch_chapter": "Switch chapter",
+	"obj_music_selector_button_playlist": "Playlist",
+
+	"obj_music_selector_img_lutas": "Battles",
+	"obj_music_selector_img_fundo": "Background",
+	"obj_music_selector_img_cutscenes": "Cutscenes",
+	"obj_music_selector_img_todas": "All",
+
+	"obj_playlist_button_new": "New Playlist",
+
+	"obj_config_idioma": "Language",
+	"obj_config_background": "Background",
+	"obj_config_voltar": "Back",
+	"obj_config_volume": "Volume",
+	"obj_config_sons": "Sounds",
+	"obj_config_ligado": "On",
+	"obj_config_desligado": "Off",
+    "obj_config_repo": "Repository",
+	"obj_config_background1": "Deltarune Background",
+	"obj_config_background2": "Kris Duality",
+	"obj_config_background3": "Reunited",
+	"obj_config_background4": "Annoying Dog",
+	"obj_config_background5": "Field of Hopes and Dreams",
+	"obj_config_background6": "Frisk's Birthday",
+
+    "obj_background_annoyingdog": "* The Annoying Dog absorbed the background."
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"load_user_options",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"load_user_options",
+  "parent":{
+    "name":"user",
+    "path":"folders/Scripts/user.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"load_playlists",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"load_playlists",
+  "parent":{
+	"name":"playlists",
+	"path":"folders/Scripts/user/playlists.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
