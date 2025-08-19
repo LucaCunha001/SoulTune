@@ -12,27 +12,27 @@ function draw_text_customizado(_x, _y, _texto, _max_chars) {
 	var partes_texto = string_split(_texto, "\n");
 
 	for (var p = 0; p < array_length(partes_texto); p++) {
-	    var palavras = string_split(partes_texto[p], " ");
-	    var linha_atual = "";
+		var palavras = string_split(partes_texto[p], " ");
+		var linha_atual = "";
 
-	    for (var i = 0; i < array_length(palavras); i++) {
-	        var teste = (linha_atual == "" ? palavras[i] : linha_atual + " " + palavras[i]);
+		for (var i = 0; i < array_length(palavras); i++) {
+			var teste = (linha_atual == "" ? palavras[i] : linha_atual + " " + palavras[i]);
 
-	        if (_max_chars > 0 && string_length(teste) > _max_chars) {
-	            array_push(linhas, linha_atual);
-	            linha_atual = palavras[i];
-	        } else {
-	            linha_atual = teste;
-	        }
-	    }
+			if (_max_chars > 0 && string_length(teste) > _max_chars) {
+				array_push(linhas, linha_atual);
+				linha_atual = palavras[i];
+			} else {
+				linha_atual = teste;
+			}
+		}
 
-	    if (linha_atual != "") {
-	        array_push(linhas, linha_atual);
-	    }
+		if (linha_atual != "") {
+			array_push(linhas, linha_atual);
+		}
 
-	    if (p < array_length(partes_texto) - 1) {
-	        array_push(linhas, "");
-	    }
+		if (p < array_length(partes_texto) - 1) {
+			array_push(linhas, "");
+		}
 	}
 
 	var fonte_altura = font_get_size(draw_get_font());
