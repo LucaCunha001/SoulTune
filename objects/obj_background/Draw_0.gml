@@ -1,4 +1,5 @@
 var spr = global.backgrounds[global.background_index];
+
 if (sprite_index != spr) {
 	sprite_index = spr;
 }
