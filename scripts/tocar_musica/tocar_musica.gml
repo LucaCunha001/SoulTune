@@ -1,22 +1,40 @@
 /// @function tocar_musica
 /// @description Toca uma música.
-/// @param {real} index O índex da música.
-/// @param {real} capitulo O capítulo correspondente ao índex.
+/// @param {real} index O índice da música.
+/// @param {real} capitulo O capítulo correspondente ao índice.
 /// @param {bool} loop A música está em loop?
 
 function tocar_musica(argument0, argument1, argument2) {
-	var snd = scr_getmusicindex(argument0, argument1);
-	audio_stop_all();
-	audio_play_sound(snd, 1, argument2);
-	global.music_duration = audio_sound_length(snd);
+    var snd;
+    var nome;
 
-	global.is_playing = true;
+    if (global.primeiro_de_abril) {
+        snd = musica_primeiro_abril(argument0, argument1);
+		if (snd == snd_abril) {
+			nome = "666. DRIVING IN MY CAR";
+		} else {
+			nome = "-666. DRIVING IN MY TRUCK";
+		}
+		global.music_duration = ceil(audio_sound_length(snd));
+    } else {
+        snd = scr_getmusicindex(argument0, argument1);
+        nome = scr_getmusicname(argument0, argument1);
+        global.music_duration = audio_sound_length(snd);
+    }
 
-	global.music_index = [argument1, argument0];
-	global.current_music_time = 0;
+    audio_stop_all();
+    audio_play_sound(snd, 1, argument2);
 
-	global.musica_atual = scr_getmusicname(argument0, argument1);
-	global.discord_initialized = false;
+    global.is_playing = true;
+    global.is_looping = argument2;
+    global.music_index = [argument1, argument0];
+    global.current_music_time = 0;
+    global.musica_atual = nome;
+    global.discord_initialized = false;
 
-	android_update_servicename(global.musica_atual);
+    if (!instance_exists(obj_contador)) {
+        instance_create_depth(0, 0, depth, obj_contador);
+    }
+
+    android_update_servicename(global.musica_atual);
 }

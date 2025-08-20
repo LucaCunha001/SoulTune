@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"tocar_musica",
   "parent":{
-	"name":"Scripts",
-	"path":"folders/Scripts.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

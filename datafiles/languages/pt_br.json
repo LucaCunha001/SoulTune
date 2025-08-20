@@ -32,6 +32,7 @@
 	"obj_config_voltar": "Voltar",
 	"obj_config_volume": "Volume",
 	"obj_config_sons": "Sons",
+	"obj_config_init_fullscreen": "Iniciar em tela cheia",
 	"obj_config_ligado": "Ligado",
 	"obj_config_desligado": "Desligado",
 	"obj_config_repo": "Repositório",
@@ -41,6 +42,10 @@
 	"obj_config_background4": "Annoying Dog",
 	"obj_config_background5": "Campo de Esperanças e Sonhos",
 	"obj_config_background6": "Aniversário do Frisk",
+	"obj_config_background7": "Ruínas",
+	"obj_config_background8": "Cidade Castelo",
+	"obj_config_background9": "Caverna do Gerson",
+	"obj_config_background10": "Selando a Fonte",
 
 	"obj_background_annoyingdog": "* O Annoying Dog absorveu o background."
 }

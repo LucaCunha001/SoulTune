@@ -25,5 +25,3 @@ if (mouse_check_button_pressed(mb_left) && !clicking && hovered_btn != noone) {
 	audio_sound_select(snd_select);
 	alarm[0] = sound_get_length(snd_select);
 }
-
-fullscreen();

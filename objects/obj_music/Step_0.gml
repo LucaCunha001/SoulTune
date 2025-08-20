@@ -36,7 +36,7 @@ for (var i = 0; i < array_length(musics); i++) {
 		if (mouse_check_button_pressed(mb_left)) {
 			selected_music = i;
 
-			tocar_musica(musics[i][1], global.deltarune_cap, false);
+			tocar_musica(musics[i][1], global.deltarune_cap, global.is_looping);
 
 			audio_sound_select(snd_select);
 		}
@@ -46,8 +46,6 @@ for (var i = 0; i < array_length(musics); i++) {
 if (hovered_btn == -1) {
 	tocou_som = false;
 }
-
-fullscreen();
 
 if (mouse_wheel_up())  scroll_y = min(scroll_y + scroll_speed, 0);
 if (mouse_wheel_down()) scroll_y -= scroll_speed;

@@ -6,7 +6,7 @@ if (global.deltarune_cap == 0) {
 
 	simple_objects = [
 		obj_main_menu,
-		obj_music_selector
+		obj_playlists
 	];
 } else {
 	simple_buttons = [
@@ -18,7 +18,7 @@ if (global.deltarune_cap == 0) {
 	simple_objects = [
 		obj_main_menu,
 		obj_chapter_select,
-		obj_music_selector
+		obj_playlists
 	];
 }
 

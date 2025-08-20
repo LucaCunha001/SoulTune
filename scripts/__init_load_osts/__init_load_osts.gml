@@ -8,6 +8,13 @@
 /// @return {Undefined}
 
 function __init_load_osts() {
+	var dia = current_day;
+	var mes = current_month;
+	
+	if (dia == 20 && mes == 8) {
+		global.primeiro_de_abril = true;
+	}
+
 	var osts_json = scr_openjson("osts.json");
 
 	var language_json = ds_map_find_value(ds_map_find_value(osts_json, "languages"), global.language);
