@@ -8,12 +8,7 @@
 /// @return {Undefined}
 
 function __init_load_osts() {
-	var dia = current_day;
-	var mes = current_month;
-	
-	if (dia == 20 && mes == 8) {
-		global.primeiro_de_abril = true;
-	}
+	global.primeiro_de_abril = (dia == 1 && mes == 4);
 
 	var osts_json = scr_openjson("osts.json");
 
