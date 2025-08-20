@@ -16,7 +16,7 @@
 ---
 
 ## 📸 Capturas de Tela
-![Captura 1](imagem_2025-08-09_112916518.png)
+![Captura 1](image.png)
 
 ---
 
