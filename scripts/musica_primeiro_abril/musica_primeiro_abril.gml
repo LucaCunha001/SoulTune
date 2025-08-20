@@ -5,11 +5,11 @@
 /// @return {Asset.GMSound} O recurso de som (sound) correspondente à música escolhida.
 
 function musica_primeiro_abril(index, capitulo) {
-    var snd = snd_abril;
-    
-    if (capitulo == 0 && (index == 76 || index == 77)) {
-        snd = snd_asgore_abril;
-    }
+	var snd = snd_abril;
+	
+	if (capitulo == 0 && (index == 76 || index == 77)) {
+		snd = snd_asgore_abril;
+	}
 
-    return snd;
+	return snd;
 }

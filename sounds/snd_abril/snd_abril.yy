@@ -2,8 +2,8 @@
   "$GMSound":"",
   "%Name":"snd_abril",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+	"name":"audiogroup_default",
+	"path":"audiogroups/audiogroup_default",
   },
   "bitDepth":1,
   "bitRate":128,
@@ -12,8 +12,8 @@
   "duration":31.788118,
   "name":"snd_abril",
   "parent":{
-    "name":"Sons",
-    "path":"folders/Sons.yy",
+	"name":"Sons",
+	"path":"folders/Sons.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

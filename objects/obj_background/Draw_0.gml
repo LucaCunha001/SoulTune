@@ -41,35 +41,35 @@ var sw = sprite_get_width(spr);
 var sh = sprite_get_height(spr);
 
 if (BG_ALPHA < limite) {
-    BG_ALPHA += (0.04 - (BG_ALPHA / (14 * multiplicador))) * multiplicador;
-    if (BG_ALPHA > limite) BG_ALPHA = limite;
+	BG_ALPHA += (0.04 - (BG_ALPHA / (14 * multiplicador))) * multiplicador;
+	if (BG_ALPHA > limite) BG_ALPHA = limite;
 }
 
 if (global.primeiro_de_abril) {
-    var xscale = room_width / sw;
-    var yscale = room_height / sh;
+	var xscale = room_width / sw;
+	var yscale = room_height / sh;
 
-    draw_sprite_ext(spr, image_index, 0, 0, xscale, yscale, 0, c_white, BG_ALPHA);
+	draw_sprite_ext(spr, image_index, 0, 0, xscale, yscale, 0, c_white, BG_ALPHA);
 
-    // Calcula tempo acumulado das letras
-    var tempo = 0;
-    ASGORE_LETRA_INDEX = 0;
-    for (var i = 0; i < array_length(ASGORE_LETRAS); i++) {
-        tempo += ASGORE_LETRAS_DELAY[i]; // em segundos
-        if (global.current_music_time < tempo) {
-            ASGORE_LETRA_INDEX = i;
-            break;
-        }
-    }
+	if (!string_starts_with(global.musica_atual, "-")) {
+		var tempo = 0;
+		ASGORE_LETRA_INDEX = 0;
+		for (var i = 0; i < array_length(ASGORE_LETRAS); i++) {
+			tempo += ASGORE_LETRAS_DELAY[i];
+			if (global.current_music_time < tempo) {
+				ASGORE_LETRA_INDEX = i;
+				break;
+			}
+		}
 
-    // Desenha a letra
-    draw_set_halign(fa_left);
-	draw_set_valign(fa_middle);
-    draw_bordered_rect(30, room_height - 34, room_width - 30, room_height-4, 2);
-    draw_set_halign(fa_center);
-	draw_set_valign(fa_top);
-    draw_text_customizado(room_width/2, room_height - 26, ASGORE_LETRAS[ASGORE_LETRA_INDEX]);
-    draw_set_halign(fa_left);
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_middle);
+		draw_bordered_rect(30, room_height - 34, room_width - 30, room_height-4, 2);
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_top);
+		draw_text_customizado(room_width/2, room_height - 26, ASGORE_LETRAS[ASGORE_LETRA_INDEX]);
+		draw_set_halign(fa_left);
+	}
 } else {
 	switch (global.background_index) {
 		case 0:        
