@@ -34,6 +34,7 @@
   "spriteId":{
 	"name":"spr_background",
 	"path":"sprites/spr_background/spr_background.yy",
+
   },
   "spriteMaskId":null,
   "visible":true,

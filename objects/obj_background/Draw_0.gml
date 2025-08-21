@@ -40,6 +40,7 @@ if (sprite_index != spr) {
 var sw = sprite_get_width(spr);
 var sh = sprite_get_height(spr);
 
+
 if (BG_ALPHA < limite) {
 	BG_ALPHA += (0.04 - (BG_ALPHA / (14 * multiplicador))) * multiplicador;
 	if (BG_ALPHA > limite) BG_ALPHA = limite;
@@ -66,6 +67,7 @@ if (global.primeiro_de_abril) {
 		draw_set_valign(fa_middle);
 		draw_bordered_rect(30, room_height - 34, room_width - 30, room_height-4, 2);
 		draw_set_halign(fa_center);
+
 		draw_set_valign(fa_top);
 		draw_text_customizado(room_width/2, room_height - 26, ASGORE_LETRAS[ASGORE_LETRA_INDEX]);
 		draw_set_halign(fa_left);

@@ -69,13 +69,14 @@ var music_entry = ds_map_find_value(music_map, global.background_index);
 if (music_entry != undefined) {
 	var options = music_entry[0];
 	var loop_flag = music_entry[1];
-	
+
 	var background_music = [choose_from_array(options), loop_flag];
 	
 	if (is_array(loop_flag)) {
 		var capitulo = irandom(array_length(loop_flag));
 		background_music = [choose_from_array(options[capitulo]), loop_flag[capitulo]];
 	}
+
 	
 	tocar_musica(background_music[0], background_music[1], true);
 } else {
