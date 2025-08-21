@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"fullscreen",
+  "%Name":"musica_primeiro_abril",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"fullscreen",
+  "name":"musica_primeiro_abril",
   "parent":{
 	"name":"Scripts",
 	"path":"folders/Scripts.yy",

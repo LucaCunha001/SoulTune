@@ -209,7 +209,7 @@
   "italic":false,
   "kerningPairs":[],
   "last":0,
-  "lineHeight":14,
+  "lineHeight":16,
   "maintainGms1Font":false,
   "name":"fnt_main",
   "parent":{
@@ -228,7 +228,10 @@
   "sdfSpread":8,
   "size":12.0,
   "styleName":"Regular",
-  "textureGroupId":null,
+  "textureGroupId":{
+	"name":"Default",
+	"path":"texturegroups/Default",
+  },
   "TTFName":"",
   "usesSDF":false,
 }

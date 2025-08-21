@@ -2,15 +2,21 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(fnt_main);
 
-var x1 = room_width / 2 - btn_width / 2;
+for (var i = 0; i < total; i++) {
+	var col = i mod 2;
+	var row = floor(i / 2);
 
-for (var i = 0; i < array_length(settings_buttons); i++) {
-	var y1 = base_y + i * (btn_height + btn_spacing);
+	var x1 = (col == 0) ? x_left : x_right;
+	var y1 = base_y + row * (btn_height + btn_spacing);
+
+	if (total mod 2 == 1 && i == total - 1) {
+		x1 = (room_width - btn_width)/2;
+	}
 
 	draw_bordered_rect(x1 - 6, y1 - 6, x1 + btn_width + 6, y1 + btn_height + 6, 2, (hovered_btn == i));
 
 	draw_set_color(c_white);
-	draw_text_customizado(x1 + btn_width / 2, y1 + btn_height / 2, settings_buttons[i], 22);
+	draw_text_customizado(x1 + btn_width/2, y1 + btn_height/2, settings_buttons[i], 22);
 }
 
 var back_hovered = point_in_rectangle(mouse_x, mouse_y, btn_back_x, btn_back_y, btn_back_x + btn_back_w, btn_back_y + btn_back_h);

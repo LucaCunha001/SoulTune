@@ -8,6 +8,8 @@
 /// @return {Undefined}
 
 function __init_load_osts() {
+	global.primeiro_de_abril = (current_day == 1 && current_month == 4);
+
 	var osts_json = scr_openjson("osts.json");
 
 	var language_json = ds_map_find_value(ds_map_find_value(osts_json, "languages"), global.language);

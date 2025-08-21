@@ -9,15 +9,17 @@ function scr_getmusicname(argument0, argument1) {
 		return undefined;
 	}
 	
+	var capitulo = global.deltarune_cap;
+	if (argument_count == 2 && argument1 != undefined) {
+		capitulo = argument1;
+	}
+	
 	var numero_str = string(argument0);
 	if (argument0 < 10) {
 		numero_str = "0" + string(argument0);
 	}
 
-	var folder_struct = global.folders[global.deltarune_cap];
-	if (argument_count == 2 && argument1 >= 0 && argument1 < array_length(global.folders)) {
-		folder_struct = global.folders[argument1];
-	}
+	var folder_struct = global.folders[capitulo];
 	
 	var indices = ds_map_find_value(folder_struct, "indices");
 	var path_base = ds_map_find_value(folder_struct, "path");
@@ -34,7 +36,7 @@ function scr_getmusicname(argument0, argument1) {
 			if (file_exists(caminho)) {
 				var nome_musica = "";
 				
-				if (global.deltarune_cap == 0) {
+				if (capitulo == 0 && argument0 == 100) {
 					nome_musica = string_delete(nome_arquivo, 1, string_length("000 - "));
 				} else {
 					nome_musica = string_delete(nome_arquivo, 1, string_length("00 - "));

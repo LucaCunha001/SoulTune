@@ -32,6 +32,7 @@
 	"obj_config_voltar": "Back",
 	"obj_config_volume": "Volume",
 	"obj_config_sons": "Sounds",
+	"obj_config_init_fullscreen": "Start in fullscreen",
 	"obj_config_ligado": "On",
 	"obj_config_desligado": "Off",
 	"obj_config_repo": "Repository",
@@ -41,6 +42,10 @@
 	"obj_config_background4": "Annoying Dog",
 	"obj_config_background5": "Field of Hopes and Dreams",
 	"obj_config_background6": "Frisk's Birthday",
+	"obj_config_background7": "Ruins",
+	"obj_config_background8": "Castle Town",
+	"obj_config_background9": "Gerson's Cave",
+	"obj_config_background10": "Sealing the Fountain",
 
 	"obj_background_annoyingdog": "* The Annoying Dog absorbed the background."
 }
