@@ -27,4 +27,4 @@ scroll_start_y = 0;
 controller = instance_create_depth(0, 0, depth-1, obj_music_controller);
 controller.musics = musics;
 
-lista_musicas_offset = [35, 55];
+lista_musicas_offset = [[35, 55], [], [43]];

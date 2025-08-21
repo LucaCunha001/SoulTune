@@ -117,21 +117,23 @@ function repeat_assistent(value, times) {
 	return arr;
 }
 
+var part_1 = repeat_assistent(2, 2);
+var part_2 = repeat_assistent(4, 2);
+var part_3 = repeat_assistent(1, 6);
+var part_5 = repeat_assistent(2, 16);
+var part_8 = repeat_assistent(1, 12);
+
+var part1 = array_concat(part_2, part_1, [3, 1]);
+var part2 = array_concat(part_2, part_1, [3, 2]);
+var part3 = array_concat(part_3, [2]);
+var part4 = array_concat(part_3, [2]);
+
+var part6 = [5, 4, 4, 4, 2, 2, 5];
+var part7 = [2, 1, 3, 1, 2, 2, 1, 2];
+var part9 = [1, 1, 1, 2];
+var part10 = [1, 1, 2, 1, 1, 17];
+
 ASGORE_LETRAS_DELAY = array_concat(
-	repeat_assistent(4,2), repeat_assistent(2,2), [3, 1],
-	repeat_assistent(4,2), repeat_assistent(2,2), [3, 2],
-	
-	repeat_assistent(1,6), [2],
-	repeat_assistent(1,6), [2],
-	
-	repeat_assistent(2,16),
-	
-	[5,4,4,4,2,2,5],
-	
-	[2,1,3,1,2,2,1,2],
-	
-	repeat_assistent(1,12),
-	[1,1,1,2],
-	
-	[1,1,2,1,1,17]
+	part1, part2, part3, part4, part_5,
+	part6, part7, part_8, part9, part10
 );

@@ -1,6 +1,7 @@
 hovered_btn = -1;
 
 var passados = [];
+var passados_offset = 0;
 
 for (var i = 0; i < array_length(musics); i++) {
 	var x1 = menu_x;
@@ -9,11 +10,11 @@ for (var i = 0; i < array_length(musics); i++) {
 	var offset_y = 0;
 	var extra_h  = 0;
 
-	if (global.deltarune_cap == 0) {
+	if (global.deltarune_cap < array_length(lista_musicas_offset)) {
 		var offset_value  = 25;
 
-		for (var j = 0; j < array_length(lista_musicas_offset); j++) {
-			var limiar = lista_musicas_offset[j];
+		for (var j = 0; j < array_length(lista_musicas_offset[global.deltarune_cap]); j++) {
+			var limiar = lista_musicas_offset[global.deltarune_cap][j];
 
 			if (musics[i][1] == limiar) {
 				extra_h += offset_value;
@@ -24,6 +25,8 @@ for (var i = 0; i < array_length(musics); i++) {
 			}
 		}
 	}
+	
+	passados_offset += extra_h;
 	
 	if (point_in_rectangle(mouse_x, mouse_y, x1, y1 + offset_y, x1 + btn_width, y1 + btn_height + extra_h + offset_y)) {
 		hovered_btn = i;
@@ -67,7 +70,7 @@ if (os_type == os_android) {
 	}
 }
 
-var total_height = array_length(musics) * (btn_height + btn_spacing);
+var total_height = array_length(musics) * (btn_height + btn_spacing) + passados_offset;
 var max_scroll = 0;
 var min_scroll = -(total_height - room_height + menu_y);
 
