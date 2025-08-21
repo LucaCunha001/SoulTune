@@ -1,4 +1,8 @@
 if (async_load[? "id"] == request_id) {
+	if (async_load[? "status"] == 0) {
+		show_debug_message("Houve um erro durante a requisição.");
+		instance_destroy();
+	}
 	if (async_load[? "result"] == undefined) {
 		show_debug_message("Chave 'result' não encontrada no async_load!");
 		exit;

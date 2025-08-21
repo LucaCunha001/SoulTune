@@ -3,7 +3,10 @@
 
 function outras_funcoes() {
 	if (keyboard_check_pressed(vk_f4)) {
-		window_set_fullscreen(!window_get_fullscreen());
+		var in_fullscreen = window_get_fullscreen();
+		assistent_fullscreen(in_fullscreen);
+		window_set_fullscreen(!in_fullscreen);
+		assistent_fullscreen(!in_fullscreen);
 	}
 	
 	if (keyboard_check_pressed(vk_backspace)) {
@@ -28,5 +31,21 @@ function outras_funcoes() {
 		}
 
 		instance_create_depth(0, 0, depth-1, objeto_destino);
+	}
+}
+
+function assistent_fullscreen(argument0) {
+	if (!argument0) {
+		var win_w = 960;
+		var win_h = 520;
+		window_set_size(win_w, win_h);
+			
+		var scr_w = display_get_width();
+		var scr_h = display_get_height();
+		
+		window_set_position(
+			(scr_w - win_w) div 2,
+			(scr_h - win_h) div 2
+		);
 	}
 }

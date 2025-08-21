@@ -46,30 +46,34 @@ if (BG_ALPHA < limite) {
 }
 
 if (global.primeiro_de_abril) {
+	
+	if string_starts_with(global.musica_atual, "-") && ASGORE_LETRAS[0] != "Drving in my truck, right after a beer" {
+		ASGORE_LETRAS[0] = "Driving in my truck, right after a beer";
+	}
+	
 	var xscale = room_width / sw;
 	var yscale = room_height / sh;
 
 	draw_sprite_ext(spr, image_index, 0, 0, xscale, yscale, 0, c_white, BG_ALPHA);
 
-	if (!string_starts_with(global.musica_atual, "-")) {
-		var tempo = 0;
-		ASGORE_LETRA_INDEX = 0;
-		for (var i = 0; i < array_length(ASGORE_LETRAS); i++) {
-			tempo += ASGORE_LETRAS_DELAY[i];
-			if (global.current_music_time < tempo) {
-				ASGORE_LETRA_INDEX = i;
-				break;
-			}
+	var tempo = 0;
+	ASGORE_LETRA_INDEX = 0;
+	for (var i = 0; i < array_length(ASGORE_LETRAS); i++) {
+		tempo += ASGORE_LETRAS_DELAY[i];
+		if (global.current_music_time < tempo) {
+			ASGORE_LETRA_INDEX = i;
+			break;
 		}
-
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_middle);
-		draw_bordered_rect(30, room_height - 34, room_width - 30, room_height-4, 2);
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_top);
-		draw_text_customizado(room_width/2, room_height - 26, ASGORE_LETRAS[ASGORE_LETRA_INDEX]);
-		draw_set_halign(fa_left);
 	}
+
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
+	draw_set_color(c_white);
+	draw_bordered_rect(30, room_height - 34, room_width - 30, room_height-4, 2);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_top);
+	draw_text_customizado(room_width/2, room_height - 26, ASGORE_LETRAS[ASGORE_LETRA_INDEX]);
+	draw_set_halign(fa_left);
 } else {
 	switch (global.background_index) {
 		case 0:        
