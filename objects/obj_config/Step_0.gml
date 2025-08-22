@@ -56,7 +56,7 @@ if (mouse_check_button_pressed(mb_left) && !clicking) {
 			
 			case "fullscreen":
 				global.init_fullscreen = !global.init_fullscreen;
-				settings_buttons[hovered_btn] = scr_gettext("obj_config_init_fullscreen") + ": " + (global.init_fullscreen ? scr_gettext("obj_config_ligado") : scr_gettext("obj_config_desligado"));
+				settings_buttons[hovered_btn] = scr_gettext("obj_config_initfullscreen") + ": " + (global.init_fullscreen ? scr_gettext("obj_config_ligado") : scr_gettext("obj_config_desligado"));
 				break;
 
 		}
@@ -71,7 +71,7 @@ if (mouse_check_button_pressed(mb_left) && !clicking) {
 	}
 	else if (hovered_repo) {
 		audio_sound_select(snd_select);
-		url_open(repo_url);
+		url_open(global.repo_url);
 	}
 
 	alarm[0] = 5;

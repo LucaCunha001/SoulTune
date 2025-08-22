@@ -31,7 +31,6 @@ function save_playlists() {
 	file_text_write_string(file, json_text);
 	file_text_close(file);
 
-	// Limpeza
 	for (var i = 0; i < ds_list_size(json_list); i++) {
 		var pl_map = ds_list_find_value(json_list, i);
 		var musicas_list = ds_map_find_value(pl_map, "musicas");

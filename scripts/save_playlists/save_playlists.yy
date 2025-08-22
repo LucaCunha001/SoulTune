@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"save_playlists",
   "parent":{
-	"name":"playlists",
-	"path":"folders/Scripts/user/playlists.yy",
+    "name":"playlists",
+    "path":"folders/Scripts/user/playlists.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

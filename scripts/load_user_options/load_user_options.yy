@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"load_user_options",
   "parent":{
-	"name":"user",
-	"path":"folders/Scripts/user.yy",
+    "name":"user",
+    "path":"folders/Scripts/user.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

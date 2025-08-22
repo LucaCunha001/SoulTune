@@ -12,7 +12,7 @@ settings_buttons = [
 	scr_gettext("obj_config_idioma") + ": " + scr_gettext("idioma"),
 	scr_gettext("obj_config_background") + ": " +  scr_gettext("obj_config_background" + string(global.background_index+1)),
 	scr_gettext("obj_config_sons") + ": " + (global.tocar_som ? scr_gettext("obj_config_ligado") : scr_gettext("obj_config_desligado")),
-	scr_gettext("obj_config_init_fullscreen") + ": " + (global.init_fullscreen ? scr_gettext("obj_config_ligado") : scr_gettext("obj_config_desligado"))
+	scr_gettext("obj_config_initfullscreen") + ": " + (global.init_fullscreen ? scr_gettext("obj_config_ligado") : scr_gettext("obj_config_desligado"))
 ];
 
 settings_actions = [
@@ -54,8 +54,6 @@ btn_repo_w = 100;
 btn_repo_h = 25;
 btn_repo_x = room_width - btn_repo_w - 20;
 btn_repo_y = room_height - btn_repo_h - 20;
-
-repo_url = "https://github.com/LucaCunha001/SoulTune/releases/latest/";
 
 hovered_btn = -1;
 hover_sound_played = false;

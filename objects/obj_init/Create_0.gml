@@ -33,6 +33,8 @@ global.update_message = "";
 global.init_fullscreen = false;
 global.primeiro_de_abril = false;
 
+global.repo_url = "https://github.com/LucaCunha001/SoulTune/releases/latest/";
+
 draw_set_font(fnt_main);
 
 load_user_options();

@@ -51,9 +51,9 @@ draw_rectangle(bar_x, bar_y, bar_x + bar_w, bar_y + bar_h, false);
 draw_set_color(c_yellow);
 draw_rectangle(bar_x, bar_y, bar_x + (bar_w * progress), bar_y + bar_h, false);
 
-var select_btn_y = btn_y + 60;
+var select_btn_y = bar_y + bar_h + 5;
 var select_btn_w = 86;
-var select_btn_h = 20;
+var select_btn_h = 18;
 var select_btn_x = x1 + w/2 - select_btn_w/2;
 
 var is_hover_select = point_in_rectangle(
@@ -62,7 +62,7 @@ var is_hover_select = point_in_rectangle(
 	select_btn_x + select_btn_w, select_btn_y + select_btn_h
 );
 
-draw_bordered_rect(select_btn_x-2, select_btn_y-2, select_btn_x + select_btn_w+2, select_btn_y + select_btn_h+2, 2, is_hover_select);
+draw_bordered_rect(select_btn_x-2, select_btn_y-2, select_btn_x + select_btn_w+2, select_btn_y + select_btn_h+2, 1, is_hover_select);
 draw_set_color(c_white)
 draw_text_customizado(select_btn_x + select_btn_w/2 + 4, select_btn_y + select_btn_h/2 + 4, scr_gettext("obj_music_controller_select"));
 
@@ -73,9 +73,42 @@ if (is_hover_select && mouse_check_button_pressed(mb_left)) {
 }
 
 var game_cap_x = select_btn_x - 2;
-var game_cap_y = select_btn_y + 30;
+var game_cap_y = select_btn_y + select_btn_h + 6;
+var game_cap_offset_x = 12;
 var size = 1 / 8;
 
 draw_set_color(c_white);
-draw_rectangle(game_cap_x - 2, game_cap_y - 2, game_cap_x + sprite_get_height(spr_games)*size + 2, game_cap_y + sprite_get_width(spr_games)*size + 2, false);
-draw_sprite_ext(spr_games, global.deltarune_cap - 1*(global.deltarune_cap>=4), game_cap_x, game_cap_y, size, size, 0, c_white, 1);
+draw_bordered_rect(game_cap_x - game_cap_offset_x, game_cap_y, game_cap_x + thumbnail_size - game_cap_offset_x, game_cap_y + thumbnail_size, 1, false);
+
+// draw_sprite_ext(spr_games, global.deltarune_cap - 1*(global.deltarune_cap>=4), game_cap_x, game_cap_y, size, size, 0, c_white, 1);
+
+var gap = 35;
+var text_x = game_cap_x + thumbnail_size/2 - game_cap_offset_x + 4;
+
+if (global.deltarune_cap == 0) {
+
+    var offset_y_undertale = 50;
+    var sprite_w = sprite_get_width(spr_undertale_title);
+    
+    draw_sprite(spr_undertale_title, 0, game_cap_x, game_cap_y + offset_y_undertale);
+
+    var text_y = game_cap_y + offset_y_undertale + gap;
+    draw_text_customizado(text_x, text_y, "SOUNDTRACK");
+} else {
+	var offset_y_deltarune = 40;
+	gap+=10;
+    var sprite_w = sprite_get_width(spr_deltarune_title);
+    var sprite_size = sprite_get_width(spr_undertale_title) / sprite_w;
+	
+    draw_sprite_ext(spr_deltarune_title, 0, game_cap_x, game_cap_y + offset_y_deltarune, sprite_size, sprite_size, 0, c_white, 1);
+
+    var text_y = game_cap_y + offset_y_deltarune + gap;
+    
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+	var texto_soundtrack = "CHAPTER " + string(global.deltarune_cap);
+	if (global.deltarune_cap == 4 || global.deltarune_cap == 3) {
+		texto_soundtrack = "CHAPTER 3+4";
+	}
+    draw_text_customizado(text_x, text_y, texto_soundtrack);
+}
