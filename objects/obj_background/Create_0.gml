@@ -1,3 +1,13 @@
+napstablook_index = 0;
+
+waver_sprite = spr_st;
+a = 0;
+b = 38.25;
+c = 7;
+d = 6;
+e = 200;
+script_ = 0
+
 BGSINER = 0;
 BG_SINER = 0;
 BGMAGNITUDE = 6;
@@ -6,6 +16,7 @@ ANIM_SINER = 0;
 ANIM_SINER_B = 0;
 TRUE_ANIM_SINER = 0;
 BG_SPEED = 0.5;
+
 ASGORE_MEME_FASE = 0;
 ASGORE_MEME_SPRITES = [spr_asgore_meme_start, spr_asgore_meme_loop, spr_asgore_meme_end];
 ASGORE_ATROPELOU = false;

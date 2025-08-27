@@ -2,6 +2,22 @@
 	"idioma": "Português",
 
 	"obj_background_annoyingdog": "* O Annoying Dog absorveu o background.",
+	"obj_background_napstablook0": "* Você... gostou do aplicativo?... ah, tudo bem se não gostou.",
+	"obj_background_napstablook1": "* Hmmm... que tal ouvir umas músicas do... Undertale?... ou não, se não quiser.",
+	"obj_background_napstablook2": "* é... melhor não abrir o aplicativo no dia 1º de abril... sério...",
+	"obj_background_napstablook3": "* já viu o bandcamp do Toby Fox?... é... bem legal...",
+	"obj_background_napstablook4": "* ah... eu... meio que senti sua falta...",
+	"obj_background_napstablook5": "* tem alguma música que você... gostou mais até agora?... só curiosidade...",
+	"obj_background_napstablook6": "* não é um bug... é... uma feature... eu acho...",
+	"obj_background_napstablook7": "* Se quiser, posso... só ficar em silêncio aqui.",
+	"obj_background_napstablook8": "* Às vezes penso que ninguém realmente gosta das minhas músicas...",
+	"obj_background_napstablook9": "* Esse aplicativo... é mais legal do que eu esperava.",
+	"obj_background_napstablook10": "* hmmm... talvez essa playlist não seja tão ruim.",
+	"obj_background_napstablook11": "* Você já tentou... colocar os fones e... deitar no chão?",
+	"obj_background_napstablook12": "* eu... meio que... adormeci ouvindo música... foi bom.",
+	"obj_background_napstablook13": "* Se você quiser... posso recomendar uns sons lo-fi... ou não, tanto faz.",
+	"obj_background_napstablook14": "* sabia que eu... tenho um canal de música... ninguém vê, mas tudo bem.",
+	"obj_background_napstablook15": "* Acho que vou... desaparecer por um tempo... mas volto depois.",
 
 	"obj_chapter_select_escolher_capitulo": "Escolha o capítulo.",
 
@@ -16,16 +32,109 @@
 	"obj_config_background8": "Cidade Castelo",
 	"obj_config_background9": "Caverna do Gerson",
 	"obj_config_background10": "Selando a Fonte",
+	"obj_config_background11": "Napstablook",
+	"obj_config_creditos": "Créditos",
 	"obj_config_desligado": "Desligado",
 	"obj_config_idioma": "Idioma",
 	"obj_config_initfullscreen": "Iniciar em tela cheia",
 	"obj_config_ligado": "Ligado",
-	"obj_config_repo": "Repositório",
+	"obj_config_repo": "Código Fonte",
 	"obj_config_sons": "Sons",
 	"obj_config_voltar": "Voltar",
 	"obj_config_volume": "Volume",
 
+	"obj_credits_slash0": "\\M0   MUITO BEM. ^4 %",
+	"obj_credits_slash1": "\\M0  A METADE&   FOI ALCANÇADA. ^4 %",
+	"obj_credits_slash2": "\\M0    MAS&    ELE&    AINDA ESTÁ&    ESPERANDO. ^4 %",
+	"obj_credits_slash3": "\\M0     QUANTO& TEMPO MAIS...? ^4 %",
+	"obj_credits_slash4": "\\M0       MEU ^6 &   DELTARUNE. ^8 ^8 %",
+
+	"obj_credits_asgore_title0": "-Meme do Asgore-",
+	"obj_credits_asgore_title1": "-GIF-",
+	"obj_credits_asgore_title2": "-Música-",
+
+	"obj_credits_asgore2_title0": "-Meme do Asgore-",
+	"obj_credits_asgore2_title1": "-Música-",
+
+	"obj_credits_asgore2_item1_0": "@MythicApex (YouTube)",
+	"obj_credits_asgore2_item1_1": "@Bub8les (YouTube)",
+	"obj_credits_asgore2_item1_2": "@RagamuffinWLYR (YouTube)",
+
+	"obj_credits_asgore_item1_0": "@Triki_Tr0y (Twitter)",
+
+	"obj_credits_asgore_item2_0": "@KennyTheLyr1c1st (YouTube)",
+	"obj_credits_asgore_item2_1": "@zebuez (YouTube)",
+
+	"obj_credits_dev_title0": "-Desenvolvimento-",
+
+	"obj_credits_dev_item0_0": "Luca (@lucafrisk)",
+
+	"obj_credits_drawing_title0": "-Principal Artista-",
+	"obj_credits_drawing_title1": "-Principal Animadora-",
+
+	"obj_credits_drawing_item1_0": "Temmie Chang",
+
+	"obj_credits_fonts_title0": "-Fontes-",
+
+	"obj_credits_fonts_item0_0": "8bitoperator JVE",
+
+	"obj_credits_main_appname": "SoulTune",
+	"obj_credits_main_by": "por Luca (\"Frisk\")",
+
+	"obj_credits_music_title0": "-Músicas de Undertale-",
+	"obj_credits_music_title1": "-Músicas de Deltarune-",
+	"obj_credits_music_title2": "-Assistência Musical-",
+
+	"obj_credits_music_item1_0": "Toby Fox",
+
+	"obj_credits_music_item2_0": "Lena Raine",
+	"obj_credits_music_item2_1": "Marcy Nabors",
+
+	"obj_credits_original_title0": "-Criação Original-",
+
+	"obj_credits_original_item0_0": "Toby Fox",
+
+	"obj_credits_programs_title0": "-Programas-",
+
+	"obj_credits_programs2_title0": "-Programas-",
+
+	"obj_credits_programs2_item0_0": "Git & GitHub - Microsoft",
+	"obj_credits_programs2_item0_1": "Undertale Mod Tool - MattyIce",
+	"obj_credits_programs2_item0_2": "YT-DLP - yt-dlp",
+
+	"obj_credits_programs_item0_0": "GameMaker Studio 2 - YoYo Games",
+	"obj_credits_programs_item0_1": "Visual Studio Code - Microsoft",
+	"obj_credits_programs_item0_2": "Visual Studio 2022 - Microsoft",
+
+	"obj_credits_sfx_title0": "-Efeitos Sonoros-",
+
+	"obj_credits_sfx_item0_0": "Toby Fox (Undertale & Deltarune)",
+
+	"obj_credits_thanks_title0": "-Agradecimentos Especiais-",
+
+	"obj_credits_thanks2_title0": "-Agradecimentos Especiais-",
+
+	"obj_credits_thanks2_item0_0": "@yaazurem",
+	"obj_credits_thanks2_item0_1": "@luca_house",
+	"obj_credits_thanks2_item0_2": "@zaki_zeon",
+	"obj_credits_thanks2_item0_3": "@laerinfx",
+	"obj_credits_thanks2_item0_4": "@tomveronezzi",
+	"obj_credits_thanks2_item0_5": "Comunidade Undertale & Deltarune",
+
+	"obj_credits_thanks_item0_0": "@leticiasilva667",
+	"obj_credits_thanks_item0_1": "@nowachaox",
+	"obj_credits_thanks_item0_2": "@vallemm_01",
+	"obj_credits_thanks_item0_3": "@.karshinov.",
+	"obj_credits_thanks_item0_4": "@huds_chaox",
+	"obj_credits_thanks_item0_5": "@starkdev_",
+
+	"obj_credits_vocals_title0": "-Vozes-",
+
+	"obj_credits_vocals_item0_0": "Laura Shigihara (Don't Forget)",
+	"obj_credits_vocals_item0_1": "Itoki Hana (Sanctuary)",
+
 	"obj_discord_baixar": "Baixar",
+	"obj_discord_credits": "Chorando aos créditos do SoulTune.",
 	"obj_discord_details": "Ouvindo as músicas do Toby Fox.",
 	"obj_discord_interessou": "Interessou?",
 	"obj_discord_state": "O que achou do ícone?",

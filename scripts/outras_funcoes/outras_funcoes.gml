@@ -23,13 +23,21 @@ function outras_funcoes() {
 			instance_destroy(obj_config);
 		}
 
-		else if (instance_exists(obj_playlists) || instance_exists(obj_music)) {
+		else if (instance_exists(obj_playlists_select) || instance_exists(obj_music)) {
 			instance_destroy(obj_music);
-			instance_destroy(obj_playlists);
+			instance_destroy(obj_playlists_select);
 			instance_destroy(obj_music_controller);
 			objeto_destino = obj_music_selector;
 		}
-
+		
+		if (instance_exists(obj_creditos)) {
+			instance_create_depth(0, 0, depth, obj_background);
+			instance_create_depth(0, 0, depth-1, obj_config);
+			audio_stop_all();
+			tocar_musica(obj_creditos.music_index[1], obj_creditos.music_index[0], obj_creditos.is_looping)
+			instance_destroy(obj_creditos);
+			return;
+		}
 		instance_create_depth(0, 0, depth-1, objeto_destino);
 	}
 }

@@ -1,5 +1,6 @@
 /// @function draw_text_customizado(_x, _y, _texto, [_max_chars])
-/// @description Desenha texto com tratamento especial e quebra opcional por limite de caracteres.
+/// @description Desenha texto com tratamento especial e quebra opcional por limite de caracteres,
+/// preservando espaços iniciais e múltiplos espaços consecutivos.
 /// @param {real} _x
 /// @param {real} _y
 /// @param {string} _texto
@@ -8,26 +9,32 @@ function draw_text_customizado(_x, _y, _texto, _max_chars) {
 	if (argument_count < 4) _max_chars = 0;
 
 	var linhas = [];
-
 	var partes_texto = string_split(_texto, "\n");
 
 	for (var p = 0; p < array_length(partes_texto); p++) {
-		var palavras = string_split(partes_texto[p], " ");
-		var linha_atual = "";
+		var parte = partes_texto[p];
 
-		for (var i = 0; i < array_length(palavras); i++) {
-			var teste = (linha_atual == "" ? palavras[i] : linha_atual + " " + palavras[i]);
+		if (_max_chars > 0) {
+			var palavras = string_split(parte, " ");
+			var linha_atual = "";
 
-			if (_max_chars > 0 && string_length(teste) > _max_chars) {
-				array_push(linhas, linha_atual);
-				linha_atual = palavras[i];
-			} else {
-				linha_atual = teste;
+			for (var i = 0; i < array_length(palavras); i++) {
+				var palavra = palavras[i];
+				var teste = linha_atual;
+				if (linha_atual != "") teste += " ";
+				teste += palavra;
+
+				if (string_length(teste) > _max_chars) {
+					array_push(linhas, linha_atual);
+					linha_atual = palavra;
+				} else {
+					linha_atual = teste;
+				}
 			}
-		}
 
-		if (linha_atual != "") {
 			array_push(linhas, linha_atual);
+		} else {
+			array_push(linhas, parte);
 		}
 
 		if (p < array_length(partes_texto) - 1) {
@@ -45,11 +52,14 @@ function draw_text_customizado(_x, _y, _texto, _max_chars) {
 			var c = string_char_at(texto_linha, i);
 			switch (c) {
 				case "♫": largura_total += sprite_get_width(spr_simbolo_musica) * 0.5; break;
+				case "⏸": largura_total += sprite_get_width(spr_pause) * 0.5; break;
+				case "▶": largura_total += sprite_get_width(spr_play) * 0.5; break;
+				case "↺": largura_total += sprite_get_width(spr_loop) * 0.5; break;
 				case "…": largura_total += string_width(".") * 3; break;
 				case "＂": c = "\""; largura_total += string_width(c); break;
 				case "’": c = "'"; largura_total += string_width(c); break;
 				case "？": c = "?"; largura_total += string_width(c); break;
-				default: largura_total += string_width(c);
+				default: largura_total += string_width(c); break;
 			}
 		}
 
@@ -97,6 +107,7 @@ function draw_text_customizado(_x, _y, _texto, _max_chars) {
 				default:
 					draw_text(cursor_x, y_draw, c);
 					cursor_x += string_width(c);
+					break;
 			}
 		}
 	}

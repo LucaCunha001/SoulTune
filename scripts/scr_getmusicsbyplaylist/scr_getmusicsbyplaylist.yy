@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_getmusicsbyplaylist",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_getmusicsbyplaylist",
+  "parent":{
+	"name":"playlists",
+	"path":"folders/Scripts/user/playlists.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

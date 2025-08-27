@@ -40,7 +40,7 @@ total = array_length(settings_buttons);
 half = ceil(total / 2);
 
 total_h = (half) * (btn_height + btn_spacing);
-base_y = (room_height - total_h) / 2;
+base_y = (room_height - total_h) / 2 - 35;
 
 slider_w = 180;
 slider_h = 10;
@@ -49,6 +49,11 @@ slider_y = base_y + total_h + btn_spacing;
 
 slider_handle_r = 10;
 slider_dragging = false;
+
+btn_credits_w = 100;
+btn_credits_h = 25;
+btn_credits_x = (room_width - btn_credits_w)/2;
+btn_credits_y = room_height - btn_credits_h - 20;
 
 btn_repo_w = 100;
 btn_repo_h = 25;

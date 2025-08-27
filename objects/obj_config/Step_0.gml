@@ -1,6 +1,7 @@
 hovered_btn = -1;
 var hovered_back = point_in_rectangle(mouse_x, mouse_y, btn_back_x, btn_back_y, btn_back_x + btn_back_w, btn_back_y + btn_back_h);
 var hovered_repo = point_in_rectangle(mouse_x, mouse_y, btn_repo_x, btn_repo_y, btn_repo_x + btn_repo_w, btn_repo_y + btn_repo_h);
+var hovered_credits = point_in_rectangle(mouse_x, mouse_y, btn_credits_x, btn_credits_y, btn_credits_x + btn_credits_w, btn_credits_y + btn_credits_h);
 
 for (var i = 0; i < total; i++) {
 	var col = i mod 2;
@@ -19,11 +20,11 @@ for (var i = 0; i < total; i++) {
 	}
 }
 
-if ((hovered_btn != -1 || hovered_back || hovered_repo) && !hover_sound_played) {
+if ((hovered_btn != -1 || hovered_back || hovered_repo || hovered_credits) && !hover_sound_played) {
 	audio_sound_select(snd_squeak);
 	hover_sound_played = true;
 }
-if (hovered_btn == -1 && !hovered_back && !hovered_repo) {
+if (hovered_btn == -1 && !hovered_back && !hovered_repo && !hovered_credits) {
 	hover_sound_played = false;
 }
 
@@ -41,6 +42,7 @@ if (mouse_check_button_pressed(mb_left) && !clicking) {
 				settings_buttons[hovered_btn] = scr_gettext("obj_config_idioma") + ": " + scr_gettext("idioma");
 				settings_buttons[1] = scr_gettext("obj_config_background") + ": " + scr_gettext("obj_config_background" + string(global.background_index+1));
 				settings_buttons[2] = scr_gettext("obj_config_sons") + ": " + (global.tocar_som ? scr_gettext("obj_config_ligado") : scr_gettext("obj_config_desligado"));
+				settings_buttons[3] = scr_gettext("obj_config_initfullscreen") + ": " + (global.init_fullscreen ? scr_gettext("obj_config_ligado") : scr_gettext("obj_config_desligado"));
 				
 				break;
 
@@ -61,17 +63,20 @@ if (mouse_check_button_pressed(mb_left) && !clicking) {
 
 		}
 		audio_sound_select(snd_select);
-
-		save_user_options();
 	}
 	else if (hovered_back) {
-		audio_sound_select(snd_select);
 		instance_create_depth(0, 0, depth, obj_main_menu);
+		save_user_options();
 		instance_destroy();
 	}
 	else if (hovered_repo) {
 		audio_sound_select(snd_select);
 		url_open(global.repo_url);
+	}
+	else if (hovered_credits) {
+		instance_create_depth(0, 0, depth, obj_creditos);
+		instance_destroy(obj_background);
+		instance_destroy();
 	}
 
 	alarm[0] = 5;
@@ -90,10 +95,8 @@ if (mouse_check_button(mb_left) && slider_dragging) {
 	var rel = clamp((mouse_x - slider_x) / slider_w, 0, 1);
 	global.volume = rel;
 	audio_master_gain(global.volume);
-	save_user_options();
 }
 
 if (mouse_check_button_released(mb_left)) {
 	slider_dragging = false;
-	save_user_options();
 }

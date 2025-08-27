@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SCR_NEWLINE",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SCR_NEWLINE",
+  "parent":{
+	"name":"text",
+	"path":"folders/Scripts/text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

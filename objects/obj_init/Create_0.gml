@@ -19,14 +19,15 @@ global.filtros = ds_map_create();
 // Pastas e playlists
 global.folder = ds_map_create();
 global.folders = [];
-global.playlists = [];
+global.playlists = {};
+global.playlist = "";
 
 // Idioma / Localização
 global.language = "pt-br";
 global.language_data = ds_map_create();
 
 // Backgrounds / Interface
-global.backgrounds = [spr_backgroundgif, spr_background2, spr_background3, spr_annoyingdog, spr_background4, spr_background5, spr_background6, spr_background7, spr_background8, spr_background9];
+global.backgrounds = [spr_backgroundgif, spr_background2, spr_background3, spr_annoyingdog, spr_background4, spr_background5, spr_background6, spr_background7, spr_background8, spr_background9, spr_napstablook_d_headphone];
 global.background_index = 0;
 global.deltarune_cap = 0;
 global.update_message = "";
@@ -34,6 +35,7 @@ global.init_fullscreen = false;
 global.primeiro_de_abril = false;
 
 global.repo_url = "https://github.com/LucaCunha001/SoulTune/releases/latest/";
+global.msg = [];
 
 draw_set_font(fnt_main);
 
@@ -44,16 +46,13 @@ audio_master_gain(global.volume);
 startService();
 load_playlists();
 
-// Fullscreen
 waiting_fullscreen = false;
 target_fullscreen = false;
 
-// Funções auxiliares
-choose_from_array = function(arr) {
+function choose_from_array(arr) {
 	return arr[irandom(array_length(arr)-1)];
 };
 
-// Map de músicas por background (criado apenas uma vez)
 if (!variable_global_exists("music_map")) {
 	global.music_map = ds_map_create();
 	ds_map_add(global.music_map, 0, [[31, 40], 1]);
@@ -66,10 +65,13 @@ if (!variable_global_exists("music_map")) {
 	ds_map_add(global.music_map, 7, [[1, 3], 2]);
 	ds_map_add(global.music_map, 8, [[23, 31, 33], 0]);
 	ds_map_add(global.music_map, 9, [[[8], [36]], [1, 2]]);
+	ds_map_add(global.music_map, 10, [[10, 37, 38, 39, 41], 0]);
 }
 
-// Fullscreen toggle
 function toggle_fullscreen() {
+	if (os_type == os_android) {
+		after_fullscreen_done();
+	}
 	target_fullscreen = global.init_fullscreen;
 	waiting_fullscreen = true;
 	window_set_fullscreen(target_fullscreen);

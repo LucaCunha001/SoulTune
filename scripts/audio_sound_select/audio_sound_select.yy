@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"audio_sound_select",
   "parent":{
-	"name":"Scripts",
-	"path":"folders/Scripts.yy",
+	"name":"sound",
+	"path":"folders/Scripts/sound.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -5,6 +5,6 @@
 
 function scr_gettext(chave) {	
 	var texto = ds_map_find_value(global.language_data, chave);
-	if (texto == undefined) return "[texto não encontrado: " + string(chave) + "]";
+	if (texto == undefined) return string(undefined);
 	return texto;
 }

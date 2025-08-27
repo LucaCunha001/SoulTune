@@ -12,9 +12,9 @@ load_osts();
 var filtro = scr_getmusicsbyfilter(global.filtro);
 
 for (var j = 0; j < ds_list_size(filtro); j++) {
-	var idx = ds_list_find_value(filtro, j);
+	var idx = real(ds_list_find_value(filtro, j));
 
-	var name = scr_getmusicname(idx);
+	var name = string(scr_getmusicname(idx));
 	array_push(musics, [name, idx]);
 }
 

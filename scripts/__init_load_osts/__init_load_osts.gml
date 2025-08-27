@@ -9,6 +9,7 @@
 
 function __init_load_osts() {
 	global.primeiro_de_abril = (current_day == 1 && current_month == 4);
+	// global.primeiro_de_abril = true;
 
 	var osts_json = scr_openjson("osts.json");
 

@@ -4,7 +4,7 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
 var texto = scr_gettext("obj_main_menu_escolher_jogo");
-draw_text_customizado(room_width/2, btn1_y-25, texto);
+draw_text_customizado(room_width/2, btn1_y-30, texto);
 
 draw_bordered_rect(btn1_x - 6, btn1_y - 6, btn1_x + sprite_get_width(btn1_sprite) + 6, btn1_y + sprite_get_height(btn1_sprite) + 6, 2, (hovered_btn == 1));
 draw_bordered_rect(btn2_x - 6, btn2_y - 6, btn2_x + sprite_get_width(btn2_sprite) + 6, btn2_y + sprite_get_height(btn2_sprite) + 6, 2, (hovered_btn == 2));

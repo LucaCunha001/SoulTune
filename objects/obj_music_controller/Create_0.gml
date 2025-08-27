@@ -1,4 +1,4 @@
-progress = 0;
+progress = global.current_music_time / global.music_duration;
 
 menu_x = 15;
 menu_y = 0;

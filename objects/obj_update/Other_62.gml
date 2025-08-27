@@ -1,5 +1,5 @@
 if (async_load[? "id"] == request_id) {
-	if (async_load[? "status"] == 0) {
+	if (async_load[? "status"] < 0) {
 		show_debug_message("Houve um erro durante a requisição.");
 		instance_destroy();
 	}
