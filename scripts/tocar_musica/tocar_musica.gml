@@ -23,11 +23,7 @@ function tocar_musica(argument0, argument1, argument2) {
 	}
 
 	audio_stop_all();
-<<<<<<< HEAD
 	audio_play_sound(snd, 1, false);
-=======
-	audio_play_sound(snd, 1, argument2);
->>>>>>> origin/main
 
 	global.is_playing = true;
 	global.is_looping = argument2;

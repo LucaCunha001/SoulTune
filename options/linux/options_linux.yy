@@ -9,11 +9,7 @@
   "option_linux_display_splash":true,
   "option_linux_enable_steam":false,
   "option_linux_homepage":"http://www.yoyogames.com",
-<<<<<<< HEAD
   "option_linux_icon":"${options_dir}/linux/icons/64.png",
-=======
-  "option_linux_icon":"${base_options_dir}/linux/icons/64.png",
->>>>>>> origin/main
   "option_linux_interpolate_pixels":false,
   "option_linux_long_desc":"",
   "option_linux_maintainer_email":"lcunhalula@gmail.com",
@@ -24,11 +20,7 @@
   "option_linux_start_fullscreen":false,
   "option_linux_sync":false,
   "option_linux_texture_page":"2048x2048",
-<<<<<<< HEAD
   "option_linux_version":"0.3.5",
-=======
-  "option_linux_version":"0.2.3",
->>>>>>> origin/main
   "resourceType":"GMLinuxOptions",
   "resourceVersion":"2.0",
 }

@@ -26,13 +26,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-<<<<<<< HEAD
 	"name":"scripting",
 	"path":"folders/Sprites/background/scripting.yy",
-=======
-	"name":"background",
-	"path":"folders/Sprites/background.yy",
->>>>>>> origin/main
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

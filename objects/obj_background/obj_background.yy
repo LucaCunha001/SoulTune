@@ -15,8 +15,6 @@
   "parent":{
 	"name":"Objetos",
 	"path":"folders/Objetos.yy",
-	"name":"Objetos",
-	"path":"folders/Objetos.yy",
   },
   "parentObjectId":null,
   "persistent":false,
