@@ -9,7 +9,11 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
+<<<<<<< HEAD
   "duration":148.35165,
+=======
+  "duration":155.08607,
+>>>>>>> origin/main
   "name":"snd_asgore_abril",
   "parent":{
 	"name":"Sons",

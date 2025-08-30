@@ -69,7 +69,7 @@
   "option_android_splashscreen_background_colour":255,
   "option_android_splash_screens_landscape":"${options_dir}/android/splash/landscape.png",
   "option_android_splash_screens_portrait":"${base_options_dir}/android/splash/portrait.png",
-  "option_android_splash_time":0,
+  "option_android_splash_time":2,
   "option_android_support_lib":"34.0.0",
   "option_android_sync_amazon":false,
   "option_android_target_sdk":"34",
@@ -79,7 +79,11 @@
   "option_android_tv_isgame":false,
   "option_android_tv_supports_leanback":true,
   "option_android_use_facebook":false,
+<<<<<<< HEAD
   "option_android_version":"0.3.7",
+=======
+  "option_android_version":"0.2.3",
+>>>>>>> origin/main
   "resourceType":"GMAndroidOptions",
   "resourceVersion":"2.0",
 }

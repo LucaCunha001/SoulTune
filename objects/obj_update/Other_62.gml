@@ -42,6 +42,7 @@ if (async_load[? "id"] == request_id) {
 			exit;
 		}
 
+<<<<<<< HEAD
 		var versao_num = extrairVersao(tag_online);
 		var versao_online = versaoParaArray(versao_num);
 		var versao_local = versaoParaArray(GM_version);
@@ -63,5 +64,12 @@ if (async_load[? "id"] == request_id) {
 		instance_destroy();
 	} catch (err) {
 		show_debug_message("Erro ao processar resposta: " + string(err));
+=======
+	if (versaoMaior(versao_online, versao_local)) {
+		var versao_str = string(versao_online[0]) + "." + string(versao_online[1]) + "." + string(versao_online[2]);
+		var versao_atual = string(versao_local[0]) + "." + string(versao_local[1]) + "." + string(versao_local[2]);
+		global.update_message = scr_gettext("obj_update_VMR") + " " + versao_str + ". " + scr_gettext("obj_update_VA") + " " + versao_atual + ". " + scr_gettext("obj_update_RAA");
+		instance_create_depth(0, 0, depth-5, obj_update_popup);
+>>>>>>> origin/main
 	}
 }

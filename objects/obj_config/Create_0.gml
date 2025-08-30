@@ -20,7 +20,14 @@ settings_actions = [
 	"background",
 	"sound",
 	"fullscreen"
+	"sound",
+	"fullscreen"
 ];
+
+if (os_type == os_android) {
+	array_pop(settings_buttons);
+	array_pop(settings_actions);
+}
 
 if (os_type == os_android) {
 	array_pop(settings_buttons);
@@ -47,6 +54,8 @@ slider_h = 10;
 slider_x = (room_width - slider_w)/2;
 slider_y = base_y + total_h + btn_spacing;
 
+slider_y = base_y + total_h + btn_spacing;
+
 slider_handle_r = 10;
 slider_dragging = false;
 
@@ -63,6 +72,10 @@ btn_repo_y = room_height - btn_repo_h - 20;
 hovered_btn = -1;
 hover_sound_played = false;
 clicking = false;
+
+col_spacing = 60;
+x_left  = room_width/2 - (btn_width + col_spacing/2);
+x_right = room_width/2 + (col_spacing/2);
 
 col_spacing = 60;
 x_left  = room_width/2 - (btn_width + col_spacing/2);

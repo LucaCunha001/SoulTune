@@ -37,7 +37,9 @@ if (mouse_check_button_pressed(mb_left) && !clicking) {
 				global.language = languages[language_index];
 				__init_load_osts();
 								
+								
 				global.discord_initialized = false;
+				
 				
 				settings_buttons[hovered_btn] = scr_gettext("obj_config_idioma") + ": " + scr_gettext("idioma");
 				settings_buttons[1] = scr_gettext("obj_config_background") + ": " + scr_gettext("obj_config_background" + string(global.background_index+1));
@@ -48,6 +50,7 @@ if (mouse_check_button_pressed(mb_left) && !clicking) {
 
 			case "background":
 				global.background_index = (global.background_index + 1) mod array_length(global.backgrounds);
+				settings_buttons[hovered_btn] = scr_gettext("obj_config_background") + ": " + scr_gettext("obj_config_background" + string(global.background_index+1));
 				settings_buttons[hovered_btn] = scr_gettext("obj_config_background") + ": " + scr_gettext("obj_config_background" + string(global.background_index+1));
 				break;
 				

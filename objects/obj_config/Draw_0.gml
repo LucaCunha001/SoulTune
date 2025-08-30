@@ -20,6 +20,7 @@ for (var i = 0; i < total; i++) {
 
 	draw_set_color(c_white);
 	draw_text_customizado(x1 + btn_width/2, y1 + btn_height/2, settings_buttons[i], 22);
+	draw_text_customizado(x1 + btn_width/2, y1 + btn_height/2, settings_buttons[i], 22);
 }
 
 var back_hovered = point_in_rectangle(mouse_x, mouse_y, btn_back_x, btn_back_y, btn_back_x + btn_back_w, btn_back_y + btn_back_h);
