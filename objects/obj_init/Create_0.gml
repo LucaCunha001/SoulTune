@@ -36,6 +36,11 @@ global.primeiro_de_abril = false;
 
 global.repo_url = "https://github.com/LucaCunha001/SoulTune/releases/latest/";
 global.msg = [];
+global.flag = [];
+
+for (var i=0; i<22; i++) {
+	global.flag[i] = 0;
+}
 
 draw_set_font(fnt_main);
 
@@ -49,13 +54,9 @@ load_playlists();
 waiting_fullscreen = false;
 target_fullscreen = false;
 
-function choose_from_array(arr) {
-	return arr[irandom(array_length(arr)-1)];
-};
-
 if (!variable_global_exists("music_map")) {
 	global.music_map = ds_map_create();
-	ds_map_add(global.music_map, 0, [[31, 40], 1]);
+	ds_map_add(global.music_map, 0, [[[31, 40], [36]], [1, 4]]);
 	ds_map_add(global.music_map, 1, [[1, 11, 15, 20], 1]);
 	ds_map_add(global.music_map, 2, [[12, 13, 85, 92], 0]);
 	ds_map_add(global.music_map, 3, [[21], 0]);
@@ -66,15 +67,6 @@ if (!variable_global_exists("music_map")) {
 	ds_map_add(global.music_map, 8, [[23, 31, 33], 0]);
 	ds_map_add(global.music_map, 9, [[[8], [36]], [1, 2]]);
 	ds_map_add(global.music_map, 10, [[10, 37, 38, 39, 41], 0]);
-}
-
-function toggle_fullscreen() {
-	if (os_type == os_android) {
-		after_fullscreen_done();
-	}
-	target_fullscreen = global.init_fullscreen;
-	waiting_fullscreen = true;
-	window_set_fullscreen(target_fullscreen);
 }
 
 function after_fullscreen_done() {
@@ -93,10 +85,10 @@ function after_fullscreen_done() {
 
 		if (is_array(loop_flag)) {
 			var capitulo = irandom(array_length(loop_flag)-1);
-			music_id = choose_from_array(options[capitulo]);
+			music_id = options[capitulo][irandom(array_length(options[capitulo])-1)];
 			loop_flag = loop_flag[capitulo];
 		} else {
-			music_id = choose_from_array(options);
+			music_id = options[irandom(array_length(options)-1)];
 		}
 	}
 
@@ -105,4 +97,32 @@ function after_fullscreen_done() {
 	instance_destroy();
 }
 
-toggle_fullscreen();
+_parent = -4;
+roominit = 0;
+isfullscreen = window_get_fullscreen();
+delayA = 0;
+delayB = 1;
+
+function init_game() {
+	window_enable_borderless_fullscreen(os_type == os_windows);
+	if (os_type == os_android) {
+		delayA = delayB;
+		return;
+	}
+	var display_width = display_get_width();
+	var display_height = display_get_height();
+	
+	window_size_multiplier = 960 div display_width
+	
+	var set_windowsize = false;
+	if (global.init_fullscreen) {
+		window_set_fullscreen(true);
+	} else {
+		set_windowsize = true;
+	}
+	
+	if (set_windowsize) {
+		window_set_size(640 * window_size_multiplier, 480 * window_size_multiplier);
+		alarm[0] = 1;
+	}
+}

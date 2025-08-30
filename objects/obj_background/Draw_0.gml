@@ -35,7 +35,13 @@ var limite = 0.5 * multiplicador;
 if (sprite_index != spr) {
 	napstablook_index = irandom(15);
 	sprite_index = spr;
-	ANIM_SINER = ANIM_SINER_B = BG_SINER = BG_ALPHA = 0;
+	BGSINER = 0;
+	BG_SINER = 0;
+	BGMAGNITUDE = 6;
+	BG_ALPHA = 0;
+	ANIM_SINER = 0;
+	ANIM_SINER_B = 0;
+	TRUE_ANIM_SINER = 0;
 }
 
 if (BG_ALPHA < limite) {

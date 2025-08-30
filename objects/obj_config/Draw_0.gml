@@ -1,6 +1,9 @@
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(fnt_main);
+draw_set_color(c_white);
+
+draw_text_customizado(room_width/2, 15, scr_gettext("obj_config_versao") + ": " + GM_version);
 
 for (var i = 0; i < total; i++) {
 	var col = i mod 2;

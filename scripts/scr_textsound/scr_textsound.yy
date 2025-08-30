@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_textsound",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_textsound",
+  "parent":{
+	"name":"text",
+	"path":"folders/Scripts/text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

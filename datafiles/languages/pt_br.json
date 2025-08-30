@@ -40,14 +40,15 @@
 	"obj_config_ligado": "Ligado",
 	"obj_config_repo": "Código Fonte",
 	"obj_config_sons": "Sons",
+	"obj_config_versao": "Versão",
 	"obj_config_voltar": "Voltar",
 	"obj_config_volume": "Volume",
 
-	"obj_credits_slash0": "\\M0   MUITO BEM. ^4 %",
-	"obj_credits_slash1": "\\M0  A METADE&   FOI ALCANÇADA. ^4 %",
-	"obj_credits_slash2": "\\M0    MAS&    ELE&    AINDA ESTÁ&    ESPERANDO. ^4 %",
-	"obj_credits_slash3": "\\M0     QUANTO& TEMPO MAIS...? ^4 %",
-	"obj_credits_slash4": "\\M0       MEU ^6 &   DELTARUNE. ^8 ^8 %",
+	"obj_credits_slash0": "\\M0   MUITO BEM. ^8 %",
+	"obj_credits_slash1": "\\M0     A METADE&   FOI ALCANÇADA. ^8 %",
+	"obj_credits_slash2": "\\M0    MAS&    ELE&    AINDA ESTÁ&    ESPERANDO. ^8 %",
+	"obj_credits_slash3": "\\M0     QUANTO& TEMPO MAIS...? ^8 %",
+	"obj_credits_slash4": "\\M0       MEU ^6 &    DELTARUNE. ^8 ^8 %",
 
 	"obj_credits_asgore_title0": "-Meme do Asgore-",
 	"obj_credits_asgore_title1": "-GIF-",
@@ -73,10 +74,6 @@
 	"obj_credits_drawing_title1": "-Principal Animadora-",
 
 	"obj_credits_drawing_item1_0": "Temmie Chang",
-
-	"obj_credits_fonts_title0": "-Fontes-",
-
-	"obj_credits_fonts_item0_0": "8bitoperator JVE",
 
 	"obj_credits_main_appname": "SoulTune",
 	"obj_credits_main_by": "por Luca (\"Frisk\")",
@@ -107,8 +104,11 @@
 	"obj_credits_programs_item0_2": "Visual Studio 2022 - Microsoft",
 
 	"obj_credits_sfx_title0": "-Efeitos Sonoros-",
+	"obj_credits_sfx_title1": "-Fontes-",
 
 	"obj_credits_sfx_item0_0": "Toby Fox (Undertale & Deltarune)",
+
+	"obj_credits_sfx_item1_0": "8bitoperator JVE",
 
 	"obj_credits_thanks_title0": "-Agradecimentos Especiais-",
 
@@ -139,6 +139,18 @@
 	"obj_discord_interessou": "Interessou?",
 	"obj_discord_state": "O que achou do ícone?",
 
+	"obj_editar_playlist_adicionar": "Adicionar",
+	"obj_editar_playlist_capítulo": "Escolha um capítulo: ",
+	"obj_editar_playlist_editando": "Editando Playlist: ",
+	"obj_editar_playlist_escolher": "Escolha uma música: ",
+	"obj_editar_playlist_musica": "Música ",
+	"obj_editar_playlist_nnp": "Novo nome da playlist:",
+	"obj_editar_playlist_remover": "Remover",
+	"obj_editar_playlist_renomear": "Renomear",
+	"obj_editar_playlist_voltar": "Voltar",
+
+	"obj_editar_playlist_remove_desc": "Click on a song to remove (ESC to cancel)",
+
 	"obj_main_menu_escolher_jogo": "Escolha o jogo.",
 
 	"obj_music_controller_nan": "Nenhuma música",
@@ -154,7 +166,7 @@
 	"obj_music_selector_img_lutas": "Lutas",
 	"obj_music_selector_img_todas": "Todas",
 
-	"obj_playlist_button_new": "Nova Playlist",
+	"obj_playlist_selector_np": "Nova Playlist",
 
 	"obj_update_RAA": "\nRecomendamos atualizar o aplicativo.",
 	"obj_update_VA": "\nVersão atual:",

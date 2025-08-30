@@ -61,4 +61,6 @@ Temporary Items
 # Files for ajustment
 *.py
 *.html
-*.nsi
+window_nsis.nsi
+
+__pycache__/

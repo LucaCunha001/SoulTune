@@ -146,7 +146,11 @@ draw_set_color(c_white)
 draw_text_customizado(select_btn_x + select_btn_w/2 + 4, select_btn_y + select_btn_h/2 + 4, scr_gettext("obj_music_controller_select"));
 
 if (is_hover_select && mouse_check_button_pressed(mb_left)) {
-	instance_create_depth(0, 0, depth, obj_music_selector);
+	if (instance_exists(obj_playlist)) {
+		instance_create_depth(0, 0, depth, obj_playlists_select);
+	} else {
+		instance_create_depth(0, 0, depth, obj_music_selector);
+	}
 	instance_destroy(obj_music);
 	instance_destroy();
 }

@@ -4,12 +4,11 @@
 function outras_funcoes() {
 	if (keyboard_check_pressed(vk_f4)) {
 		var in_fullscreen = window_get_fullscreen();
-		assistent_fullscreen(in_fullscreen);
 		window_set_fullscreen(!in_fullscreen);
-		assistent_fullscreen(!in_fullscreen);
+		window_center();
 	}
 	
-	if (keyboard_check_pressed(vk_backspace)) {
+	if (keyboard_check_pressed(vk_backspace) && !instance_exists(obj_inputbox)) {
 		var objeto_destino = obj_main_menu;
 
 		if (instance_exists(obj_music_selector) || instance_exists(obj_chapter_select) || instance_exists(obj_config)) {
@@ -23,37 +22,39 @@ function outras_funcoes() {
 			instance_destroy(obj_config);
 		}
 
-		else if (instance_exists(obj_playlists_select) || instance_exists(obj_music)) {
+		else if (instance_exists(obj_music) && !instance_exists(obj_playlist)) {
 			instance_destroy(obj_music);
-			instance_destroy(obj_playlists_select);
 			instance_destroy(obj_music_controller);
 			objeto_destino = obj_music_selector;
+		}
+		
+		else if (instance_exists(obj_editar_playlist) || instance_exists(obj_playlist) || instance_exists(obj_playlists_select)) {
+			var instancias = [obj_music_selector, obj_playlists_select, obj_playlist, obj_editar_playlist];
+
+			for (var i = 0; i < array_length(instancias); i++) {
+				if (instance_exists(instancias[i])) {
+					objeto_destino = instancias[i-1 -1*(instance_exists(obj_editar_playlist))];
+				}
+			}
+
+			for (var i = 0; i < array_length(instancias); i++) {
+				if (instance_exists(instancias[i])) {instance_destroy(instancias[i]);}
+			}
+			
+			if (instance_exists(obj_music_controller)) {
+				instance_destroy(obj_music_controller);
+			}
 		}
 		
 		if (instance_exists(obj_creditos)) {
 			instance_create_depth(0, 0, depth, obj_background);
 			instance_create_depth(0, 0, depth-1, obj_config);
 			audio_stop_all();
-			tocar_musica(obj_creditos.music_index[1], obj_creditos.music_index[0], obj_creditos.is_looping)
+			tocar_musica(obj_creditos.music_index[1], obj_creditos.music_index[0], obj_creditos.is_looping);
+			// instance_destroy(obj_writer);
 			instance_destroy(obj_creditos);
 			return;
 		}
 		instance_create_depth(0, 0, depth-1, objeto_destino);
-	}
-}
-
-function assistent_fullscreen(argument0) {
-	if (!argument0) {
-		var win_w = 960;
-		var win_h = 520;
-		window_set_size(win_w, win_h);
-			
-		var scr_w = display_get_width();
-		var scr_h = display_get_height();
-		
-		window_set_position(
-			(scr_w - win_w) div 2,
-			(scr_h - win_h) div 2
-		);
 	}
 }

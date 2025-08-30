@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_make_button",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_make_button",
+  "parent":{
+	"name":"Scripts",
+	"path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -40,14 +40,15 @@
 	"obj_config_ligado": "On",
 	"obj_config_repo": "Source Code",
 	"obj_config_sons": "Sounds",
+	"obj_config_versao": "Version",
 	"obj_config_voltar": "Back",
 	"obj_config_volume": "Volume",
 
-	"obj_credits_slash0": "\\M0   WELL DONE. ^4 %",
-	"obj_credits_slash1": "\\M0  THE HALFWAY&   MARK HAS& BEEN ATTAINED. ^4 %",
-	"obj_credits_slash2": "\\M0    BUT&    IT&    IS STILL&    WAITING. ^4 %",
-	"obj_credits_slash3": "\\M0   HOW MUCH& LONGER NOW...? ^4 %",
-	"obj_credits_slash4": "\\M0       MY ^6 &   DELTARUNE. ^8 ^8 %",
+	"obj_credits_slash0": "\\M0   WELL DONE./%",
+	"obj_credits_slash1": "\\M0  THE HALFWAY&   MARK HAS& BEEN ATTAINED./%",
+	"obj_credits_slash2": "\\M0    BUT&    IT&    IS STILL&    WAITING./%",
+	"obj_credits_slash3": "\\M0   HOW MUCH& LONGER NOW...?/%",
+	"obj_credits_slash4": "\\M0       MY ^6&   DELTARUNE./%",
 
 	"obj_credits_asgore_title0": "-Asgore's Meme-",
 	"obj_credits_asgore_title1": "-GIF-",
@@ -73,10 +74,6 @@
 	"obj_credits_drawing_title1": "-Lead Animator-",
 
 	"obj_credits_drawing_item1_0": "Temmie Chang",
-
-	"obj_credits_fonts_title0": "-Fonts-",
-
-	"obj_credits_fonts_item0_0": "8bitoperator JVE",
 
 	"obj_credits_main_appname": "SoulTune",
 	"obj_credits_main_by": "by Luca (\"Frisk\")",
@@ -107,19 +104,22 @@
 	"obj_credits_programs_item0_2": "Visual Studio 2022 - Microsoft",
 
 	"obj_credits_sfx_title0": "-Sound Effects-",
+	"obj_credits_sfx_title1": "-Fonts-",
 
 	"obj_credits_sfx_item0_0": "Toby Fox (Undertale & Deltarune)",
+
+	"obj_credits_sfx_item1_0": "8bitoperator JVE",
 
 	"obj_credits_thanks_title0": "-Special Thanks-",
 
 	"obj_credits_thanks2_title0": "-Special Thanks-",
 
-	"obj_credits_thanks2_item0_0": "@luca_house",
-	"obj_credits_thanks2_item0_1": "@zaki_zeon",
-	"obj_credits_thanks2_item0_2": "@laerinfx",
-	"obj_credits_thanks2_item0_3": "@tomveronezzi",
-	"obj_credits_thanks2_item0_4": "Undertale & Deltarune Community",
-	"obj_credits_thanks2_item0_6": "@yaazurem",
+	"obj_credits_thanks2_item0_0": "@yaazurem",
+	"obj_credits_thanks2_item0_1": "@luca_house",
+	"obj_credits_thanks2_item0_2": "@zaki_zeon",
+	"obj_credits_thanks2_item0_3": "@laerinfx",
+	"obj_credits_thanks2_item0_4": "@tomveronezzi",
+	"obj_credits_thanks2_item0_5": "Comunidade Undertale & Deltarune",
 
 	"obj_credits_thanks_item0_0": "@leticiasilva667",
 	"obj_credits_thanks_item0_1": "@nowachaox",
@@ -139,6 +139,18 @@
 	"obj_discord_interessou": "Interested?",
 	"obj_discord_state": "What do you think of the icon?",
 
+	"obj_editar_playlist_adicionar": "Add",
+	"obj_editar_playlist_capítulo": "Choose a chapter: ",
+	"obj_editar_playlist_editando": "Choose a playlist: ",
+	"obj_editar_playlist_escolher": "Escolha uma música: ",
+	"obj_editar_playlist_musica": "Music ",
+	"obj_editar_playlist_nnp": "New playlist name:",
+	"obj_editar_playlist_remover": "Remove",
+	"obj_editar_playlist_renomear": "Rename",
+	"obj_editar_playlist_voltar": "Return",
+
+	"obj_editar_playlist_remove_desc": "Clique em uma música para remover (ESC para cancelar)",
+
 	"obj_main_menu_escolher_jogo": "Choose the game.",
 
 	"obj_music_controller_nan": "No music",
@@ -154,7 +166,7 @@
 	"obj_music_selector_img_lutas": "Battles",
 	"obj_music_selector_img_todas": "All",
 
-	"obj_playlist_button_new": "New Playlist",
+	"obj_playlist_selector_np": "New Playlist",
 
 	"obj_update_RAA": "\nWe recommend updating the application.",
 	"obj_update_VA": "\nCurrent version:",
