@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__init_load_osts",
+  "%Name":"scr_nextmsg",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__init_load_osts",
+  "name":"scr_nextmsg",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"text",
+    "path":"folders/Scripts/text.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -16,7 +16,6 @@ shake = 0;
 special = 0;
 skippable = 1;
 automash_timer = 0;
-
 /*
 if (global.flag[6] == 1)
 	skippable = 0;
@@ -85,10 +84,7 @@ for (i = 0; i < 9; i++)
 
 mystring = global.msg[0];
 
-for (j = 0; j < 100; j ++) {
-	if (array_length(global.msg) >= j) {
-		break;
-	}
+for (j = 0; j < 100; j++) {
 	nstring[j] = global.msg[j];
 }
 
@@ -100,57 +96,18 @@ if (rate < 3)
 else
 	scr_textsound();
 
-function hexcolor(arg0)
-{
+function hexcolor(arg0) {
 	return ((arg0 & 255) << 16) | (arg0 & 65280) | ((arg0 >> 16) & 255);
 }
-function scr_nextmsg()
-{
-	msgno += 1;
-	lineno = 0;
-	aster = 0;
-	halt = 0;
-	pos = 1;
-	alarm[0] = 1 * 2;
-	drawaster = 1;
-	autoaster = 1;
-	miniface_pos = 0;
-	miniface_current_pos = -1;
-	mystring = nstring[msgno];
-	formatted = 0;
-	wxskip = 0;
-	sound_played = 0;
-	reachedend_sound_played = 0;
-	reachedend = 0;
-	forcebutton1 = 0;
-	
-	if (rate < 3)
-	{
-		firstnoise = 0;
-		alarm[2] = 1 * 2;
-	}
-	
-	for (var _objecti = 0; _objecti < 9; _objecti++)
-		object_made[_objecti] = 0;
-	
-	/*
-	with (obj_funnytext)
-		instance_destroy();
-	*/
-}
-function camerax()
-{
+function camerax() {
 	return camera_get_view_x(view_camera[0]);
 }
-function cameray()
-{
+function cameray() {
 	return camera_get_view_y(view_camera[0]);
 }
-function camerawidth()
-{
+function camerawidth() {
 	return room_width;
 }
-function cameraheight()
-{
+function cameraheight() {
 	return room_height;
 }

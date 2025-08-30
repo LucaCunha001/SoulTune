@@ -46,6 +46,8 @@ measure_factor = 2;
 measure_time   = 1.89371 * measure_factor;
 measure_timer  = measure_time;
 
+debug = true;
+
 /// função auxiliar
 function dequeue_text() {
 	if (glowing_index >= array_length(glowing_text)) {

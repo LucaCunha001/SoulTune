@@ -1,9 +1,6 @@
-/// DRAW
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_color(c_white);
-
-if (keyboard_check_pressed(vk_f2)) credit_index++;
 
 if (!glowing_active) {
 	if (credit_index == 0) {

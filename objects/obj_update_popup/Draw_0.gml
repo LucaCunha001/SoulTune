@@ -10,17 +10,9 @@ draw_text_customizado(room_width/2, y1+20, global.update_message);
 var hover_ok = point_in_rectangle(mouse_x, mouse_y, btn_x1, btn_y1, btn_x2, btn_y2);
 draw_bordered_rect(btn_x1, btn_y1, btn_x2, btn_y2, 2, hover_ok);
 draw_set_color(hover_ok ? c_yellow : c_white);
-<<<<<<< HEAD
 draw_text(btn_x1 + btn_w/2, btn_y1 + btn_h/2, "OK");
-=======
-draw_text(btn_x1+btn_w/2, btn_y1+btn_h/2, "OK");
->>>>>>> origin/main
 
 var hover_repo = point_in_rectangle(mouse_x, mouse_y, btn2_x1, btn2_y1, btn2_x2, btn2_y2);
 draw_bordered_rect(btn2_x1, btn2_y1, btn2_x2, btn2_y2, 2, hover_repo);
 draw_set_color(hover_repo ? c_yellow : c_white);
-<<<<<<< HEAD
 draw_text(btn2_x1 + btn_w/2, btn2_y1 + btn_h/2, scr_gettext("obj_config_repo"));
-=======
-draw_text(btn2_x1+btn_w/2, btn2_y1+btn_h/2, scr_gettext("obj_config_repo"));
->>>>>>> origin/main

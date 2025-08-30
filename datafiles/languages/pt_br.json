@@ -44,11 +44,11 @@
 	"obj_config_voltar": "Voltar",
 	"obj_config_volume": "Volume",
 
-	"obj_credits_slash0": "\\M0   MUITO BEM. ^8 %",
-	"obj_credits_slash1": "\\M0     A METADE&   FOI ALCANÇADA. ^8 %",
-	"obj_credits_slash2": "\\M0    MAS&    ELE&    AINDA ESTÁ&    ESPERANDO. ^8 %",
-	"obj_credits_slash3": "\\M0     QUANTO& TEMPO MAIS...? ^8 %",
-	"obj_credits_slash4": "\\M0       MEU ^6 &    DELTARUNE. ^8 ^8 %",
+	"obj_credits_slash0": "\\M0   MUITO BEM./%",
+	"obj_credits_slash1": "\\M0     A METADE&   FOI ALCANÇADA./%",
+	"obj_credits_slash2": "\\M0    MAS&    ELE&    AINDA ESTÁ&    ESPERANDO./%",
+	"obj_credits_slash3": "\\M0     QUANTO& TEMPO MAIS...?/%",
+	"obj_credits_slash4": "\\M0       MEU ^6 &    DELTARUNE./%",
 
 	"obj_credits_asgore_title0": "-Meme do Asgore-",
 	"obj_credits_asgore_title1": "-GIF-",
@@ -150,6 +150,10 @@
 	"obj_editar_playlist_voltar": "Voltar",
 
 	"obj_editar_playlist_remove_desc": "Click on a song to remove (ESC to cancel)",
+
+	"obj_intro_splash0": "\\M0ESTAMOS... CONECTADOS?\\M1 ^6 %",
+	"obj_intro_splash1": "\\M0      EXCELENTE^4.\\M1 ^6 %",
+	"obj_intro_splash2": "\\M0BEM-VINDO AO SOULTUNE.\\M1 ^6 %",
 
 	"obj_main_menu_escolher_jogo": "Escolha o jogo.",
 

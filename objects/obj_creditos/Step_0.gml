@@ -1,4 +1,11 @@
-/// STEP
+
+if (debug) {
+    if (keyboard_check_pressed(vk_f3)) {
+		var song1 = scr_getmusicindex(global.music_index[1], global.music_index[0]);
+        music_set_track_position(song1, (global.current_music_time + measure_time) / global.music_duration);
+	}
+}
+
 if (credits_con == 0) {
 	if (credit_index < array_length(creditos_names)) {
 		if (global.is_playing) {
@@ -31,10 +38,7 @@ if (glowing_active) {
 		}
 
 		with (obj_writer) skippable = 0;
-	} else {
-		instance_create_depth(0, 0, depth+1, obj_background);
-		instance_create_depth(0, 0, depth, obj_config);
-		tocar_musica(music_index[1], music_index[0], is_looping);
-		instance_destroy();
+	} else if alarm[0] <= 0 {
+		alarm[0] = 100;
 	}
 }

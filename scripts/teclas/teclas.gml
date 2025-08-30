@@ -1,7 +1,7 @@
-/// @function fullscreen()
+/// @function teclas()
 /// @description Ativa o fullscreen caso a tecla vk_f4 esteja pressionada. 
 
-function outras_funcoes() {
+function teclas() {
 	if (keyboard_check_pressed(vk_f4)) {
 		var in_fullscreen = window_get_fullscreen();
 		window_set_fullscreen(!in_fullscreen);
@@ -51,7 +51,7 @@ function outras_funcoes() {
 			instance_create_depth(0, 0, depth-1, obj_config);
 			audio_stop_all();
 			tocar_musica(obj_creditos.music_index[1], obj_creditos.music_index[0], obj_creditos.is_looping);
-			// instance_destroy(obj_writer);
+			instance_destroy(obj_writer);
 			instance_destroy(obj_creditos);
 			return;
 		}

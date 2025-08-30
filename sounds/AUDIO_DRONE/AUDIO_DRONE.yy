@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"snd_text",
+  "%Name":"AUDIO_DRONE",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.12929705,
-  "name":"snd_text",
+  "duration":8.727279,
+  "name":"AUDIO_DRONE",
   "parent":{
     "name":"Sons",
     "path":"folders/Sons.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_text.wav",
+  "soundFile":"AUDIO_DRONE.ogg",
   "type":0,
   "volume":1.0,
 }

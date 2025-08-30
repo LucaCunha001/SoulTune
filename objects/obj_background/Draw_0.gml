@@ -101,12 +101,7 @@ else {
 
 				var xoffset = sin((i / 8) + (BG_SINER / 30)) * wavemag;
 				var y_ = i * size;
-				var xoffset = sin((i / 8) + (BG_SINER / 30)) * wavemag;
-				var y_ = i * size;
 
-				draw_sprite_part_ext(spr_background, 0, 0, i, wave_width, 1, xpos_bg + xoffset, y_, size, size, image_blend, BG_ALPHA * 0.8);
-				draw_sprite_part_ext(spr_background, 0, 0, i, wave_width, 1, xpos_bg - xoffset, y_, size, size, image_blend, BG_ALPHA * 0.8);
-			}
 				draw_sprite_part_ext(spr_background, 0, 0, i, wave_width, 1, xpos_bg + xoffset, y_, size, size, image_blend, BG_ALPHA * 0.8);
 				draw_sprite_part_ext(spr_background, 0, 0, i, wave_width, 1, xpos_bg - xoffset, y_, size, size, image_blend, BG_ALPHA * 0.8);
 			}

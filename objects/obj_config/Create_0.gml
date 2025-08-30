@@ -20,8 +20,6 @@ settings_actions = [
 	"background",
 	"sound",
 	"fullscreen"
-	"sound",
-	"fullscreen"
 ];
 
 if (os_type == os_android) {

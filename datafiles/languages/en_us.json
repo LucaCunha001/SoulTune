@@ -151,6 +151,10 @@
 
 	"obj_editar_playlist_remove_desc": "Clique em uma música para remover (ESC para cancelar)",
 
+	"obj_intro_splash0": "\\M0ARE WE... CONNECTED?\\M1 ^6 %",
+	"obj_intro_splash1": "\\M0      EXCELLENT^4.\\M1 ^6 %",
+	"obj_intro_splash2": "\\M0  WELCOME TO SOULTUNE.\\M1 ^6 %",
+
 	"obj_main_menu_escolher_jogo": "Choose the game.",
 
 	"obj_music_controller_nan": "No music",

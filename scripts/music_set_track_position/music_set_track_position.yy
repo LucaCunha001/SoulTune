@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__init_load_osts",
+  "%Name":"music_set_track_position",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__init_load_osts",
+  "name":"music_set_track_position",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"sound",
+    "path":"folders/Scripts/sound.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
