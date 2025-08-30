@@ -181,4 +181,4 @@ else {
 	}
 }
 
-outras_funcoes();
+teclas();

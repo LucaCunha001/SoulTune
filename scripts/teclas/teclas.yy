@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"SCR_NEWLINE",
+  "%Name":"teclas",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"SCR_NEWLINE",
+  "name":"teclas",
   "parent":{
-	"name":"text",
-	"path":"folders/Scripts/text.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

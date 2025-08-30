@@ -48,4 +48,4 @@ if (!glowing_active) {
 	}
 }
 
-outras_funcoes();
+teclas();
