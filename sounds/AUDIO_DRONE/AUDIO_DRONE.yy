@@ -2,8 +2,8 @@
   "$GMSound":"",
   "%Name":"AUDIO_DRONE",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+	"name":"audiogroup_default",
+	"path":"audiogroups/audiogroup_default",
   },
   "bitDepth":1,
   "bitRate":128,
@@ -12,8 +12,8 @@
   "duration":8.727279,
   "name":"AUDIO_DRONE",
   "parent":{
-    "name":"Sons",
-    "path":"folders/Sons.yy",
+	"name":"Sons",
+	"path":"folders/Sons.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

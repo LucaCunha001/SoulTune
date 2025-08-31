@@ -11,25 +11,22 @@ credits_con = 0;
 credit_index = 0;
 espacamento = 25;
 
-// nomes das seções de créditos
 creditos_names = [
 	"main", "original", "music", "drawing", "dev",
 	"vocals", "sfx", "programs", "programs2",
 	"asgore", "asgore2", "thanks", "thanks2"
 ];
 
-// glowing texts: [texto, inicio, fim]
 glowing_text = [];
 var i = 0;
 while (true) {
 	var texto = scr_gettext("obj_credits_slash" + string(i));
 	if (texto != string(undefined)) {
-		array_push(glowing_text, [texto, 0, 0]); // inicializa
+		array_push(glowing_text, [texto, 0, 0]);
 		i++;
 	} else break;
 }
 
-// tempos dos glowing (sincronizados)
 glowing_text[0][1] = 60.4; glowing_text[0][2] = 67;
 glowing_text[1][1] = 68;   glowing_text[1][2] = 75.9;
 glowing_text[2][1] = 76;   glowing_text[2][2] = 83.31;
@@ -41,14 +38,10 @@ glowing_active = false;
 auto_text_start = glowing_text[0][1];
 auto_text_stop  = glowing_text[0][2];
 
-// para medir compassos
 measure_factor = 2;
 measure_time   = 1.89371 * measure_factor;
 measure_timer  = measure_time;
 
-debug = true;
-
-/// função auxiliar
 function dequeue_text() {
 	if (glowing_index >= array_length(glowing_text)) {
 		audio_stop_all();

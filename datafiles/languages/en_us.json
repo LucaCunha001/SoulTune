@@ -151,9 +151,13 @@
 
 	"obj_editar_playlist_remove_desc": "Clique em uma música para remover (ESC para cancelar)",
 
-	"obj_intro_splash0": "\\M0ARE WE... CONNECTED?\\M1 ^6 %",
-	"obj_intro_splash1": "\\M0      EXCELLENT^4.\\M1 ^6 %",
-	"obj_intro_splash2": "\\M0  WELCOME TO SOULTUNE.\\M1 ^6 %",
+	"obj_intro_splash0": "\\M0SELECT A LANGUAGE.",
+	"obj_intro_splash1": "\\M0EXCELLENT^4.\\M1 ^6 %",
+	"obj_intro_splash2": "\\M0SELECT A BACKGROUND.",
+	"obj_intro_splash3": "\\M0     INTERESTING...\\M1 ^6 %",
+	"obj_intro_splash4": "\\M0ARE WE... CONNECTED?\\M1 ^6 %",
+	"obj_intro_splash5": "\\M0      EXCELLENT^4.\\M1 ^6 %",
+	"obj_intro_splash6": "\\M0  WELCOME TO SOULTUNE.\\M1 ^6 %",
 
 	"obj_main_menu_escolher_jogo": "Choose the game.",
 

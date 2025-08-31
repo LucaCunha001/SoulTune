@@ -1,4 +1,6 @@
 {
+	"DEVICE_CHOICE_slash0": "",
+
 	"idioma": "Português",
 
 	"obj_background_annoyingdog": "* O Annoying Dog absorveu o background.",
@@ -151,9 +153,13 @@
 
 	"obj_editar_playlist_remove_desc": "Click on a song to remove (ESC to cancel)",
 
-	"obj_intro_splash0": "\\M0ESTAMOS... CONECTADOS?\\M1 ^6 %",
-	"obj_intro_splash1": "\\M0      EXCELENTE^4.\\M1 ^6 %",
-	"obj_intro_splash2": "\\M0BEM-VINDO AO SOULTUNE.\\M1 ^6 %",
+	"obj_intro_splash0": "\\M0SELECIONE UM IDIOMA.",
+	"obj_intro_splash1": "\\M0SELECIONE UM BACKGROUND.",
+	"obj_intro_splash2": "\\M0EXCELENTE^4.\\M1 ^6 %",
+	"obj_intro_splash3": "\\M0    INTERESSANTE...\\M1 ^6 %",
+	"obj_intro_splash4": "\\M0ESTAMOS... CONECTADOS?\\M1 ^6 %",
+	"obj_intro_splash5": "\\M0      EXCELENTE^4.\\M1 ^6 %",
+	"obj_intro_splash6": "\\M0BEM-VINDO AO SOULTUNE.\\M1 ^6 %",
 
 	"obj_main_menu_escolher_jogo": "Escolha o jogo.",
 

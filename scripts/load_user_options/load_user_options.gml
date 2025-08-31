@@ -25,6 +25,7 @@ function load_user_options() {
 	global.volume = ini_read_real("Som", "volume", 1);
 	global.tocar_som = bool(ini_read_real("Som", "tocar_selects", 1));
 	global.init_fullscreen = bool(ini_read_real("GUI", "tela_cheia", 1));
+	global.ja_configurou = bool(ini_read_real("CONFIG", "ja_configurou", 0));
 
 	ini_close();
 }

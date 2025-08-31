@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"music_set_track_position",
   "parent":{
-    "name":"sound",
-    "path":"folders/Scripts/sound.yy",
+	"name":"sound",
+	"path":"folders/Scripts/sound.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -32,7 +32,7 @@ prevent_mash_buffer = 0;
 formattext = true;
 runcheck = false;
 disablebutton1 = false;
-scr_delta_textsetup(fnt_main, c_white, x, y, 33, 0, 4, snd_nosound, 12, 20, 2);
+scr_texttype()
 autoaster = 1;
 drawaster = 1;
 pos = 2;
@@ -82,13 +82,17 @@ for (i = 0; i < 7; i += 1)
 for (i = 0; i < 9; i++)
 	object_made[i] = 0;
 
-mystring = global.msg[0];
+function start_text() {
+	mystring = global.msg[0];
 
-for (j = 0; j < 100; j++) {
-	nstring[j] = global.msg[j];
+	for (j = 0; j < 100; j++) {
+		nstring[j] = global.msg[j];
+	}
+	
+	length = string_length(mystring);
 }
 
-length = string_length(mystring);
+start_text();
 alarm[0] = rate * 2;
 
 if (rate < 3)

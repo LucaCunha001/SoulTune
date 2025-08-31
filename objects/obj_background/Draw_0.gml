@@ -27,6 +27,9 @@ if (global.primeiro_de_abril) {
 		ASGORE_MEME_FASE = 0;
 		ASGORE_ATROPELOU = false;
 	}
+	
+	sw = sprite_get_width(spr);
+	sh = sprite_get_height(spr);
 }
 
 var multiplicador = (global.background_index == 0) ? 1 : 2;
@@ -44,7 +47,15 @@ if (sprite_index != spr) {
 	TRUE_ANIM_SINER = 0;
 }
 
-if (BG_ALPHA < limite) {
+var entrada = true;
+
+if (instance_exists(obj_intro)) {
+	if (obj_intro.EVENT = 39) && !instance_exists(DEVICE_CHOICE) {
+		entrada = false;
+	}
+}
+
+if (BG_ALPHA < limite && entrada) {
 	BG_ALPHA += (0.04 - (BG_ALPHA / (14 * multiplicador))) * multiplicador;
 	if (BG_ALPHA > limite) BG_ALPHA = limite;
 }
@@ -53,7 +64,7 @@ if (global.primeiro_de_abril) {
 	var linha_ = [
 		"Drving in my car, right after a beer",
 		"Driving in my truck, right after a beer"
-	]
+	];
 	var index_musica = string_starts_with(global.musica_atual, "-");
 	if ASGORE_LETRAS[0] != linha_[index_musica] {
 		ASGORE_LETRAS[0] = linha_[index_musica];
@@ -77,14 +88,13 @@ if (global.primeiro_de_abril) {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	draw_set_color(c_white);
-	draw_bordered_rect(30, room_height - 34, room_width - 30, room_height-4, 2);
+	draw_bordered_rect(30, room_height - 34, room_width - 30, room_height - 4, 2);
 
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_top);
-	draw_text_customizado(room_width/2, room_height - 26, ASGORE_LETRAS[ASGORE_LETRA_INDEX]);
+	draw_text_customizado(room_width / 2, room_height - 26, ASGORE_LETRAS[ASGORE_LETRA_INDEX]);
 	draw_set_halign(fa_left);
-}
-else {
+} else {
 	switch (global.background_index) {
 		case 0:
 			var size = room_height / sprite_get_height(spr_background);
@@ -117,7 +127,7 @@ else {
 			draw_set_color($DF4F00);
 			for (var j = 0; j < 3; j++) {
 				draw_set_alpha(BG_ALPHA * bg_alphas[j]);
-				draw_rectangle(0, room_height - 14, gif_x-1, room_height, false);
+				draw_rectangle(0, room_height - 14, gif_x - 1, room_height, false);
 				draw_rectangle(gif_x + sw * size, room_height - 14, room_width, room_height, false);
 			}
 			draw_set_alpha(1);
@@ -137,22 +147,11 @@ else {
 			if (global.background_index == 10) {
 				var ww = sprite_get_width(waver_sprite);
 				var hh = sprite_get_height(waver_sprite);
-
 				var offset_max = abs(c);
-
-				var scale_w = (room_width + offset_max * 2) / ww;
-				var scale_h = (room_height) / hh;
-
 				for (var i = 0; i < hh; i++) {
 					a++;
 					var xoff = sin(a / b) * c;
-					draw_sprite_part_ext(
-						waver_sprite, image_index,
-						0, i, ww, 1,
-						-offset_max + xoff, i * scale_h,
-						scale_w, scale_h,
-						c_white, BG_ALPHA
-					);
+					draw_sprite_part_ext(waver_sprite, image_index, 0, i, ww, 1, -offset_max + xoff, i * scale, scale, scale, c_white, BG_ALPHA);
 				}
 			}
 			draw_sprite_ext(spr, image_index, xpos, ypos, scale, scale, 0, c_white, BG_ALPHA);
@@ -163,12 +162,12 @@ else {
 
 			if (global.background_index == 3) {
 				draw_set_halign(fa_center);
-				draw_text_customizado(room_width/2, room_height/2 + 50, scr_gettext("obj_background_annoyingdog"));
+				draw_text_customizado(room_width / 2, room_height / 2 + 50, scr_gettext("obj_background_annoyingdog"));
 			} else {
 				draw_set_halign(fa_left);
 				var limite_napsta = 30;
 				var dialogo = scr_process_dialog(scr_gettext("obj_background_napstablook" + string(napstablook_index)), limite_napsta);
-				draw_text_customizado((room_width - limite_napsta*8)/2, room_height/2 + 75, dialogo);
+				draw_text_customizado((room_width - limite_napsta * 8) / 2, room_height / 2 + 75, dialogo);
 			}
 			draw_set_alpha(1);
 			break;

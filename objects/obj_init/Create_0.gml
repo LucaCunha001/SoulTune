@@ -1,5 +1,4 @@
 // Inicialização
-audio_play_sound(AUDIO_DRONE, 1, true);
 randomize();
 
 // Música / Áudio
@@ -38,6 +37,7 @@ global.primeiro_de_abril = false;
 global.repo_url = "https://github.com/LucaCunha001/SoulTune/releases/latest/";
 global.msg = [];
 global.flag = [];
+global.ja_configurou = false;
 
 depth = 0;
 roominit = 0;
@@ -105,6 +105,7 @@ function transition() {
 	}
 
 	tocar_musica(music_id, loop_flag, true);
+	instance_destroy(obj_writer);
 	instance_destroy();
 }
 

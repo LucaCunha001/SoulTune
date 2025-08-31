@@ -1,8 +1,8 @@
 
-if (debug) {
-    if (keyboard_check_pressed(vk_f3)) {
+if (scr_debug()) {
+	if (keyboard_check_pressed(vk_f3)) {
 		var song1 = scr_getmusicindex(global.music_index[1], global.music_index[0]);
-        music_set_track_position(song1, (global.current_music_time + measure_time) / global.music_duration);
+		music_set_track_position(song1, (global.current_music_time + measure_time) / global.music_duration);
 	}
 }
 

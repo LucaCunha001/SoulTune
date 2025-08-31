@@ -8,7 +8,7 @@ function tocar_musica(argument0, argument1, argument2) {
 	var snd;
 	var nome;
 
-	if (global.primeiro_de_abril) {
+	if (global.primeiro_de_abril && !instance_exists(obj_creditos)) {
 		snd = musica_primeiro_abril(argument0, argument1);
 		if (snd == snd_abril) {
 			nome = "666. DRIVING IN MY CAR";
