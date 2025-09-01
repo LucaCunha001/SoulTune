@@ -2,7 +2,7 @@
   "$GMMainOptions":"v3",
   "%Name":"Main",
   "name":"Main",
-  "option_audio_error_behaviour":false,
+  "option_audio_error_behaviour":true,
   "option_author":"LucaCunha001",
   "option_collision_compatibility":false,
   "option_copy_on_write_enabled":false,

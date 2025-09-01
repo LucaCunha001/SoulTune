@@ -34,7 +34,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+	"name":"spr_delta_chapters",
+	"path":"sprites/spr_delta_chapters/spr_delta_chapters.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

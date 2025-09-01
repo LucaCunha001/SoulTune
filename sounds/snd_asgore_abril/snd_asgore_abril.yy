@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":155.08607,
+  "duration":148.35165,
   "name":"snd_asgore_abril",
   "parent":{
 	"name":"Sons",

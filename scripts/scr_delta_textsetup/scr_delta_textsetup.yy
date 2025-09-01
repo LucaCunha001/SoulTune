@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_delta_textsetup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_delta_textsetup",
+  "parent":{
+	"name":"text",
+	"path":"folders/Scripts/text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

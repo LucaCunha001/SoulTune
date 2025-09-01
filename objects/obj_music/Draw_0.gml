@@ -11,12 +11,14 @@ for (var i = 0; i < array_length(musics); i++) {
 	var offset_y = 0;
 	var extra_h  = 0;
 
-	if (global.deltarune_cap == 0) {
-		var offset_value = 25;
-		for (var j = 0; j < array_length(lista_musicas_offset); j++) {
-			var limiar = lista_musicas_offset[j]
+	if (global.deltarune_cap < array_length(lista_musicas_offset)) {
+		var offset_value  = 25;
+
+		for (var j = 0; j < array_length(lista_musicas_offset[global.deltarune_cap]); j++) {
+			var limiar = lista_musicas_offset[global.deltarune_cap][j];
+
 			if (musics[i][1] == limiar) {
-				extra_h  += offset_value;
+				extra_h += offset_value;
 				array_push(passados, limiar);
 			}
 			if (musics[i][1] > limiar) && array_contains(passados, limiar) {

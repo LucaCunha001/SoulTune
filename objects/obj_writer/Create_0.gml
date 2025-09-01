@@ -1,0 +1,156 @@
+skipme = 0;
+forcebutton1 = 0;
+textsound = snd_text;
+charline = 33;
+originalcharline = charline;
+hspace = 8;
+vspace = 18;
+rate = 1;
+mycolor = c_white;
+// myfont = scr_84_get_font("main");
+myfont = fnt_main;
+textalpha = 1;
+textalphagain = 0;
+fadeonend = 0;
+shake = 0;
+special = 0;
+skippable = 1;
+automash_timer = 0;
+
+/*
+if (global.flag[6] == 1)
+	skippable = 0;
+*/
+
+f = 1;
+
+/*
+if (global.darkzone == 1)
+	f = 2;
+*/
+
+prevent_mash_buffer = 0;
+formattext = true;
+runcheck = false;
+disablebutton1 = false;
+scr_delta_textsetup(fnt_main, c_white, x, y, 33, 0, 4, snd_nosound, 12, 20, 2);
+autoaster = 1;
+drawaster = 1;
+pos = 2;
+lineno = 0;
+aster = 0;
+halt = 0;
+reachedend = 0;
+xcolor = c_black;
+wxskip = 0;
+preventcskip = false;
+msgno = 0;
+first_alarm = 0;
+firstnoise = 0;
+noiseskip = 0;
+formatted = 0;
+colorchange = 0;
+fontchange = 0;
+sound_played = 0;
+sound_timer = 0;
+sound_count = 0;
+reachedend_sound = 305;
+reachedend_sound_played = 0;
+reachedend_sound_play = 0;
+jpspecial = 0;
+jpused = 0;
+writingx = x;
+writingy = y;
+dialoguer = 0;
+smallface = 505050;
+faced = 0;
+facedever = 0;
+facer = 0;
+siner = 0;
+specfade = 1;
+autocenter = 0;
+miniface_current_pos = -1;
+miniface_pos = 0;
+miniface_drawn = 0;
+hangonpos = false;
+
+for (i = 0; i < 7; i += 1)
+{
+	specx[i] = i * 6;
+	specy[i] = i * 6;
+}
+
+for (i = 0; i < 9; i++)
+	object_made[i] = 0;
+
+mystring = global.msg[0];
+
+for (j = 0; j < 100; j ++) {
+	if (array_length(global.msg) >= j) {
+		break;
+	}
+	nstring[j] = global.msg[j];
+}
+
+length = string_length(mystring);
+alarm[0] = rate * 2;
+
+if (rate < 3)
+	alarm[2] = 1 * 2;
+else
+	scr_textsound();
+
+function hexcolor(arg0)
+{
+	return ((arg0 & 255) << 16) | (arg0 & 65280) | ((arg0 >> 16) & 255);
+}
+function scr_nextmsg()
+{
+	msgno += 1;
+	lineno = 0;
+	aster = 0;
+	halt = 0;
+	pos = 1;
+	alarm[0] = 1 * 2;
+	drawaster = 1;
+	autoaster = 1;
+	miniface_pos = 0;
+	miniface_current_pos = -1;
+	mystring = nstring[msgno];
+	formatted = 0;
+	wxskip = 0;
+	sound_played = 0;
+	reachedend_sound_played = 0;
+	reachedend = 0;
+	forcebutton1 = 0;
+	
+	if (rate < 3)
+	{
+		firstnoise = 0;
+		alarm[2] = 1 * 2;
+	}
+	
+	for (var _objecti = 0; _objecti < 9; _objecti++)
+		object_made[_objecti] = 0;
+	
+	/*
+	with (obj_funnytext)
+		instance_destroy();
+	*/
+}
+function camerax()
+{
+	return camera_get_view_x(view_camera[0]);
+}
+function cameray()
+{
+	return camera_get_view_y(view_camera[0]);
+}
+function camerawidth()
+{
+	return room_width;
+}
+function cameraheight()
+{
+	return room_height;
+}

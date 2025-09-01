@@ -1,5 +1,19 @@
 /// @function scr_load_playlists()
 /// @description Carrega playlists do arquivo playlists.json para global.playlists no formato esperado.
+<<<<<<< HEAD
+/// @return {struct<array<array<real>>>, undefined}
+
+function load_playlists() {
+	var data = scr_openjson_struct("playlists.json");
+	
+	if (is_undefined(data)) {
+		global.playlists = {};
+		return undefined;
+	}
+	
+	global.playlists = data;
+	return global.playlists;
+=======
 /// @return {undefined, Array<Struct>, Array}
 function load_playlists() {
 	var data = scr_openjson("playlists.json");
@@ -31,4 +45,5 @@ function load_playlists() {
 
 	global.playlists = playlists;
 	return playlists;
+>>>>>>> origin/main
 }

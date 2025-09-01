@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_openjson_struct",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_openjson_struct",
+  "parent":{
+	"name":"playlists",
+	"path":"folders/Scripts/user/playlists.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

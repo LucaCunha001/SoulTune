@@ -12,9 +12,9 @@ load_osts();
 var filtro = scr_getmusicsbyfilter(global.filtro);
 
 for (var j = 0; j < ds_list_size(filtro); j++) {
-	var idx = ds_list_find_value(filtro, j);
+	var idx = real(ds_list_find_value(filtro, j));
 
-	var name = scr_getmusicname(idx);
+	var name = string(scr_getmusicname(idx));
 	array_push(musics, [name, idx]);
 }
 
@@ -27,4 +27,4 @@ scroll_start_y = 0;
 controller = instance_create_depth(0, 0, depth-1, obj_music_controller);
 controller.musics = musics;
 
-lista_musicas_offset = [35, 55];
+lista_musicas_offset = [[35, 55], [], [43]];

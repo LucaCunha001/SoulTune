@@ -1,4 +1,5 @@
 function save_user_options() {
+	audio_sound_select(snd_save);
 	var file = "user_options.ini";
 	ini_open(file);
 

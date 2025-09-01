@@ -9,11 +9,17 @@ if (is_hover_play && mouse_check_button_pressed(mb_left)) {
 		global.is_playing = !global.is_playing;
 		if (global.is_playing) {
 			var snd = global.primeiro_de_abril ? musica_primeiro_abril(global.music_index[1], global.music_index[0]) : scr_getmusicindex(global.music_index[1], global.music_index[0]);
+<<<<<<< HEAD
+			global.current_music_time = (global.current_music_time == global.music_duration ? 0 : global.current_music_time)
+			audio_play_sound(snd, 1, false, global.volume, global.current_music_time);
+=======
 			audio_play_sound(snd, 1, false, 1, global.current_music_time);
+>>>>>>> origin/main
 			audio_sound_select(snd_select);
 		} else {
 			audio_stop_all();
 		}
+		global.discord_initialized = false;
 	}
 }
 

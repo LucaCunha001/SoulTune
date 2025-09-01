@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"sound_get_length",
   "parent":{
-	"name":"Scripts",
-	"path":"folders/Scripts.yy",
+	"name":"sound",
+	"path":"folders/Scripts/sound.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
