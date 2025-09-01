@@ -27,11 +27,6 @@ if (os_type == os_android) {
 	array_pop(settings_actions);
 }
 
-if (os_type == os_android) {
-	array_pop(settings_buttons);
-	array_pop(settings_actions);
-}
-
 btn_spacing = 30;
 btn_width = 180;
 btn_height = 25;

@@ -99,10 +99,6 @@ if (rate < 3)
 	alarm[2] = 1 * 2;
 else
 	scr_textsound();
-
-function hexcolor(arg0) {
-	return ((arg0 & 255) << 16) | (arg0 & 65280) | ((arg0 >> 16) & 255);
-}
 function camerax() {
 	return camera_get_view_x(view_camera[0]);
 }

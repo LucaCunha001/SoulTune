@@ -31,7 +31,7 @@ if (first_alarm == 0)
 else
 {
 	getchar = string_char_at(mystring, pos);
-	nextchar = string_char_at(mystring, pos + 1);
+	var nextchar = string_char_at(mystring, pos + 1);
 	
 	if (getchar == "`")
 	{

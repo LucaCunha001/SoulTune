@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"tocar_musica",
+  "%Name":"hexcolor",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"tocar_musica",
+  "name":"hexcolor",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+	"name":"draw",
+	"path":"folders/Scripts/draw.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

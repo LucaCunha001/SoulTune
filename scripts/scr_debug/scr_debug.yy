@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_debug",
   "parent":{
-	"name":"Scripts",
-	"path":"folders/Scripts.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

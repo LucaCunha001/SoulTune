@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"tocar_musica",
+  "%Name":"scr_delay",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"tocar_musica",
+  "name":"scr_delay",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"créditos",
+    "path":"folders/Scripts/créditos.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

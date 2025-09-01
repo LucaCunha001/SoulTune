@@ -7,8 +7,10 @@
 function tocar_musica(argument0, argument1, argument2) {
 	var snd;
 	var nome;
+	
+	audio_stop_all();
 
-	if (global.primeiro_de_abril && !instance_exists(obj_creditos)) {
+	if (global.primeiro_de_abril && !instance_exists(obj_creditos) && !instance_exists(obj_intro)) {
 		snd = musica_primeiro_abril(argument0, argument1);
 		if (snd == snd_abril) {
 			nome = "666. DRIVING IN MY CAR";
@@ -22,8 +24,7 @@ function tocar_musica(argument0, argument1, argument2) {
 		global.music_duration = audio_sound_length(snd);
 	}
 
-	audio_stop_all();
-	audio_play_sound(snd, 1, false);
+	var song = audio_play_sound(snd, 1, false);
 
 	global.is_playing = true;
 	global.is_looping = argument2;
@@ -37,4 +38,7 @@ function tocar_musica(argument0, argument1, argument2) {
 	}
 
 	android_update_servicename(global.musica_atual);
+	
+	global.index_musica_atual = song;
+	return global.index_musica_atual;
 }

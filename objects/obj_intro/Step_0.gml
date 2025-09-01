@@ -185,7 +185,9 @@ switch (EVENT) {
 
 if (scr_debug()) {
 	if (keyboard_check_pressed(vk_f3)) {
-		EVENT = 7;
+		instance_destroy(DEVICE_APPEARANCE);
+		instance_destroy(DEVICE_CHOICE);
+		EVENT = -1;
 	}
 }
 

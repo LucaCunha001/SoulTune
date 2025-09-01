@@ -23,18 +23,6 @@ if (dialoguer == 1 && formatted == 0)
 		charline = 26;
 		writingx = x + (58 * f);
 	}
-	
-	//if (instance_exists(obj_dialoguer))
-	if (false)
-	{
-		if (obj_dialoguer.zurasucon == 2)
-		{
-			writingx = camerax() + obj_dialoguer.remwriterx;
-			
-			if (global.fc > 0)
-				writingx = camerax() + obj_dialoguer.remwriterx + (58 * f);
-		}
-	}
 }
 
 if (formatted == 0)
@@ -82,10 +70,10 @@ if (skipme == 1)
 	alarm[1] = -1;
 }
 
-for (n = 1; n < pos; n += 1)
+for (var n = 1; n < pos; n += 1)
 {
 	accept = 1;
-	mychar = string_char_at(mystring, n);
+	var mychar = string_char_at(mystring, n);
 	
 	if (mychar == "`")
 	{
@@ -136,12 +124,12 @@ for (n = 1; n < pos; n += 1)
 	}
 	else if (mychar == "\\")
 	{
-		nextchar = string_char_at(mystring, n + 1);
-		nextchar2 = string_char_at(mystring, n + 2);
+		var nextchar = string_char_at(mystring, n + 1);
+		var nextchar2 = string_char_at(mystring, n + 2);
 		
 		if (nextchar == "E")
 		{
-			__nextface = ord(nextchar2);
+			var __nextface = ord(nextchar2);
 			
 			if (__nextface >= 48 && __nextface <= 57)
 				global.fe = real(nextchar2);
@@ -227,7 +215,7 @@ for (n = 1; n < pos; n += 1)
 		
 		if (nextchar == "f" && faced == 0)
 		{
-			fam = 0;
+			var fam = 0;
 			fam = real(nextchar2);
 			
 			if (!i_ex(global.sminstance[fam]))
@@ -550,7 +538,7 @@ for (n = 1; n < pos; n += 1)
 			if (nextchar2 == "1")
 			{
 				if (instance_exists(obj_choicer_old) == false)
-					choicer = instance_create(0, 0, obj_choicer_old);
+					var choicer = instance_create(0, 0, obj_choicer_old);
 				
 				halt = 5;
 			}
@@ -559,7 +547,7 @@ for (n = 1; n < pos; n += 1)
 			{
 				if (instance_exists(obj_choicer_neo) == false)
 				{
-					choicer = instance_create(0, 0, obj_choicer_neo);
+					var choicer = instance_create(0, 0, obj_choicer_neo);
 					choicer.choicetotal = real(nextchar2) - 1;
 				}
 				
@@ -632,14 +620,11 @@ for (n = 1; n < pos; n += 1)
 			{
 				if (nextchar2 == string(i))
 				{
+					var miniface_image = 0;
 					if (n >= miniface_current_pos)
 					{
 						miniface_image = miniface_pos / 4;
 						miniface_current_pos = n;
-					}
-					else
-					{
-						miniface_image = 0;
 					}
 					
 					draw_sprite_ext(global.writerimg[i], miniface_image, writingx - 8, wy - 4, 2, 2, 0, mycolor, 1);
@@ -703,7 +688,7 @@ for (n = 1; n < pos; n += 1)
 		{
 			if (special == 1)
 			{
-				if (draw_get_color() != 16777215 && draw_get_color() != 0)
+				if (real(draw_get_color()) != 16777215 && real(draw_get_color()) != 0)
 				{
 					draw_text_color(wx + random(shake) + 1, wy + random(shake) + 1, mychar, xcolor, xcolor, xcolor, xcolor, 0.3);
 					draw_text_color(wx + random(shake), wy + random(shake), mychar, c_white, c_white, xcolor, xcolor, 1);

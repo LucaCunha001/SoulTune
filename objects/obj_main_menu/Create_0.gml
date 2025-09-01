@@ -10,6 +10,8 @@ config_btnsprite = spr_config;
 config_btnx = room_width - sprite_get_width(config_btnsprite) - 10;
 config_btny = 10;
 
+padding = 6;
+
 hovered_btn = noone;
 hover_sound_played = false;
 clicking = false;

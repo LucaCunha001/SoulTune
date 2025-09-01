@@ -143,7 +143,7 @@ var is_hover_select = point_in_rectangle(
 
 draw_bordered_rect(select_btn_x-2, select_btn_y-2, select_btn_x + select_btn_w+2, select_btn_y + select_btn_h+2, 1, is_hover_select);
 draw_set_color(c_white)
-draw_text_customizado(select_btn_x + select_btn_w/2 + 4, select_btn_y + select_btn_h/2 + 4, scr_gettext("obj_music_controller_select"));
+draw_text_customizado(select_btn_x + select_btn_w/2 + 6, select_btn_y + select_btn_h/2 + 6, scr_gettext("obj_music_controller_select"));
 
 if (is_hover_select && mouse_check_button_pressed(mb_left)) {
 	if (instance_exists(obj_playlist)) {
@@ -178,7 +178,7 @@ if (global.deltarune_cap == 0) {
 	var offset_y_deltarune = 40;
 	gap+=10;
 	var sprite_w = sprite_get_width(spr_deltarune_title);
-	var sprite_size = sprite_get_width(spr_undertale_title) / sprite_w;
+	var sprite_size = (sprite_get_width(spr_undertale_title) + 3 )/ sprite_w;
 	
 	draw_sprite_ext(spr_deltarune_title, 0, game_cap_x, game_cap_y + offset_y_deltarune, sprite_size, sprite_size, 0, c_white, 1);
 

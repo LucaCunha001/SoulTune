@@ -1,6 +1,6 @@
-var mouse_over1 = point_in_rectangle(mouse_x, mouse_y, btn1_x, btn1_y, btn1_x + sprite_get_width(btn1_sprite), btn1_y + sprite_get_height(btn1_sprite));
-var mouse_over2 = point_in_rectangle(mouse_x, mouse_y, btn2_x, btn2_y, btn2_x + sprite_get_width(btn2_sprite), btn2_y + sprite_get_height(btn2_sprite));
-var mouse_overconfig = point_in_rectangle(mouse_x, mouse_y, config_btnx, config_btny, config_btnx + sprite_get_width(config_btnsprite), config_btny + sprite_get_height(config_btnsprite));
+var mouse_over1 = point_in_rectangle(mouse_x, mouse_y, btn1_x - padding, btn1_y - padding, btn1_x + sprite_get_width(btn1_sprite) + padding, btn1_y + sprite_get_height(btn1_sprite) + padding);
+var mouse_over2 = point_in_rectangle(mouse_x, mouse_y, btn2_x - padding, btn2_y - padding, btn2_x + sprite_get_width(btn2_sprite) + padding, btn2_y + sprite_get_height(btn2_sprite) + padding);
+var mouse_overconfig = point_in_rectangle(mouse_x, mouse_y, config_btnx - padding, config_btny - padding, config_btnx + sprite_get_width(config_btnsprite) + padding, config_btny + sprite_get_height(config_btnsprite) + padding);
 
 if (mouse_over1) {
 	if (hovered_btn != 1) {

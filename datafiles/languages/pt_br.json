@@ -56,9 +56,6 @@
 	"obj_credits_asgore_title1": "-GIF-",
 	"obj_credits_asgore_title2": "-Música-",
 
-	"obj_credits_asgore2_title0": "-Meme do Asgore-",
-	"obj_credits_asgore2_title1": "-Música-",
-
 	"obj_credits_asgore2_item1_0": "@MythicApex (YouTube)",
 	"obj_credits_asgore2_item1_1": "@Bub8les (YouTube)",
 	"obj_credits_asgore2_item1_2": "@RagamuffinWLYR (YouTube)",
@@ -67,6 +64,10 @@
 
 	"obj_credits_asgore_item2_0": "@KennyTheLyr1c1st (YouTube)",
 	"obj_credits_asgore_item2_1": "@zebuez (YouTube)",
+
+	"obj_credits_continued_text0": "NÃO É AFILIADO AO",
+	"obj_credits_continued_text1": "TOBY FOX...",
+	"obj_credits_continued_text3": "... ainda.",
 
 	"obj_credits_dev_title0": "-Desenvolvimento-",
 
@@ -95,8 +96,6 @@
 
 	"obj_credits_programs_title0": "-Programas-",
 
-	"obj_credits_programs2_title0": "-Programas-",
-
 	"obj_credits_programs2_item0_0": "Git & GitHub - Microsoft",
 	"obj_credits_programs2_item0_1": "Undertale Mod Tool - MattyIce",
 	"obj_credits_programs2_item0_2": "YT-DLP - yt-dlp",
@@ -114,14 +113,12 @@
 
 	"obj_credits_thanks_title0": "-Agradecimentos Especiais-",
 
-	"obj_credits_thanks2_title0": "-Agradecimentos Especiais-",
-
 	"obj_credits_thanks2_item0_0": "@yaazurem",
 	"obj_credits_thanks2_item0_1": "@luca_house",
 	"obj_credits_thanks2_item0_2": "@zaki_zeon",
 	"obj_credits_thanks2_item0_3": "@laerinfx",
 	"obj_credits_thanks2_item0_4": "@tomveronezzi",
-	"obj_credits_thanks2_item0_5": "Comunidade Undertale & Deltarune",
+	"obj_credits_thanks2_item0_5": "@miguel_msm123",
 
 	"obj_credits_thanks_item0_0": "@leticiasilva667",
 	"obj_credits_thanks_item0_1": "@nowachaox",
@@ -136,6 +133,7 @@
 	"obj_credits_vocals_item0_1": "Itoki Hana (Sanctuary)",
 
 	"obj_discord_baixar": "Baixar",
+	"obj_discord_conectados": "Estamos... Conectados?",
 	"obj_discord_credits": "Chorando aos créditos do SoulTune.",
 	"obj_discord_details": "Ouvindo as músicas do Toby Fox.",
 	"obj_discord_interessou": "Interessou?",

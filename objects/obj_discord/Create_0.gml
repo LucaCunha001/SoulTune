@@ -27,6 +27,9 @@ function atualizar_status() {
 	if (instance_exists(obj_creditos)) {
 		details = scr_gettext("obj_discord_credits");
 	}
+	if (instance_exists(obj_intro)) {
+		details = scr_gettext("obj_discord_conectados");
+	}
 
 	var start  = -global.current_music_time;
 	var ending = global.is_playing? (global.music_duration - global.current_music_time) : 0.1;

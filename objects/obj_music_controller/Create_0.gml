@@ -13,3 +13,6 @@ bar_x = menu_x + layout_width/2 - bar_w/2;
 bar_y = menu_y + 102;
 
 thumbnail_size = 116;
+
+touching_bar = false;
+is_looping = false;

@@ -9,6 +9,7 @@ global.music_index = [-1, -1];
 global.musica_atual = "";
 global.is_playing = false;
 global.is_looping = false;
+global.index_musica_atual = undefined;
 global.volume = 1;
 global.tocar_som = true;
 
@@ -62,7 +63,7 @@ load_playlists();
 
 if (!variable_global_exists("music_map")) {
 	global.music_map = ds_map_create();
-	ds_map_add(global.music_map, 0, [[[31, 40], [36]], [1, 4]]);
+	ds_map_add(global.music_map, 0, [[[31, 40], [1], [36]], [1, 2, 4]]);
 	ds_map_add(global.music_map, 1, [[1, 11, 15, 20], 1]);
 	ds_map_add(global.music_map, 2, [[12, 13, 85, 92], 0]);
 	ds_map_add(global.music_map, 3, [[21], 0]);
@@ -78,6 +79,7 @@ if (!variable_global_exists("music_map")) {
 function after_fullscreen_done() {
 	var intro = instance_create_depth(0, 0, depth, obj_intro);
 	intro.transition = transition;
+	instance_create_depth(0, 0, depth, obj_discord);
 	instance_destroy();
 }
 
