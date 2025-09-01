@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_var",
   "parent":{
-    "name":"créditos",
-    "path":"folders/Scripts/créditos.yy",
+	"name":"créditos",
+	"path":"folders/Scripts/créditos.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
