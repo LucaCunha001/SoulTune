@@ -1,5 +1,5 @@
 opcoes = [];
-titulo = "Escolha:";
+titulo = scr_gettext("obj_listselect_selecione");
 confirm_callback = undefined;
 hovered = -1;
 cap = 0;

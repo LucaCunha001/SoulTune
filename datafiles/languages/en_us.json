@@ -156,6 +156,8 @@
 	"obj_intro_splash5": "\\M0      EXCELLENT^4.\\M1 ^6 %",
 	"obj_intro_splash6": "\\M0  WELCOME TO SOULTUNE.\\M1 ^6 %",
 
+	"obj_listselect_selecione": "Select:",
+
 	"obj_main_menu_escolher_jogo": "Choose the game.",
 
 	"obj_music_controller_nan": "No music",
