@@ -41,8 +41,32 @@ if (remover_modo) {
 
 if (hovered_btn == -1) tocou_som = false;
 
-if (mouse_wheel_up()) scroll_y = min(scroll_y + scroll_speed, 0);
-if (mouse_wheel_down()) {
-	var limite = -(array_length(playlist_musicas) * 20 - 200);
-	scroll_y = max(scroll_y - scroll_speed, limite);
+if (mouse_wheel_up())  scroll_y = min(scroll_y + scroll_speed, 0);
+if (mouse_wheel_down()) scroll_y -= scroll_speed;
+
+if (os_type != os_android) {
+	if (device_mouse_check_button_pressed(0, mb_left)) {
+		scroll_dragging = true;
+		touch_start_y = device_mouse_y(0);
+		scroll_start_y = scroll_y;
+	}
+
+	if (scroll_dragging) {
+		var dy = device_mouse_y(0) - touch_start_y;
+		scroll_y = scroll_start_y + dy;
+	}
+
+	if (device_mouse_check_button_released(0, mb_left)) {
+		scroll_dragging = false;
+	}
+}
+
+var total_height = array_length(playlist_musicas) * (font_get_size(draw_get_font()) + 20);
+var max_scroll = 0;
+var min_scroll = -(total_height - room_height + 80);
+
+if (total_height < room_height) {
+	scroll_y = 0;
+} else {
+	scroll_y = clamp(scroll_y, min_scroll, max_scroll);
 }

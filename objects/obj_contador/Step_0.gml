@@ -14,6 +14,23 @@ if (global.is_playing) {
 		} else {
 			global.current_music_time = global.music_duration;
 			global.is_playing = false;
+			if (string_length(global.playlist) > 0) {
+				var musics = scr_getmusicsbyplaylist(global.playlist);
+				load_playlists();
+				
+				global.playlist_music_index++;
+
+				if (global.playlist_music_index >= array_length(musics)) {
+					global.playlist_music_index = 0;
+				}
+
+				var next = musics[global.playlist_music_index];
+				var cap = next[0];
+				var idx = next[1];
+
+				tocar_musica(idx, cap, global.is_looping);
+				global.is_playing = true;
+			}
 		}
 
 		global.discord_initialized = false;

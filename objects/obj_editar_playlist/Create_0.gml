@@ -57,6 +57,9 @@ hovered_btn = -1;
 tocou_som   = false;
 
 scroll_y = 0;
-scroll_speed = 2;
+scroll_speed = 20;
+scroll_dragging = false;
+touch_start_y = 0;
+scroll_start_y = 0;
 
 remover_modo = false;

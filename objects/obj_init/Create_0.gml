@@ -22,6 +22,7 @@ global.folder = ds_map_create();
 global.folders = [];
 global.playlists = {};
 global.playlist = "";
+global.playlist_music_index = 0;
 
 // Idioma / Localização
 global.language = "pt-br";

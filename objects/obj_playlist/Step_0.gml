@@ -45,6 +45,7 @@ for (var k = 0; k < len_musics; k++) {
 
 		if (mouse_check_button_pressed(mb_left)) {
 			selected_music = hovered_btn;
+			global.playlist_music_index = k;
 			tocar_musica(idx, cap, global.is_looping);
 			audio_sound_select(snd_select);
 		}
