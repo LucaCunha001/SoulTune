@@ -40,7 +40,7 @@ for (var i = 0; i < array_length(musics); i++) {
 			selected_music = i;
 
 			tocar_musica(musics[i][1], global.deltarune_cap, global.is_looping);
-
+			global.playlist_atual = "";
 			audio_sound_select(snd_select);
 		}
 	}

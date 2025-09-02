@@ -15,7 +15,7 @@ if (global.is_playing) {
 			global.current_music_time = global.music_duration;
 			global.is_playing = false;
 			if (string_length(global.playlist) > 0) {
-				var musics = scr_getmusicsbyplaylist(global.playlist);
+				var musics = scr_getmusicsbyplaylist(global.playlist_atual);
 				load_playlists();
 				
 				global.playlist_music_index++;
