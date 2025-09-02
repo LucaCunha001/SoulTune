@@ -44,7 +44,7 @@ if (hovered_btn == -1) tocou_som = false;
 if (mouse_wheel_up())  scroll_y = min(scroll_y + scroll_speed, 0);
 if (mouse_wheel_down()) scroll_y -= scroll_speed;
 
-if (os_type != os_android) {
+if (os_type == os_android) {
 	if (device_mouse_check_button_pressed(0, mb_left)) {
 		scroll_dragging = true;
 		touch_start_y = device_mouse_y(0);
