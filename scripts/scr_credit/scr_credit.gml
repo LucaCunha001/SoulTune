@@ -121,12 +121,12 @@ function generate_credits() {
 		new scr_credit(
 			[ scr_gettext("obj_credits_thanks_title0") ],
 			[
-				scr_gettext("obj_credits_thanks_item0_0"),
 				scr_gettext("obj_credits_thanks_item0_1"),
-				scr_gettext("obj_credits_thanks_item0_2"),
+				scr_gettext("obj_credits_thanks_item0_0"),
 				scr_gettext("obj_credits_thanks_item0_3"),
-				scr_gettext("obj_credits_thanks_item0_4"),
-				scr_gettext("obj_credits_thanks_item0_5")
+				scr_gettext("obj_credits_thanks_item0_2"),
+				scr_gettext("obj_credits_thanks_item0_5"),
+				scr_gettext("obj_credits_thanks_item0_4")
 			],
 			2
 		)
@@ -137,12 +137,12 @@ function generate_credits() {
 		new scr_credit(
 			[ scr_gettext("obj_credits_thanks_title0") ],
 			[
-				scr_gettext("obj_credits_thanks2_item0_0"),
 				scr_gettext("obj_credits_thanks2_item0_1"),
-				scr_gettext("obj_credits_thanks2_item0_2"),
+				scr_gettext("obj_credits_thanks2_item0_0"),
 				scr_gettext("obj_credits_thanks2_item0_3"),
-				scr_gettext("obj_credits_thanks2_item0_4"),
-				scr_gettext("obj_credits_thanks2_item0_5")
+				scr_gettext("obj_credits_thanks2_item0_2"),
+				scr_gettext("obj_credits_thanks2_item0_5"),
+				scr_gettext("obj_credits_thanks2_item0_4")
 			],
 			2
 		)

@@ -1,11 +1,11 @@
 if (global.is_playing) {
+	atualizou = false;
+
 	if (audio_exists(global.index_musica_atual)) {
 		global.current_music_time = audio_sound_get_track_position(global.index_musica_atual);
 	} else {
 		global.current_music_time = -1;
 	}
-	
-	atualizou = false;
 
 	if (global.current_music_time >= global.music_duration || global.current_music_time < 0) {
 		if (global.is_looping) {

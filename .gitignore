@@ -65,3 +65,4 @@ window_nsis.nsi
 
 __pycache__/
 python_scripts/
+notes/

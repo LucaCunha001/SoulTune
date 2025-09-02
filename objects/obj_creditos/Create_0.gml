@@ -37,9 +37,8 @@ for (var i=0; i<5; i++) {
 }
 
 for (var i=0; i<4; i++) {
-	continued_text[i] = scr_gettext("obj_credits_continued_text" + string(i));
+	continued_text[i] = i == 2 ? " " : scr_gettext("obj_credits_continued_text" + string(i));
 }
-continued_text[2] = " ";
 
 alt_text_enabled = false;
 

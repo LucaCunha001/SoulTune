@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_debug",
+  "%Name":"scr_lerpvar_instance",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_debug",
+  "name":"scr_lerpvar_instance",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"créditos",
+    "path":"folders/Scripts/créditos.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

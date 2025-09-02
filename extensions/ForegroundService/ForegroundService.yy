@@ -3,7 +3,7 @@
   "%Name":"ForegroundService",
   "androidactivityinject":null,
   "androidclassname":"ForegroundService",
-  "androidcodeinjection":"<YYAndroidManifestApplicationInject>\r\n    <![CDATA[\r\n        Intent intent = new Intent(application.getApplicationContext(), ${YYAndroidPackageName}.ForegroundService.class);\r\n        application.startService(intent);\r\n    ]]>\r\n</YYAndroidManifestApplicationInject>",
+  "androidcodeinjection":"<YYAndroidManifestApplicationInject>\r\n    <![CDATA[\r\n        Intent intent = new Intent(application.getApplicationContext(), ${YYAndroidPackageName}.ForegroundService.class);\r\n        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {\r\n            application.getApplicationContext().startForegroundService(intent);\r\n        } else {\r\n            application.getApplicationContext().startService(intent);\r\n        }\r\n    ]]>\r\n</YYAndroidManifestApplicationInject>",
   "androidinject":null,
   "androidmanifestinject":null,
   "androidPermissions":[

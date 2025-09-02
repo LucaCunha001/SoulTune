@@ -1,3 +1,5 @@
+teclas();
+
 if (!loaded) {
 	exit;
 }
@@ -29,10 +31,8 @@ if (!init) {
 	song1 = tocar_musica(34, 4, false);
 }
 
-if (credits_con == 0)
-{
-	if (credit_index < (array_length(credits) - 1))
-	{
+if (credits_con == 0) {
+	if (credit_index < (array_length(credits) - 1)) {
 		if (audio_is_playing(song1))
 		{
 			var track_progress = audio_sound_get_track_position(song1);
@@ -44,51 +44,42 @@ if (credits_con == 0)
 			credit_index = floor(measure_progress) - 1;
 		}
 	}
-	else
-	{
+	else {
 		credits_con = 1;
 		glowing_active = true;
 	}
 }
 
-if (credits_con == 1)
-{
+if (credits_con == 1) {
 	var track_progress = audio_sound_get_track_position(song1);
 	
-	if (track_progress >= 59.75)
-	{
+	if (track_progress >= 59.75) {
 		creditalpha = 0;
 		credits_con = -1;
 	}
 }
 
-if (glowing_active)
-{
-	if (con == 0)
-	{
+if (glowing_active) {
+	if (con == 0) {
 		con = 1;
 		auto_text = true;
 	}
 	
-	if (con == 50 && !instance_exists(obj_writer))
-	{
+	if (con == 50 && !instance_exists(obj_writer)) {
 		con = 51;
 		scr_delay_var("con", 52, 90);
 	}
 	
-	if (con == 52 && !instance_exists(obj_writer))
-	{
+	if (con == 52 && !instance_exists(obj_writer)) {
 		con = 53;
 		scr_delay_var("con", 54, 180);
 		credit_index++;
 		creditalpha = 1;
-		// scr_lerpvar("year_alpha", -1, 1, 120);
+		scr_lerpvar("year_alpha", -1, 1, 120);
 	}
 	
-	if (con == 54 && !instance_exists(obj_writer))
-	{
-		if (audio_is_playing(song1))
-		{
+	if (con == 54 && !instance_exists(obj_writer)) {
+		if (audio_is_playing(song1)) {
 			var track_progress = audio_sound_get_track_position(song1);
 			var measure_progress = track_progress / measure_time;
 			var current_measure = floor(measure_progress);
@@ -100,24 +91,20 @@ if (glowing_active)
 				creditalpha = 0;
 			}
 		}
-		else
-		{
+		else {
 			con = 59;
 			scr_delay_var("con", 60, 60);
 			creditalpha = 0;
 		}
 	}
 	
-	if (con == 60)
-	{
+	if (con == 60) {
 		con = -1;
 		restart_game();
 	}
 	
-	if (auto_text)
-	{
-		if (audio_is_playing(song1))
-		{
+	if (auto_text) {
+		if (audio_is_playing(song1)) {
 			var track_progress = audio_sound_get_track_position(song1);
 			
 			if (track_progress >= auto_text_start)
@@ -147,5 +134,3 @@ if (glowing_active)
 		}
 	}
 }
-
-teclas();
