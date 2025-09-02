@@ -62,6 +62,14 @@
 	"obj_credits_asgore_item2_0": "@KennyTheLyr1c1st (YouTube)",
 	"obj_credits_asgore_item2_1": "@zebuez (YouTube)",
 
+	"obj_credits_beta_testers_title0": "-Beta Testers-",
+
+	"obj_credits_beta_testers_item0_0": "@leticiasilva667",
+	"obj_credits_beta_testers_item0_1": "@nowachaox",
+	"obj_credits_beta_testers_item0_2": "@.karshinov.",
+	"obj_credits_beta_testers_item0_3": "@huds_chaox",
+	"obj_credits_beta_testers_item0_4": "@michani_dolofonias",
+
 	"obj_credits_continued_text0": "NOT AFFILIATED WITH",
 	"obj_credits_continued_text1": "TOBY FOX...",
 	"obj_credits_continued_text3": "... yet.",
@@ -123,6 +131,10 @@
 	"obj_credits_thanks_item0_3": "@.karshinov.",
 	"obj_credits_thanks_item0_4": "@huds_chaox",
 	"obj_credits_thanks_item0_5": "@starkdev_",
+
+	"obj_credits_traducoes_title0": "-Translations-",
+
+	"obj_credits_traducoes_item0_0": "Luca (Frisk)",
 
 	"obj_credits_vocals_title0": "-Vocals-",
 

@@ -15,7 +15,7 @@ function generate_credits() {
 		)
 	];
 
-	// MUSIC
+	// MÚSICAS
 	credits[1] = [
 		new scr_credit(
 			[ scr_gettext("obj_credits_music_title0"), scr_gettext("obj_credits_music_title1") ],
@@ -27,7 +27,7 @@ function generate_credits() {
 		)
 	];
 
-	// DRAWING
+	// DESENHOS
 	credits[2] = [
 		new scr_credit(
 			[ scr_gettext("obj_credits_drawing_title0"), scr_gettext("obj_credits_drawing_title1") ],
@@ -43,16 +43,24 @@ function generate_credits() {
 		)
 	];
 
-	// VOCALS
+	// TRADUÇÕES
 	credits[4] = [
+		new scr_credit(
+			[ scr_gettext("obj_credits_traducoes_title0") ],
+			[ scr_gettext("obj_credits_traducoes_item0_0") ]
+		)
+	]
+
+	// VOZES
+	credits[5] = [
 		new scr_credit(
 			[ scr_gettext("obj_credits_vocals_title0") ],
 			[ scr_gettext("obj_credits_vocals_item0_0"), scr_gettext("obj_credits_vocals_item0_1") ]
 		)
 	];
 
-	// SFX
-	credits[5] = [
+	// SONS E FONTES
+	credits[6] = [
 		new scr_credit(
 			[ scr_gettext("obj_credits_sfx_title0") ],
 			[ scr_gettext("obj_credits_sfx_item0_0") ]
@@ -63,8 +71,8 @@ function generate_credits() {
 		)
 	];
 
-	// PROGRAMS
-	credits[6] = [
+	// PROGRAMAS
+	credits[7] = [
 		new scr_credit(
 			[ scr_gettext("obj_credits_programs_title0") ],
 			[
@@ -75,8 +83,7 @@ function generate_credits() {
 		)
 	];
 
-	// PROGRAMS2
-	credits[7] = [
+	credits[8] = [
 		new scr_credit(
 			[ scr_gettext("obj_credits_programs_title0") ],
 			[
@@ -88,7 +95,7 @@ function generate_credits() {
 	];
 
 	// ASGORE
-	credits[8] = [
+	credits[9] = [
 		new scr_credit(
 			[ scr_gettext("obj_credits_asgore_title0") ],
 			[
@@ -104,8 +111,7 @@ function generate_credits() {
 		)
 	];
 
-	// ASGORE2
-	credits[9] = [
+	credits[10] = [
 		new scr_credit(
 			[ scr_gettext("obj_credits_asgore_title0"), scr_gettext("obj_credits_asgore_title2") ],
 			[
@@ -116,8 +122,22 @@ function generate_credits() {
 		)
 	];
 
-	// THANKS
-	credits[10] = [
+	credits[11] = [
+		new scr_credit(
+			[ scr_gettext("obj_credits_beta_testers_title0") ],
+			[
+				scr_gettext("obj_credits_beta_testers_item0_0"),
+				scr_gettext("obj_credits_beta_testers_item0_1"),
+				scr_gettext("obj_credits_beta_testers_item0_2"),
+				scr_gettext("obj_credits_beta_testers_item0_3"),
+				scr_gettext("obj_credits_beta_testers_item0_4")
+			],
+			2
+		)
+	]
+
+	// AGRADECIMENTOS
+	credits[12] = [
 		new scr_credit(
 			[ scr_gettext("obj_credits_thanks_title0") ],
 			[
@@ -132,8 +152,7 @@ function generate_credits() {
 		)
 	];
 
-	// THANKS2
-	credits[11] = [
+	credits[13] = [
 		new scr_credit(
 			[ scr_gettext("obj_credits_thanks_title0") ],
 			[
