@@ -7,8 +7,8 @@
   "androidinject":null,
   "androidmanifestinject":null,
   "androidPermissions":[
-	"android.permission.WAKE_LOCK",
-	"android.permission.FOREGROUND_SERVICE",
+    "android.permission.WAKE_LOCK",
+    "android.permission.FOREGROUND_SERVICE",
   ],
   "androidProps":true,
   "androidsourcedir":"",
@@ -19,10 +19,10 @@
   "exportToGame":true,
   "extensionVersion":"0.0.1",
   "files":[
-	{"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":8,"filename":"ForegroundService.ext","final":"","functions":[
-		{"$GMExtensionFunction":"","%Name":"android_update_servicename","argCount":0,"args":[1,],"documentation":"","externalName":"updateServiceName","help":"","hidden":false,"kind":4,"name":"android_update_servicename","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-		{"$GMExtensionFunction":"","%Name":"startService","argCount":0,"args":[],"documentation":"","externalName":"startServiceFromGameMaker","help":"","hidden":false,"kind":4,"name":"startService","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
-	  ],"init":"","kind":4,"name":"","order":[],"origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
+    {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":8,"filename":"ForegroundService.ext","final":"","functions":[
+        {"$GMExtensionFunction":"","%Name":"android_update_servicename","argCount":0,"args":[1,],"documentation":"","externalName":"updateServiceName","help":"","hidden":false,"kind":4,"name":"android_update_servicename","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"startService","argCount":0,"args":[],"documentation":"","externalName":"startServiceFromGameMaker","help":"","hidden":false,"kind":4,"name":"startService","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+      ],"init":"","kind":4,"name":"","order":[],"origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
   ],
   "gradleinject":null,
   "hasConvertedCodeInjection":true,
@@ -48,8 +48,8 @@
   "optionsFile":"options.json",
   "packageId":"",
   "parent":{
-	"name":"Extensões",
-	"path":"folders/Extensões.yy",
+    "name":"Extensões",
+    "path":"folders/Extensões.yy",
   },
   "productId":"",
   "resourceType":"GMExtension",
