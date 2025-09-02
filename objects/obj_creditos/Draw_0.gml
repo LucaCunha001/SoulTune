@@ -2,8 +2,7 @@ draw_set_font(fnt_main);
 draw_set_halign(fa_center);
 draw_set_alpha(creditalpha);
 
-if (credit_index < 0)
-{
+if (credit_index < 0) {
 	var line_total = 0;
 	
 	for (var i = 0; i < array_length(title_credit); i++)
@@ -18,8 +17,7 @@ if (credit_index < 0)
 		draw_text(x_pos, y_pos + (line_height * i) + _y_offset, string_hash_to_newline(title_credit[i]));
 	}
 }
-else if (credit_index < array_length(credits))
-{
+else if (credit_index < array_length(credits)) {
 	var line_total = 0;
 	
 	for (var i = 0; i < array_length(credits[credit_index]); i++)
@@ -37,14 +35,12 @@ else if (credit_index < array_length(credits))
 	var credit_line_offset = 1;
 	var _y_offset = (max_height - max_line_height) / 2;
 	
-	if (array_length(credits[credit_index]) > 3)
-	{
+	if (array_length(credits[credit_index]) > 3) {
 		credit_line_offset = 0.5;
 		_y_offset += 10;
 	}
 	
-	for (var i = 0; i < array_length(credits[credit_index]); i++)
-	{
+	for (var i = 0; i < array_length(credits[credit_index]); i++) {
 		var _credit = credits[credit_index][i];
 		
 		if (_credit.columns == 1) {
@@ -92,26 +88,25 @@ else if (credit_index < array_length(credits))
 		}
 	}
 }
-else
-{
+else {
 	var line_total = 0;
 	
-	for (var i = 0; i < array_length(continued_text); i++)
+	for (var i = 0; i < array_length(continued_text); i++) {
 		line_total++;
+	}
 	
 	var max_height = room_height;
 	var max_line_height = (line_total + 1) * 16;
 	
-	for (var i = 0; i < array_length(continued_text); i++)
-	{
+	for (var i = 0; i < array_length(continued_text); i++) {
 		var _y_offset = (max_height - max_line_height) / 2;
 		var continue_alpha = creditalpha;
 		
-		if (i == (array_length(continued_text) - 1))
+		if (i == (array_length(continued_text) - 1)) {
 			continue_alpha = year_alpha;
-		
+		}
 		draw_set_alpha(continue_alpha);
-		draw_text(x_pos, y_pos + (line_height * i) + _y_offset, string_hash_to_newline(continued_text[i]));
+		draw_text(x_pos, y_pos + (line_height * i) + _y_offset, continued_text[i]);
 		draw_set_alpha(creditalpha);
 	}
 }

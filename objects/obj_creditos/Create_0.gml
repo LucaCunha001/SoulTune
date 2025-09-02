@@ -33,6 +33,7 @@ glowing_text = [];
 continued_text = [];
 
 for (var i=0; i<5; i++) {
+	glowing_text[i] = [];
 	glowing_text[i][0] = scr_gettext("obj_credits_slash" + string(i));
 }
 
@@ -62,8 +63,7 @@ auto_text_buffer_time = 60;
 auto_text_buffer = auto_text_buffer_time;
 paused = false;
 
-dequeue_text = function()
-{
+dequeue_text = function() {
 	global.typer = 666;
 	global.fc = 0;
 	global.msg[0] = glowing_text[glowing_index][0];
@@ -83,8 +83,7 @@ dequeue_text = function()
 		auto_text_start = glowing_text[glowing_index][1];
 };
 
-restart_game = function()
-{
+restart_game = function() {
 	glowing_active = false;
 	con = -1;
 	instance_create_depth(0, 0, depth+1, obj_background);

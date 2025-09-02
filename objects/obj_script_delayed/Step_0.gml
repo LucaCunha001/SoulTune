@@ -7,13 +7,11 @@ if (constant == 1)
 	
 	if (timer >= rate)
 	{
-		if (instance_exists(target) && totaltimer < max_time)
-		{
+		if (instance_exists(target) && totaltimer < max_time) {
 			event_user(0);
 			timer = 0;
 		}
-		else
-		{
+		else {
 			instance_destroy();
 		}
 	}

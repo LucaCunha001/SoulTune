@@ -2,7 +2,7 @@ function scr_script_delayed()
 {
 	var __scriptdelay = instance_create_depth(0, 0, 0, obj_script_delayed);
 	__scriptdelay.script = argument[0];
-	__scriptdelay.alarm[0] = argument[1];
+	__scriptdelay.alarm[0] = argument[1] * 2;
 	__scriptdelay.target = id;
 	
 	for (var __i = 0; __i < (argument_count - 2); __i++)

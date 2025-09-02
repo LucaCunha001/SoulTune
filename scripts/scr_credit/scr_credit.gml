@@ -130,7 +130,8 @@ function generate_credits() {
 				scr_gettext("obj_credits_beta_testers_item0_1"),
 				scr_gettext("obj_credits_beta_testers_item0_2"),
 				scr_gettext("obj_credits_beta_testers_item0_3"),
-				scr_gettext("obj_credits_beta_testers_item0_4")
+				scr_gettext("obj_credits_beta_testers_item0_4"),
+				scr_gettext("obj_credits_beta_testers_item0_5")
 			],
 			2
 		)

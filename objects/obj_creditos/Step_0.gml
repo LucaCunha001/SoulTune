@@ -75,7 +75,7 @@ if (glowing_active) {
 		scr_delay_var("con", 54, 180);
 		credit_index++;
 		creditalpha = 1;
-		scr_lerpvar("year_alpha", -1, 1, 120);
+		scr_lerpvar("year_alpha", -1, 1, 240);
 	}
 	
 	if (con == 54 && !instance_exists(obj_writer)) {
@@ -84,16 +84,15 @@ if (glowing_active) {
 			var measure_progress = track_progress / measure_time;
 			var current_measure = floor(measure_progress);
 			
-			if (current_measure == 26)
-			{
+			if (current_measure == 26) {
 				con = 59;
-				scr_delay_var("con", 60, 60);
+				scr_delay_var("con", 60, 120);
 				creditalpha = 0;
 			}
 		}
 		else {
 			con = 59;
-			scr_delay_var("con", 60, 60);
+			scr_delay_var("con", 60, 120);
 			creditalpha = 0;
 		}
 	}
@@ -107,24 +106,19 @@ if (glowing_active) {
 		if (audio_is_playing(song1)) {
 			var track_progress = audio_sound_get_track_position(song1);
 			
-			if (track_progress >= auto_text_start)
-			{
-				if (!instance_exists(obj_writer))
-				{
-					if (glowing_index < array_length(glowing_text))
-					{
+			if (track_progress >= auto_text_start) {
+				if (!instance_exists(obj_writer)) {
+					if (glowing_index < array_length(glowing_text)) {
 						dequeue_text();
 					}
-					else
-					{
+					else {
 						auto_text = false;
 						con = 50;
 					}
 				}
 			}
 			
-			if (track_progress >= auto_text_stop)
-			{
+			if (track_progress >= auto_text_stop) {
 				with (obj_writer)
 					forcebutton1 = 1;
 			}

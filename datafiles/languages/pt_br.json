@@ -72,9 +72,10 @@
 	"obj_credits_beta_testers_item0_2": "@.karshinov.",
 	"obj_credits_beta_testers_item0_3": "@huds_chaox",
 	"obj_credits_beta_testers_item0_4": "@michani_dolofonias",
+	"obj_credits_beta_testers_item0_5": "@tarciso_bg92458",
 
 	"obj_credits_continued_text0": "NÃO É AFILIADO AO",
-	"obj_credits_continued_text1": "TOBY FOX...",
+	"obj_credits_continued_text1": "TOBY FOX",
 	"obj_credits_continued_text3": "... ainda.",
 
 	"obj_credits_dev_title0": "-Desenvolvimento-",
@@ -137,7 +138,7 @@
 
 	"obj_credits_traducoes_title0": "-Traduções-",
 
-	"obj_credits_traducoes_item0_0": "Luca (Frisk)",
+	"obj_credits_traducoes_item0_0": "Luca (@lucafrisk)",
 
 	"obj_credits_vocals_title0": "-Vozes-",
 
@@ -161,7 +162,7 @@
 	"obj_editar_playlist_renomear": "Renomear",
 	"obj_editar_playlist_voltar": "Voltar",
 
-	"obj_editar_playlist_remove_desc": "Click on a song to remove (ESC to cancel)",
+	"obj_editar_playlist_remove_desc": "Clique em uma música para remover (ESC para cancelar)",
 
 	"obj_intro_splash0": "\\M0SELECIONE UM IDIOMA.",
 	"obj_intro_splash1": "\\M0SELECIONE UM BACKGROUND.",

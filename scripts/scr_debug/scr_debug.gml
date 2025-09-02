@@ -1,3 +1,3 @@
 function scr_debug() {
-	return false;
+	return true;
 }
