@@ -20,7 +20,7 @@ class SoulTune {
         this.currentPlaylist = null;
         this.isPlaying = false;
 
-        this.playlists = [];
+        this.playlistsList = [];
         this.searchTimeout = null;
 
         this.lyricsLines = [];
@@ -32,7 +32,8 @@ class SoulTune {
             discordRpc: false,
             undertaleFolder: '',
             deltaruneFolder: '',
-            autoStart: false
+            autoStart: false,
+            uiTheme: 0
         };
 
         this.player = new Player(this);

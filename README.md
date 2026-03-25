@@ -16,7 +16,9 @@
 ---
 
 ## 📸 Capturas de Tela
-![Captura 1](image.png)
+![Playlists Customizadas](captures/image1.png)
+![Arquivos não presentes da OST](captures/image2.png)
+![Configurações](captures/image3.png)
 
 ---
 
@@ -35,25 +37,25 @@
 ---
 
 ## 📜 Créditos
-- **Músicas**:  
-  - Toby Fox – *Undertale* & *Deltarune*  
-  - Lena Raine – Contribuições musicais em *Deltarune*  
-  - Marcy Nabors – Assistência musical em *Deltarune*  
+- **Músicas**:
+  - Toby Fox – *Undertale* & *Deltarune*
+  - Lena Raine – Contribuições musicais em *Deltarune*
+  - Marcy Nabors – Assistência musical em *Deltarune*
 
-- **Vozes**:  
-  - Laura Shigihara – Vocal em "Don't Forget" (*Deltarune* Capítulo 1, OST 39)  
+- **Vozes**:
+  - Laura Shigihara – Vocal em "Don't Forget" (*Deltarune* Capítulo 1, OST 39)
   - Itoki Hana – Vocal em "Sanctuary" (*Deltarune* Capítulo 4)
 
 - **Arte e Animação**:  
-  - Temmie Chang – Arte e animações originais de *Undertale* & *Deltarune*  
+  - Temmie Chang – Arte e animações originais de *Undertale* & *Deltarune*
+
+- **Desenvolvimento**:  
+  - Luca Cunha (Luceno)
 
 - **Memes de Asgore**:  
   - Gif: @Triki_Tr0y (Twitter)  
   - Música: @KennyTheLyr1c1st, @zebuez (YouTube)  
   - Música (versão alternativa): @MythicApex, @Bub8les, @RagamuffinWLYR (YouTube)  
-
-- **Desenvolvimento**:  
-  - Luca Cunha (Luceno) 
 
 - **Programas usados**:
   - Visual Studio Code – Microsoft
@@ -91,5 +93,5 @@ Se você gosta do trabalho de Toby Fox, apoie-o adquirindo as trilhas e os jogos
 - **Toby Fox** – Compositor de todas as músicas de *Undertale* e *Deltarune*.  
 - **Lena Raine** – Compositora convidada em *Deltarune*.  
 - **Marcy Nabors** – Assistência musical em *Deltarune*.  
-- **Laura Shigihara** – Cantora do OST 39 do capítulo 1 de *Deltarune*: "Don't Forget".  
+- **Laura Shigihara** – Cantora do OST 39 do capítulo 1, "Don't Forget", e do OST 45 do capítulo 2 de *Deltarune*.
 - **Itoki Hana** – Cantora de "Sanctuary" no capítulo 4 de *Deltarune*.  

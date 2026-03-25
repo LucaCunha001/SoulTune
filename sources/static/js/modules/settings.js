@@ -63,6 +63,10 @@ export class Settings {
                     this.app.settings.autoStart = e.target.checked;
                     this.saveSettings();
                     break;
+                case 'ui-theme':
+                    this.app.settings.uiTheme = e.target.value;
+                    this.saveSettings();
+                    break;
             }
         })
     }
@@ -72,6 +76,7 @@ export class Settings {
         document.getElementById('auto-start').checked = this.app.settings.autoStart;
         document.getElementById('undertale-path').value = this.app.settings.undertaleFolder;
         document.getElementById('deltarune-path').value = this.app.settings.deltaruneFolder;
+        document.getElementById('ui-theme').value = this.app.settings.uiTheme;
     }
 
     showSettings() {

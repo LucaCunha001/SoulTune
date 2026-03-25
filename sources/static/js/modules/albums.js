@@ -83,16 +83,16 @@ export class Albums {
             const trackItem = document.createElement('li');
             trackItem.className = 'track-item';
             trackItem.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+                <div class="track-left">
                     <span class="track-number">${index + 1}</span>
                     <div class="track-info">
                         <div class="track-title">${track.title}</div>
                         <div class="track-artist">${track.authors?.join(', ') || album.artist}</div>
                     </div>
                 </div>
-                <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="track-right">
                     <span class="track-duration">${this.app.ui.formatTime(track.duration)}</span>
-                    <button class="add-to-playlist-btn" style="background: none; border: none; color: var(--subtext); cursor: pointer; padding: 5px; font-size: 16px; display: flex; align-items: center; justify-content: center;" data-lucide="plus"></button>
+                    <button class="add-to-playlist-btn" data-lucide="plus"></button>
                 </div>
             `;
             trackItem.addEventListener('click', () => {

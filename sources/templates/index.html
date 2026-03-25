@@ -3,163 +3,215 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
-    <title>SoulTune</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/search.css">
-    <link rel="stylesheet" href="/static/css/form.css">
-    <link rel="shortcut icon" href="/favicon" type="image/x-icon">
+    <title>SoulTune - Inicializando</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #0f0f0f;
+            color: #fff;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .status {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .bar {
+            margin-top: 20px;
+            width: 100%;
+            height: 6px;
+            background: #222;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: #e02424;
+            transition: width 0.3s;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="app">
-        <div class="sidebar">
-            <div class="sidebar-header"
-                style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; margin-bottom: 30px;">
-                <img src="../static/images/icon.ico" style="width: 50px; height: auto;">
-                <h1 style="margin: 0;">SoulTune</h1>
-            </div>
-            <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" data-page="home">Início</a>
-                <a href="#" class="nav-item" data-page="playlists">Suas Playlists</a>
-                <a href="#" class="nav-item" data-page="unregistered">Arquivos Não Registrados</a>
-                <a href="#" class="nav-item" data-page="settings">Configurações</a>
-            </nav>
-            <div class="playlists-section">
-                <h3>Playlists</h3>
-                <ul class="playlist-list">
+    <div class="container">
+        <h1>SoulTune</h1>
+        <div class="status" id="status">Iniciando...</div>
+
+        <div class="bar">
+            <div class="progress" id="progress"></div>
+        </div>
+    </div>
+
+    <script>
+        const statusEl = document.getElementById("status");
+        const progressEl = document.getElementById("progress");
+
+        function setStatus(text, progress) {
+            statusEl.innerText = text;
+            progressEl.style.width = progress + "%";
+        }
+
+        async function wait(ms) {
+            return new Promise(r => setTimeout(r, ms));
+        }
+
+        async function checkServer() {
+            try {
+                await fetch("http://127.0.0.1:5000/api/albums");
+                return true;
+            } catch {
+                return false;
+            }
+        }
+
+        let updateAvailable = false;
+
+        function formatNotes(notes) {
+            return notes
+                .split("\n")
+                .filter(line => line.trim())
+                .map(line => `<li>${line.replace(/^-\s*/, "")}</li>`)
+                .join("");
+        }
+
+        function createUpdateUI(data) {
+            const container = document.querySelector(".container");
+
+            const box = document.createElement("div");
+            box.style.marginTop = "20px";
+
+            box.innerHTML = `
+                <p><strong>Nova versão: ${data.version}</strong></p>
+                <ul style="text-align:left; font-size:13px; opacity:0.9;">
+                    ${formatNotes(data.notes)}
                 </ul>
-                <button class="create-playlist-btn">Criar Playlist</button>
-            </div>
-        </div>
-
-        <header class="header">
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar músicas..." id="search-input">
-                <button id="search-btn"><i data-lucide="search"></i></button>
-            </div>
-        </header>
-
-        <div class="main-content">
-
-            <section class="albums-section">
-                <h2 id="secao-titulo"></h2>
-                <div class="albums-grid" id="albums-grid"></div>
-            </section>
-
-            <section class="playlist-view" id="playlist-view" style="display: none;">
-                <div class="playlist-header">
-                    <img src="" alt="" class="playlist-cover" id="playlist-cover">
-                    <div class="playlist-info">
-                        <h2 id="playlist-title"></h2>
-                        <p id="playlist-description"></p>
-                    </div>
+                <div style="margin-top:10px;">
+                    <button id="updateBtn">Atualizar</button>
+                    <button id="skipBtn">Agora não</button>
                 </div>
-                <div class="track-list" id="track-list">
-                </div>
-            </section>
+            `;
 
-            <section class="settings-view" id="settings-view" style="display: none;">
-                <div class="settings-container">
-                    <h2>Configurações</h2>
-                    
-                    <div class="settings-group">
-                        <h3>Discord</h3>
-                        <div class="settings-item">
-                            <label class="setting-label">
-                                <input type="checkbox" id="discord-rpc" class="setting-checkbox">
-                                <span>Exibir no Discord (RPC)</span>
-                            </label>
-                        </div>
-                    </div>
+            container.appendChild(box);
 
-                    <div class="settings-group">
-                        <h3>Pastas de Música</h3>
-                        <div class="settings-item">
-                            <label class="setting-label">Caminho da pasta de Undertale</label>
-                            <div class="path-input-group">
-                                <input type="text" id="undertale-path" class="setting-path" placeholder="Selecione uma pasta..." readonly>
-                                <button id="undertale-browse" class="browse-btn" data-lucide="folder-open"></button>
-                            </div>
-                        </div>
-                        <div class="settings-item">
-                            <label class="setting-label">Caminho da pasta de Deltarune</label>
-                            <div class="path-input-group">
-                                <input type="text" id="deltarune-path" class="setting-path" placeholder="Selecione uma pasta..." readonly>
-                                <button id="deltarune-browse" class="browse-btn" data-lucide="folder-open"></button>
-                            </div>
-                        </div>
-                    </div>
+            document.getElementById("updateBtn").onclick = () => {
+                setStatus("Baixando atualização...", 0);
+                window.updater.download();
+            };
 
-                    <div class="settings-group">
-                        <h3>Sistema</h3>
-                        <div class="settings-item">
-                            <label class="setting-label">
-                                <input type="checkbox" id="auto-start" class="setting-checkbox">
-                                <span>Iniciar ao abrir Windows</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div id="right-panel" class="right-panel">
-        <div id="album-content"></div>
-        <div id="lyrics-content"></div>
-    </div>
-    </div>
+            document.getElementById("skipBtn").onclick = () => {
+                continueApp();
+            };
+        }
 
-    <div class="player">
-        <div class="player-controls">
-            <button id="prev-btn"><i data-lucide="skip-back"></i></button>
-            <button id="play-pause-btn"><i data-lucide="play"></i></button>
-            <button id="next-btn"><i data-lucide="skip-forward"></i></button>
-        </div>
-        <div class="player-progress">
-            <span id="current-time">0:00</span>
-            <input type="range" id="progress-bar" min="0" max="100" value="0">
-            <span id="total-time">0:00</span>
-        </div>
-        <div class="player-volume">
-            <span><i data-lucide="volume"></i></span>
-            <input type="range" id="volume-bar" min="0" max="100" value="50">
-        </div>
-        <div class="now-playing">
-            <img src="../static/images/icon.ico" alt="" class="current-track-cover" id="current-track-cover">
-            <div class="track-info">
-                <p id="current-track-title"></p>
-                <p id="current-track-artist"></p>
-            </div>
-        </div>
-    </div>
+        function continueApp() {
+            setStatus("Carregando aplicação...", 90);
+            setTimeout(() => {
+                window.api.maximize();
+                window.location.href = "http://127.0.0.1:5000/app/";
+            }, 500);
+        }
 
-    <div id="playlist-modal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Criar Nova Playlist</h2>
-                <button class="modal-close" id="modal-close">&times;</button>
-            </div>
-            <form id="playlist-form">
-                <div class="form-group">
-                    <label for="playlist-name">Nome da Playlist *</label>
-                    <input type="text" id="playlist-name" placeholder="Digite o nome..." required>
-                </div>
-                <div class="form-group">
-                    <label for="playlist-description">Descrição</label>
-                    <textarea id="playlist-description" placeholder="Adicione uma descrição (opcional)..." rows="3"></textarea>
-                </div>
-                <div class="modal-actions">
-                    <button type="button" class="btn-cancel" id="btn-cancel">Cancelar</button>
-                    <button type="submit" class="btn-create">Criar</button>
-                </div>
-            </form>
-        </div>
-    </div>
+        async function init() {
+            const version = document.createElement("div");
+            version.innerText = "v" + (window.env?.version || "dev");
+            version.style.position = "absolute";
+            version.style.bottom = "10px";
+            version.style.right = "15px";
+            version.style.fontSize = "12px";
+            version.style.opacity = "0.5";
 
-    <script src="../static/js/lucide.min.js"></script>
-    <script type="module" src="../static/js/app.js"></script>
+            document.body.appendChild(version);
+
+
+            setStatus("Verificando servidor...", 20);
+
+            let ok = false;
+            for (let i = 0; i < 10; i++) {
+                if (await checkServer()) {
+                    ok = true;
+                    break;
+                }
+                await wait(300);
+            }
+
+            if (!ok) {
+                setStatus("Erro ao iniciar servidor", 100);
+                return;
+            }
+
+            setStatus("Verificando atualizações...", 40);
+
+            window.updater.onAvailable((data) => {
+                updateAvailable = true;
+                setStatus("Atualização disponível!", 50);
+                createUpdateUI(data);
+            });
+
+            window.updater.onNotAvailable(() => {
+                continueApp();
+            });
+
+            window.updater.onProgress((p) => {
+                setStatus("Baixando atualização...", p);
+            });
+
+            window.updater.onDownloaded(() => {
+                setStatus("Pronto! Reiniciando...", 100);
+                setTimeout(() => {
+                    window.updater.install();
+                }, 1000);
+            });
+
+            window.updater.onError(() => {
+                setStatus("Erro ao atualizar", 100);
+
+                const retry = document.createElement("button");
+                retry.innerText = "Tentar novamente";
+                retry.style.marginTop = "10px";
+
+                retry.onclick = () => {
+                    retry.remove();
+                    setStatus("Tentando novamente...", 40);
+                    window.updater.check();
+                };
+
+                document.querySelector(".container").appendChild(retry);
+
+                setTimeout(() => {
+                    continueApp();
+                }, 3000);
+            });
+
+            console.log(window.env?.isDev);
+            if (window.env?.isDev) {
+                setStatus("Modo desenvolvedor", 30);
+                await wait(500);
+                continueApp();
+            } else {
+                window.updater.check();
+            }
+        }
+
+        init();
+    </script>
 </body>
 
 </html>

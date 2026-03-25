@@ -64,7 +64,7 @@ function getUnregisteredFiles(undertaleFolder, deltaruneFolder) {
                 registeredFiles.add(track.file);
             }
             if (track.files) {
-                for (file in track.files.files) {
+                for (const file of track.files.files) {
                     registeredFiles.add(file);
                 }
             }
@@ -73,16 +73,19 @@ function getUnregisteredFiles(undertaleFolder, deltaruneFolder) {
 
     const unregisteredFiles = [];
 
-    const listFiles = (dir) => {
+    const listFiles = (dir, rootDir) => {
         if (!fs.existsSync(dir)) return;
         const items = fs.readdirSync(dir);
+
         for (const item of items) {
             const fullPath = path.join(dir, item);
             const stat = fs.statSync(fullPath);
+
             if (stat.isDirectory()) {
-                listFiles(fullPath);
+                listFiles(fullPath, rootDir);
             } else if (musicExtensions.includes(path.extname(fullPath).toLowerCase())) {
-                const relativePath = path.relative(dir, fullPath);
+                const relativePath = path.relative(rootDir, fullPath);
+
                 if (!registeredFiles.has(relativePath)) {
                     unregisteredFiles.push({
                         path: fullPath,
@@ -95,8 +98,8 @@ function getUnregisteredFiles(undertaleFolder, deltaruneFolder) {
         }
     };
 
-    if (undertaleFolder) listFiles(undertaleFolder);
-    if (deltaruneFolder) listFiles(deltaruneFolder);
+    if (undertaleFolder) listFiles(undertaleFolder, undertaleFolder);
+    if (deltaruneFolder) listFiles(deltaruneFolder, deltaruneFolder);
 
     return unregisteredFiles;
 }
@@ -132,6 +135,10 @@ app.use("/static", express.static(path.join(BASE_PATH, "sources", "static")));
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(BASE_PATH, "sources", "templates", "index.html"));
+});
+
+app.get("/app/", (req, res) => {
+    res.sendFile(path.join(BASE_PATH, "sources", "templates", "app.html"));
 });
 
 app.get("/api/albums", (req, res) => {

@@ -82,50 +82,6 @@ body {
     font-weight: 600;
 }
 
-.playlists-section {
-    margin-top: 25px;
-}
-
-.playlists-section h3 {
-    font-size: 12px;
-    text-transform: uppercase;
-    color: var(--subtext);
-    margin-bottom: 10px;
-}
-
-.playlist-list {
-    list-style: none;
-    margin-bottom: 15px;
-}
-
-.playlist-list a {
-    color: var(--subtext);
-    text-decoration: none;
-    font-size: 14px;
-    display: block;
-    padding: 6px 0;
-    transition: var(--transition);
-}
-
-.playlist-list a:hover {
-    color: var(--text);
-}
-
-.create-playlist-btn {
-    background: var(--primary);
-    border: none;
-    padding: 10px;
-    border-radius: 25px;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    transition: var(--transition);
-}
-
-.create-playlist-btn:hover {
-    background: var(--primary-hover);
-}
-
 .main-content {
     grid-column: 2;
     grid-row: 2;
@@ -146,168 +102,6 @@ body {
     padding: 15px;
     border-bottom: 1px solid #222;
     height: 80px;
-}
-
-.player {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 90px;
-    background: rgba(24,24,24,0.95);
-    backdrop-filter: blur(12px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-    border-top: 1px solid #222;
-}
-
-.player-controls button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 6px;
-    border-radius: 50%;
-    transition: var(--transition);
-}
-
-.player-controls button:hover {
-    background: #333;
-}
-
-.player-progress {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 35%;
-}
-
-#progress-bar {
-    flex: 1;
-    height: 4px;
-    background: #333;
-    border-radius: 2px;
-    accent-color: var(--primary);
-    cursor: pointer;
-}
-
-.player-volume {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.player-volume input[type=range] {
-    width: 100px;
-    accent-color: var(--primary);
-}
-
-.now-playing {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.current-track-cover {
-    width: 50px;
-    height: 50px;
-    border-radius: 6px;
-    object-fit: cover;
-}
-
-.track-info p {
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.2;
-}
-
-.track-info p:first-child {
-    font-weight: 600;
-}
-
-.albums-section h2 {
-    margin-bottom: 20px;
-    font-size: 22px;
-}
-
-.albums-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 20px;
-}
-
-.album-card {
-    background: var(--card);
-    padding: 15px;
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-
-.album-card:hover {
-    background: var(--hover);
-    transform: translateY(-5px) scale(1.03);
-}
-
-.album-cover {
-    width: 100%;
-    border-radius: 6px;
-    margin-bottom: 10px;
-}
-
-.album-title {
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--text);
-}
-
-.album-artist {
-    font-size: 12px;
-    color: var(--subtext);
-}
-
-.playlist-header {
-    display: flex;
-    gap: 25px;
-    margin-bottom: 30px;
-}
-
-.playlist-cover {
-    width: 180px;
-    border-radius: var(--radius);
-    object-fit: cover;
-}
-
-.track-item {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    border-radius: var(--radius);
-    transition: var(--transition);
-    cursor: pointer;
-    gap: 12px;
-    justify-content: space-between;
-}
-
-.track-item:hover {
-    background: var(--hover);
-}
-
-.track-item.playing {
-    border-left: 4px solid var(--primary);
-}
-
-.track-title {
-    font-weight: 600;
-    color: var(--text);
-}
-
-.track-artist {
-    color: var(--subtext);
-    font-size: 13px;
 }
 
 .right-panel {
@@ -443,6 +237,25 @@ body {
 
 .setting-path::placeholder {
     color: var(--subtext);
+}
+
+.setting-select {
+    background: var(--bg);
+    border: 1px solid var(--hover);
+    border-radius: 6px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+}
+
+.setting-select:focus {
+    border-color: var(--primary);
+}
+
+.setting-select option {
+    padding: 15px;
 }
 
 .browse-btn {

@@ -124,6 +124,7 @@ export class UI {
     clearMainContent() {
         document.querySelector('.albums-section').style.display = 'none';
         document.getElementById('playlist-view').style.display = 'none';
+        document.getElementById('settings-view').style.display = 'none';
     }
 
     navigateToPage(page) {
@@ -140,6 +141,7 @@ export class UI {
                 this.app.albums.loadAlbums();
                 break;
             case 'playlists':
+                console.log(this.app.playlists);
                 this.app.playlists.showPlaylists();
                 break;
             case 'unregistered':
