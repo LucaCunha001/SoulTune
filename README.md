@@ -1,6 +1,6 @@
 # ❤️ SoulTune
 
-**SoulTune** é um aplicativo desenvolvido em **GameMaker** para que todos possam apreciar as incríveis trilhas sonoras de **Undertale** e **Deltarune**, compostas pelo lendário **Robert F. "Toby" Fox** – um verdadeiro gênio musical.
+**SoulTune** é um aplicativo desenvolvido **JavaScript** usando **Electron** para que todos possam apreciar as incríveis trilhas sonoras de **Undertale** e **Deltarune**, compostas pelo lendário **Robert F. "Toby" Fox**, um verdadeiro gênio musical.
 
 > **Aviso:** Este aplicativo é um projeto de fã, sem fins lucrativos, criado apenas para fins de apreciação musical. Todos os direitos sobre as músicas pertencem a Toby Fox. Se gostar das trilhas, apoie o criador comprando as versões oficiais no [Bandcamp](https://tobyfox.bandcamp.com/).
 
@@ -8,9 +8,9 @@
 
 ## ✨ Funcionalidades
 - Interface simples e intuitiva para selecionar e ouvir as músicas.
-- Catálogo completo das faixas de *Undertale* e *Deltarune* (capítulos lançados).
+- Catálogo completo das faixas de *Undertale* e *Deltarune*.
 - Reprodução contínua e sem interrupções.
-- Informações sobre cada faixa: nome, álbum e duração.
+- Informações sobre cada faixa: nome, álbum, duração e composição.
 - Sistema de playlists para criar sua própria ordem de reprodução.
 
 ---
@@ -21,15 +21,15 @@
 ---
 
 ## 💻 Tecnologias Utilizadas
-- [GameMaker](https://gamemaker.io/) — Engine principal do aplicativo.
-- Manipulação de áudio com funções nativas da engine.
-- Sistema de carregamento dinâmico de faixas.
+- [VS Code](https://code.visualstudio.com) - Editor de código do aplicativo.
+- [Node.JS](https://nodejs.org/pt-br) - Ambiente de execução do JavaScript.
+- [Electron](https://www.electronjs.org/pt/) - Responsável para renderizar o HTML.
 
 ---
 
 ## 📥 Como Usar
 1. Baixe a versão mais recente do aplicativo (link na seção de releases).
-2. Abra o executável `SoulTune.exe` ou instale o aplicativo `SoulTune.apk`.
+2. Abra o executável `SoulTune.exe`.
 3. Escolha sua música favorita e aperte **Play**!
 
 ---
@@ -42,7 +42,7 @@
 
 - **Vozes**:  
   - Laura Shigihara – Vocal em "Don't Forget" (*Deltarune* Capítulo 1, OST 39)  
-  - Itoki Hana – Vocal em "Sanctuary" (*Deltarune* Capítulo 2)  
+  - Itoki Hana – Vocal em "Sanctuary" (*Deltarune* Capítulo 4)
 
 - **Arte e Animação**:  
   - Temmie Chang – Arte e animações originais de *Undertale* & *Deltarune*  
@@ -53,18 +53,17 @@
   - Música (versão alternativa): @MythicApex, @Bub8les, @RagamuffinWLYR (YouTube)  
 
 - **Desenvolvimento**:  
-  - Luca Cunha (Frisk)  
+  - Luca Cunha (Luceno) 
 
-- **Programas usados**:  
-  - GameMaker Studio 2 – YoYo Games  
-  - Visual Studio Code – Microsoft  
-  - Visual Studio 2022 – Microsoft  
-  - Git & GitHub – Microsoft  
-  - Undertale Mod Tool – MattyIce  
-  - YT-DLP – yt-dlp  
+- **Programas usados**:
+  - Visual Studio Code – Microsoft
+  - Visual Studio 2022 – Microsoft
+  - Git & GitHub – Microsoft
+  - Undertale Mod Tool – MattyIce
 
 - **Fontes**:  
-  - 8bitoperator – Fonte usada no aplicativo  
+  - 8bitoperator – Fonte usada em Undertale e Deltarune
+  - Segoe UI, Arial, sans-serif - 
 
 - **Efeitos Sonoros**:  
   - Extraídos de *Undertale* & *Deltarune* – Toby Fox  
@@ -89,8 +88,8 @@ Todos os direitos autorais das músicas, imagens e vozes pertencem aos seus resp
 Se você gosta do trabalho de Toby Fox, apoie-o adquirindo as trilhas e os jogos originais.
 
 ## 🎵 Nomes envolvidos nas músicas
-- **Toby Fox** – Compositor de todas as músicas de *Undertale* e da maioria em *Deltarune*.  
+- **Toby Fox** – Compositor de todas as músicas de *Undertale* e *Deltarune*.  
 - **Lena Raine** – Compositora convidada em *Deltarune*.  
 - **Marcy Nabors** – Assistência musical em *Deltarune*.  
 - **Laura Shigihara** – Cantora do OST 39 do capítulo 1 de *Deltarune*: "Don't Forget".  
-- **Itoki Hana** – Cantora de "Sanctuary" no capítulo 2 de *Deltarune*.  
+- **Itoki Hana** – Cantora de "Sanctuary" no capítulo 4 de *Deltarune*.  

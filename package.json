@@ -1,0 +1,39 @@
+{
+  "name": "soultune-electron",
+  "version": "1.0.0",
+  "description": "SoulTune Electron App",
+  "main": "main.js",
+  "author": {
+    "name": "Luceno",
+    "email": "lcunhalula@gmail.com"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.viora.soultune",
+    "productName": "Soultune",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    },
+    "files": [
+      "**/*"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^26.8.1"
+  },
+  "dependencies": {
+    "@xhayper/discord-rpc": "^1.3.1",
+    "discord-api-types": "^0.38.42",
+    "env-paths": "^4.0.0",
+    "express": "^4.18.0"
+  },
+  "icon": "icon.ico"
+}

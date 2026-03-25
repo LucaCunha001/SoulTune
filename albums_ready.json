@@ -1,0 +1,2393 @@
+{
+    "undertale": {
+        "id": "undertale-ost",
+        "title": "Undertale Soundtrack",
+        "artist": "Toby Fox",
+        "cover": "/static/images/undertale-cover.jpg",
+        "tracks": [
+            {
+                "id": "1",
+                "title": "Once Upon a Time",
+                "file": "mus_story.ogg",
+                "pitch": 0.91,
+                "duration": 80.01741496598639,
+                "lyrics": null
+            },
+            {
+                "id": "2",
+                "title": "Start Menu",
+                "file": "mus_menu0.ogg",
+                "pitch": 1.0,
+                "duration": 32.02176870748299,
+                "lyrics": null
+            },
+            {
+                "id": "3",
+                "title": "Your Best Friend",
+                "file": "mus_flowey.ogg",
+                "pitch": 1.0,
+                "duration": 23.238820861678004,
+                "lyrics": null
+            },
+            {
+                "id": "4",
+                "title": "Fallen Down",
+                "file": "mus_toriel.ogg",
+                "pitch": 0.86,
+                "duration": 36.30294784580499,
+                "lyrics": null
+            },
+            {
+                "id": "5",
+                "title": "Ruins",
+                "file": "mus_ruins.ogg",
+                "pitch": 1.0,
+                "duration": 91.31392290249433,
+                "lyrics": null
+            },
+            {
+                "id": "6",
+                "title": "Uwa!! So temperate",
+                "file": "mus_options_fall.ogg",
+                "pitch": 1.0,
+                "duration": 54.87020408163265,
+                "lyrics": null
+            },
+            {
+                "id": "7",
+                "title": "Anticipation",
+                "file": "mus_prebattle1.ogg",
+                "pitch": 1.0,
+                "duration": 10.492517006802721,
+                "lyrics": null
+            },
+            {
+                "id": "8",
+                "title": "Unnecessary Tension",
+                "file": "mus_tension.ogg",
+                "pitch": 1.0,
+                "duration": 6.520453514739229,
+                "lyrics": null
+            },
+            {
+                "id": "9",
+                "title": "Enemy Approaching",
+                "file": "mus_battle1.ogg",
+                "pitch": 1.0,
+                "duration": 55.08353741496599,
+                "lyrics": null
+            },
+            {
+                "id": "10",
+                "title": "Ghost Fight",
+                "file": "mus_ghostbattle.ogg",
+                "pitch": 1.0,
+                "duration": 51.2,
+                "lyrics": null
+            },
+            {
+                "id": "11",
+                "title": "Determination",
+                "file": "mus_gameover.ogg",
+                "pitch": 1.0,
+                "duration": 46.35718820861678,
+                "lyrics": null
+            },
+            {
+                "id": "12",
+                "title": "Home",
+                "file": "mus_house1.ogg",
+                "pitch": 1.0,
+                "duration": 123.01496598639456,
+                "lyrics": null
+            },
+            {
+                "id": "13",
+                "title": "Home (Music Box)",
+                "file": "mus_house2.ogg",
+                "pitch": 1.0,
+                "duration": 123.01206349206349,
+                "lyrics": null
+            },
+            {
+                "id": "14",
+                "title": "Heartache",
+                "file": "mus_boss1.ogg",
+                "pitch": 1.0,
+                "duration": 108.45460317460318,
+                "lyrics": null
+            },
+            {
+                "id": "15",
+                "title": "sans.",
+                "file": "mus_muscle.ogg",
+                "pitch": 1.0,
+                "duration": 22.51609977324263,
+                "lyrics": null
+            },
+            {
+                "id": "16",
+                "title": "Nyeh Heh Heh!",
+                "file": "mus_papyrus.ogg",
+                "pitch": 1.0,
+                "duration": 32.013061224489796,
+                "lyrics": null
+            },
+            {
+                "id": "17",
+                "title": "Snowy",
+                "file": "mus_snowy.ogg",
+                "pitch": 1.0,
+                "duration": 102.30276643990929,
+                "lyrics": null
+            },
+            {
+                "id": "18",
+                "title": "Uwa!! So Holyday!",
+                "file": "mus_options_winter.ogg",
+                "pitch": 1.0,
+                "duration": 13.72734693877551,
+                "lyrics": null
+            },
+            {
+                "id": "19",
+                "title": "Dogbass",
+                "file": "mus_dogmeander.ogg",
+                "pitch": 1.4,
+                "duration": 7.309931972789116,
+                "lyrics": null
+            },
+            {
+                "id": "20",
+                "title": "Mysterious Place",
+                "file": "mus_mystery.ogg",
+                "pitch": 1.0,
+                "duration": 42.98739229024943,
+                "lyrics": null
+            },
+            {
+                "id": "21",
+                "title": "Dogsong",
+                "file": "mus_dogsong.ogg",
+                "pitch": 1.0,
+                "duration": 36.317460317460316,
+                "lyrics": null
+            },
+            {
+                "id": "22",
+                "title": "Snowdin Town",
+                "file": "mus_town.ogg",
+                "pitch": 1.0,
+                "duration": 75.6259410430839,
+                "lyrics": null
+            },
+            {
+                "id": "23",
+                "title": "Shop",
+                "file": "mus_shop.ogg",
+                "pitch": 1.0,
+                "duration": 49.55283446712018,
+                "lyrics": null
+            },
+            {
+                "id": "24",
+                "title": "Bonestrousle",
+                "file": "mus_papyrusboss.ogg",
+                "pitch": 1.0,
+                "duration": 57.68562358276644,
+                "lyrics": null
+            },
+            {
+                "id": "25",
+                "title": "Dating Start!",
+                "file": "mus_date.ogg",
+                "pitch": 1.0,
+                "duration": 116.87183673469387,
+                "lyrics": null
+            },
+            {
+                "id": "26",
+                "title": "Dating Tense!",
+                "file": "mus_date_tense.ogg",
+                "pitch": 1.0,
+                "duration": 25.61596371882086,
+                "lyrics": null
+            },
+            {
+                "id": "27",
+                "title": "Dating Fight!",
+                "file": "mus_date_fight.ogg",
+                "pitch": 1.0,
+                "duration": 34.28716553287982,
+                "lyrics": null
+            },
+            {
+                "id": "28",
+                "title": "Premonition",
+                "file": "mus_mysteriousroom2.ogg",
+                "pitch": 0.5,
+                "duration": 16.728526077097506,
+                "lyrics": null
+            },
+            {
+                "id": "29",
+                "title": "Danger Mystery",
+                "file": "mus_undynescary.ogg",
+                "pitch": 1.0,
+                "duration": 13.736054421768708,
+                "lyrics": null
+            },
+            {
+                "id": "30",
+                "title": "Undyne",
+                "file": "mus_undynetheme.ogg",
+                "pitch": 1.0,
+                "duration": 37.566984126984124,
+                "lyrics": null
+            },
+            {
+                "id": "31",
+                "title": "Waterfall",
+                "file": "mus_waterfall.ogg",
+                "pitch": 1.0,
+                "duration": 123.49968253968254,
+                "lyrics": null
+            },
+            {
+                "id": "32",
+                "title": "Run!",
+                "file": "mus_undynefast.ogg",
+                "pitch": 1.0,
+                "duration": 23.04,
+                "lyrics": null
+            },
+            {
+                "id": "33",
+                "title": "Quiet Water",
+                "file": "mus_waterquiet.ogg",
+                "pitch": 0.9,
+                "duration": 26.710204081632654,
+                "lyrics": null
+            },
+            {
+                "id": "34",
+                "title": "Memory",
+                "file": "mus_musicbox.ogg",
+                "pitch": 1.0,
+                "duration": 72.01233560090704,
+                "lyrics": null
+            },
+            {
+                "id": "35",
+                "title": "Bird That Carries You Over a Desproportionately Small Gap",
+                "file": "mus_birdsong.ogg",
+                "pitch": 1.0,
+                "duration": 25.102222222222224,
+                "lyrics": null
+            },
+            {
+                "id": "36",
+                "title": "Dummy!",
+                "file": "mus_dummybattle.ogg",
+                "pitch": 1.0,
+                "duration": 145.92145124716552,
+                "lyrics": null
+            },
+            {
+                "id": "37",
+                "title": "Pathetic House",
+                "file": "mus_napstahouse.ogg",
+                "pitch": 1.0,
+                "duration": 38.78748299319728,
+                "lyrics": null
+            },
+            {
+                "id": "38",
+                "title": "Spooktune",
+                "file": "mus_spoopy.ogg",
+                "pitch": 1.0,
+                "duration": 23.63501133786848,
+                "lyrics": null
+            },
+            {
+                "id": "39",
+                "title": "Spookwave",
+                "file": "mus_spoopy_wave.ogg",
+                "pitch": 1.0,
+                "duration": 23.623401360544218,
+                "lyrics": null
+            },
+            {
+                "id": "40",
+                "title": "Ghouliday",
+                "file": "mus_spoopy_holiday.ogg",
+                "pitch": 1.0,
+                "duration": 11.589659863945577,
+                "lyrics": null
+            },
+            {
+                "id": "41",
+                "title": "Chill",
+                "file": "mus_napstachords.ogg",
+                "pitch": 0.4,
+                "duration": 42.877097505668935,
+                "lyrics": null
+            },
+            {
+                "id": "42",
+                "title": "Thundersnail",
+                "file": "mus_race.ogg",
+                "pitch": 1.0,
+                "duration": 41.61741496598639,
+                "lyrics": null
+            },
+            {
+                "id": "43",
+                "title": "Temmie Village",
+                "file": "mus_temvillage.ogg",
+                "pitch": 1.0,
+                "duration": 57.145759637188206,
+                "lyrics": null
+            },
+            {
+                "id": "44",
+                "title": "Tem Shop",
+                "file": "mus_temshop.ogg",
+                "pitch": 1.0,
+                "duration": 40.21115646258503,
+                "lyrics": null
+            },
+            {
+                "id": "45",
+                "title": "NGAHHH!!",
+                "file": "mus_undynetruetheme.ogg",
+                "pitch": 1.0,
+                "duration": 80.64,
+                "lyrics": null
+            },
+            {
+                "id": "46",
+                "title": "Spear of Justice",
+                "file": "mus_undyneboss.ogg",
+                "pitch": 1.0,
+                "duration": 113.61233560090703,
+                "lyrics": null
+            },
+            {
+                "id": "47",
+                "title": "Ooo",
+                "file": "mus_oogloop.ogg",
+                "pitch": 1.0,
+                "duration": 13.413877551020407,
+                "lyrics": null
+            },
+            {
+                "id": "48",
+                "title": "Alphys",
+                "file": "mus_lab.ogg",
+                "pitch": 1.0,
+                "duration": 84.44081632653061,
+                "lyrics": null
+            },
+            {
+                "id": "49",
+                "title": "It's Showtime!",
+                "file": "mus_mtgameshow.ogg",
+                "pitch": 1.0,
+                "duration": 45.19909297052154,
+                "lyrics": null
+            },
+            {
+                "id": "50",
+                "title": "Metal Crusher",
+                "file": "mus_mettatonbattle.ogg",
+                "pitch": 1.0,
+                "duration": 62.08580498866213,
+                "lyrics": null
+            },
+            {
+                "id": "51",
+                "title": "Another Medium",
+                "file": "mus_anothermedium.ogg",
+                "pitch": 1.0,
+                "duration": 142.15691609977324,
+                "lyrics": null
+            },
+            {
+                "id": "52",
+                "title": "Uwa!! So HEATS!!",
+                "file": "mus_options_summer.ogg",
+                "pitch": 1.0,
+                "duration": 34.00126984126984,
+                "lyrics": null
+            },
+            {
+                "id": "53",
+                "title": "Stronger Monsters",
+                "file": "mus_battle2.ogg",
+                "pitch": 1.0,
+                "duration": 61.71573696145125,
+                "lyrics": null
+            },
+            {
+                "id": "54",
+                "title": "Hotel",
+                "file": "mus_hotel.ogg",
+                "pitch": 1.0,
+                "duration": 82.58321995464853,
+                "lyrics": null
+            },
+            {
+                "id": "55",
+                "title": "Can You Really Call This A Hotel, I Didn't Recieve A Mint On My Pillow Or Anything",
+                "file": "mus_hotel_battle.ogg",
+                "pitch": 1.0,
+                "duration": 60.4734693877551,
+                "lyrics": null
+            },
+            {
+                "id": "56",
+                "title": "Confession",
+                "file": "mus_confession.ogg",
+                "pitch": 1.0,
+                "duration": 19.80517006802721,
+                "lyrics": null
+            },
+            {
+                "id": "57",
+                "title": "Live Report",
+                "file": "mus_news.ogg",
+                "pitch": 1.0,
+                "duration": 15.666213151927437,
+                "lyrics": null
+            },
+            {
+                "id": "58",
+                "title": "Death Report",
+                "file": "mus_news_battle.ogg",
+                "pitch": 1.0,
+                "duration": 45.3340589569161,
+                "lyrics": null
+            },
+            {
+                "id": "59",
+                "title": "Spider Dance",
+                "file": "mus_spider.ogg",
+                "pitch": 1.0,
+                "duration": 100.17668934240363,
+                "lyrics": null
+            },
+            {
+                "id": "60",
+                "title": "Wrong Enemy!?",
+                "file": "mus_wrongworld.ogg",
+                "pitch": 1.0,
+                "duration": 57.88734693877551,
+                "lyrics": null
+            },
+            {
+                "id": "61",
+                "title": "Oh! One True Love",
+                "files": {
+                    "files": [
+                        "mus_mettmusical1.ogg",
+                        "mus_mettmusical2.ogg",
+                        "mus_mettmusical3.ogg",
+                        "mus_mettmusical4.ogg"
+                    ],
+                    "delays": [
+                        -2,
+                        -2,
+                        -2,
+                        -2
+                    ]
+                },
+                "pitch": 1.0,
+                "duration": 66.0542403628118,
+                "lyrics": null
+            },
+            {
+                "id": "62",
+                "title": "Oh! Dungeon",
+                "file": "mus_operatile.ogg",
+                "pitch": 1.0,
+                "duration": 32.86349206349206,
+                "lyrics": null
+            },
+            {
+                "id": "63",
+                "title": "It's Rainning Somewhere Else",
+                "file": "mus_sansdate.ogg",
+                "pitch": 1.0,
+                "duration": 170.0063492063492,
+                "lyrics": null
+            },
+            {
+                "id": "64",
+                "title": "CORE Approach",
+                "file": "mus_coretransition.ogg",
+                "pitch": 1.0,
+                "duration": 11.901678004535148,
+                "lyrics": null
+            },
+            {
+                "id": "65",
+                "title": "CORE",
+                "file": "mus_core.ogg",
+                "pitch": 1.0,
+                "duration": 164.58739229024943,
+                "lyrics": null
+            },
+            {
+                "id": "66",
+                "title": "Last Episode!",
+                "file": "mus_mettafly.ogg",
+                "pitch": 1.0,
+                "duration": 7.623401360544218,
+                "lyrics": null
+            },
+            {
+                "id": "67",
+                "title": "Oh My...",
+                "file": "mus_mettaton_pretransform.ogg",
+                "pitch": 1.0,
+                "duration": 16.552925170068026,
+                "lyrics": null
+            },
+            {
+                "id": "68",
+                "title": "Death By Glamour",
+                "file": "mus_mettaton_ex.ogg",
+                "pitch": 1.0,
+                "duration": 132.97922902494332,
+                "lyrics": null
+            },
+            {
+                "id": "69",
+                "title": "For The Fans",
+                "file": "mus_mettsad.ogg",
+                "pitch": 1.0,
+                "duration": 104.69442176870749,
+                "lyrics": null
+            },
+            {
+                "id": "70",
+                "title": "Long Elevator",
+                "file": "mus_elevator_last.ogg",
+                "pitch": 1.0,
+                "duration": 18.870566893424037,
+                "lyrics": null
+            },
+            {
+                "id": "71",
+                "title": "Undertale",
+                "file": "mus_endarea_parta.ogg",
+                "pitch": 0.85,
+                "duration": 180.0112471655329,
+                "lyrics": null
+            },
+            {
+                "id": "72",
+                "title": "Song That Might Play On You Fight Sans",
+                "file": "../extras/Song That Might Play When You Fight Sans.ogg",
+                "pitch": 1.0,
+                "duration": 0.0,
+                "lyrics": null
+            },
+            {
+                "id": "73",
+                "title": "The Choice",
+                "file": "mus_chokedup.ogg",
+                "pitch": 1.0,
+                "duration": 131.2087074829932,
+                "lyrics": null
+            },
+            {
+                "id": "74",
+                "title": "Small Shock",
+                "file": "mus_smallshock.ogg",
+                "pitch": 1.0,
+                "duration": 14.13079365079365,
+                "lyrics": null
+            },
+            {
+                "id": "75",
+                "title": "Barrier",
+                "file": "mus_barrier.ogg",
+                "pitch": 1.0,
+                "duration": 28.38784580498866,
+                "lyrics": null
+            },
+            {
+                "id": "76",
+                "title": "Bergentückung",
+                "file": "mus_bergentruckung.ogg",
+                "pitch": 1.0,
+                "duration": 17.160997732426303,
+                "lyrics": null
+            },
+            {
+                "id": "77",
+                "title": "ASGORE",
+                "file": "mus_vsasgore.ogg",
+                "pitch": 1.0,
+                "duration": 154.08326530612246,
+                "lyrics": null
+            },
+            {
+                "id": "78",
+                "title": "You Idiot",
+                "file": "mus_yourbestfriend_3.ogg",
+                "pitch": 1.0,
+                "duration": 29.09170068027211,
+                "lyrics": null
+            },
+            {
+                "id": "79",
+                "title": "Your Best Nightmare",
+                "files": {
+                    "files": [
+                        "mus_f_intro.ogg",
+                        "../extras/mus_f_laugh.ogg",
+                        "mus_f_part1.ogg",
+                        "mus_f_alarm.ogg",
+                        "../extras/mus_f_noise.ogg",
+                        "mus_f_6s_1.ogg",
+                        "../extras/mus_f_noise.ogg",
+                        "mus_f_6s_2.ogg",
+                        "../extras/mus_f_noise.ogg",
+                        "mus_f_part2.ogg",
+                        "mus_f_alarm.ogg",
+                        "../extras/mus_f_noise.ogg",
+                        "mus_f_6s_3.ogg",
+                        "../extras/mus_f_noise.ogg",
+                        "mus_f_6s_4.ogg",
+                        "../extras/mus_f_noise.ogg",
+                        "mus_repeat_1.ogg",
+                        "mus_repeat_2.ogg",
+                        "mus_repeat_1.ogg",
+                        "mus_repeat_2.ogg",
+                        "../extras/mus_f_endnote.ogg",
+                        "../extras/mus_f_noise.ogg",
+                        "mus_f_6s_5.ogg",
+                        "../extras/mus_f_noise.ogg",
+                        "mus_f_6s_6.ogg",
+                        "../extras/mus_f_noise.ogg",
+                        "mus_f_part1.ogg",
+                        "mus_f_alarm.ogg",
+                        "../extras/mus_f_noise.ogg"
+                    ],
+                    "delays": [
+                        0,
+                        0,
+                        0,
+                        -5,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        -5,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        -5
+                    ]
+                },
+                "pitch": 1.0,
+                "duration": 245.0,
+                "lyrics": null
+            },
+            {
+                "id": "80",
+                "title": "Finale",
+                "files": {
+                    "files": [
+                        "mus_f_finale_1_l.ogg",
+                        "mus_f_finale_2.ogg",
+                        "mus_f_finale_3.ogg"
+                    ],
+                    "delays": [
+                        -1.5,
+                        -1.5
+                    ]
+                },
+                "pitch": 1.0,
+                "duration": 116.633106575963716,
+                "lyrics": null
+            },
+            {
+                "id": "81",
+                "title": "An Ending",
+                "file": "mus_z_ending.ogg",
+                "pitch": 1.0,
+                "duration": 208.8039909297052,
+                "lyrics": null
+            },
+            {
+                "id": "82",
+                "title": "She's Playing Piano",
+                "file": "mus_undynepiano.ogg",
+                "pitch": 1.0,
+                "duration": 8.581224489795918,
+                "lyrics": null
+            },
+            {
+                "id": "83",
+                "title": "Here We Are",
+                "file": "mus_hereweare.ogg",
+                "pitch": 1.0,
+                "duration": 124.95963718820862,
+                "lyrics": null
+            },
+            {
+                "id": "84",
+                "title": "Amalgam",
+                "file": "mus_amalgam.ogg",
+                "pitch": 1.0,
+                "duration": 80.01741496598639,
+                "lyrics": null
+            },
+            {
+                "id": "85",
+                "title": "Fallen Down (Reprise)",
+                "file": "mus_fallendown2.ogg",
+                "pitch": 1.0,
+                "duration": 150.55092970521542,
+                "lyrics": null
+            },
+            {
+                "id": "86",
+                "title": "Don't Give Up",
+                "file": "mus_dontgiveup.ogg",
+                "pitch": 1.0,
+                "duration": 120.12553287981859,
+                "lyrics": null
+            },
+            {
+                "id": "87",
+                "title": "Hopes And Dreams",
+                "file": "mus_xpart.ogg",
+                "pitch": 0.95,
+                "duration": 170.68263038548753,
+                "lyrics": null
+            },
+            {
+                "id": "88",
+                "title": "Burn In Dispair!",
+                "file": "mus_a2.ogg",
+                "pitch": 1.0,
+                "duration": 14.222222222222221,
+                "lyrics": null
+            },
+            {
+                "id": "89",
+                "title": "SAVE The World",
+                "file": "mus_xpart_2.ogg",
+                "pitch": 1.0,
+                "duration": 106.66666666666667,
+                "lyrics": null
+            },
+            {
+                "id": "90",
+                "title": "His Theme",
+                "file": "mus_xpart_b.ogg",
+                "pitch": 0.85,
+                "duration": 42.666666666666664,
+                "lyrics": null
+            },
+            {
+                "id": "91",
+                "title": "Final Power",
+                "file": "mus_xpart_back.ogg",
+                "pitch": 1.0,
+                "duration": 17.207437641723356,
+                "lyrics": null
+            },
+            {
+                "id": "92",
+                "title": "Reunited",
+                "file": "mus_reunited.ogg",
+                "pitch": 1.0,
+                "duration": 282.48090702947843,
+                "lyrics": null
+            },
+            {
+                "id": "93",
+                "title": "Menu (Full)",
+                "file": "mus_menu6.ogg",
+                "pitch": 1.0,
+                "duration": 32.00725623582766,
+                "lyrics": null
+            },
+            {
+                "id": "94",
+                "title": "Respite",
+                "file": "mus_leave.ogg",
+                "pitch": 0.9,
+                "duration": 101.6584126984127,
+                "lyrics": null
+            },
+            {
+                "id": "95",
+                "title": "Bring In It, Guys!",
+                "file": "mus_cast_7.ogg",
+                "pitch": 1.0,
+                "duration": 21.2346485260771,
+                "lyrics": null
+            },
+            {
+                "id": "96",
+                "title": "Last Goodbye",
+                "file": "mus_express_myself.ogg",
+                "pitch": 1.0,
+                "duration": 135.23591836734693,
+                "lyrics": null
+            },
+            {
+                "id": "97",
+                "title": "But The Earth Refused To Die",
+                "file": "mus_x_undyne_pre.ogg",
+                "pitch": 1.0,
+                "duration": 13.714285714285714,
+                "lyrics": null
+            },
+            {
+                "id": "98",
+                "title": "Battle Agains A True Hero",
+                "file": "mus_x_undyne.ogg",
+                "pitch": 1.0,
+                "duration": 153.6,
+                "lyrics": null
+            },
+            {
+                "id": "99",
+                "title": "Power of \"NEO\"",
+                "file": "mus_mettaton_neo.ogg",
+                "pitch": 1.0,
+                "duration": 26.485260770975056,
+                "lyrics": null
+            },
+            {
+                "id": "100",
+                "title": "MEGALOVANIA",
+                "file": "mus_zz_megalovania.ogg",
+                "pitch": 1.0,
+                "duration": 156.0105215419501,
+                "lyrics": null
+            },
+            {
+                "id": "101",
+                "title": "Good Knight",
+                "file": "mus_piano.ogg",
+                "pitch": 0.9,
+                "duration": 34.0,
+                "lyrics": null
+            },
+            {
+                "id": "102",
+                "title": "Mad Mew Mew",
+                "file": "../extras/Mad Mew Mew.ogg",
+                "pitch": 1.0,
+                "duration": 144.0,
+                "lyrics": null
+            }
+        ]
+    },
+    "deltarune-chapter1": {
+        "id": "deltarune-chapter1",
+        "title": "DELTARUNE Chapter 1",
+        "artist": "Toby Fox",
+        "cover": "/static/images/deltarune-ch1-cover.jpg",
+        "tracks": [
+            {
+                "id": "1",
+                "title": "ANOTHER HIM",
+                "file": "AUDIO_ANOTHERHIM.ogg",
+                "pitch": 1.0,
+                "duration": 48.0,
+                "lyrics": null
+            },
+            {
+                "id": "2",
+                "title": "Beginning",
+                "file": "mus_introcar.ogg",
+                "pitch": 1.0,
+                "duration": 57.39131519274376,
+                "lyrics": null
+            },
+            {
+                "id": "3",
+                "title": "School",
+                "file": "mus_school.ogg",
+                "pitch": 1.0,
+                "duration": 80.0,
+                "lyrics": null
+            },
+            {
+                "id": "4",
+                "title": "Susie",
+                "file": "s_neo.ogg",
+                "pitch": 1.0,
+                "duration": 27.428571428571427,
+                "lyrics": null
+            },
+            {
+                "id": "5",
+                "title": "The Door",
+                "file": "creepydoor.ogg",
+                "pitch": 1.0,
+                "duration": 41.739115646258504,
+                "lyrics": null
+            },
+            {
+                "id": "6",
+                "title": "Cliffs",
+                "file": "creepylandscape.ogg",
+                "pitch": 1.0,
+                "duration": 35.12195011337869,
+                "lyrics": null
+            },
+            {
+                "id": "7",
+                "title": "The Chase",
+                "file": "creepychase.ogg",
+                "pitch": 1.0,
+                "duration": 33.88235827664399,
+                "lyrics": null
+            },
+            {
+                "id": "8",
+                "title": "The Legend",
+                "file": "legend.ogg",
+                "pitch": 0.95,
+                "duration": 111.27272108843538,
+                "lyrics": null
+            },
+            {
+                "id": "9",
+                "title": "Lancer",
+                "file": "lancer.ogg",
+                "pitch": 1.0,
+                "duration": 48.0,
+                "lyrics": null
+            },
+            {
+                "id": "10",
+                "title": "Rude Buster",
+                "file": "battle.ogg",
+                "pitch": 1.0,
+                "duration": 75.42857142857143,
+                "lyrics": null
+            },
+            {
+                "id": "11",
+                "title": "Empty Town",
+                "file": "castletown_empty.ogg",
+                "pitch": 1.0,
+                "duration": 83.47825396825397,
+                "lyrics": null
+            },
+            {
+                "id": "12",
+                "title": "Weird Birds",
+                "file": "bird.ogg",
+                "pitch": 1.0,
+                "duration": 16.615374149659864,
+                "lyrics": null
+            },
+            {
+                "id": "13",
+                "title": "Field of Hopes and Dreams",
+                "file": "field_of_hopes.ogg",
+                "pitch": 1.0,
+                "duration": 161.28,
+                "lyrics": null
+            },
+            {
+                "id": "14",
+                "title": "Fanfare (From \"Rose of Winter\")",
+                "file": "fanfare.ogg",
+                "pitch": 1.0,
+                "duration": 10.743582766439909,
+                "lyrics": null
+            },
+            {
+                "id": "15",
+                "title": "Lantern",
+                "file": "shop1.ogg",
+                "pitch": 1.0,
+                "duration": 68.82353741496598,
+                "lyrics": null
+            },
+            {
+                "id": "16",
+                "title": "I'm Very Bad",
+                "file": "lancer_susie.ogg",
+                "pitch": 1.0,
+                "duration": 12.0,
+                "lyrics": null
+            },
+            {
+                "id": "17",
+                "title": "Checker Dance",
+                "file": "checkers.ogg",
+                "pitch": 1.0,
+                "duration": 77.99764172335601,
+                "lyrics": null
+            },
+            {
+                "id": "18",
+                "title": "Quiet Autumn",
+                "file": "quiet_autumn.ogg",
+                "pitch": 1.0,
+                "duration": 49.77777777777778,
+                "lyrics": null
+            },
+            {
+                "id": "19",
+                "title": "Scarlet Forest",
+                "file": "forest.ogg",
+                "pitch": 1.0,
+                "duration": 128.0,
+                "lyrics": null
+            },
+            {
+                "id": "20",
+                "title": "Thrash Machine",
+                "file": "thrashmachine.ogg",
+                "pitch": 1.0,
+                "duration": 54.857142857142854,
+                "lyrics": null
+            },
+            {
+                "id": "21",
+                "title": "Vs. Lancer",
+                "file": "lancerfight.ogg",
+                "pitch": 1.0,
+                "duration": 41.333333333333336,
+                "lyrics": null
+            },
+            {
+                "id": "22",
+                "title": "Basement",
+                "file": "basement.ogg",
+                "pitch": 1.0,
+                "duration": 26.301360544217687,
+                "lyrics": null
+            },
+            {
+                "id": "23",
+                "title": "Imminent Death",
+                "file": "tense.ogg",
+                "pitch": 1.0,
+                "duration": 20.0,
+                "lyrics": null
+            },
+            {
+                "id": "24",
+                "title": "Vs. Susie",
+                "file": "vs_susie.ogg",
+                "pitch": 1.0,
+                "duration": 81.08108843537416,
+                "lyrics": null
+            },
+            {
+                "id": "25",
+                "title": "Card Castle",
+                "file": "card_castle.ogg",
+                "pitch": 1.0,
+                "duration": 61.44,
+                "lyrics": null
+            },
+            {
+                "id": "26",
+                "title": "Roulxls Kaard",
+                "file": "ruruskaado.ogg",
+                "pitch": 1.0,
+                "duration": 19.2,
+                "lyrics": null
+            },
+            {
+                "id": "27",
+                "title": "April 2012",
+                "file": "april_2012.ogg",
+                "pitch": 1.0,
+                "duration": 20.557687074829932,
+                "lyrics": null
+            },
+            {
+                "id": "28",
+                "title": "Hip Shop",
+                "file": "hip_shop.ogg",
+                "pitch": 1.0,
+                "duration": 39.58764172335601,
+                "lyrics": null
+            },
+            {
+                "id": "29",
+                "title": "Gallery",
+                "file": "gallery.ogg",
+                "pitch": 1.0,
+                "duration": 12.8,
+                "lyrics": null
+            },
+            {
+                "id": "30",
+                "title": "Chaos King",
+                "file": "kingboss.ogg",
+                "pitch": 1.0,
+                "duration": 106.10664399092971,
+                "lyrics": null
+            },
+            {
+                "id": "31",
+                "title": "Darkness Falls",
+                "file": "AUDIO_DARKNESS.ogg",
+                "pitch": 1.05,
+                "duration": 69.76743764172336,
+                "lyrics": null
+            },
+            {
+                "id": "32",
+                "title": "The Circus",
+                "file": "prejoker.ogg",
+                "pitch": 1.0,
+                "duration": 51.42857142857143,
+                "lyrics": null
+            },
+            {
+                "id": "33",
+                "title": "THE WORLD REVOLVING",
+                "file": "joker.ogg",
+                "pitch": 1.0,
+                "duration": 101.05263038548753,
+                "lyrics": null
+            },
+            {
+                "id": "34",
+                "title": "Friendship",
+                "file": "friendship.ogg",
+                "pitch": 1.0,
+                "duration": 159.37501133786847,
+                "lyrics": null
+            },
+            {
+                "id": "35",
+                "title": "THE HOLY",
+                "file": "THE_HOLY.ogg",
+                "pitch": 1.0,
+                "duration": 48.0,
+                "lyrics": null
+            },
+            {
+                "id": "36",
+                "title": "Your Power",
+                "file": "../extras/snd_usefountain.ogg",
+                "pitch": 1.0,
+                "duration": 0.0,
+                "lyrics": null
+            },
+            {
+                "id": "37",
+                "title": "A Town Called Hometown",
+                "file": "town.ogg",
+                "pitch": 1.0,
+                "duration": 113.14285714285714,
+                "lyrics": null
+            },
+            {
+                "id": "38",
+                "title": "You Can Always Come Home",
+                "file": "home.ogg",
+                "pitch": 1.0,
+                "duration": 100.8,
+                "lyrics": null
+            },
+            {
+                "id": "39",
+                "title": "Don't Forget",
+                "file": "dontforget.ogg",
+                "pitch": 1.0,
+                "duration": 51.42410430839002,
+                "authors": [
+                    "Toby Fox",
+                    "Laura Shigihara"
+                ],
+                "lyrics": {
+                    "linhas": [
+                        "",
+                        "When the",
+                        "light is running low",
+                        "And the shadows start to grow",
+                        "And the places that you know",
+                        "Seem like fantasy",
+                        "There's a",
+                        "light inside your soul",
+                        "That's still shinning in the cold",
+                        "With the truth",
+                        "the promise in our hearts",
+                        "Don't forget",
+                        "I'm with you in the dark"
+                    ],
+                    "tempos": [
+                        2.0,
+                        1.6,
+                        2.4,
+                        3.2667,
+                        2.9333,
+                        5.3333,
+                        1.5667,
+                        2.4,
+                        3.0,
+                        2.1,
+                        7.8333,
+                        1.7667,
+                        7.1333
+                    ]
+                }
+            },
+            {
+                "id": "40",
+                "title": "Before the Story",
+                "file": "AUDIO_STORY.ogg",
+                "pitch": 1.0,
+                "duration": 88.61537414965986,
+                "lyrics": null
+            }
+        ]
+    },
+    "deltarune-chapter2": {
+        "id": "deltarune-chapter2",
+        "title": "DELTARUNE Chapter 2",
+        "artist": "Toby Fox",
+        "cover": "/static/images/deltarune-ch2-cover.jpg",
+        "tracks": [
+            {
+                "id": "1",
+                "title": "Faint Glow",
+                "file": "menu.ogg",
+                "pitch": 1.0,
+                "duration": 77.3154375,
+                "lyrics": null
+            },
+            {
+                "id": "2",
+                "title": "Girl Next Door",
+                "file": "noelle_school.ogg",
+                "pitch": 1.0,
+                "duration": 53.58139583333333,
+                "lyrics": null
+            },
+            {
+                "id": "3",
+                "title": "My Castle Town",
+                "file": "castletown.ogg",
+                "pitch": 1.0,
+                "duration": 126.13139583333333,
+                "lyrics": null
+            },
+            {
+                "id": "4",
+                "title": "Ohhhhohohoho!",
+                "file": "queen_intro.ogg",
+                "pitch": 1.0,
+                "duration": 9.138395833333334,
+                "lyrics": null
+            },
+            {
+                "id": "5",
+                "title": "Queen",
+                "file": "queen.ogg",
+                "pitch": 1.0,
+                "duration": 56.027,
+                "lyrics": null
+            },
+            {
+                "id": "6",
+                "title": "A CYBER'S WORLD?",
+                "file": "cyber.ogg",
+                "pitch": 1.0,
+                "duration": 164.1025625,
+                "lyrics": null
+            },
+            {
+                "id": "7",
+                "title": "A Simple Diversion",
+                "file": "boxing_game.ogg",
+                "pitch": 1.0,
+                "duration": 29.538458333333335,
+                "lyrics": null
+            },
+            {
+                "id": "8",
+                "title": "Almost To The Guys!",
+                "file": "cyber_battle_prelude.ogg",
+                "pitch": 1.0,
+                "duration": 16.615375,
+                "lyrics": null
+            },
+            {
+                "id": "9",
+                "title": "Cool Beat",
+                "file": "music_guys_intro.ogg",
+                "pitch": 1.0,
+                "duration": 8.727270833333334,
+                "lyrics": null
+            },
+            {
+                "id": "10",
+                "title": "When I Get Mad I Dance Like This",
+                "file": "music_guys.ogg",
+                "pitch": 1.0,
+                "duration": 5.333333333333333,
+                "lyrics": null
+            },
+            {
+                "id": "11",
+                "title": "Cyber Battle (Solo)",
+                "file": "../extras/cyber_battle_backing_solo.ogg",
+                "pitch": 1.0,
+                "duration": 0.0,
+                "lyrics": null
+            },
+            {
+                "id": "12",
+                "title": "When I Get Happy I Dance Like This",
+                "file": "cyber_battle_end.ogg",
+                "pitch": 1.0,
+                "duration": 19.2,
+                "lyrics": null
+            },
+            {
+                "id": "13",
+                "title": "Sound Studio",
+                "file": "cyber_shop.ogg",
+                "pitch": 1.0,
+                "duration": 66.78260416666667,
+                "lyrics": null
+            },
+            {
+                "id": "14",
+                "title": "Berdly",
+                "file": "berdly_theme.ogg",
+                "pitch": 1.0,
+                "duration": 44.112,
+                "lyrics": null
+            },
+            {
+                "id": "15",
+                "title": "Smart Race",
+                "file": "berdly_chase.ogg",
+                "pitch": 1.0,
+                "duration": 64.0,
+                "lyrics": null
+            },
+            {
+                "id": "16",
+                "title": "Faint Courage (Game Over)",
+                "file": "AUDIO_DEFEAT.ogg",
+                "pitch": 1.0,
+                "duration": 50.347833333333334,
+                "lyrics": null
+            },
+            {
+                "id": "17",
+                "title": "WELCOME TO THE CITY",
+                "file": "cybercity.ogg",
+                "pitch": 0.97,
+                "duration": 110.5263125,
+                "lyrics": null
+            },
+            {
+                "id": "18",
+                "title": "Mini Sudio",
+                "file": "cyberhouse.ogg",
+                "pitch": 1.0,
+                "duration": 49.655166666666666,
+                "lyrics": null
+            },
+            {
+                "id": "19",
+                "title": "Holiday Studio",
+                "file": "cybershop_christmas.ogg",
+                "pitch": 1.0,
+                "duration": 66.78260416666667,
+                "lyrics": null
+            },
+            {
+                "id": "20",
+                "title": "Cool Mixtape",
+                "file": "queen_car_radio.ogg",
+                "pitch": 1.0,
+                "duration": 26.666666666666668,
+                "lyrics": null
+            },
+            {
+                "id": "21",
+                "title": "HEY EVERY\t!",
+                "files": {
+                    "files": [
+                        "spamton_meeting_intro.ogg",
+                        "spamton_meeting_intro.ogg",
+                        "spamton_meeting_intro.ogg",
+                        "spamton_meeting_intro.ogg",
+                        "spamton_meeting_intro.ogg",
+                        "spamton_meeting_intro.ogg"
+                    ],
+                    "delays": []
+                },
+                "pitch": 1.0,
+                "duration": 14.18725,
+                "lyrics": null
+            },
+            {
+                "id": "22",
+                "title": "Spamton",
+                "file": "spamton_meeting.ogg",
+                "pitch": 1.0,
+                "duration": 40.4210625,
+                "lyrics": {
+                    "linhas": [
+                        "",
+                        "Now's your chance to be a big shot",
+                        "Be a big, be a big, bi-ig shot",
+                        "Now's your chance to be a big shot",
+                        "Be a big, be a big, bi-i-i-i-i-i-ig shot",
+                        "Now's your chance to be a big shot",
+                        "Be a big, be a big, bi-ig shot",
+                        "Now's your chance to be a big shot",
+                        "Be a big, be a big, bi-i-i-i-i-i-ig shot"
+                    ],
+                    "tempos": [
+                        19.5,
+                        3,
+                        2.5,
+                        2.5,
+                        2.5,
+                        3,
+                        2.5,
+                        2.5,
+                        2.5
+                    ]
+                }
+            },
+            {
+                "id": "23",
+                "title": "NOW'S YOUR CHANCE TO BE A",
+                "file": "spamton_battle.ogg",
+                "pitch": 1.0,
+                "duration": 65.45454166666667,
+                "lyrics": null
+            },
+            {
+                "id": "24",
+                "title": "Elegant Entrance",
+                "file": "mansion_entrance.ogg",
+                "pitch": 1.0,
+                "duration": 76.8,
+                "lyrics": null
+            },
+            {
+                "id": "25",
+                "title": "Bluebird of Misfortune",
+                "file": "berdly_flashback.ogg",
+                "pitch": 1.0,
+                "duration": 48.0,
+                "lyrics": null
+            },
+            {
+                "id": "26",
+                "title": "Pandora Palace",
+                "file": "mansion.ogg",
+                "pitch": 1.0,
+                "duration": 97.2,
+                "lyrics": null
+            },
+            {
+                "id": "27",
+                "title": "KEYGEN",
+                "file": "KEYGEN.ogg",
+                "pitch": 1.0,
+                "duration": 7.619041666666667,
+                "lyrics": null
+            },
+            {
+                "id": "28",
+                "title": "Acid Tunnel of Love",
+                "file": "acid_tunnel.ogg",
+                "pitch": 1.0,
+                "duration": 88.5576875,
+                "lyrics": null
+            },
+            {
+                "id": "29",
+                "title": "It's Pronounced \"Rules\"",
+                "file": "rouxls_battle.ogg",
+                "pitch": 1.0,
+                "duration": 58.758625,
+                "lyrics": null
+            },
+            {
+                "id": "30",
+                "title": "Lost Girl",
+                "file": "noelle_normal.ogg",
+                "pitch": 1.0,
+                "duration": 76.85224489795918,
+                "lyrics": null
+            },
+            {
+                "id": "31",
+                "title": "Ferris Wheel",
+                "file": "noelle_ferriswheel.ogg",
+                "pitch": 1.0,
+                "duration": 76.85224489795918,
+                "lyrics": null
+            },
+            {
+                "id": "32",
+                "title": "Attack of the Killer Queen",
+                "file": "queen_boss.ogg",
+                "pitch": 1.0,
+                "duration": 120.0,
+                "lyrics": null
+            },
+            {
+                "id": "33",
+                "title": "Giga Size",
+                "file": "giant_queen_appears.ogg",
+                "pitch": 1.0,
+                "duration": 105.63918367346939,
+                "lyrics": null
+            },
+            {
+                "id": "34",
+                "title": "Powers Combined",
+                "file": "gigaqueen_pre.ogg",
+                "pitch": 1.0,
+                "duration": 16.457145833333332,
+                "lyrics": null
+            },
+            {
+                "id": "35",
+                "title": "Knock You Down!!",
+                "file": "boxing_boss.ogg",
+                "pitch": 1.0,
+                "duration": 142.76922916666666,
+                "lyrics": null
+            },
+            {
+                "id": "36",
+                "title": "The Dark Truth",
+                "file": "the_dark_truth.ogg",
+                "pitch": 1.0,
+                "duration": 67.2,
+                "lyrics": null
+            },
+            {
+                "id": "37",
+                "title": "Digital Roots",
+                "file": "spamton_basement.ogg",
+                "pitch": 1.0,
+                "duration": 16.909333333333333,
+                "lyrics": null
+            },
+            {
+                "id": "38",
+                "title": "Deal Gone Wrong",
+                "file": "spamton_neo_meeting.ogg",
+                "pitch": 1.0,
+                "duration": 29.6201875,
+                "lyrics": null
+            },
+            {
+                "id": "39",
+                "title": "BIG SHOT",
+                "file": "spamton_neo_mix_ex_wip.ogg",
+                "pitch": 1.0,
+                "duration": 140.5714375,
+                "lyrics": null
+            },
+            {
+                "id": "40",
+                "title": "A Real Boy!",
+                "file": "spamton_happy.ogg",
+                "pitch": 1.0,
+                "duration": 7.836729166666666,
+                "lyrics": null
+            },
+            {
+                "id": "41",
+                "title": "Dialtone",
+                "file": "spamton_neo_after.ogg",
+                "pitch": 1.0,
+                "duration": 44.3076875,
+                "lyrics": null
+            },
+            {
+                "id": "42",
+                "title": "sans.",
+                "file": "muscle.ogg",
+                "pitch": 1.0,
+                "duration": 22.5,
+                "lyrics": null
+            },
+            {
+                "id": "43",
+                "title": "Chill Jailbreak Alarm to Study and Relax to",
+                "file": "napsta_alarm.ogg",
+                "pitch": 1.0,
+                "duration": 24.0,
+                "lyrics": null
+            },
+            {
+                "id": "44",
+                "title": "You Can Always Come Home",
+                "file": "home.ogg",
+                "pitch": 1.0,
+                "duration": 100.8,
+                "lyrics": null
+            },
+            {
+                "id": "45",
+                "title": "Until Next Time",
+                "file": "ch2_credits.ogg",
+                "pitch": 1.0,
+                "duration": 61.127625,
+                "authors": [
+                    "Toby Fox",
+                    "Laura Shigihara"
+                ],
+                "lyrics": {
+                    "linhas": [
+                        "",
+                        "When the light is running low",
+                        "",
+                        "When the light is running low",
+                        "I'm with you in the dark",
+                        "I'm with you in the dark"
+                    ],
+                    "tempos": [
+                        28,
+                        5,
+                        5,
+                        6,
+                        7
+                    ]
+                }
+            },
+            {
+                "id": "46",
+                "title": "Before the Story",
+                "file": "AUDIO_STORY.ogg",
+                "pitch": 1.0,
+                "duration": 88.61537414965986,
+                "lyrics": null
+            },
+            {
+                "id": "47",
+                "title": "Berdly (Rejected Concept)",
+                "file": "../extras/Berdly (Rejected Concept).ogg",
+                "pitch": 1.0,
+                "duration": 0.0,
+                "lyrics": null
+            }
+        ]
+    },
+    "deltarune-chapter3": {
+        "id": "deltarune-chapter3",
+        "title": "DELTARUNE Chapter 3",
+        "artist": "Toby Fox",
+        "cover": "/static/images/deltarune-ch3-cover.jpg",
+        "tracks": [
+            {
+                "id": "1",
+                "title": "Flashback (Excerpt)",
+                "file": "flashback_excerpt.ogg",
+                "pitch": 1.0,
+                "duration": 32.0,
+                "lyrics": null
+            },
+            {
+                "id": "2",
+                "title": "Feature Presentation",
+                "file": "../extras/tennaIntroF1_compressed_28.ogg",
+                "pitch": 1.0,
+                "duration": 41.0,
+                "lyrics": null
+            },
+            {
+                "id": "3",
+                "title": "And Now For Today's Sponsors...!",
+                "file": "baci_perugina.ogg",
+                "pitch": 1.0,
+                "duration": 31.448270833333332,
+                "lyrics": null
+            },
+            {
+                "id": "4",
+                "title": "MIKE, the BOARD, please!",
+                "file": "ch3_tvtime.ogg",
+                "pitch": 1.0,
+                "duration": 32.842104166666665,
+                "lyrics": null
+            },
+            {
+                "id": "5",
+                "title": "Sandy Board",
+                "file": "ch3_board1.ogg",
+                "pitch": 1.0,
+                "duration": 78.408,
+                "lyrics": null
+            },
+            {
+                "id": "6",
+                "title": "Adventure Board",
+                "file": "board_zelda.ogg",
+                "pitch": 1.0,
+                "duration": 59.294125,
+                "lyrics": null
+            },
+            {
+                "id": "7",
+                "title": "Query?",
+                "file": "../extras/Query.ogg",
+                "pitch": 1.0,
+                "duration": 24.0,
+                "lyrics": null
+            },
+            {
+                "id": "8",
+                "title": "Quiz!",
+                "file": "TV_GAME.ogg",
+                "pitch": 1.0,
+                "duration": 76.8,
+                "lyrics": null
+            },
+            {
+                "id": "9",
+                "title": "Dig! Dig! To The Center of the Earth!",
+                "file": "board_lancer_dig.ogg",
+                "pitch": 1.0,
+                "duration": 7.052229166666667,
+                "lyrics": null
+            },
+            {
+                "id": "10",
+                "title": "Pushing Buddies",
+                "file": "tvromance.ogg",
+                "pitch": 1.0,
+                "duration": 19.7938125,
+                "lyrics": null
+            },
+            {
+                "id": "11",
+                "title": "Ruder Buster",
+                "file": "rudebuster_boss.ogg",
+                "pitch": 1.0,
+                "duration": 103.384625,
+                "lyrics": null
+            },
+            {
+                "id": "12",
+                "title": "Physical Challange",
+                "file": "minigame_kart.ogg",
+                "pitch": 1.0,
+                "duration": 103.78379166666667,
+                "lyrics": null
+            },
+            {
+                "id": "13",
+                "title": "Board Clear!",
+                "file": "nes_intro_extended_part2.ogg",
+                "pitch": 1.0,
+                "duration": 27.826083333333333,
+                "lyrics": null
+            },
+            {
+                "id": "14",
+                "title": "Welcome to the Green Room",
+                "file": "greenroom_detune.ogg",
+                "pitch": 1.0,
+                "duration": 45.20589583333334,
+                "lyrics": null
+            },
+            {
+                "id": "15",
+                "title": "Vapor Buster",
+                "file": "battle_vapor.ogg",
+                "pitch": 1.0,
+                "duration": 115.25,
+                "lyrics": null
+            },
+            {
+                "id": "16",
+                "title": "Paradise, Paradise",
+                "file": "tenna_island.ogg",
+                "pitch": 1.0,
+                "duration": 150.85714583333333,
+                "lyrics": null
+            },
+            {
+                "id": "17",
+                "title": "Raft Ride",
+                "file": "ch3_board2.ogg",
+                "pitch": 1.0,
+                "duration": 69.39758333333333,
+                "lyrics": null
+            },
+            {
+                "id": "18",
+                "title": "SOUTH OF THE BOARDER!!",
+                "file": "ch3_south_of_the_border.ogg",
+                "pitch": 1.0,
+                "duration": 6.0,
+                "lyrics": null
+            },
+            {
+                "id": "19",
+                "title": "Sound Check",
+                "file": "ch3-practice_song_combined.ogg",
+                "pitch": 1.0,
+                "duration": 28.8,
+                "lyrics": null
+            },
+            {
+                "id": "20",
+                "title": "Raise Up Your Bat",
+                "file": "ch3_karaoke_full.ogg",
+                "pitch": 1.0,
+                "duration": 174.260875,
+                "lyrics": {
+                    "linhas": [
+                        "",
+                        "When the demon heart is crying \n(When the happy heart is smiling)",
+                        "And the blood is gushing bright \n(And the Sun is shining bright)",
+                        "Raise up your bat for the burning fight \n(Raise up your hat for a funny sight)",
+                        "When your hope is slowly dying \n(When your cat is slowly sighing)",
+                        "And your future's lost its rights \n(And its fur is looking white)",
+                        "Raise up your bat and face the fright \n(Make sure to check your mat for mites)",
+                        "Let's knock 'em dead into the night \n(Let's get your friends and fly a kite)",
+                        "",
+                        "Come follow me into the dark",
+                        "With your heart as the ark",
+                        "Which shall shine you the way",
+                        "Because I'm with you in the dark",
+                        "With your heart as my mark",
+                        "Which shall guide you the way, through the waves",
+                        "Come follow me into the dark",
+                        "With your heart as the ark",
+                        "Which shall shine you the way",
+                        "Because I'm with you in the dark",
+                        "With your heart as my mark",
+                        "Which shall guide you the way, through the waves",
+                        "When the demon heart is crying \n(When the sleepy duck is crying)",
+                        "And the blood is gushing bright \n(And the mom is kiss goodnight)",
+                        "Raise up your bat for the burning fight \n(Raise up your bat for baseball delight)",
+                        "When your hope is slowly dying \n(When your pancake's slowly frying)",
+                        "And your future's lost its rights \n(And your future's really bright)",
+                        "Raise up your bat and face the fright \n(Bring extra smores to the campsite)",
+                        "Let's knock 'em dead into the night \n(I bet my friends still want a bite)"
+                    ],
+                    "tempos": [
+                        16,
+                        2,
+                        3,
+                        3,
+                        2,
+                        3,
+                        3,
+                        4,
+                        19
+                    ]
+                }
+            },
+            {
+                "id": "21",
+                "title": "KING OF ROLYPOLY",
+                "file": "trank.ogg",
+                "pitch": 1.0,
+                "duration": 24.2016875,
+                "lyrics": null
+            },
+            {
+                "id": "22",
+                "title": "Glowing Snow",
+                "file": "tv_results_screen.ogg",
+                "pitch": 0.4,
+                "duration": 53.66795833333333,
+                "lyrics": null
+            },
+            {
+                "id": "23",
+                "title": "Big City Board",
+                "file": "ch3_board3.ogg",
+                "pitch": 1.0,
+                "duration": 82.758625,
+                "lyrics": null
+            },
+            {
+                "id": "24",
+                "title": "Doom Board",
+                "file": "board_4.ogg",
+                "pitch": 1.0,
+                "duration": 52.093020833333334,
+                "lyrics": null
+            },
+            {
+                "id": "25",
+                "title": "Metaphysycall Challange",
+                "file": "board_4_challenge.ogg",
+                "pitch": 1.0,
+                "duration": 52.093020833333334,
+                "lyrics": null
+            },
+            {
+                "id": "26",
+                "title": "TV WORLD",
+                "file": "tv_world.ogg",
+                "pitch": 1.0,
+                "duration": 129.10345833333332,
+                "lyrics": null
+            },
+            {
+                "id": "27",
+                "title": "It's TV Time!",
+                "file": "tenna_battle.ogg",
+                "pitch": 1.0,
+                "duration": 165.40539583333333,
+                "lyrics": null
+            },
+            {
+                "id": "28",
+                "title": "Hall of Fame",
+                "file": "tv_hall_of_fame.ogg",
+                "pitch": 1.0,
+                "duration": 27.28125,
+                "lyrics": null
+            },
+            {
+                "id": "29",
+                "title": "Breath",
+                "file": "knight_appears.ogg",
+                "pitch": 1.0,
+                "duration": 13.0169375,
+                "lyrics": null
+            },
+            {
+                "id": "30",
+                "title": "Black Knife",
+                "file": "knight.ogg",
+                "pitch": 1.0,
+                "duration": 117.17331065759637,
+                "lyrics": null
+            },
+            {
+                "id": "31",
+                "title": "Crickets",
+                "file": "night_ambience.ogg",
+                "pitch": 1.0,
+                "duration": 35.07691666666667,
+                "lyrics": null
+            },
+            {
+                "id": "32",
+                "title": "Dump",
+                "file": "tv_changingroom.ogg",
+                "pitch": 1.0,
+                "duration": 40.8510625,
+                "lyrics": null
+            },
+            {
+                "id": "33",
+                "title": "SWORD",
+                "file": "board_sword_music.ogg",
+                "pitch": 1.0,
+                "duration": 132.41379166666667,
+                "lyrics": null
+            },
+            {
+                "id": "34",
+                "title": "NORTHERNLIGHT",
+                "file": "northernlight.ogg",
+                "pitch": 1.0,
+                "duration": 11.4285625,
+                "lyrics": null
+            },
+            {
+                "id": "35",
+                "title": "GLACIER",
+                "file": "glacier.ogg",
+                "pitch": 1.0,
+                "duration": 67.2,
+                "lyrics": null
+            },
+            {
+                "id": "36",
+                "title": "BIT ROOTS",
+                "file": "root_8bit.ogg",
+                "pitch": 1.0,
+                "duration": 77.03704166666667,
+                "lyrics": null
+            },
+            {
+                "id": "37",
+                "title": "ERAM",
+                "file": "nightmare_nes.ogg",
+                "pitch": 1.0,
+                "duration": 4.507041666666667,
+                "lyrics": null
+            },
+            {
+                "id": "38",
+                "title": "BURNING EYES",
+                "file": "nightmare_boss_heavy.ogg",
+                "pitch": 1.0,
+                "duration": 65.08475,
+                "lyrics": null
+            }
+        ]
+    },
+    "deltarune-chapter4": {
+        "id": "deltarune-chapter4",
+        "title": "DELTARUNE Chapter 4",
+        "artist": "Toby Fox",
+        "cover": "/static/images/deltarune-ch4-cover.jpg",
+        "tracks": [
+            {
+                "id": "1",
+                "title": "Old wooden rafters",
+                "file": "church_lw.ogg",
+                "pitch": 1.0,
+                "duration": 98.9690625,
+                "lyrics": null
+            },
+            {
+                "id": "2",
+                "title": "Hymn",
+                "file": "church_hymn.ogg",
+                "pitch": 1.0,
+                "duration": 33.777770833333335,
+                "lyrics": null
+            },
+            {
+                "id": "3",
+                "title": "Another day in hometown",
+                "file": "town_day.ogg",
+                "pitch": 1.0,
+                "duration": 139.047625,
+                "lyrics": null
+            },
+            {
+                "id": "4",
+                "title": "Friends",
+                "file": "susie_diner.ogg",
+                "pitch": 1.0,
+                "duration": 81.677875,
+                "lyrics": null
+            },
+            {
+                "id": "5",
+                "title": "Castle Funk",
+                "file": "castle_funk_long.ogg",
+                "pitch": 1.0,
+                "duration": 176.64,
+                "lyrics": null
+            },
+            {
+                "id": "6",
+                "title": "Knock You Down!! (Rhythm Ver.)",
+                "file": "rhythm_knockdown_combined.ogg",
+                "pitch": 1.0,
+                "duration": 137.84614583333334,
+                "lyrics": null
+            },
+            {
+                "id": "7",
+                "title": "Gingerbread House",
+                "file": "noelle_house_wip.ogg",
+                "pitch": 1.0,
+                "duration": 87.7714375,
+                "lyrics": null
+            },
+            {
+                "id": "8",
+                "title": "The distance between two",
+                "file": "noelle_distant.ogg",
+                "pitch": 1.0,
+                "duration": 42.666666666666664,
+                "lyrics": null
+            },
+            {
+                "id": "9",
+                "title": "C",
+                "file": "carol_appeared.ogg",
+                "pitch": 1.0,
+                "duration": 41.6,
+                "lyrics": null
+            },
+            {
+                "id": "10",
+                "title": "ATRIUM",
+                "file": "darkchurch_intro.ogg",
+                "pitch": 1.0,
+                "duration": 57.6,
+                "lyrics": null
+            },
+            {
+                "id": "11",
+                "title": "Dark Sanctuary",
+                "file": "church_wip.ogg",
+                "pitch": 1.0,
+                "duration": 106.10527083333334,
+                "lyrics": null
+            },
+            {
+                "id": "12",
+                "title": "From Now On (Battle 2)",
+                "file": "ch4_battle.ogg",
+                "pitch": 1.0,
+                "duration": 108.67925,
+                "lyrics": null
+            },
+            {
+                "id": "13",
+                "title": "Gyaa Ha ha!",
+                "file": "gerson_theme_intro.ogg",
+                "pitch": 1.0,
+                "duration": 73.82229166666667,
+                "lyrics": null
+            },
+            {
+                "id": "14",
+                "title": "Fireplace",
+                "file": "church_dark_study.ogg",
+                "pitch": 1.0,
+                "duration": 157.5,
+                "lyrics": null
+            },
+            {
+                "id": "15",
+                "title": "A DARK ZONE",
+                "file": "pumpkin_boss.ogg",
+                "pitch": 1.0,
+                "duration": 138.0,
+                "lyrics": null
+            },
+            {
+                "id": "16",
+                "title": "Mysterious Ringing",
+                "file": "bell_ambience.ogg",
+                "pitch": 1.0,
+                "duration": 22.153854166666665,
+                "lyrics": null
+            },
+            {
+                "id": "17",
+                "title": "Ever Higher",
+                "file": "climb.ogg",
+                "pitch": 1.0,
+                "duration": 87.27272916666666,
+                "lyrics": null
+            },
+            {
+                "id": "18",
+                "title": "Wise words",
+                "file": "gerson_defeated.ogg",
+                "pitch": 1.0,
+                "duration": 42.666666666666664,
+                "lyrics": null
+            },
+            {
+                "id": "19",
+                "title": "Piano that may not be played that well",
+                "file": "kris_piano_lower.ogg",
+                "pitch": 1.0,
+                "duration": 42.25,
+                "lyrics": null
+            },
+            {
+                "id": "20",
+                "title": "Hammer of Justice",
+                "file": "ch4_extra_boss.ogg",
+                "pitch": 1.0,
+                "duration": 133.34127083333334,
+                "lyrics": null
+            },
+            {
+                "id": "21",
+                "title": "12am",
+                "file": "church_lw_night.ogg",
+                "pitch": 1.0,
+                "duration": 16.41025,
+                "lyrics": null
+            },
+            {
+                "id": "22",
+                "title": "The Second Sanctuary",
+                "file": "second_church.ogg",
+                "pitch": 1.0,
+                "duration": 166.58822916666668,
+                "lyrics": null
+            },
+            {
+                "id": "23",
+                "title": "Ripple",
+                "file": "",
+                "pitch": 1.0,
+                "duration": 0.0,
+                "lyrics": null
+            },
+            {
+                "id": "24",
+                "title": "13am",
+                "file": "tin_night.ogg",
+                "pitch": 1.0,
+                "duration": 86.28364583333334,
+                "lyrics": null
+            },
+            {
+                "id": "25",
+                "title": "The Third Sanctuary",
+                "file": "church_zone3.ogg",
+                "pitch": 1.0,
+                "duration": 247.411768707483,
+                "lyrics": null
+            },
+            {
+                "id": "26",
+                "title": "Dark Place",
+                "file": "dark_place.ogg",
+                "pitch": 1.0,
+                "duration": 58.947375,
+                "lyrics": null
+            },
+            {
+                "id": "27",
+                "title": "Heavy Footsteps",
+                "file": "titan_pre.ogg",
+                "pitch": 1.0,
+                "duration": 38.4,
+                "lyrics": null
+            },
+            {
+                "id": "28",
+                "title": "Crumbling Tower",
+                "file": "titan_tower.ogg",
+                "pitch": 1.0,
+                "duration": 166.95652083333334,
+                "lyrics": null
+            },
+            {
+                "id": "29",
+                "title": "SPAWN",
+                "file": "titan_spawn.ogg",
+                "pitch": 1.0,
+                "duration": 71.11110416666666,
+                "lyrics": null
+            },
+            {
+                "id": "30",
+                "title": "GUARDIAN",
+                "file": "titan_battle.ogg",
+                "pitch": 1.0,
+                "duration": 226.28570833333333,
+                "lyrics": null
+            },
+            {
+                "id": "31",
+                "title": "Need a Hand!?",
+                "file": "oldman_helps_out.ogg",
+                "pitch": 1.0,
+                "duration": 46.545458333333336,
+                "lyrics": null
+            },
+            {
+                "id": "32",
+                "title": "The place where it rained",
+                "file": "rain.ogg",
+                "pitch": 1.0,
+                "duration": 172.734375,
+                "lyrics": null
+            },
+            {
+                "id": "33",
+                "title": "The Ol' Jitterbug",
+                "file": "jitterbug.ogg",
+                "pitch": 1.0,
+                "duration": 22.153854166666665,
+                "lyrics": null
+            },
+            {
+                "id": "34",
+                "title": "Neverending Night",
+                "file": "ch4_credits.ogg",
+                "pitch": 1.0,
+                "duration": 98.5263125,
+                "lyrics": null
+            },
+            {
+                "id": "35",
+                "title": "The LEGEND...?",
+                "file": "legend_altered.ogg",
+                "pitch": 1.0,
+                "duration": 26.1818125,
+                "lyrics": null
+            },
+            {
+                "id": "36",
+                "title": "With Hope Crossed On Our Hearts",
+                "file": "quiet_church.ogg",
+                "pitch": 1.0,
+                "duration": 96.0,
+                "lyrics": null
+            },
+            {
+                "id": "37",
+                "title": "Volume Adjustment",
+                "file": "mike_zone.ogg",
+                "pitch": 1.0,
+                "duration": 36.365375,
+                "lyrics": null
+            },
+            {
+                "id": "38",
+                "title": "Catswing",
+                "file": "mike.ogg",
+                "pitch": 1.0,
+                "duration": 118.15385416666666,
+                "lyrics": null
+            },
+            {
+                "id": "39",
+                "title": "Air Waves",
+                "file": "spamton_dance.ogg",
+                "pitch": 1.0,
+                "duration": 118.28571428571429,
+                "lyrics": null
+            },
+            {
+                "id": "40",
+                "title": "Concert for you",
+                "file": "../extras/snd_pianonoise.ogg",
+                "pitch": 1.0,
+                "duration": 0.0,
+                "lyrics": null
+            }
+        ]
+    }
+}
