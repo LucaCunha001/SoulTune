@@ -1,7 +1,4 @@
-
-console.log("PRELOAD OK");
-
-const { contextBridge, ipcRenderer } = require("electron");
+const { contextBridge, ipcRenderer, app } = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
     updateMusic: (name, album, start, end) =>
@@ -43,5 +40,5 @@ contextBridge.exposeInMainWorld("updater", {
 
 contextBridge.exposeInMainWorld("env", {
     isDev,
-    version: process.env.npm_package_version
+    version: app.getVersion()
 });
