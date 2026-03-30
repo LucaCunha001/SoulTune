@@ -19,6 +19,7 @@ class SoulTune {
         this.currentTrack = null;
         this.currentPlaylist = null;
         this.isPlaying = false;
+        this.loopMode = 'none';
 
         this.playlistsList = [];
         this.searchTimeout = null;
@@ -61,7 +62,10 @@ class SoulTune {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     new SoulTune();
     lucide.createIcons();
+    const v = await window.env.getVersion();
+    const version = document.getElementById("version");
+    version.innerText = "v" + (v || "Dev");
 });

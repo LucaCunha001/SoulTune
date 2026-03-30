@@ -5,3 +5,7 @@ dist/
 mus/deltarune/
 mus/undertale/
 .gitignore
+.env
+package.json
+package-lock.json
+*.txt

@@ -48,13 +48,27 @@ export class UI {
 
         panel.dataset.mode = '';
         if (!document.querySelector("#lyrics-content.active")) {
-            console.log("Não tem letra");
             panel.classList.remove('active');
             document.querySelector(".app").classList.remove("right-panel-open");
         }
     }
 
     setupEventListeners() {
+        document.addEventListener('keydown', (e) => {
+            switch (e.key) {
+                case " ":
+                case "k":
+                case "K":
+                    e.preventDefault();
+                    this.app.player.togglePlayPause();
+                    break;
+                
+                case "m":
+                case "M":
+                    break;
+            }
+        });
+
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -82,6 +96,11 @@ export class UI {
             this.app.player.previousTrack();
         });
 
+        document.getElementById('loop-btn').addEventListener('click', () => {
+            this.app.player.toggleLoopMode();
+            this.updateLoopUI();
+        });
+
         document.getElementById('progress-bar').addEventListener('input', (e) => {
             this.app.player.seekTo(e.target.value);
         });
@@ -93,6 +112,38 @@ export class UI {
         document.querySelector('.create-playlist-btn').addEventListener('click', () => {
             this.app.playlists.showCreatePlaylistModal();
         });
+    }
+
+    updateLoopUI() {
+        const btn = document.getElementById('loop-btn');
+
+        btn.classList.remove('active');
+
+        if (this.app.loopMode !== 'none') {
+            btn.classList.add('active');
+        }
+        let icon = "";
+
+        switch (this.app.loopMode) {
+            case 'track':
+                icon = 'repeat-1';
+                btn.classList.add('active');
+                break;
+
+            case 'queue':
+                icon = 'repeat';
+                btn.classList.add('active');
+                break;
+
+            case 'none':
+            default:
+                icon = 'repeat';
+                break;
+        }
+
+        btn.innerHTML = `<i data-lucide="${icon}"></i>`;
+
+        lucide.createIcons();
     }
 
     setupModalListeners() {
@@ -141,7 +192,6 @@ export class UI {
                 this.app.albums.loadAlbums();
                 break;
             case 'playlists':
-                console.log(this.app.playlists);
                 this.app.playlists.showPlaylists();
                 break;
             case 'unregistered':

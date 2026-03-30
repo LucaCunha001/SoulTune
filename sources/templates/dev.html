@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Dev - Áudio</title>
+
+    <link rel="stylesheet" href="/static/css/dev.css">
+
+</head>
+
+<body>
+
+    <h1>Painel Dev</h1>
+
+    <div class="app">
+
+        <div class="panel">
+            <h2>Fonte</h2>
+
+            <label>Álbum</label>
+            <select id="album-select"></select>
+
+            <label>Música</label>
+            <select id="track-select"></select>
+
+            <button onclick="loadFromAPI()">Carregar</button>
+
+            <h3>Arquivos</h3>
+            <div id="files"></div>
+        </div>
+
+        <div class="panel center">
+            <h2>Player</h2>
+
+            <div id="time">0.00</div>
+
+            <div class="controls">
+                <button onclick="play()">▶</button>
+                <button onclick="pause()">⏸</button>
+                <button onclick="reset()">⏹</button>
+                <button onclick="addLyric()">+ Marca</button>
+            </div>
+
+            <div class="seek">
+                <button onclick="seek(-1)">-1s</button>
+                <button onclick="seek(1)">+1s</button>
+                <button onclick="seek(-0.1)">-0.1</button>
+                <button onclick="seek(0.1)">+0.1</button>
+            </div>
+
+            <div id="current-lyric"></div>
+
+            <div class="json">
+                <button onclick="exportJSON()">Exportar</button>
+                <button onclick="applyJSON()">Aplicar</button>
+
+                <textarea id="json-editor"></textarea>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Letras</h2>
+            <button onclick="addLyricManual()">Adicionar</button>
+            <div id="markers"></div>
+        </div>
+
+    </div>
+
+    <script src="../static/js/dev.js"></script>
+</body>
+
+</html>

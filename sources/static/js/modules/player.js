@@ -1,25 +1,40 @@
 export class Player {
     constructor(app) {
         this.app = app;
+        this.durationCache = new Map(); // Cache para durações em memória
+    }
+
+    playingTrack(trackTitle) {
+        document.querySelectorAll(".track-item").forEach((element) => {
+            element.classList.remove("playing");
+            const title = element.querySelector(".track-title");
+            if (title.innerText == trackTitle) element.classList.add("playing");
+        });
+    }
+
+    async updateRPC() {
+        const now = Math.floor(Date.now() / 1000);
+        const { globalTime, total } = await this.getCurrentProgress();
+        if (window.api) {
+
+            const startTimestamp = now - Math.floor(globalTime);
+            const endTimestamp = startTimestamp + Math.floor(total);
+
+            window.api.updateMusic(
+                this.app.currentTrack,
+                startTimestamp,
+                endTimestamp
+            );
+        }
     }
 
     updateMusic(track, album) {
-        const now = Math.floor(Date.now() / 1000);
-
-        if (window.api) {
-            window.api.updateMusic(
-                track.title,
-                album,
-                now,
-                now + Math.floor(track.duration)
-            );
-        }
-
         if ('mediaSession' in navigator) {
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: track.title,
                 artist: album?.artist || '',
-                artwork: [{ src: album?.cover || 'static/images/icon.ico', sizes: '512x512', type: 'image/jpg' }]
+                artwork: [{ src: album?.cover || 'static/images/icon.ico', sizes: '512x512', type: 'image/jpg' }],
+                album: album?.title
             });
 
             navigator.mediaSession.playbackState = this.app.isPlaying ? "playing" : "paused";
@@ -41,75 +56,54 @@ export class Player {
     setupAudioEvents(audio) {
         if (!audio) return;
 
-        audio.onended = null;
-        audio.ontimeupdate = null;
-        audio.onloadedmetadata = null;
-
         audio.onloadedmetadata = () => {
-            if (this.app.currentTrack && this.app.currentTrack.duration === 0) {
-                this.app.currentTrack.duration = audio.duration;
-            }
+            const segment = this.app.timeline[this.app.currentAudioIndex];
 
-            this.app.audioQueue[this.app.currentAudioIndex].duration = audio.duration;
+            if (segment) {
+                segment.end = segment.start + audio.duration;
 
-            if (this.app.delayTimeout) {
-                clearTimeout(this.app.delayTimeout);
-                this.app.delayTimeout = null;
-            }
-
-            if (this.app.audioQueue.length > 1 && this.app.currentAudioIndex + 1 < this.app.audioQueue.length) {
-                const nextDelay = this.app.audioQueue[this.app.currentAudioIndex + 1].delay || 0;
-                const startTime = (audio.duration + nextDelay) * 1000;
-
-                const nextFile = this.app.audioQueue[this.app.currentAudioIndex + 1];
-                const nextFileName = nextFile?.fileName || nextFile?.src?.split('/').pop()?.split('?')[0] || 'desconhecido';
-
-                if (startTime >= 0) {
-                    console.log(`[DEBUG] Agendando próximo arquivo "${nextFileName}" em ${startTime.toFixed(0)}ms (duração: ${audio.duration.toFixed(2)}s, delay: ${nextDelay}s)`);
-                    this.app.delayTimeout = setTimeout(() => {
-                        this.app.currentAudioIndex++;
-                        this.playNextInQueue();
-                    }, startTime);
-                } else {
-                    console.warn(`[WARN] startTime negativo (${startTime}ms) para transição do arquivo "${this.app.audioQueue[this.app.currentAudioIndex].fileName || this.app.audioQueue[this.app.currentAudioIndex].src}" para "${nextFileName}". Iniciando imediatamente.`);
-                    this.app.currentAudioIndex++;
-                    this.playNextInQueue();
+                const next = this.app.timeline[this.app.currentAudioIndex + 1];
+                if (next) {
+                    next.start = segment.end + segment.delay;
                 }
+            }
+
+            if (this.app.currentTrack.duration === 0) {
+                const last = this.app.timeline[this.app.timeline.length - 1];
+                if (last?.end) this.app.currentTrack.duration = last.end;
+            }
+        };
+
+        audio.ontimeupdate = () => {
+            this.updateProgress();
+
+            const i = this.app.currentAudioIndex;
+            const segment = this.app.timeline[i];
+            const next = this.app.timeline[i + 1];
+
+            if (!segment || segment.end === null) return;
+
+            const globalTime = segment.start + audio.currentTime;
+
+            if (next && globalTime >= next.start) {
+                this.app.currentAudioIndex++;
+                this.playNextInQueue();
             }
         };
 
         audio.onended = () => {
-            const currentFileName = this.app.audioQueue[this.app.currentAudioIndex]?.fileName || this.app.audioQueue[this.app.currentAudioIndex]?.src?.split('/').pop().split('?')[0] || 'desconhecido';
-            console.log(`[DEBUG] Arquivo "${currentFileName}" terminou. Índice atual: ${this.app.currentAudioIndex}/${this.app.audioQueue.length - 1}`);
-
-            if (!this.app.currentPlaylist || this.app.currentPlaylist.title === 'Arquivos Não Registrados') {
-                console.log('[DEBUG] Arquivo não registrado terminou. Parando reprodução.');
-                this.app.isPlaying = false;
-                this.updatePlayerUI();
-                this.updateMusic(this.app.currentTrack, { title: 'Arquivos Não Registrados' });
-            } else {
-                if (this.app.currentAudioIndex + 1 >= this.app.audioQueue.length) {
-                    console.log('[DEBUG] Último arquivo da track terminou. Avançando para próxima track.');
-                    this.nextTrack();
-                } else {
-                    console.log('[DEBUG] Arquivo terminou. A próxima parte deve ser iniciada pelo timeout agendado.');
-                }
-            }
+            this.app.currentAudioIndex++;
+            this.playNextInQueue();
         };
-
-        audio.ontimeupdate = () => this.updateProgress();
     }
 
     async playTrack(track, album) {
-        console.log(`[DEBUG] Iniciando reprodução da track: "${track.title}" (${track.files ? track.files.files.length : 1} arquivo(s))`);
-
         this.stopCurrentPlayback();
 
         this.app.currentTrack = { ...track, album };
         this.app.currentAudioIndex = 0;
         this.app.audioQueue = [];
-
-        this.app.trackStartTime = Date.now();
+        this.app.timeline = [];
 
         if (track.file) {
             this.app.audioQueue = [{
@@ -122,11 +116,27 @@ export class Player {
         else if (track.files) {
             this.app.audioQueue = track.files.files.map((fileName, i) => ({
                 src: `/api/music/${album.id}/${track.id}?part=${i}`,
-                delay: track.files.delays[i] || 0,
+                delay: track.files.delays?.[i] || 0,
                 fileName
             }));
-            console.log(`[DEBUG] Track com múltiplos arquivos preparada. Delays: [${track.files.delays.join(', ')}]`);
         }
+
+        await this.prepareQueue();
+
+        let timeCursor = 0;
+
+        this.app.timeline = this.app.audioQueue.map((file, i) => {
+            const seg = {
+                index: i,
+                start: timeCursor,
+                end: timeCursor + (file.duration || 0),
+                delay: file.delay || 0
+            };
+
+            timeCursor += (file.duration || 0) + (file.delay || 0);
+
+            return seg;
+        });
 
         this.app.isPlaying = true;
         this.playNextInQueue();
@@ -144,34 +154,60 @@ export class Player {
         } else {
             this.app.lyrics.hideLyricsPanel();
         }
-
+        this.playingTrack(track.title);
         this.updateMusic(track, album);
-        const panel = document.getElementById('right-panel');
-        panel.classList.add('visible');
+        this.updateRPC();
+
+        document.getElementById('right-panel').classList.add('visible');
     }
 
     playNextInQueue() {
         if (this.app.currentAudioIndex >= this.app.audioQueue.length) {
-            console.log('[DEBUG] Fim da fila de áudio. Avançando para próxima track.');
-            this.nextTrack();
+
+            switch (this.app.loopMode) {
+                case 'track':
+                    this.app.currentAudioIndex = 0;
+                    break;
+
+                case 'queue':
+                    this.app.currentAudioIndex = 0;
+                    break;
+
+                case 'none':
+                default:
+                    this.nextTrack();
+                    return;
+            }
+        }
+
+        if (this.app.currentAudioIndex < 0 || this.app.audioQueue.length === 0) {
             return;
         }
 
-        if (this.app.delayTimeout) {
-            clearTimeout(this.app.delayTimeout);
-            this.app.delayTimeout = null;
+        if (this.app.currentAudio) {
+            this.app.currentAudio.pause();
         }
 
-        const { src, delay, fileName } = this.app.audioQueue[this.app.currentAudioIndex];
-        console.log(`[DEBUG] Reproduzindo arquivo ${this.app.currentAudioIndex + 1}/${this.app.audioQueue.length}: ${fileName || src} (delay: ${delay || 0})`);
+        const { src } = this.app.audioQueue[this.app.currentAudioIndex];
 
         const audio = new Audio(src);
         audio.playbackRate = this.app.currentTrack.pitch || 1;
         audio.preservesPitch = false;
+
         this.app.currentAudio = audio;
+
         this.setupAudioEvents(audio);
 
         audio.play();
+    }
+
+    toggleLoopMode() {
+        const modes = ['none', 'track', 'queue'];
+        const currentIndex = modes.indexOf(this.app.loopMode);
+
+        this.app.loopMode = modes[(currentIndex + 1) % modes.length];
+
+        this.app.ui.updateLoopUI();
     }
 
     stopCurrentPlayback() {
@@ -179,13 +215,6 @@ export class Player {
             this.app.currentAudio.pause();
             this.app.currentAudio = null;
         }
-
-        if (this.app.delayTimeout) {
-            clearTimeout(this.app.delayTimeout);
-            this.app.delayTimeout = null;
-        }
-
-        this.app.lyricsIndex = 0;
     }
 
     togglePlayPause() {
@@ -193,129 +222,148 @@ export class Player {
 
         if (this.app.isPlaying) {
             this.app.currentAudio.pause();
-            if (this.app.delayTimeout) clearTimeout(this.app.delayTimeout);
         } else {
             this.app.currentAudio.play();
         }
 
         this.app.isPlaying = !this.app.isPlaying;
         this.updatePlayerUI();
-        navigator.mediaSession.playbackState = this.app.isPlaying ? "playing" : "paused";
+    }
+
+    toggleMute() {
+        if (!this.app.currentAudio) return;
+
+        this.app.currentAudio.muted = !this.app.currentAudio.muted;
+        this.app.isMuted = this.app.currentAudio.muted;
+        this.updatePlayerUI();
+    }
+
+    async getCurrentProgress() {
+        if (!this.app.currentAudio) return { progress: 0, globalTime: 0, total: 0 };
+
+        const currentTime = this.app.currentAudio.currentTime;
+        const rate = this.app.currentTrack.pitch || 1;
+
+        let total, progress, globalTime;
+
+        if (!this.isMultiFileTrack()) {
+            if (isNaN(this.app.currentAudio.duration) || this.app.currentAudio.duration === Infinity) {
+                total = await this.getAudioDuration(this.app.audioQueue[0].src);
+            } else {
+                total = this.app.currentAudio.duration;
+            }
+
+            progress = (currentTime / total) * 100;
+            globalTime = currentTime / rate;
+            total = total / rate;
+        } else {
+            const segment = this.app.timeline[this.app.currentAudioIndex];
+            if (!segment) return { progress: 0, globalTime: 0, total: 0 };
+
+            globalTime = (segment.start + currentTime) / rate;
+            total = await this.getTrackDuration();
+            progress = (globalTime / total) * 100;
+        }
+
+        return { progress, globalTime, total };
+    }
+
+    async updateProgress() {
+        if (!this.app.currentAudio) return;
+
+        const { progress, globalTime, total } = await this.getCurrentProgress();
+
+        document.getElementById('progress-bar').value = progress;
+        document.getElementById('current-time').textContent = this.app.ui.formatTime(globalTime);
+        document.getElementById('total-time').textContent = this.app.ui.formatTime(total);
+
+        this.updateLyricsPosition(globalTime);
+    }
+
+    updateLyricsPosition(globalTime) {
+        if (!this.app.lyricsCumulTimes || this.app.lyricsCumulTimes.length === 0) return;
+
+        let newIndex = 0;
+
+        for (let i = 0; i < this.app.lyricsCumulTimes.length; i++) {
+            if (globalTime >= this.app.lyricsCumulTimes[i]) {
+                newIndex = i;
+            } else {
+                break;
+            }
+        }
+
+        if (newIndex === this.app.lyricsIndex) return;
+
+        this.app.lyricsIndex = newIndex;
+
+        let renderedIndex = newIndex;
+        if (Array.isArray(this.app.lyricsLines) && this.app.lyricsLines.length > 0) {
+            const mapped = this.app.lyricsLines.indexOf(newIndex);
+            if (mapped !== -1) renderedIndex = mapped;
+        }
+
+        if (renderedIndex >= 0) {
+            this.app.lyrics.displayLyricsLine(renderedIndex);
+        }
+    }
+
+    async seekTo(value) {
+        if (!this.app.currentAudio) return;
+
+        if (!this.isMultiFileTrack()) {
+            const duration = this.app.currentAudio.duration || 1;
+            this.app.currentAudio.currentTime = (value / 100) * duration;
+            return;
+        }
+
+        const total = await this.getTrackDuration();
+        const target = (value / 100) * total;
+
+        const index = this.app.timeline.findIndex(seg =>
+            target >= seg.start && target < (seg.end ?? Infinity)
+        );
+
+        if (index === -1) return;
+
+        const seg = this.app.timeline[index];
+        const timeInFile = target - seg.start;
+
+        this.stopCurrentPlayback();
+        this.app.currentAudioIndex = index;
+        this.playNextInQueue();
+        this.updateRPC();
+
+        setTimeout(() => {
+            if (this.app.currentAudio) {
+                this.app.currentAudio.currentTime = Math.max(0, timeInFile);
+            }
+        }, 50);
     }
 
     nextTrack() {
         if (!this.app.currentPlaylist || !this.app.currentTrack) return;
 
-        if (this.app.currentPlaylist.title === 'Arquivos Não Registrados') return;
-
         const i = this.app.currentPlaylist.tracks.findIndex(t => t.id === this.app.currentTrack.id);
-        const isLastTrack = i === this.app.currentPlaylist.tracks.length - 1;
+        const next = i + 1;
 
-        if (isLastTrack) {
-            if (this.app.currentAudio) {
-                this.app.currentAudio.pause();
-                this.app.isPlaying = false;
-                this.updatePlayerUI();
-            }
+        if (next >= this.app.currentPlaylist.tracks.length) {
+            this.stopCurrentPlayback();
+            this.app.isPlaying = false;
+            this.updatePlayerUI();
             return;
         }
 
-        const next = i + 1;
         this.playTrack(this.app.currentPlaylist.tracks[next], this.app.currentPlaylist);
     }
 
     previousTrack() {
         if (!this.app.currentPlaylist || !this.app.currentTrack) return;
 
-        if (this.app.currentPlaylist.title === 'Arquivos Não Registrados') return;
-
         const i = this.app.currentPlaylist.tracks.findIndex(t => t.id === this.app.currentTrack.id);
         const prev = i > 0 ? i - 1 : this.app.currentPlaylist.tracks.length - 1;
 
         this.playTrack(this.app.currentPlaylist.tracks[prev], this.app.currentPlaylist);
-    }
-
-    updateProgress() {
-        if (!this.app.currentAudio || !this.app.currentTrack) return;
-
-        const currentTime = this.app.currentAudio.currentTime;
-        const audioDuration = this.app.currentAudio.duration || this.app.currentTrack.duration || 1;
-        const trackDuration = this.app.currentTrack.duration || 1;
-
-        let totalProgress = 0;
-        let totalCurrentTime = 0;
-
-        if (this.app.audioQueue.length > 1) {
-            totalCurrentTime = 0;
-            for (let i = 0; i < this.app.currentAudioIndex; i++) {
-                const fileDuration = this.app.audioQueue[i].duration || 0;
-                const nextDelay = this.app.audioQueue[i + 1]?.delay || 0;
-                totalCurrentTime += fileDuration + nextDelay;
-            }
-            totalCurrentTime += currentTime;
-            totalProgress = (totalCurrentTime / trackDuration) * 100;
-        } else {
-            totalProgress = (currentTime / audioDuration) * 100;
-            totalCurrentTime = currentTime;
-        }
-
-        document.getElementById('progress-bar').value = totalProgress;
-        document.getElementById('current-time').textContent = this.app.ui.formatTime(totalCurrentTime);
-        document.getElementById('total-time').textContent = this.app.ui.formatTime(trackDuration);
-
-        if (this.app.lyricsLines.length > 0 && this.app.lyricsIndex < this.app.lyricsLines.length) {
-            while (this.app.lyricsIndex < this.app.lyricsLines.length && currentTime >= this.app.lyricsCumulTimes[this.app.lyricsIndex]) {
-                const visibleIndex = this.app.visibleLyricsIndices.indexOf(this.app.lyricsIndex);
-                if (visibleIndex !== -1) {
-                    this.app.lyrics.displayLyricsLine(visibleIndex);
-                }
-                this.app.lyricsIndex++;
-            }
-        }
-    }
-
-    seekTo(value) {
-        if (!this.app.currentAudio || !this.app.currentTrack) return;
-
-        const trackDuration = this.app.currentTrack.duration || 1;
-        const seekTime = (value / 100) * trackDuration;
-
-        if (this.app.audioQueue.length > 1) {
-            let cumulativeTime = 0;
-            let targetFileIndex = 0;
-
-            for (let i = 0; i < this.app.audioQueue.length; i++) {
-                const fileDuration = this.app.audioQueue[i].duration || 0;
-                const nextDelay = this.app.audioQueue[i + 1]?.delay || 0;
-
-                const segmentEnd = cumulativeTime + fileDuration + Math.max(0, nextDelay);
-
-                if (seekTime < segmentEnd) {
-                    targetFileIndex = i;
-                    break;
-                }
-
-                cumulativeTime += fileDuration + nextDelay;
-            }
-
-            const timeInFile = seekTime - cumulativeTime;
-
-            if (targetFileIndex !== this.app.currentAudioIndex) {
-                this.stopCurrentPlayback();
-                this.app.currentAudioIndex = targetFileIndex;
-                this.playNextInQueue();
-
-                setTimeout(() => {
-                    if (this.app.currentAudio) {
-                        this.app.currentAudio.currentTime = Math.max(0, timeInFile);
-                    }
-                }, 100);
-            } else {
-                this.app.currentAudio.currentTime = Math.max(0, timeInFile);
-            }
-        } else {
-            this.app.currentAudio.currentTime = seekTime;
-        }
     }
 
     setVolume(value) {
@@ -332,14 +380,103 @@ export class Player {
 
     updatePlayerUI() {
         const playPauseBtn = document.getElementById('play-pause-btn');
-        playPauseBtn.innerHTML = this.app.isPlaying ? '<i data-lucide="pause"></i>' : '<i data-lucide="play"></i>';
+        playPauseBtn.innerHTML = this.app.isPlaying
+            ? '<i data-lucide="pause"></i>'
+            : '<i data-lucide="play"></i>';
 
         if (this.app.currentTrack) {
             document.getElementById('current-track-title').textContent = this.app.currentTrack.title;
-            document.getElementById('current-track-artist').textContent = this.app.currentTrack.album?.artist || "Toby Fox...?";
-            document.getElementById('current-track-cover').src = this.app.currentTrack.album?.cover || "static/images/icon.ico";
+            document.getElementById('current-track-artist').textContent =
+                this.app.currentTrack.album?.artist || "Toby Fox...?";
+
+            document.getElementById('current-track-cover').src =
+                this.app.currentTrack.album?.cover || "../static/images/icon.ico";
         }
 
         lucide.createIcons();
+    }
+
+    async getTrackDurationFromData(track, album) {
+        const rate = track.pitch || 1;
+        if (track.file) {
+            const duration = await this.getAudioDuration(
+                `/api/music/${album.id}/${track.id}`
+            );
+            return duration / rate;
+        }
+
+        if (track.files?.files) {
+            let total = 0;
+
+            for (let i = 0; i < track.files.files.length; i++) {
+                let duration = 0;
+
+                if (track.files.durations?.[i]) {
+                    duration = track.files.durations[i];
+                } else {
+                    duration = await this.getAudioDuration(
+                        `/api/music/${album.id}/${track.id}?part=${i}`
+                    );
+                }
+
+                total += duration;
+
+                if (i < track.files.files.length - 1) {
+                    total += track.files.delays?.[i] || 0;
+                }
+            }
+
+            return total / rate;
+        }
+
+        return 1;
+    }
+
+    async getTrackDuration() {
+        return await this.getTrackDurationFromData(this.app.currentTrack, this.app.currentTrack.album);
+    }
+
+    isMultiFileTrack() {
+        return this.app.audioQueue.length > 1;
+    }
+
+    async prepareQueue() {
+        const promises = this.app.audioQueue.map(async (file) => {
+            if (!file.duration) {
+                file.duration = await this.getAudioDuration(file.src);
+            }
+        });
+        await Promise.all(promises);
+    }
+
+    getAudioDuration(src) {
+        if (this.durationCache.has(src)) {
+            return Promise.resolve(this.durationCache.get(src));
+        }
+
+        return new Promise((resolve) => {
+            const audio = new Audio();
+            audio.src = src;
+            audio.preload = 'metadata';
+            audio.crossOrigin = 'anonymous'; // Tentar evitar problemas de cache
+
+            const timeout = setTimeout(() => {
+                this.durationCache.set(src, 0);
+                resolve(0);
+            }, 5000); // Timeout de 5 segundos
+
+            audio.onloadedmetadata = () => {
+                clearTimeout(timeout);
+                const duration = audio.duration;
+                this.durationCache.set(src, duration);
+                resolve(duration);
+            };
+
+            audio.onerror = () => {
+                clearTimeout(timeout);
+                this.durationCache.set(src, 0);
+                resolve(0);
+            };
+        });
     }
 }

@@ -104,6 +104,55 @@ function getUnregisteredFiles(undertaleFolder, deltaruneFolder) {
     return unregisteredFiles;
 }
 
+function resolveMusicPath(albumId, fileName) {
+    const settings = loadSettings();
+
+    let baseDir;
+
+    if (albumId === "undertale-ost") {
+        baseDir = settings.undertaleFolder;
+    } else if (albumId.startsWith("deltarune")) {
+        baseDir = path.join(settings.deltaruneFolder, "mus");
+    } else {
+        return null;
+    }
+
+    if (fileName.startsWith("../extras")) {
+        baseDir = path.join(__dirname, "mus", "extras");
+    }
+
+    const fullPath = path.join(baseDir, fileName);
+
+    if (!fullPath.startsWith(baseDir)) return null;
+
+    if (!fs.existsSync(fullPath)) return null;
+
+    return fullPath;
+}
+
+function getAllowedDirs() {
+    const settings = loadSettings();
+
+    return [
+        settings.undertaleFolder,
+        settings.deltaruneFolder
+    ].filter(Boolean);
+}
+
+function safeResolve(filePath) {
+    const allowedDirs = getAllowedDirs();
+
+    for (const base of allowedDirs) {
+        const full = path.resolve(base, filePath);
+
+        if (full.startsWith(path.resolve(base)) && fs.existsSync(full)) {
+            return full;
+        }
+    }
+
+    return null;
+}
+
 const SEARCH_INDEX = [];
 
 Object.values(MUSIC_DATA).forEach(album => {
@@ -121,16 +170,6 @@ Object.values(MUSIC_DATA).forEach(album => {
     });
 });
 
-function getTrackPath(albumId, fileName) {
-    if (!fileName) return "";
-
-    let full = path.join(BASE_PATH, "mus", fileName);
-    if (fs.existsSync(full)) return full;
-
-    const sub = albumId === "undertale-ost" ? "undertale" : "deltarune";
-    return path.join(BASE_PATH, "mus", sub, fileName);
-}
-
 app.use("/static", express.static(path.join(BASE_PATH, "sources", "static")));
 
 app.get("/", (req, res) => {
@@ -139,6 +178,88 @@ app.get("/", (req, res) => {
 
 app.get("/app/", (req, res) => {
     res.sendFile(path.join(BASE_PATH, "sources", "templates", "app.html"));
+});
+
+app.get("/dev/", (req, res) => {
+    res.sendFile(path.join(BASE_PATH, "sources", "templates", "dev.html"))
+});
+
+app.get('/api/track-dev', (req, res) => {
+    const { album: albumId, track: trackId } = req.query;
+
+    if (!albumId || !trackId) {
+        return res.status(400).json({ error: "album e track são obrigatórios" });
+    }
+
+    const album = Object.values(MUSIC_DATA).find(a => a.id === albumId);
+    if (!album) {
+        return res.status(404).json({ error: "Álbum não encontrado" });
+    }
+
+    const track = album.tracks.find(t => String(t.id) === String(trackId));
+    if (!track) {
+        return res.status(404).json({ error: "Música não encontrada" });
+    }
+
+    let files = [];
+
+    if (track.file) {
+        files.push({
+            src: `/api/music/${album.id}/${track.id}`,
+            delay: 0
+        });
+    }
+
+    else if (track.files) {
+        files = track.files.files.map((_, i) => ({
+            src: `/api/music/${album.id}/${track.id}?part=${i}`,
+            delay: track.files.delays?.[i] || 0
+        }));
+    }
+
+    let lyrics = track.lyrics;
+
+    res.json({ files, lyrics });
+});
+
+app.post('/api/track-dev', (req, res) => {
+    const { files, lyrics } = req.body;
+
+    if (!files || !files.files) {
+        return res.status(400).json({ error: "files inválido" });
+    }
+
+    const linhas = [];
+    const tempos = [];
+
+    let lastTime = 0;
+
+    lyrics
+        .sort((a, b) => a.time - b.time)
+        .forEach(l => {
+            linhas.push(l.text || '');
+
+            const delta = l.time - lastTime;
+            tempos.push(delta);
+
+            lastTime = l.time;
+        });
+
+    const result = {
+        files: {
+            files: files.files,
+            delays: files.delays || []
+        },
+        lyrics: {
+            linhas,
+            tempos
+        }
+    };
+
+    console.log("Resultado convertido:");
+    console.log(JSON.stringify(result, null, 2));
+
+    res.json(result);
 });
 
 app.get("/api/albums", (req, res) => {
@@ -167,7 +288,11 @@ app.get("/api/music/:albumId/:index", (req, res) => {
     if (!track) return res.status(404).json({ error: "Música não encontrada" });
 
     if (track.file) {
-        const filePath = getTrackPath(album.id, track.file);
+        const filePath = resolveMusicPath(album.id, track.file);
+
+        if (!filePath) {
+            return res.status(404).json({ error: "Arquivo não encontrado no sistema" });
+        }
         return res.sendFile(filePath);
     }
 
@@ -176,33 +301,46 @@ app.get("/api/music/:albumId/:index", (req, res) => {
         if (isNaN(part)) return res.status(400).json({ error: "Part required" });
 
         const fileName = track.files.files[part];
-        return res.sendFile(getTrackPath(album.id, fileName));
+        
+        return res.sendFile(resolveMusicPath(album.id, fileName));
     }
 
     res.status(400).json({ error: "Música inválida" });
 });
 
-app.get("/api/unknowmusic/:filename", (req, res) => {
-    const file = path.join(res.get("filename"))
-    if (fs.existsSync(file)) {
-        return res.sendFile(file);
-    }
+app.get("/api/unknowmusic/:file", (req, res) => {
+    const file = req.params.file;
 
-    res.status(400).json({ error: "Música inválida" });
-});
+    const safePath = safeResolve(file);
 
-app.get("/api/unregistered-music", (req, res) => {
-    const filePath = req.query.path;
-    if (!filePath || !fs.existsSync(filePath)) {
+    if (!safePath) {
         return res.status(404).json({ error: "Arquivo não encontrado" });
     }
 
-    const musicExtensions = ['.mp3', '.ogg', '.wav', '.flac'];
-    if (!musicExtensions.includes(path.extname(filePath).toLowerCase())) {
-        return res.status(400).json({ error: "Tipo de arquivo inválido" });
+    res.sendFile(safePath);
+});
+
+app.get("/api/unregistered-music", (req, res) => {
+    const { file } = req.query;
+
+    if (!file) {
+        return res.status(400).json({ error: "Arquivo não informado" });
     }
 
-    res.sendFile(filePath);
+    const safePath = safeResolve(file);
+
+    if (!safePath) {
+        return res.status(404).json({ error: "Arquivo não encontrado" });
+    }
+
+    const ext = path.extname(safePath).toLowerCase();
+    const allowed = ['.mp3', '.ogg', '.wav', '.flac'];
+
+    if (!allowed.includes(ext)) {
+        return res.status(400).json({ error: "Tipo inválido" });
+    }
+
+    res.sendFile(safePath);
 });
 
 app.get("/api/playlists", (req, res) => {
@@ -327,11 +465,16 @@ app.put("/api/settings", (req, res) => {
 
 app.get("/api/unregistered-files", (req, res) => {
     try {
-        const { undertaleFolder, deltaruneFolder } = req.query;
-        const files = getUnregisteredFiles(undertaleFolder, deltaruneFolder);
+        const settings = loadSettings();
+
+        const files = getUnregisteredFiles(
+            settings.undertaleFolder,
+            settings.deltaruneFolder
+        );
+
         res.json(files);
     } catch (error) {
-        console.error("Erro ao listar arquivos não registrados:", error);
+        console.error(error);
         res.status(500).json({ error: "Erro ao listar arquivos" });
     }
 });

@@ -1,0 +1,135 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #1a1a1a;
+    border-radius: 25px;
+    padding: 0 15px;
+    max-width: 450px;
+}
+
+#search-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+}
+
+#search-input::placeholder {
+    color: var(--subtext);
+}
+
+#search-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+.search-track-result,
+.search-album-result {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: var(--card);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    transition: var(--transition);
+}
+
+.search-track-result:hover,
+.search-album-result:hover {
+    background: var(--hover);
+    transform: translateY(-3px);
+}
+
+.search-track-cover,
+.search-album-cover {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.search-track-title,
+.search-album-title {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.search-track-details {
+    color: var(--subtext);
+    font-size: 13px;
+}
+
+.search-header-content {
+    background: linear-gradient(135deg, rgba(224,36,36,0.2), transparent);
+    padding: 30px;
+    border-radius: var(--radius);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.search-header h2 {
+    font-size: 26px;
+}
+
+.search-header p {
+    color: var(--subtext);
+}
+
+.search-results-list {
+    list-style: none;
+    padding: 0;
+}
+
+.search-track-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 5px;
+}
+
+.search-track-item:hover {
+    background: var(--hover);
+}
+
+.search-track-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.search-track-info {
+    flex: 1;
+}
+
+.search-track-title {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+}
+
+.search-track-title mark {
+    background: var(--primary);
+    color: var(--text);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.search-track-artist {
+    color: var(--subtext);
+    font-size: 13px;
+}
+
+.search-track-duration {
+    color: var(--subtext);
+    font-size: 12px;
+}

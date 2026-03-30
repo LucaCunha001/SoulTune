@@ -12,6 +12,10 @@ const buttons = [
     {
         label: "Ver repositório",
         url: repositorio
+    },
+    {
+        label: "Baixar última versão",
+        url: `${repositorio}/releases/latest`
     }
 ];
 
@@ -41,21 +45,19 @@ function loadRPC() {
     });
 }
 
-function updateMusic(name, album, start, end) {
+function updateMusic(track, start, end) {
     if (!connected) return;
-
-    
     let cover = "icone";
 
-    if (album.cover) {
-        cover = album.cover.split("/");
+    if (track.album?.cover) {
+        cover = track.album.cover.split("/");
         cover = cover[cover.length-1].split(".");
         cover = cover[0];
     }
-
+    
     rpc.user.setActivity({
         type: ActivityType.Listening,
-        details: name,
+        details: track.title,
         startTimestamp: start,
         endTimestamp: end,
         buttons: buttons,

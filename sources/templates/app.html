@@ -7,12 +7,12 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
     <title>SoulTune</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/search.css">
-    <link rel="stylesheet" href="/static/css/form.css">
-    <link rel="stylesheet" href="/static/css/playlist.css">
-    <link rel="stylesheet" href="/static/css/player.css">
-    <link rel="stylesheet" href="/static/css/albums.css">
+    <link rel="stylesheet" href="/static/css/app/style.css">
+    <link rel="stylesheet" href="/static/css/app/search.css">
+    <link rel="stylesheet" href="/static/css/app/form.css">
+    <link rel="stylesheet" href="/static/css/app/playlist.css">
+    <link rel="stylesheet" href="/static/css/app/player.css">
+    <link rel="stylesheet" href="/static/css/app/albums.css">
     <link rel="shortcut icon" href="/favicon" type="image/x-icon">
 </head>
 
@@ -36,6 +36,7 @@
                 </ul>
                 <button class="create-playlist-btn">Criar Playlist</button>
             </div>
+            <div id="version"></div>
         </div>
 
         <header class="header">
@@ -118,9 +119,20 @@
                             </label>
                         </div>
                     </div>
+                    
+                    <div class="settings-group">
+                        <h3>Desenvolvedor</h3>
+                        <div class="settings-item">
+                            <a href="/dev" target="_self"><button class="setting-button">Página de Desenvolvedor</button></a>
+                        </div>
+                        <div class="settings-item">
+                            <a href="https://github.com/LucaCunha001/SoulTune/"><button class="setting-button">Ver Repositório</button></a>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
+
         <div id="right-panel" class="right-panel">
         <div id="album-content"></div>
         <div id="lyrics-content"></div>
@@ -132,6 +144,7 @@
             <button id="prev-btn"><i data-lucide="skip-back"></i></button>
             <button id="play-pause-btn"><i data-lucide="play"></i></button>
             <button id="next-btn"><i data-lucide="skip-forward"></i></button>
+            <button id="loop-btn"><i data-lucide="repeat"></i></button>
         </div>
         <div class="player-progress">
             <span id="current-time">0:00</span>

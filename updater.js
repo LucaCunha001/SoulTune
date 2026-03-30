@@ -1,4 +1,5 @@
 const { autoUpdater } = require("electron-updater");
+const log = require("electron-log");
 
 function initUpdater(mainWindow) {
     autoUpdater.autoDownload = false;
@@ -29,13 +30,13 @@ function initUpdater(mainWindow) {
 
     autoUpdater.on("error", (err) => {
         console.error(err);
+        log.error("Erro no updater:", err);
         mainWindow.webContents.send("update-error");
     });
 
     autoUpdater.checkForUpdates();
 }
 
-// comandos vindos do frontend
 function setupIPC() {
     const { ipcMain } = require("electron");
 

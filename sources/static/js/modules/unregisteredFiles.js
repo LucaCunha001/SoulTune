@@ -12,7 +12,7 @@ export class UnregisteredFiles {
         albumsGrid.innerHTML = '<div class="loading"><div class="spinner"></div><p>Carregando arquivos...</p></div>';
 
         try {
-            const response = await fetch(`/api/unregistered-files?undertaleFolder=${encodeURIComponent(this.app.settings.undertaleFolder || '')}&deltaruneFolder=${encodeURIComponent(this.app.settings.deltaruneFolder || '')}`);
+            const response = await fetch(`/api/unregistered-files`);
             if (!response.ok) throw new Error('Erro na resposta do servidor');
             const unregisteredFiles = await response.json();
             this.renderUnregisteredFiles(unregisteredFiles);
@@ -58,10 +58,10 @@ export class UnregisteredFiles {
                     </div>
                 </div>
                 <div style="display: flex; gap: 5px;">
-                    <button class="play-file-btn" data-path="${file.path}" style="flex: 1; padding: 8px; background: var(--primary); color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    <button class="play-file-btn" data-file="${file.relativePath}" style="flex: 1; padding: 8px; background: var(--primary); color: white; border: none; border-radius: 4px; cursor: pointer; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;">
                         <i data-lucide="play"></i> Reproduzir
                     </button>
-                    <button class="add-to-playlist-btn" data-path="${file.path}" data-name="${file.name}" style="padding: 8px; background: var(--secondary); color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    <button class="add-to-playlist-btn" data-file="${file.relativePath}" data-name="${file.name}" style="padding: 8px; background: var(--secondary); color: white; border: none; border-radius: 4px; cursor: pointer;">
                         <i data-lucide="plus"></i>
                     </button>
                 </div>
@@ -74,14 +74,14 @@ export class UnregisteredFiles {
 
         document.querySelectorAll('.play-file-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const filePath = e.currentTarget.dataset.path;
+                const filePath = e.currentTarget.dataset.file;
                 this.playUnregisteredFile(filePath);
             });
         });
 
         document.querySelectorAll('.add-to-playlist-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const filePath = e.currentTarget.dataset.path;
+                const filePath = e.currentTarget.dataset.file;
                 const fileName = e.currentTarget.dataset.name;
                 this.app.playlists.showPlaylistsMenu({ title: fileName, file: filePath }, { title: 'Arquivos Não Registrados' });
             });
@@ -90,17 +90,17 @@ export class UnregisteredFiles {
         lucide.createIcons();
     }
 
-    playUnregisteredFile(filePath) {
+    playUnregisteredFile(file) {
         this.app.player.stopCurrentPlayback();
 
-        const fileName = filePath.split(/[/\\]/).pop().replace(/\.[^/.]+$/, '');
+        const fileName = file.split(/[/\\]/).pop().replace(/\.[^/.]+$/, '');
         this.app.currentTrack = {
             title: fileName,
-            file: filePath,
+            file: file,
             duration: 0
         };
         this.app.currentAudioIndex = 0;
-        this.app.audioQueue = [{ src: `/api/unregistered-music?path=${encodeURIComponent(filePath)}`, delay: 0 }];
+        this.app.audioQueue = [{ src: `/api/unregistered-music?file=${encodeURIComponent(file)}`, delay: 0 }];
 
         this.app.trackStartTime = Date.now();
         this.app.isPlaying = true;

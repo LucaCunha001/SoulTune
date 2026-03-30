@@ -1,4 +1,4 @@
-const { contextBridge, ipcRenderer, app } = require("electron");
+const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
     updateMusic: (name, album, start, end) =>
@@ -40,5 +40,5 @@ contextBridge.exposeInMainWorld("updater", {
 
 contextBridge.exposeInMainWorld("env", {
     isDev,
-    version: app.getVersion()
+    getVersion: () => ipcRenderer.invoke("get-version")
 });

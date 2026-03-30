@@ -42,9 +42,8 @@ export class Lyrics {
     }
 
     displayLyricsLine(index) {
-        const lines = document.querySelectorAll('.lyrics-line');
-        lines.forEach((line, i) => {
-            if (i === index) {
+        document.querySelectorAll('.lyrics-line').forEach((line) => {
+            if (line.dataset.index == index) {
                 line.scrollIntoView({
                     behavior: 'smooth',
                     block: 'center'

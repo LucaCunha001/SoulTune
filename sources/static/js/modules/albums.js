@@ -67,7 +67,7 @@ export class Albums {
         this.renderAlbums(albums);
     }
 
-    showAlbum(album) {
+    async showAlbum(album) {
         this.app.currentPlaylist = album;
         this.app.ui.clearMainContent();
         document.getElementById('playlist-view').style.display = 'block';
@@ -79,31 +79,51 @@ export class Albums {
         const trackList = document.getElementById('track-list');
         trackList.innerHTML = '';
 
-        album.tracks.forEach((track, index) => {
+        const loading = document.createElement('div');
+        loading.id = 'track-loading';
+        loading.textContent = 'Carregando faixas...';
+        trackList.appendChild(loading);
+
+        const tracksWithDuration = await Promise.all(album.tracks.map(async (track) => {
+            const duration = await this.app.player.getTrackDurationFromData(track, album);
+            return { track, duration };
+        }));
+
+        trackList.innerHTML = '';
+
+        for (let index = 0; index < tracksWithDuration.length; index++) {
+            let displayIndex = album.title == "deltarune-ost-chapter4" ? index + 38 : index;
+            const { track, duration } = tracksWithDuration[index];
+
             const trackItem = document.createElement('li');
             trackItem.className = 'track-item';
             trackItem.innerHTML = `
-                <div class="track-left">
-                    <span class="track-number">${index + 1}</span>
-                    <div class="track-info">
-                        <div class="track-title">${track.title}</div>
-                        <div class="track-artist">${track.authors?.join(', ') || album.artist}</div>
-                    </div>
-                </div>
-                <div class="track-right">
-                    <span class="track-duration">${this.app.ui.formatTime(track.duration)}</span>
-                    <button class="add-to-playlist-btn" data-lucide="plus"></button>
-                </div>
-            `;
-            trackItem.addEventListener('click', () => {
+        <div class="track-left">
+            <span class="track-number">${displayIndex + 1}</span>
+            <div class="track-info">
+                <div class="track-title">${track.title}</div>
+                <div class="track-artist">${track.authors?.join(', ') || album.artist}</div>
+            </div>
+        </div>
+        <div class="track-right">
+            <span class="track-duration">${this.app.ui.formatTime(duration)}</span>
+            <button class="add-to-playlist-btn" data-lucide="plus"></button>
+        </div>
+    `;
+
+            trackItem.addEventListener('click', (e) => {
                 this.app.player.playTrack(track, album);
             });
+
             trackItem.querySelector('.add-to-playlist-btn').addEventListener('click', (e) => {
                 e.stopPropagation();
                 this.app.playlists.showPlaylistsMenu(track, album);
             });
+
             trackList.appendChild(trackItem);
-        });
+        }
+
+        if (this.app.currentTrack) this.app.player.playingTrack(this.app.currentTrack.title);
 
         lucide.createIcons();
     }
