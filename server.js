@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+const os = require("os");
 
 const app = express();
 
@@ -12,23 +13,19 @@ const MUSIC_DATA = JSON.parse(
     fs.readFileSync(path.join(BASE_PATH, "albums_ready.json"), "utf-8")
 );
 
-let AppData = "";
-let PLAYLISTS_PATH = "";
-let SETTINGS_PATH = "";
+const appName = 'SoulTune';
+const APP_DIR = path.join(process.env.LOCALAPPDATA, appName);
 
-(async () => {
-    const envPaths = (await import('env-paths')).default;
-    const paths = envPaths('SoulTune');
-    Object.values(paths).forEach(dir => {
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir, { recursive: true });
-        }
-    });
+if (!fs.existsSync(APP_DIR)) {
+    fs.mkdirSync(APP_DIR, { recursive: true });
+    console.log('Pasta criada:', APP_DIR);
+}
 
-    AppData = paths;
-    PLAYLISTS_PATH = path.join(AppData.data, "playlists.json");
-    SETTINGS_PATH = path.join(AppData.config, "settings.json");
-})();
+const PLAYLISTS_PATH = path.join(APP_DIR, "playlists.json");
+const SETTINGS_PATH = path.join(APP_DIR, "settings.json");
+
+if (!fs.existsSync(PLAYLISTS_PATH)) fs.writeFileSync(PLAYLISTS_PATH, "[]");
+if (!fs.existsSync(SETTINGS_PATH)) fs.writeFileSync(SETTINGS_PATH, "{}");
 
 function loadPlaylists() {
     try {
@@ -459,7 +456,7 @@ app.put("/api/settings", (req, res) => {
         res.json({ success: true });
     } catch (error) {
         console.error("Erro ao salvar configurações:", error);
-        res.status(500).json({ error: "Erro ao salvar configurações" });
+        res.status(500).json({ error: `Erro ao salvar configurações: ${error}` });
     }
 });
 
