@@ -37,8 +37,8 @@ rpc.on("disconnected", () => {
     connected = false;
 });
 
-function loadRPC() {
-    if (connected) return;
+function loadRPC(enabled = true) {
+    if (!enabled || connected) return;
 
     rpc.login().catch((err) => {
         console.error("RPC erro:", err);
@@ -67,4 +67,4 @@ function updateMusic(track, start, end) {
 }
 
 
-module.exports = { loadRPC, updateMusic }
+module.exports = { loadRPC, updateMusic, getConnected: () => connected, disconnectRPC: () => { if (connected) { rpc.destroy(); connected = false; } } }

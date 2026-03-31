@@ -1,6 +1,6 @@
 {
   "name": "soultune-electron",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Software para escutar todas as músicas de Undertale e Deltarune.",
   "main": "main.js",
   "repository": {

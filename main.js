@@ -1,8 +1,9 @@
 const { app, BrowserWindow, ipcMain, globalShortcut, Menu, dialog, shell } = require("electron");
 const { join } = require("path");
+const { spawn } = require("child_process");
 
-const { startServer } = require("./server");
-const { loadRPC, updateMusic } = require("./rpc");
+const { startServer, loadSettings } = require("./server");
+const { loadRPC, updateMusic, disconnectRPC } = require("./rpc");
 
 const { initUpdater, setupIPC } = require("./updater");
 const log = require("electron-log");
@@ -41,7 +42,12 @@ function createWindow(inicialWindow = false) {
 
 app.whenReady().then(() => {
     startServer();
-    loadRPC();
+    const settings = loadSettings();
+    loadRPC(settings.discordRpc);
+
+    if (settings.autoStart) {
+        setAutoStart(true);
+    }
 
     Menu.setApplicationMenu(null);
 
@@ -86,6 +92,32 @@ app.on('will-quit', () => {
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit();
+    }
+});
+
+function setAutoStart(enabled) {
+    if (process.platform !== 'win32') return;
+
+    const exePath = process.execPath;
+    const key = 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run';
+    const valueName = 'SoulTune';
+
+    if (enabled) {
+        spawn('reg', ['add', key, '/v', valueName, '/t', 'REG_SZ', '/d', `"${exePath}"`, '/f']);
+    } else {
+        spawn('reg', ['delete', key, '/v', valueName, '/f'], { stdio: 'ignore' });
+    }
+}
+
+ipcMain.handle("set-auto-start", (_, enabled) => {
+    setAutoStart(enabled);
+});
+
+ipcMain.handle("set-discord-rpc", (_, enabled) => {
+    if (enabled) {
+        loadRPC(true);
+    } else {
+        disconnectRPC();
     }
 });
 

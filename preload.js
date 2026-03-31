@@ -4,7 +4,9 @@ contextBridge.exposeInMainWorld("api", {
     updateMusic: (name, album, start, end) =>
         ipcRenderer.invoke("update-music", name, album, start, end),
     selectFolder: () => ipcRenderer.invoke("select-folder"),
-    maximize: () => ipcRenderer.invoke('maximize')
+    maximize: () => ipcRenderer.invoke('maximize'),
+    setAutoStart: (enabled) => ipcRenderer.invoke('set-auto-start', enabled),
+    setDiscordRpc: (enabled) => ipcRenderer.invoke('set-discord-rpc', enabled)
 });
 
 const isDev = process.argv.includes("--isdev=true");

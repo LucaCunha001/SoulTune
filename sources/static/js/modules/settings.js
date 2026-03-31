@@ -7,12 +7,26 @@ export class Settings {
         fetch('/api/settings')
             .then(response => response.json())
             .then(settings => {
-                this.app.settings = { ...this.app.settings, ...settings };
+                this.app.settings = {
+                    discordRpc: false,
+                    autoStart: false,
+                    uiTheme: '0',
+                    undertaleFolder: '',
+                    deltaruneFolder: '',
+                    ...settings
+                };
                 this.applyTheme(this.app.settings.uiTheme);
                 this.displaySettings();
             })
             .catch(error => {
                 console.error('Erro ao carregar configurações:', error);
+                this.app.settings = {
+                    discordRpc: false,
+                    autoStart: false,
+                    uiTheme: '0',
+                    undertaleFolder: '',
+                    deltaruneFolder: ''
+                };
                 this.displaySettings();
             });
     }
@@ -58,10 +72,12 @@ export class Settings {
             switch (e.target.id) {
                 case 'discord-rpc':
                     this.app.settings.discordRpc = e.target.checked;
+                    window.api?.setDiscordRpc(e.target.checked);
                     this.saveSettings();
                     break;
                 case 'auto-start':
                     this.app.settings.autoStart = e.target.checked;
+                    window.api?.setAutoStart(e.target.checked);
                     this.saveSettings();
                     break;
                 case 'ui-theme':
