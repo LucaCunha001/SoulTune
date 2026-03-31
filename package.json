@@ -1,6 +1,6 @@
 {
   "name": "soultune-electron",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "SoulTune Electron App",
   "main": "main.js",
   "author": {
