@@ -1,6 +1,10 @@
+const { Notification, BrowserWindow } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
 
+/**
+ * @param {BrowserWindow} mainWindow 
+ */
 function initUpdater(mainWindow) {
     autoUpdater.autoDownload = false;
     autoUpdater.autoInstallOnAppQuit = false;
@@ -10,6 +14,13 @@ function initUpdater(mainWindow) {
     });
 
     autoUpdater.on("update-available", (info) => {
+        if (!mainWindow.isFocused()) {
+            const notification = new Notification({
+                title: "Nova atualização disponível",
+                body: "Abra a janela para conferir"
+            });
+            notification.show();
+        }
         mainWindow.webContents.send("update-available", {
             version: info.version,
             notes: info.releaseNotes || "Sem descrição"
@@ -25,11 +36,24 @@ function initUpdater(mainWindow) {
     });
 
     autoUpdater.on("update-downloaded", () => {
+        if (!mainWindow.isFocused()) {
+            const notification = new Notification({
+                title: "Atualização instalada com sucesso!",
+                body: "Aguarde até que a atualização seja carregada."
+            });
+            notification.show();
+        }
         mainWindow.webContents.send("update-downloaded");
     });
 
     autoUpdater.on("error", (err) => {
-        console.error(err);
+        if (!mainWindow.isFocused()) {
+            const notification = new Notification({
+                title: "Ocorreu um erro no instalação.",
+                body: "Confira o arquivo de logs para mais detalhes. Se necessário, chame um suporte."
+            });
+            notification.show();
+        }
         log.error("Erro no updater:", err);
         mainWindow.webContents.send("update-error");
     });

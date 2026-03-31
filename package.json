@@ -1,7 +1,7 @@
 {
   "name": "soultune-electron",
   "version": "1.0.2",
-  "description": "SoulTune Electron App",
+  "description": "Software para escutar todas as músicas de Undertale e Deltarune.",
   "main": "main.js",
   "repository": {
     "url": "https://github.com/LucaCunha001/SoulTune"
@@ -12,12 +12,12 @@
   },
   "scripts": {
     "start": "electron . --trace-warnings",
-    "build": "electron-builder",
+    "build": "electron-builder --linux",
     "release": "electron-builder --publish always"
   },
   "build": {
     "appId": "com.viora.soultune",
-    "productName": "Soultune",
+    "productName": "SoulTune",
     "directories": {
       "output": "dist"
     },
@@ -25,14 +25,29 @@
       "target": "nsis",
       "icon": "icon.ico"
     },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "icon.png",
+      "category": "Audio"
+    },
     "files": [
-      "**/*"
+      "main.js",
+      "package.json",
+      "package-lock.json",
+      "rpc.js",
+      "server.js",
+      "updater.js",
+      "preload.js",
+      "albums_ready.json",
+      "sources/**/*",
+      "mus/**/*"
     ],
     "publish": [
       {
         "provider": "github",
         "owner": "LucaCunha001",
-        "repo": "SoulTune"
+        "repo": "SoulTune",
+        "releaseType": "draft"
       }
     ]
   },
