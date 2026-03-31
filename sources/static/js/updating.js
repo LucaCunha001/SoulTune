@@ -40,20 +40,29 @@ function createUpdateUI(data) {
                 <ul style="text-align:left; font-size:13px; opacity:0.9;">
                     ${formatNotes(data.notes)}
                 </ul>
-                <div style="margin-top:10px;">
-                    <button id="updateBtn">Atualizar</button>
-                    <button id="skipBtn">Agora não</button>
+                <div style="margin-top:10px; display:flex; justify-content:center; gap:10px;">
+                    <button id="updateBtn" class="btn btn-primary">Atualizar</button>
+                    <button id="skipBtn" class="btn btn-secondary">Agora não</button>
                 </div>
             `;
 
     container.appendChild(box);
 
-    document.getElementById("updateBtn").onclick = () => {
+    const updateBtn = document.getElementById("updateBtn");
+    const skipBtn = document.getElementById("skipBtn");
+
+    const setLoading = (loading) => {
+        updateBtn.disabled = loading;
+        skipBtn.disabled = loading;
+    };
+
+    updateBtn.onclick = () => {
         setStatus("Baixando atualização...", 0);
+        setLoading(true);
         window.updater.download();
     };
 
-    document.getElementById("skipBtn").onclick = () => {
+    skipBtn.onclick = () => {
         continueApp();
     };
 }
@@ -120,9 +129,11 @@ async function init() {
 
     window.updater.onError(() => {
         setStatus("Erro ao atualizar", 100);
+        setLoading(false);
 
         const retry = document.createElement("button");
         retry.innerText = "Tentar novamente";
+        retry.className = "btn btn-secondary";
         retry.style.marginTop = "10px";
 
         retry.onclick = () => {

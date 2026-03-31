@@ -92,7 +92,7 @@ export class Albums {
         trackList.innerHTML = '';
 
         for (let index = 0; index < tracksWithDuration.length; index++) {
-            let displayIndex = album.title == "deltarune-ost-chapter4" ? index + 38 : index;
+            let displayIndex = album.id == "deltarune-chapter4" ? index + 38 : index;
             const { track, duration } = tracksWithDuration[index];
 
             const trackItem = document.createElement('li');

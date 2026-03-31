@@ -102,6 +102,7 @@ export class Player {
 
     async playTrack(track, album) {
         this.stopCurrentPlayback();
+        this.stopVideo();
 
         this.app.currentTrack = { ...track, album };
         this.app.currentAudioIndex = 0;
@@ -160,6 +161,10 @@ export class Player {
         this.playingTrack(track);
         this.updateMusic(track, album);
         this.updateRPC();
+
+        if (track.video) {
+            this.showVideo(track.video);
+        }
 
         document.getElementById('right-panel').classList.add('visible');
     }
@@ -223,10 +228,19 @@ export class Player {
     togglePlayPause() {
         if (!this.app.currentAudio) return;
 
+        const video = document.getElementById('easter-egg-video');
+        const overlay = document.getElementById('video-overlay');
+
         if (this.app.isPlaying) {
             this.app.currentAudio.pause();
+            if (video && overlay && overlay.style.display === 'flex') {
+                video.pause();
+            }
         } else {
             this.app.currentAudio.play();
+            if (video && overlay && overlay.style.display === 'flex') {
+                video.play();
+            }
         }
 
         this.app.isPlaying = !this.app.isPlaying;
@@ -480,6 +494,68 @@ export class Player {
                 this.durationCache.set(src, 0);
                 resolve(0);
             };
+        });
+    }
+
+    showVideo(videoPath) {
+        const overlay = document.getElementById('video-overlay');
+        const video = document.getElementById('easter-egg-video');
+        
+        if (!overlay || !video) return;
+        
+        const videoUrl = `/api/music/${this.app.currentTrack.album.id}/${this.app.currentTrack.id}?video=true`;
+        video.src = videoUrl;
+        overlay.style.display = 'flex';
+        
+        // Sincronizar vídeo com áudio
+        if (this.app.currentAudio) {
+            setTimeout(() => {
+                video.currentTime = this.app.currentAudio.currentTime;
+                video.play();
+            }, 100);
+        }
+    }
+
+    stopVideo() {
+        const overlay = document.getElementById('video-overlay');
+        const video = document.getElementById('easter-egg-video');
+        
+        if (!overlay || !video) return;
+
+        video.pause();
+        video.src = '';
+        overlay.style.display = 'none';
+    }
+
+    setupPlaybackSync() {
+        const video = document.getElementById('easter-egg-video');
+        const closeBtn = document.getElementById('close-video-btn');
+
+        if (!video || !closeBtn) return;
+
+        closeBtn.addEventListener('click', () => {
+            this.stopVideo();
+        });
+
+        video.addEventListener('play', () => {
+            if (this.app.currentAudio && !this.app.isPlaying) {
+                this.app.currentAudio.play();
+                this.app.isPlaying = true;
+            }
+        });
+
+        video.addEventListener('pause', () => {
+            if (this.app.currentAudio && this.app.isPlaying) {
+                this.app.currentAudio.pause();
+                this.app.isPlaying = false;
+            }
+        });
+
+        // Sincronizar áudio com vídeo durante a reprodução
+        video.addEventListener('timeupdate', () => {
+            if (this.app.currentAudio && Math.abs(video.currentTime - this.app.currentAudio.currentTime) > 0.5) {
+                this.app.currentAudio.currentTime = video.currentTime;
+            }
         });
     }
 }

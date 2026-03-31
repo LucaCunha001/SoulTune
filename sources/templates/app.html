@@ -127,6 +127,22 @@
                                 </select>
                             </label>
                         </div>
+                        <div class="settings-item">
+                            <span>Background</span>
+                            <div class="background-controls">
+                                <select id="background-option" class="setting-select">
+                                    <option value="none">Padrão (nenhum)</option>
+                                    <option value="/static/images/undertale-cover.jpg">Undertale</option>
+                                    <option value="/static/images/deltarune-ch1-cover.jpg">Deltarune CH1</option>
+                                    <option value="/static/images/deltarune-ch2-cover.jpg">Deltarune CH2</option>
+                                    <option value="/static/images/deltarune-ch3-cover.jpg">Deltarune CH3</option>
+                                    <option value="/static/images/deltarune-ch4-cover.jpg">Deltarune CH4</option>
+                                </select>
+                                <button type="button" id="background-upload-btn" class="setting-button">Fazer upload</button>
+                                <input id="background-file-input" type="file" accept="image/*" style="display: none;" />
+                                <div id="background-preview" class="background-preview">Plano de fundo padrão</div>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="settings-group">
@@ -146,6 +162,14 @@
         <div id="album-content"></div>
         <div id="lyrics-content"></div>
     </div>
+    </div>
+
+    <div id="video-overlay" class="video-overlay" style="display: none;">
+        <video id="easter-egg-video" class="easter-egg-video" controls>
+            <source src="" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        <button id="close-video-btn" class="close-video-btn" aria-label="Fechar vídeo">&times;</button>
     </div>
 
     <div class="player">

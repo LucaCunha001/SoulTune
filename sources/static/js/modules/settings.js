@@ -13,9 +13,13 @@ export class Settings {
                     uiTheme: '0',
                     undertaleFolder: '',
                     deltaruneFolder: '',
+                    background: { type: 'none', value: null },
                     ...settings
                 };
                 this.applyTheme(this.app.settings.uiTheme);
+                if (this.app.background && this.app.background.applyBackground) {
+                    this.app.background.applyBackground();
+                }
                 this.displaySettings();
             })
             .catch(error => {
@@ -25,8 +29,12 @@ export class Settings {
                     autoStart: false,
                     uiTheme: '0',
                     undertaleFolder: '',
-                    deltaruneFolder: ''
+                    deltaruneFolder: '',
+                    background: { type: 'none', value: null }
                 };
+                if (this.app.background && this.app.background.applyBackground) {
+                    this.app.background.applyBackground();
+                }
                 this.displaySettings();
             });
     }
@@ -65,6 +73,12 @@ export class Settings {
                         }
                     });
                     break;
+                case 'background-upload-btn':
+                    const fileInput = document.getElementById('background-file-input');
+                    if (fileInput) {
+                        fileInput.click();
+                    }
+                    break;
             }
         })
 
@@ -85,6 +99,26 @@ export class Settings {
                     this.applyTheme(e.target.value);
                     this.saveSettings();
                     break;
+                case 'background-option':
+                    if (e.target.value === 'none') {
+                        this.app.background.setBackground('none', null);
+                    } else {
+                        this.app.background.setBackground('preset', e.target.value);
+                    }
+                    this.updateBackgroundPreview();
+                    break;
+                case 'background-file-input':
+                    const file = e.target.files && e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            const url = event.target.result;
+                            this.app.background.setBackground('custom', url);
+                            this.updateBackgroundPreview();
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                    break;
             }
         })
     }
@@ -95,7 +129,42 @@ export class Settings {
         document.getElementById('undertale-path').value = this.app.settings.undertaleFolder;
         document.getElementById('deltarune-path').value = this.app.settings.deltaruneFolder;
         document.getElementById('ui-theme').value = this.app.settings.uiTheme;
+
+        const bgOpt = document.getElementById('background-option');
+        const bgPreview = document.getElementById('background-preview');
+        if (bgOpt) {
+            const bg = this.app.settings.background || { type: 'none', value: null };
+            if (bg.type === 'none') {
+                bgOpt.value = 'none';
+                if (bgPreview) {
+                    bgPreview.style.backgroundImage = '';
+                    bgPreview.innerText = 'Plano de fundo padrão';
+                }
+            } else {
+                bgOpt.value = bg.value || 'none';
+                if (bgPreview) {
+                    bgPreview.style.backgroundImage = `url('${bg.value}')`;
+                    bgPreview.innerText = '';
+                }
+            }
+        }
     }
+
+    updateBackgroundPreview() {
+        const bg = this.app.settings.background || { type: 'none', value: null };
+        const preview = document.getElementById('background-preview');
+
+        if (!preview) return;
+
+        if (bg.type === 'none' || !bg.value) {
+            preview.style.backgroundImage = '';
+            preview.innerText = 'Plano de fundo padrão';
+        } else {
+            preview.style.backgroundImage = `url('${bg.value}')`;
+            preview.innerText = '';
+        }
+    }
+
 
     showSettings() {
         this.app.ui.clearMainContent();
@@ -123,5 +192,9 @@ export class Settings {
                 link.disabled = true;
             }
         });
+
+        if (this.app.background && this.app.background.applyBackground) {
+            this.app.background.applyBackground();
+        }
     }
 }

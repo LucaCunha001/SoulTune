@@ -6,6 +6,7 @@ import { Settings } from './modules/settings.js';
 import { UnregisteredFiles } from './modules/unregisteredFiles.js';
 import { Lyrics } from './modules/lyrics.js';
 import { UI } from './modules/ui.js';
+import { Background } from './modules/background.js';
 
 class SoulTune {
     constructor() {
@@ -45,6 +46,7 @@ class SoulTune {
         this.unregisteredFiles = new UnregisteredFiles(this);
         this.lyrics = new Lyrics(this);
         this.ui = new UI(this);
+        this.background = new Background(this);
 
         this.init();
     }
@@ -58,6 +60,7 @@ class SoulTune {
         this.albums.loadAlbums();
         this.playlists.loadPlaylistsFromAPI();
         this.player.setupAudioEvents();
+        this.player.setupPlaybackSync();
         this.player.initVolume();
     }
 }

@@ -284,6 +284,16 @@ app.get("/api/music/:albumId/:index", (req, res) => {
     const track = album.tracks.find(t => String(t.id) === req.params.index);
     if (!track) return res.status(404).json({ error: "Música não encontrada" });
 
+    // Verificar se é requisição de vídeo
+    if (req.query.video === 'true' && track.video) {
+        const filePath = resolveMusicPath(album.id, track.video);
+
+        if (!filePath) {
+            return res.status(404).json({ error: "Vídeo não encontrado no sistema" });
+        }
+        return res.sendFile(filePath);
+    }
+
     if (track.file) {
         const filePath = resolveMusicPath(album.id, track.file);
 

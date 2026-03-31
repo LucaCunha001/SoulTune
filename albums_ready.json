@@ -1818,7 +1818,8 @@
                 "file": "../extras/tennaIntroF1_compressed_28.ogg",
                 "pitch": 1.0,
                 "duration": 41.0,
-                "lyrics": null
+                "lyrics": null,
+                "video": "../extras/tennaIntroF1_compressed_28.mp4"
             },
             {
                 "id": "3",
