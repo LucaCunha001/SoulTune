@@ -10,7 +10,7 @@
   "scripts": {
     "start": "electron . --trace-warnings",
     "build": "electron-builder",
-    "release": "cross-env GH_TOKEN=%GH_TOKEN% electron-builder --publish always"
+    "release": "electron-builder --publish always"
   },
   "build": {
     "appId": "com.viora.soultune",
