@@ -4,7 +4,7 @@
 
 .playlists-section h3 {
     font-size: 12px;
-    text-transform: uppercase;
+    
     color: var(--subtext);
     margin-bottom: 10px;
 }

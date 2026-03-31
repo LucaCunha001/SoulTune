@@ -8,6 +8,7 @@ export class Settings {
             .then(response => response.json())
             .then(settings => {
                 this.app.settings = { ...this.app.settings, ...settings };
+                this.applyTheme(this.app.settings.uiTheme);
                 this.displaySettings();
             })
             .catch(error => {
@@ -65,6 +66,7 @@ export class Settings {
                     break;
                 case 'ui-theme':
                     this.app.settings.uiTheme = e.target.value;
+                    this.applyTheme(e.target.value);
                     this.saveSettings();
                     break;
             }
@@ -84,5 +86,26 @@ export class Settings {
         document.getElementById('settings-view').style.display = 'block';
         document.getElementById("secao-titulo").innerHTML = '';
         this.displaySettings();
+    }
+
+    applyTheme(themeValue) {
+        const themes = {
+            '0': 'moderno',
+            '1': 'undertale',
+            0: 'moderno',
+            1: 'undertale'
+        };
+
+        const selectedTheme = themes[themeValue] || 'moderno';
+
+        const stylesheets = document.querySelectorAll('link[data-theme]');
+
+        stylesheets.forEach(link => {
+            if (link.dataset.theme === selectedTheme) {
+                link.disabled = false;
+            } else {
+                link.disabled = true;
+            }
+        });
     }
 }

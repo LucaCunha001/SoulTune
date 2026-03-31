@@ -83,7 +83,7 @@ function getUnregisteredFiles(undertaleFolder, deltaruneFolder) {
             } else if (musicExtensions.includes(path.extname(fullPath).toLowerCase())) {
                 const relativePath = path.relative(rootDir, fullPath);
 
-                if (!registeredFiles.has(relativePath)) {
+                if (!registeredFiles.has(path.basename(relativePath))) {
                     unregisteredFiles.push({
                         path: fullPath,
                         relativePath: relativePath,

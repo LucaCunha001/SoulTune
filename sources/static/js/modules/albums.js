@@ -123,7 +123,9 @@ export class Albums {
             trackList.appendChild(trackItem);
         }
 
-        if (this.app.currentTrack) this.app.player.playingTrack(this.app.currentTrack.title);
+        if (this.app.currentTrack?.album == album) {
+            this.app.player.playingTrack(this.app.currentTrack);
+        }
 
         lucide.createIcons();
     }

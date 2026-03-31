@@ -4,8 +4,7 @@
 
 .playlists-section h3 {
     font-size: 12px;
-    text-transform: uppercase;
-    color: var(--subtext);
+    color: #aaa;
     margin-bottom: 10px;
 }
 
@@ -15,47 +14,51 @@
 }
 
 .playlist-list a {
-    color: var(--subtext);
+    color: #aaa;
     text-decoration: none;
     font-size: 14px;
     display: block;
-    padding: 6px 0;
-    transition: var(--transition);
+    padding: 6px 8px;
+    border: 2px solid transparent;
 }
 
 .playlist-list a:hover {
-    color: var(--text);
+    color: #fff;
+    border: 2px solid #fff;
+    background: #000;
 }
 
 .create-playlist-btn {
-    background: var(--primary);
-    border: none;
+    background: #000;
+    border: 2px solid #fff;
     padding: 10px;
-    border-radius: 25px;
-    color: white;
+    color: #fff;
     cursor: pointer;
     font-weight: bold;
-    transition: var(--transition);
+    font-size: 16px;
 }
 
 .create-playlist-btn:hover {
-    background: var(--primary-hover);
+    background: #fff;
+    color: #000;
 }
 
 .playlist-header {
     display: flex;
     gap: 25px;
     margin-bottom: 30px;
+    align-items: flex-start;
 }
+
 
 .playlists-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
 }
 
 .playlist-cover {
     width: 180px;
-    border-radius: var(--radius);
     object-fit: cover;
+    border: 2px solid #fff;
 }

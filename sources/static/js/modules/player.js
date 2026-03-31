@@ -1,14 +1,17 @@
 export class Player {
     constructor(app) {
         this.app = app;
-        this.durationCache = new Map(); // Cache para durações em memória
+        this.durationCache = new Map();
     }
 
-    playingTrack(trackTitle) {
+    playingTrack(track) {
         document.querySelectorAll(".track-item").forEach((element) => {
-            element.classList.remove("playing");
-            const title = element.querySelector(".track-title");
-            if (title.innerText == trackTitle) element.classList.add("playing");
+            const title = element.querySelector(".track-title").innerHTML;
+            if (title == track.title) {
+                element.classList.add("playing");
+            } else {
+                element.classList.remove("playing");
+            }
         });
     }
 
@@ -154,7 +157,7 @@ export class Player {
         } else {
             this.app.lyrics.hideLyricsPanel();
         }
-        this.playingTrack(track.title);
+        this.playingTrack(track);
         this.updateMusic(track, album);
         this.updateRPC();
 
