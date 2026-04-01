@@ -62,6 +62,7 @@ function updateMusic(track, start, end) {
     rpc.user.setActivity({
         type: ActivityType.Listening,
         details: `${displayIndex}. ${track.title}`,
+        state: "Toby Fox",
         startTimestamp: start,
         endTimestamp: end,
         buttons: buttons,
