@@ -1,4 +1,4 @@
-const { Notification, BrowserWindow } = require("electron");
+const { Notification, BrowserWindow, ipcMain } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
 
@@ -62,8 +62,6 @@ function initUpdater(mainWindow) {
 }
 
 function setupIPC() {
-    const { ipcMain } = require("electron");
-
     ipcMain.handle("update-download", () => {
         autoUpdater.downloadUpdate();
     });

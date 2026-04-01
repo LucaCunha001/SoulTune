@@ -1,0 +1,148 @@
+.app {
+    display: grid;
+    grid-template-columns: 240px 1fr 300px;
+    grid-template-rows: 80px 1fr;
+    height: calc(100vh - 90px);
+    transition: grid-template-columns 0.25s ease;
+}
+
+.app:not(.right-panel-open) {
+    grid-template-columns: 240px 1fr 0;
+}
+
+.sidebar {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-item {
+    padding: 12px 14px;
+    text-decoration: none;
+}
+
+.main-content {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 0 25px 25px 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.settings-view {
+    padding: 20px;
+}
+
+.settings-container {
+    max-width: 600px;
+}
+
+.settings-item {
+    margin-bottom: 16px;
+}
+
+.setting-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    max-width: 450px;
+}
+
+#search-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    outline: none;
+    background: transparent;
+}
+
+#search-input::placeholder {
+    color: var(--subtext);
+}
+
+#search-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.search-track-result,
+.search-album-result {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.search-track-cover,
+.search-album-cover {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.search-track-details {
+    font-size: 13px;
+}
+
+.search-header-content {
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.search-header h2 {
+    font-size: 26px;
+}
+
+.search-results-list {
+    list-style: none;
+    padding: 0;
+}
+
+.search-track-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.search-track-info {
+    flex: 1;
+}
+
+.search-track-title {
+    margin-bottom: 2px;
+}
+
+.search-track-artist {
+    font-size: 13px;
+}
+
+.search-track-duration {
+    font-size: 12px;
+}

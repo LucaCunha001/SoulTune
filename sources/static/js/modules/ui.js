@@ -105,34 +105,43 @@ export class UI {
             this.app.player.seekTo(e.target.value);
         });
 
+        document.getElementById('mute-btn').addEventListener('click', (e) => {
+            this.app.player.toggleMute();
+            this.updateSoundUI();
+        });
+
         document.getElementById('volume-bar').addEventListener('input', (e) => {
             this.app.player.setVolume(e.target.value);
+            this.updateSoundUI();
         });
 
         document.querySelector('.create-playlist-btn').addEventListener('click', () => {
             this.app.playlists.showCreatePlaylistModal();
         });
+
+        this.updateLoopUI();
+        this.updateSoundUI();
     }
 
     updateLoopUI() {
-        const btn = document.getElementById('loop-btn');
+        const loopBtn = document.getElementById('loop-btn');
 
-        btn.classList.remove('active');
+        loopBtn.classList.remove('active');
 
         if (this.app.loopMode !== 'none') {
-            btn.classList.add('active');
+            loopBtn.classList.add('active');
         }
         let icon = "";
 
         switch (this.app.loopMode) {
             case 'track':
                 icon = 'repeat-1';
-                btn.classList.add('active');
+                loopBtn.classList.add('active');
                 break;
 
             case 'queue':
                 icon = 'repeat';
-                btn.classList.add('active');
+                loopBtn.classList.add('active');
                 break;
 
             case 'none':
@@ -141,7 +150,28 @@ export class UI {
                 break;
         }
 
-        btn.innerHTML = `<i data-lucide="${icon}"></i>`;
+        loopBtn.innerHTML = `<i data-lucide="${icon}"></i>`;
+
+        lucide.createIcons();
+    }
+
+    updateSoundUI() {
+        const muteBtn = document.getElementById('mute-btn');
+        const isMuted = this.app.currentAudio ? this.app.currentAudio.muted : !!this.app.isMuted;
+        
+        let volumeIcon = "-x";
+        const volume = this.app.currentAudio ? this.app.currentAudio.volume : document.getElementById("volume-bar").value / 100;
+        if (volume === 0) {
+            volumeIcon = "-x"
+        } else if (volume <= 0.33) {
+            volumeIcon = "";
+        } else if (volume <= 0.66) {
+            volumeIcon = "-1";
+        } else {
+            volumeIcon = "-2";
+        }
+        
+        muteBtn.innerHTML = `<i data-lucide="volume${isMuted ? '-off' : volumeIcon}"></i>`
 
         lucide.createIcons();
     }

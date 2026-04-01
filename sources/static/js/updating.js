@@ -29,7 +29,7 @@ function formatNotes(notes) {
         .join("");
 }
 
-function createUpdateUI(data) {
+function createupdateUI(data) {
     const container = document.querySelector(".container");
 
     const box = document.createElement("div");
@@ -109,7 +109,7 @@ async function init() {
     window.updater.onAvailable((data) => {
         updateAvailable = true;
         setStatus("Atualização disponível!", 50);
-        createUpdateUI(data);
+        createupdateLoopUI(data);
     });
 
     window.updater.onNotAvailable(() => {

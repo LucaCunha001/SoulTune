@@ -1205,7 +1205,7 @@
             {
                 "id": "36",
                 "title": "Your Power",
-                "file": "../extras/snd_usefountain.ogg",
+                "file": "../chapter1_windows/snd_usefountain.ogg",
                 "pitch": 1.0,
                 "duration": 0.0,
                 "lyrics": null
@@ -1819,7 +1819,7 @@
                 "pitch": 1.0,
                 "duration": 41.0,
                 "lyrics": null,
-                "video": "../extras/tennaIntroF1_compressed_28.mp4"
+                "video": "../chapter3_windows/tennaIntroF1_compressed_28.mp4"
             },
             {
                 "id": "3",

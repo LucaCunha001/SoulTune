@@ -8,12 +8,14 @@
         content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
     <title>SoulTune</title>
     
-    <link rel="stylesheet" href="/static/css/app/style.css" data-theme="moderno">
-    <link rel="stylesheet" href="/static/css/app/search.css" data-theme="moderno">
-    <link rel="stylesheet" href="/static/css/app/form.css" data-theme="moderno">
-    <link rel="stylesheet" href="/static/css/app/playlist.css" data-theme="moderno">
-    <link rel="stylesheet" href="/static/css/app/player.css" data-theme="moderno">
-    <link rel="stylesheet" href="/static/css/app/albums.css" data-theme="moderno">
+    <link rel="stylesheet" href="/static/css/app/common.css">
+    
+    <link rel="stylesheet" href="/static/css/moderno/style.css" data-theme="moderno">
+    <link rel="stylesheet" href="/static/css/moderno/search.css" data-theme="moderno">
+    <link rel="stylesheet" href="/static/css/moderno/form.css" data-theme="moderno">
+    <link rel="stylesheet" href="/static/css/moderno/playlist.css" data-theme="moderno">
+    <link rel="stylesheet" href="/static/css/moderno/player.css" data-theme="moderno">
+    <link rel="stylesheet" href="/static/css/moderno/albums.css" data-theme="moderno">
     
     <link rel="stylesheet" href="/static/css/undertale/style.css" data-theme="undertale" disabled>
     <link rel="stylesheet" href="/static/css/undertale/search.css" data-theme="undertale" disabled>
@@ -132,11 +134,11 @@
                             <div class="background-controls">
                                 <select id="background-option" class="setting-select">
                                     <option value="none">Padrão (nenhum)</option>
-                                    <option value="/static/images/undertale-cover.jpg">Undertale</option>
-                                    <option value="/static/images/deltarune-ch1-cover.jpg">Deltarune CH1</option>
-                                    <option value="/static/images/deltarune-ch2-cover.jpg">Deltarune CH2</option>
-                                    <option value="/static/images/deltarune-ch3-cover.jpg">Deltarune CH3</option>
-                                    <option value="/static/images/deltarune-ch4-cover.jpg">Deltarune CH4</option>
+                                    <option value="/static/images/backgrounds/reunited.png">Reunited</option>
+                                    <option value="/static/images/backgrounds/home.gif">Home</option>
+                                    <option value="/static/images/backgrounds/fonte.gif">Fonte</option>
+                                    <option value="/static/images/backgrounds/dualidade.webp">Dualidade de Kris</option>
+                                    <option value="/static/images/backgrounds/forest.jpg">Scarlet Forest</option>
                                 </select>
                                 <button type="button" id="background-upload-btn" class="setting-button">Fazer upload</button>
                                 <input id="background-file-input" type="file" accept="image/*" style="display: none;" />
@@ -185,7 +187,7 @@
             <span id="total-time">0:00</span>
         </div>
         <div class="player-volume">
-            <span><i data-lucide="volume"></i></span>
+            <button id="mute-btn"><i data-lucide="volume"></i></button>
             <input type="range" id="volume-bar" min="0" max="100" value="50">
         </div>
         <div class="now-playing">

@@ -1,6 +1,7 @@
 const state = {
     albumName: '',
     audioQueue: [],
+    timeline: [],
     markers: [],
     currentAudioIndex: 0,
     currentAudio: null,
@@ -9,17 +10,50 @@ const state = {
 
 function el(tag, props = {}) {
     const e = document.createElement(tag);
-
     if (props.class) e.className = props.class;
     if (props.text) e.textContent = props.text;
     if (props.html) e.innerHTML = props.html;
-
     return e;
 }
 
 function renderAll() {
     renderList();
     renderMarkers();
+}
+
+async function getAudioDuration(src) {
+    return new Promise(resolve => {
+        const audio = new Audio();
+        audio.src = src;
+        audio.preload = 'metadata';
+
+        audio.onloadedmetadata = () => resolve(audio.duration || 0);
+        audio.onerror = () => resolve(0);
+    });
+}
+
+async function prepareQueue() {
+    for (const file of state.audioQueue) {
+        if (!file.duration) {
+            file.duration = await getAudioDuration(file.src);
+        }
+    }
+}
+
+function buildTimeline() {
+    let timeCursor = 0;
+
+    state.timeline = state.audioQueue.map((file, i) => {
+        const seg = {
+            index: i,
+            start: timeCursor,
+            end: timeCursor + file.duration,
+            delay: file.delay || 0
+        };
+
+        timeCursor += file.duration + seg.delay;
+        return seg;
+    });
 }
 
 async function loadAlbums() {
@@ -63,17 +97,32 @@ async function loadFromAPI() {
     const res = await fetch(`/api/track-dev?album=${album}&track=${track}`);
     const data = await res.json();
 
-    state.audioQueue = data.files.map(f => ({
-        src: f.src,
-        delay: f.delay || 0,
-        name: f.src.split('/').pop()
-    }));
+    state.trackId = track;
+
+    if (data.files.files.length === 1) {
+        state.audioQueue = [{
+            src: `/api/music/${album}/${track}`,
+            name: data.files.files[0],
+            delay: 0,
+            duration: 0
+        }];
+    } else {
+        state.audioQueue = data.files.files.map((name, i) => ({
+            src: `/api/music/${album}/${track}?part=${i}`,
+            name,
+            delay: data.files.delays?.[i] || 0,
+            duration: 0
+        }));
+    }
 
     if (data.lyrics?.linhas && data.lyrics?.tempos) {
         countLyrics(data.lyrics);
     } else {
         state.markers = [];
     }
+
+    await prepareQueue();
+    buildTimeline();
 
     renderAll();
 }
@@ -98,13 +147,25 @@ function playCurrent() {
     state.currentAudio = audio;
     state.isPlaying = true;
 
-    audio.ontimeupdate = updateLoop;
+    audio.ontimeupdate = () => {
+        updateLoop();
 
-    audio.onended = () => {
-        setTimeout(() => {
+        const segment = state.timeline[state.currentAudioIndex];
+        const next = state.timeline[state.currentAudioIndex + 1];
+
+        if (!segment) return;
+
+        const globalTime = segment.start + audio.currentTime;
+
+        if (next && globalTime >= next.start) {
             state.currentAudioIndex++;
             playCurrent();
-        }, file.delay * 1000);
+        }
+    };
+
+    audio.onended = () => {
+        state.currentAudioIndex++;
+        playCurrent();
     };
 
     audio.play().catch(() => {
@@ -130,22 +191,16 @@ function seek(s) {
 }
 
 function getGlobalTime() {
-    let time = 0;
+    if (!state.currentAudio) return 0;
 
-    for (let i = 0; i < state.currentAudioIndex; i++) {
-        time += state.audioQueue[i].delay;
-    }
+    const segment = state.timeline[state.currentAudioIndex];
+    if (!segment) return 0;
 
-    if (state.currentAudio) {
-        time += state.currentAudio.currentTime;
-    }
-
-    return time;
+    return segment.start + state.currentAudio.currentTime;
 }
 
 function updateLoop() {
     const time = getGlobalTime();
-
     document.getElementById('time').innerText = time.toFixed(2);
     updateCurrentLyric(time);
 }
@@ -166,6 +221,7 @@ function renderList() {
 
         input.oninput = () => {
             f.delay = parseFloat(input.value) || 0;
+            buildTimeline();
         };
 
         row.append(name, input);
@@ -177,11 +233,7 @@ function countLyrics(lyrics) {
     let acc = 0;
 
     state.markers = lyrics.linhas.map((text, i) => {
-        const marker = {
-            text,
-            time: acc
-        };
-
+        const marker = { text, time: acc };
         acc += lyrics.tempos[i] || 0;
         return marker;
     });
@@ -254,11 +306,7 @@ function updateCurrentLyric(time) {
 
     const current = document.getElementById("current-lyric");
 
-    if (index >= 0) {
-        current.innerText = state.markers[index].text;
-    } else {
-        current.innerText = '';
-    }
+    current.innerText = index >= 0 ? state.markers[index].text : '';
 }
 
 function exportJSON() {
@@ -282,12 +330,11 @@ function exportJSON() {
         }
     };
 
-    const json = JSON.stringify(data, null, 2);
-
-    document.getElementById('json-editor').value = json;
+    document.getElementById('json-editor').value =
+        JSON.stringify(data, null, 2);
 }
 
-function applyJSON() {
+async function applyJSON() {
     const textarea = document.getElementById('json-editor');
     let parsed;
 
@@ -310,13 +357,27 @@ function applyJSON() {
 
     const album = state.albumName;
 
-    state.audioQueue = parsed.files.files.map((name, i) => ({
-        src: `/api/music/${album}/${name}`,
-        name,
-        delay: parsed.files.delays[i] || 0
-    }));
-
+    if (parsed.files.files.length === 1) {
+        state.audioQueue = [{
+            src: `/api/music/${album}/${track}`,
+            name: parsed.files.files[0],
+            delay: 0,
+            duration: 0
+        }];
+    } else {
+        state.audioQueue = parsed.files.files.map((name, i) => ({
+            src: `/api/music/${album}/${track}?part=${i}`,
+            name,
+            delay: parsed.files.delays?.[i] || 0,
+            duration: 0
+        }));
+    }
+    
     countLyrics(parsed.lyrics);
+
+    await prepareQueue();
+    buildTimeline();
+
     renderAll();
 
     alert('JSON aplicado');

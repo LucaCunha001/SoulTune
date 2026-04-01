@@ -1,18 +1,10 @@
 .search-bar {
-    display: flex;
-    align-items: center;
     background: #000;
     border: 2px solid #fff;
     padding: 0 10px;
-    max-width: 450px;
 }
 
 #search-input {
-    flex: 1;
-    border: none;
-    padding: 10px;
-    outline: none;
-    background: transparent;
     color: #fff;
 }
 
@@ -23,7 +15,6 @@
 #search-btn {
     border: 2px solid #fff;
     background: #000;
-    cursor: pointer;
     color: #fff;
     padding: 5px 10px;
 }
@@ -35,25 +26,13 @@
 
 .search-track-result,
 .search-album-result {
-    display: flex;
-    align-items: center;
-    padding: 12px;
     background: #000;
     border: 2px solid #fff;
-    margin-bottom: 12px;
 }
 
 .search-track-result:hover,
 .search-album-result:hover {
     background: #111;
-}
-
-.search-track-cover,
-.search-album-cover {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    margin-right: 15px;
 }
 
 .search-track-title,
@@ -64,36 +43,18 @@
 
 .search-track-details {
     color: #aaa;
-    font-size: 13px;
 }
 
 .search-header-content {
     background: #000;
-    padding: 30px;
     border: 2px solid #fff;
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.search-header h2 {
-    font-size: 26px;
 }
 
 .search-header p {
     color: #aaa;
 }
 
-.search-results-list {
-    list-style: none;
-    padding: 0;
-}
-
 .search-track-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-    margin-bottom: 5px;
     border: 2px solid transparent;
 }
 

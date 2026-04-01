@@ -45,7 +45,7 @@ export class Background {
             appRoot.style.backgroundRepeat = 'no-repeat';
             appRoot.style.backgroundPosition = 'center';
             appRoot.style.backgroundColor = 'rgba(0,0,0,0.35)';
-            // Overlay next layers done via CSS, so themes still apply.
+            appRoot.style.imageRendering = 'pixelated';
         }
     }
 

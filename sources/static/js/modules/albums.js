@@ -92,14 +92,16 @@ export class Albums {
         trackList.innerHTML = '';
 
         for (let index = 0; index < tracksWithDuration.length; index++) {
-            let displayIndex = album.id == "deltarune-chapter4" ? index + 38 : index;
+            let displayIndex = album.id === "deltarune-chapter4" ? index + 38 : index;
+            displayIndex += 1;
+            displayIndex = displayIndex.toString().padStart(album.id === "undertale-ost" ? 3 : 2, '0');
             const { track, duration } = tracksWithDuration[index];
 
             const trackItem = document.createElement('li');
             trackItem.className = 'track-item';
             trackItem.innerHTML = `
         <div class="track-left">
-            <span class="track-number">${displayIndex + 1}</span>
+            <span class="track-number">${displayIndex}</span>
             <div class="track-info">
                 <div class="track-title">${track.title}</div>
                 <div class="track-artist">${track.authors?.join(', ') || album.artist}</div>

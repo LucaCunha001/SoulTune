@@ -118,9 +118,7 @@ function resolveMusicPath(albumId, fileName) {
         baseDir = path.join(__dirname, "mus", "extras");
     }
 
-    const fullPath = path.join(baseDir, fileName);
-
-    if (!fullPath.startsWith(baseDir)) return null;
+    const fullPath = path.normalize(path.join(baseDir, fileName));
 
     if (!fs.existsSync(fullPath)) return null;
 
@@ -201,17 +199,11 @@ app.get('/api/track-dev', (req, res) => {
     let files = [];
 
     if (track.file) {
-        files.push({
-            src: `/api/music/${album.id}/${track.id}`,
-            delay: 0
-        });
+        files.push(track.file.fileName);
     }
 
     else if (track.files) {
-        files = track.files.files.map((_, i) => ({
-            src: `/api/music/${album.id}/${track.id}?part=${i}`,
-            delay: track.files.delays?.[i] || 0
-        }));
+        files = track.files;
     }
 
     let lyrics = track.lyrics;
@@ -284,7 +276,6 @@ app.get("/api/music/:albumId/:index", (req, res) => {
     const track = album.tracks.find(t => String(t.id) === req.params.index);
     if (!track) return res.status(404).json({ error: "Música não encontrada" });
 
-    // Verificar se é requisição de vídeo
     if (req.query.video === 'true' && track.video) {
         const filePath = resolveMusicPath(album.id, track.video);
 

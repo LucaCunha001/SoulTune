@@ -161,6 +161,7 @@ export class Player {
         this.playingTrack(track);
         this.updateMusic(track, album);
         this.updateRPC();
+        this.app.ui.updateSoundUI();
 
         if (track.video) {
             this.showVideo(track.video);
@@ -201,12 +202,14 @@ export class Player {
         const audio = new Audio(src);
         audio.playbackRate = this.app.currentTrack.pitch || 1;
         audio.preservesPitch = false;
+        audio.muted = !!this.app.isMuted;
 
         this.app.currentAudio = audio;
 
         this.setupAudioEvents(audio);
 
         audio.play();
+        this.initVolume();
     }
 
     toggleLoopMode() {
@@ -248,10 +251,12 @@ export class Player {
     }
 
     toggleMute() {
-        if (!this.app.currentAudio) return;
+        this.app.isMuted = !this.app.isMuted;
 
-        this.app.currentAudio.muted = !this.app.currentAudio.muted;
-        this.app.isMuted = this.app.currentAudio.muted;
+        if (this.app.currentAudio) {
+            this.app.currentAudio.muted = this.app.isMuted;
+        }
+
         this.updatePlayerUI();
     }
 
@@ -475,12 +480,12 @@ export class Player {
             const audio = new Audio();
             audio.src = src;
             audio.preload = 'metadata';
-            audio.crossOrigin = 'anonymous'; // Tentar evitar problemas de cache
+            audio.crossOrigin = 'anonymous';
 
             const timeout = setTimeout(() => {
                 this.durationCache.set(src, 0);
                 resolve(0);
-            }, 5000); // Timeout de 5 segundos
+            }, 5000);
 
             audio.onloadedmetadata = () => {
                 clearTimeout(timeout);
@@ -507,7 +512,6 @@ export class Player {
         video.src = videoUrl;
         overlay.style.display = 'flex';
         
-        // Sincronizar vídeo com áudio
         if (this.app.currentAudio) {
             setTimeout(() => {
                 video.currentTime = this.app.currentAudio.currentTime;
@@ -551,7 +555,6 @@ export class Player {
             }
         });
 
-        // Sincronizar áudio com vídeo durante a reprodução
         video.addEventListener('timeupdate', () => {
             if (this.app.currentAudio && Math.abs(video.currentTime - this.app.currentAudio.currentTime) > 0.5) {
                 this.app.currentAudio.currentTime = video.currentTime;

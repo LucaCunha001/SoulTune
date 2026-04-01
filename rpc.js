@@ -1,5 +1,5 @@
 const { Client } = require("@xhayper/discord-rpc");
-const { ActivityType } = require("discord-api-types/v10");
+const { ActivityType, TeamMemberMembershipState } = require("discord-api-types/v10");
 
 const CLIENT_ID = "1403051221136179330";
 
@@ -47,6 +47,10 @@ function loadRPC(enabled = true) {
 
 function updateMusic(track, start, end) {
     if (!connected) return;
+    let displayIndex = parseInt(track.id);
+    displayIndex = track.album.id === "deltarune-chapter4" ? displayIndex + 38 : displayIndex;
+    displayIndex = displayIndex.toString().padStart(track.album.id === "undertale-ost" ? 3 : 2, '0');
+    
     let cover = "icone";
 
     if (track.album?.cover) {
@@ -57,7 +61,7 @@ function updateMusic(track, start, end) {
     
     rpc.user.setActivity({
         type: ActivityType.Listening,
-        details: track.title,
+        details: `${displayIndex}. ${track.title}`,
         startTimestamp: start,
         endTimestamp: end,
         buttons: buttons,
@@ -67,4 +71,14 @@ function updateMusic(track, start, end) {
 }
 
 
-module.exports = { loadRPC, updateMusic, getConnected: () => connected, disconnectRPC: () => { if (connected) { rpc.destroy(); connected = false; } } }
+module.exports = {
+    loadRPC,
+    updateMusic,
+    getConnected: () => connected,
+    disconnectRPC: () => {
+        if (connected) {
+            rpc.destroy();
+            connected = false;
+        }
+    }
+}
