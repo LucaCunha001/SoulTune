@@ -44,7 +44,7 @@ export class Background {
             appRoot.style.backgroundSize = 'cover';
             appRoot.style.backgroundRepeat = 'no-repeat';
             appRoot.style.backgroundPosition = 'center';
-            appRoot.style.backgroundColor = 'rgba(0,0,0,0.35)';
+            appRoot.style.backgroundColor = 'rgba(0,0,0,0.5)';
             appRoot.style.imageRendering = 'pixelated';
         }
     }

@@ -55,6 +55,9 @@ export class UI {
 
     setupEventListeners() {
         document.addEventListener('keydown', (e) => {
+            const tag = e.target.tagName.toLowerCase();
+
+            if (tag === 'input' || tag === 'textarea') return;
             switch (e.key) {
                 case " ":
                 case "k":
@@ -65,6 +68,7 @@ export class UI {
                 
                 case "m":
                 case "M":
+                    this.app.player.toggleMute();
                     break;
             }
         });

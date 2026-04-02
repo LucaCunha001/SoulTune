@@ -11,9 +11,6 @@ export class Playlists {
         this.app.playlistsList = value;
     }
 
-    // ========================
-    // LISTAGEM
-    // ========================
     async showPlaylists() {
         this.app.ui.clearMainContent();
 
@@ -63,9 +60,6 @@ export class Playlists {
         return card;
     }
 
-    // ========================
-    // DETALHE
-    // ========================
     showPlaylistDetail(playlist) {
         this.app.ui.clearMainContent();
 
@@ -149,7 +143,6 @@ export class Playlists {
             this.app.player.playTrack(track, track.album);
         });
 
-        // Drag and drop handlers
         li.addEventListener('dragstart', (e) => this.handleDragStart(e, playlist));
         li.addEventListener('dragover', (e) => this.handleDragOver(e));
         li.addEventListener('dragenter', (e) => this.handleDragEnter(e));
@@ -160,9 +153,6 @@ export class Playlists {
         return li;
     }
 
-    // ========================
-    // MODAL
-    // ========================
     showCreatePlaylistModal() {
         const modal = document.getElementById('playlist-modal');
         const nameInput = document.getElementById('playlist-name');
@@ -196,9 +186,6 @@ export class Playlists {
         this.closePlaylistModal();
     }
 
-    // ========================
-    // API
-    // ========================
     async loadPlaylistsFromAPI() {
         try {
             const res = await fetch('/api/playlists');
@@ -269,9 +256,6 @@ export class Playlists {
         }
     }
 
-    // ========================
-    // SIDEBAR
-    // ========================
     renderSidebar() {
         const list = document.querySelector('.playlist-list');
         list.innerHTML = '';
@@ -293,9 +277,7 @@ export class Playlists {
         });
     }
 
-    // ========================
-    // HELPERS
-    // ========================
+
     createEmptyMessage(text) {
         const p = document.createElement('p');
         p.className = 'empty-message';
@@ -303,9 +285,6 @@ export class Playlists {
         return p;
     }
 
-    // ========================
-    // DRAG AND DROP
-    // ========================
     handleDragStart(e, playlist) {
         const index = parseInt(e.target.dataset.trackIndex);
         e.dataTransfer.effectAllowed = 'move';
@@ -343,12 +322,10 @@ export class Playlists {
 
         if (sourceIndex === targetIndex) return;
 
-        // Remove visual feedback
         document.querySelectorAll('.track-item').forEach(item => {
             item.classList.remove('drag-over');
         });
 
-        // Reorder locally
         const updated = [...this.playlists];
         const pIndex = updated.findIndex(p => p.id === playlist.id);
         const track = updated[pIndex].tracks[sourceIndex];
@@ -357,10 +334,8 @@ export class Playlists {
         updated[pIndex].tracks.splice(targetIndex, 0, track);
         this.playlists = updated;
 
-        // Persist to API
         await this.updatePlaylistOrder(playlist.id, updated[pIndex].tracks);
 
-        // Refresh view
         this.showPlaylistDetail(updated[pIndex]);
 
         return false;
