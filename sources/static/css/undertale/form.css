@@ -87,7 +87,8 @@
 }
 
 .form-group textarea {
-    resize: vertical;
+    resize: none;
+    height: 150px;
 }
 
 .modal-actions {

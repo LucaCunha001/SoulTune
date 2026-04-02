@@ -27,6 +27,24 @@
     color: var(--primary);
 }
 
+#shuffle-btn.active {
+    color: var(--primary);
+}
+
+#shuffle-btn.shuffle-all {
+    position: relative;
+}
+
+#shuffle-btn.shuffle-all::after {
+    content: '2';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 10px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
 .player-controls button:hover {
     background: #333;
 }

@@ -37,6 +37,26 @@
     border-color: #ff0000;
 }
 
+#shuffle-btn.active {
+    color: #ff0000;
+    border-color: #ff0000;
+}
+
+#shuffle-btn.shuffle-all {
+    position: relative;
+}
+
+#shuffle-btn.shuffle-all::after {
+    content: '2';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 10px;
+    color: #ff0000;
+    font-weight: bold;
+    font-family: monospace;
+}
+
 .player-progress {
     display: flex;
     align-items: center;

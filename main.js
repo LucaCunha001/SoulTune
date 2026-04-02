@@ -96,16 +96,11 @@ app.on('window-all-closed', () => {
 });
 
 function setAutoStart(enabled) {
-    if (process.platform !== 'win32') return;
-
-    const exePath = process.execPath;
-    const key = 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run';
-    const valueName = 'SoulTune';
-
-    if (enabled) {
-        spawn('reg', ['add', key, '/v', valueName, '/t', 'REG_SZ', '/d', `"${exePath}"`, '/f']);
-    } else {
-        spawn('reg', ['delete', key, '/v', valueName, '/f'], { stdio: 'ignore' });
+    if (!isDev) {
+        app.setLoginItemSettings({
+            openAtLogin: enabled,
+            path: process.execPath
+        });
     }
 }
 

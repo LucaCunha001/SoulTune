@@ -101,6 +101,9 @@ export class Playlists {
     createTrackItem(track, index, playlist) {
         const li = document.createElement('li');
         li.className = 'track-item';
+        li.draggable = true;
+        li.dataset.trackIndex = index;
+        li.dataset.playlistId = playlist.id;
 
         const left = document.createElement('div');
         left.className = 'track-left';
@@ -145,6 +148,14 @@ export class Playlists {
         li.addEventListener('click', () => {
             this.app.player.playTrack(track, track.album);
         });
+
+        // Drag and drop handlers
+        li.addEventListener('dragstart', (e) => this.handleDragStart(e, playlist));
+        li.addEventListener('dragover', (e) => this.handleDragOver(e));
+        li.addEventListener('dragenter', (e) => this.handleDragEnter(e));
+        li.addEventListener('dragleave', (e) => this.handleDragLeave(e));
+        li.addEventListener('drop', (e) => this.handleDrop(e, playlist));
+        li.addEventListener('dragend', (e) => this.handleDragEnd(e));
 
         return li;
     }
@@ -290,5 +301,88 @@ export class Playlists {
         p.className = 'empty-message';
         p.textContent = text;
         return p;
+    }
+
+    // ========================
+    // DRAG AND DROP
+    // ========================
+    handleDragStart(e, playlist) {
+        const index = parseInt(e.target.dataset.trackIndex);
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', e.currentTarget.innerHTML);
+        e.dataTransfer.setData('sourceIndex', index);
+        e.currentTarget.classList.add('dragging');
+    }
+
+    handleDragOver(e) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        return false;
+    }
+
+    handleDragEnter(e) {
+        if (e.target.classList.contains('track-item')) {
+            e.target.classList.add('drag-over');
+        }
+    }
+
+    handleDragLeave(e) {
+        if (e.target.classList.contains('track-item')) {
+            e.target.classList.remove('drag-over');
+        }
+    }
+
+    async handleDrop(e, playlist) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!e.target.classList.contains('track-item')) return;
+
+        const sourceIndex = parseInt(e.dataTransfer.getData('sourceIndex'));
+        const targetIndex = parseInt(e.target.dataset.trackIndex);
+
+        if (sourceIndex === targetIndex) return;
+
+        // Remove visual feedback
+        document.querySelectorAll('.track-item').forEach(item => {
+            item.classList.remove('drag-over');
+        });
+
+        // Reorder locally
+        const updated = [...this.playlists];
+        const pIndex = updated.findIndex(p => p.id === playlist.id);
+        const track = updated[pIndex].tracks[sourceIndex];
+
+        updated[pIndex].tracks.splice(sourceIndex, 1);
+        updated[pIndex].tracks.splice(targetIndex, 0, track);
+        this.playlists = updated;
+
+        // Persist to API
+        await this.updatePlaylistOrder(playlist.id, updated[pIndex].tracks);
+
+        // Refresh view
+        this.showPlaylistDetail(updated[pIndex]);
+
+        return false;
+    }
+
+    handleDragEnd(e) {
+        document.querySelectorAll('.track-item').forEach(item => {
+            item.classList.remove('dragging', 'drag-over');
+        });
+    }
+
+    async updatePlaylistOrder(playlistId, tracks) {
+        try {
+            const res = await fetch(`/api/playlists/${playlistId}/reorder`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ tracks })
+            });
+
+            if (!res.ok) throw new Error();
+        } catch {
+            this.app.ui.toast?.('Erro ao reordenar playlist');
+        }
     }
 }

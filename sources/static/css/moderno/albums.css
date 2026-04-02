@@ -49,6 +49,7 @@
     cursor: pointer;
     gap: 12px;
     justify-content: space-between;
+    user-select: none;
 }
 
 .track-item:hover {
@@ -60,6 +61,18 @@
 }
 .track-item.playing .track-title {
     color: #ffff00;
+}
+
+.track-item.dragging {
+    opacity: 0.5;
+    background: rgba(88, 86, 214, 0.2);
+    cursor: grabbing;
+}
+
+.track-item.drag-over {
+    border-top: 2px solid var(--primary);
+    padding-top: 10px;
+    margin-top: 2px;
 }
 
 .track-left {

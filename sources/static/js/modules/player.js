@@ -2,6 +2,21 @@ export class Player {
     constructor(app) {
         this.app = app;
         this.durationCache = new Map();
+        this.shuffleMode = 'none'; // 'none', 'context' (current album/playlist), 'all' (all albums)
+        this.shuffledIndices = [];
+        this.shuffledIndex = 0;
+        this.loadShuffleSettings();
+    }
+
+    loadShuffleSettings() {
+        const saved = localStorage.getItem('shuffleMode');
+        if (saved) {
+            this.shuffleMode = saved;
+        }
+    }
+
+    saveShuffleSettings() {
+        localStorage.setItem('shuffleMode', this.shuffleMode);
     }
 
     playingTrack(track) {
@@ -109,6 +124,10 @@ export class Player {
         this.app.audioQueue = [];
         this.app.timeline = [];
 
+        if (this.shuffleMode !== 'none' && this.shuffledIndices.length === 0) {
+            this.initializeShuffle();
+        }
+
         if (track.file) {
             this.app.audioQueue = [{
                 src: `/api/music/${album.id}/${track.id}`,
@@ -180,6 +199,9 @@ export class Player {
 
                 case 'queue':
                     this.app.currentAudioIndex = 0;
+                    if (this.shuffleMode !== 'none') {
+                        this.initializeShuffle();
+                    }
                     break;
 
                 case 'none':
@@ -219,6 +241,89 @@ export class Player {
         this.app.loopMode = modes[(currentIndex + 1) % modes.length];
 
         this.app.ui.updateLoopUI();
+    }
+
+    toggleShuffleMode() {
+        if (!this.app.currentPlaylist && !this.app.albums?.allAlbums?.length) {
+            return;
+        }
+
+        if (this.app.currentPlaylist) {
+            const modes = ['none', 'context'];
+            const currentIndex = modes.indexOf(this.shuffleMode);
+            this.shuffleMode = modes[(currentIndex + 1) % modes.length];
+        } else {
+            const modes = ['none', 'context', 'all'];
+            const currentIndex = modes.indexOf(this.shuffleMode);
+            this.shuffleMode = modes[(currentIndex + 1) % modes.length];
+        }
+
+        this.saveShuffleSettings();
+        this.initializeShuffle();
+        this.app.ui.updateShuffleUI();
+    }
+
+    initializeShuffle() {
+        if (this.shuffleMode === 'none') {
+            this.shuffledIndices = [];
+            this.shuffledIndex = 0;
+            return;
+        }
+
+        let tracks = [];
+        
+        if (this.app.currentPlaylist) {
+            tracks = this.app.currentPlaylist.tracks || [];
+        } else if (this.app.currentTrack?.album) {
+            if (this.shuffleMode === 'context') {
+                tracks = this.app.currentTrack.album.tracks || [];
+            } else if (this.shuffleMode === 'all' && this.app.albums?.allAlbums) {
+                tracks = [];
+                for (const album of this.app.albums.allAlbums) {
+                    tracks.push(...(album.tracks || []));
+                }
+            }
+        }
+
+        this.shuffledIndices = Array.from({ length: tracks.length }, (_, i) => i);
+        this.shuffleArray(this.shuffledIndices);
+
+        const currentTrackId = this.app.currentTrack?.id;
+        const currentIdx = tracks.findIndex(t => t.id === currentTrackId);
+        
+        if (currentIdx !== -1) {
+            const pos = this.shuffledIndices.indexOf(currentIdx);
+            if (pos !== -1) {
+                [this.shuffledIndices[0], this.shuffledIndices[pos]] = [this.shuffledIndices[pos], this.shuffledIndices[0]];
+            }
+        }
+
+        this.shuffledIndex = 0;
+    }
+
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    getNextTrackIndex() {
+        if (this.shuffleMode === 'none') {
+            if (!this.app.currentPlaylist && !this.app.currentTrack?.album) {
+                return -1;
+            }
+
+            const trackList = this.app.currentPlaylist?.tracks || this.app.currentTrack?.album?.tracks || [];
+            const currentIdx = trackList.findIndex(t => t.id === this.app.currentTrack?.id);
+            return currentIdx + 1 < trackList.length ? currentIdx + 1 : -1;
+        } else {
+            this.shuffledIndex++;
+            if (this.shuffledIndex < this.shuffledIndices.length) {
+                return this.shuffledIndices[this.shuffledIndex];
+            }
+            return -1;
+        }
     }
 
     stopCurrentPlayback() {
@@ -364,28 +469,49 @@ export class Player {
     }
 
     nextTrack() {
-        if (!this.app.currentPlaylist || !this.app.currentTrack) return;
+        if (!this.app.currentPlaylist && !this.app.currentTrack?.album) return;
 
-        const i = this.app.currentPlaylist.tracks.findIndex(t => t.id === this.app.currentTrack.id);
-        const next = i + 1;
+        const trackList = this.app.currentPlaylist?.tracks || this.app.currentTrack?.album?.tracks || [];
+        const album = this.app.currentPlaylist || this.app.currentTrack?.album;
 
-        if (next >= this.app.currentPlaylist.tracks.length) {
+        if (!trackList || !album) return;
+
+        let nextIdx;
+        if (this.shuffleMode === 'none') {
+            const i = trackList.findIndex(t => t.id === this.app.currentTrack.id);
+            nextIdx = i + 1;
+        } else {
+            nextIdx = this.getNextTrackIndex();
+        }
+
+        if (nextIdx >= trackList.length || nextIdx < 0) {
             this.stopCurrentPlayback();
             this.app.isPlaying = false;
             this.updatePlayerUI();
             return;
         }
 
-        this.playTrack(this.app.currentPlaylist.tracks[next], this.app.currentPlaylist);
+        this.playTrack(trackList[nextIdx], album);
     }
 
     previousTrack() {
-        if (!this.app.currentPlaylist || !this.app.currentTrack) return;
+        if (!this.app.currentPlaylist && !this.app.currentTrack?.album) return;
 
-        const i = this.app.currentPlaylist.tracks.findIndex(t => t.id === this.app.currentTrack.id);
-        const prev = i > 0 ? i - 1 : this.app.currentPlaylist.tracks.length - 1;
+        const trackList = this.app.currentPlaylist?.tracks || this.app.currentTrack?.album?.tracks || [];
+        const album = this.app.currentPlaylist || this.app.currentTrack?.album;
 
-        this.playTrack(this.app.currentPlaylist.tracks[prev], this.app.currentPlaylist);
+        if (!trackList || !album) return;
+
+        let prevIdx;
+        if (this.shuffleMode === 'none') {
+            const i = trackList.findIndex(t => t.id === this.app.currentTrack.id);
+            prevIdx = i > 0 ? i - 1 : trackList.length - 1;
+        } else {
+            prevIdx = this.shuffledIndices[Math.max(0, this.shuffledIndex - 1)];
+            this.shuffledIndex = Math.max(0, this.shuffledIndex - 1);
+        }
+
+        this.playTrack(trackList[prevIdx], album);
     }
 
     setVolume(value) {

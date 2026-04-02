@@ -101,6 +101,10 @@ export class UI {
             this.updateLoopUI();
         });
 
+        document.getElementById('shuffle-btn').addEventListener('click', () => {
+            this.app.player.toggleShuffleMode();
+        });
+
         document.getElementById('progress-bar').addEventListener('input', (e) => {
             this.app.player.seekTo(e.target.value);
         });
@@ -121,6 +125,7 @@ export class UI {
 
         this.updateLoopUI();
         this.updateSoundUI();
+        this.updateShuffleUI();
     }
 
     updateLoopUI() {
@@ -172,6 +177,22 @@ export class UI {
         }
         
         muteBtn.innerHTML = `<i data-lucide="volume${isMuted ? '-off' : volumeIcon}"></i>`
+
+        lucide.createIcons();
+    }
+
+    updateShuffleUI() {
+        const shuffleBtn = document.getElementById('shuffle-btn');
+        if (!shuffleBtn) return;
+
+        shuffleBtn.classList.remove('active', 'shuffle-all');
+
+        if (this.app.player.shuffleMode !== 'none') {
+            shuffleBtn.classList.add('active');
+            if (this.app.player.shuffleMode === 'all') {
+                shuffleBtn.classList.add('shuffle-all');
+            }
+        }
 
         lucide.createIcons();
     }
