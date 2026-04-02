@@ -109,7 +109,7 @@ async function init() {
     window.updater.onAvailable((data) => {
         updateAvailable = true;
         setStatus("Atualização disponível!", 50);
-        createupdateLoopUI(data);
+        createupdateUI(data);
     });
 
     window.updater.onNotAvailable(() => {
