@@ -16,7 +16,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "release": "electron-builder --publish always"
   },
   "build": {
     "appId": "com.viora.soultune",
