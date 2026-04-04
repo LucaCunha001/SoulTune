@@ -11,7 +11,10 @@
     "url": "git+https://github.com/LucaCunha001/SoulTune.git"
   },
   "license": "ISC",
-  "author": "Luceno",
+  "author": {
+    "name": "Luceno",
+    "email": "lcunhalula@gmail.com"
+  },
   "type": "module",
   "main": "main.js",
   "scripts": {
