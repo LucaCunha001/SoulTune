@@ -3,13 +3,18 @@ export class Albums {
         this.app = app;
     }
 
+    async getAlbuns() {
+        const response = await fetch('/api/albums');
+        if (!response.ok) {
+            throw new Error('Erro ao carregar álbuns');
+        }
+        const albums = await response.json();
+        return albums;
+    }
+
     async loadAlbums() {
         try {
-            const response = await fetch('/api/albums');
-            if (!response.ok) {
-                throw new Error('Erro ao carregar álbuns');
-            }
-            const albums = await response.json();
+            const albums = await this.getAlbuns();
             this.renderAlbums(albums);
         } catch (error) {
             console.error('Erro ao carregar álbuns:', error);
@@ -109,7 +114,7 @@ export class Albums {
         </div>
         <div class="track-right">
             <span class="track-duration">${this.app.ui.formatTime(duration)}</span>
-            <button class="add-to-playlist-btn" data-lucide="plus"></button>
+            <button class="add-to-playlist-btn"><i data-lucide="plus"></i></button>
         </div>
     `;
 

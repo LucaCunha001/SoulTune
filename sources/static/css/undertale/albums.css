@@ -88,7 +88,7 @@
     gap: 10px;
 }
 
-.add-to-playlist-btn {
+.icon-btn, .add-to-playlist-btn {
     background: #000;
     border: 2px solid #fff;
     color: #fff;
@@ -99,7 +99,7 @@
     
 }
 
-.add-to-playlist-btn:hover {
+.icon-btn:hover, .add-to-playlist-btn:hover {
     background: #fff;
     color: #000;
 }

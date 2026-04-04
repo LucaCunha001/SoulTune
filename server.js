@@ -1,54 +1,56 @@
-const express = require("express");
-const path = require("path");
-const fs = require("fs");
-const os = require("os");
+import express from "express";
+import { join, extname, relative, basename, normalize, resolve } from "path";
+import { readFileSync, existsSync, mkdirSync, writeFileSync, readdirSync, statSync } from "fs";
+import os from "os";
+
+const __dirname = import.meta.dirname;
 
 const app = express();
 
 app.use(express.json());
 
-const BASE_PATH = path.join(__dirname);
+const BASE_PATH = join(__dirname);
 
 const MUSIC_DATA = JSON.parse(
-    fs.readFileSync(path.join(BASE_PATH, "albums_ready.json"), "utf-8")
+    readFileSync(join(BASE_PATH, "albums_ready.json"), "utf-8")
 );
 
 const appName = 'SoulTune';
-const APP_DIR = path.join(process.env.LOCALAPPDATA, appName);
+const APP_DIR = join(process.env.LOCALAPPDATA, appName);
 
-if (!fs.existsSync(APP_DIR)) {
-    fs.mkdirSync(APP_DIR, { recursive: true });
+if (!existsSync(APP_DIR)) {
+    mkdirSync(APP_DIR, { recursive: true });
     console.log('Pasta criada:', APP_DIR);
 }
 
-const PLAYLISTS_PATH = path.join(APP_DIR, "playlists.json");
-const SETTINGS_PATH = path.join(APP_DIR, "settings.json");
+const PLAYLISTS_PATH = join(APP_DIR, "playlists.json");
+const SETTINGS_PATH = join(APP_DIR, "settings.json");
 
-if (!fs.existsSync(PLAYLISTS_PATH)) fs.writeFileSync(PLAYLISTS_PATH, "[]");
-if (!fs.existsSync(SETTINGS_PATH)) fs.writeFileSync(SETTINGS_PATH, "{}");
+if (!existsSync(PLAYLISTS_PATH)) writeFileSync(PLAYLISTS_PATH, "[]");
+if (!existsSync(SETTINGS_PATH)) writeFileSync(SETTINGS_PATH, "{}");
 
 function loadPlaylists() {
     try {
-        return JSON.parse(fs.readFileSync(PLAYLISTS_PATH, "utf-8"));
+        return JSON.parse(readFileSync(PLAYLISTS_PATH, "utf-8"));
     } catch {
         return [];
     }
 }
 
 function savePlaylists(playlists) {
-    fs.writeFileSync(PLAYLISTS_PATH, JSON.stringify(playlists, null, 2));
+    writeFileSync(PLAYLISTS_PATH, JSON.stringify(playlists, null, 2));
 }
 
-function loadSettings() {
+export function loadSettings() {
     try {
-        return JSON.parse(fs.readFileSync(SETTINGS_PATH, "utf-8"));
+        return JSON.parse(readFileSync(SETTINGS_PATH, "utf-8"));
     } catch {
         return {};
     }
 }
 
 function saveSettings(settings) {
-    fs.writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 2));
+    writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 2));
 }
 
 function getUnregisteredFiles(undertaleFolder, deltaruneFolder) {
@@ -71,24 +73,24 @@ function getUnregisteredFiles(undertaleFolder, deltaruneFolder) {
     const unregisteredFiles = [];
 
     const listFiles = (dir, rootDir) => {
-        if (!fs.existsSync(dir)) return;
-        const items = fs.readdirSync(dir);
+        if (!existsSync(dir)) return;
+        const items = readdirSync(dir);
 
         for (const item of items) {
-            const fullPath = path.join(dir, item);
-            const stat = fs.statSync(fullPath);
+            const fullPath = join(dir, item);
+            const stat = statSync(fullPath);
 
             if (stat.isDirectory()) {
                 listFiles(fullPath, rootDir);
-            } else if (musicExtensions.includes(path.extname(fullPath).toLowerCase())) {
-                const relativePath = path.relative(rootDir, fullPath);
+            } else if (musicExtensions.includes(extname(fullPath).toLowerCase())) {
+                const relativePath = relative(rootDir, fullPath);
 
-                if (!registeredFiles.has(path.basename(relativePath))) {
+                if (!registeredFiles.has(basename(relativePath))) {
                     unregisteredFiles.push({
                         path: fullPath,
                         relativePath: relativePath,
-                        name: path.basename(fullPath, path.extname(fullPath)),
-                        folder: path.basename(dir)
+                        name: basename(fullPath, extname(fullPath)),
+                        folder: basename(dir)
                     });
                 }
             }
@@ -109,18 +111,18 @@ function resolveMusicPath(albumId, fileName) {
     if (albumId === "undertale-ost") {
         baseDir = settings.undertaleFolder;
     } else if (albumId.startsWith("deltarune")) {
-        baseDir = path.join(settings.deltaruneFolder, "mus");
+        baseDir = join(settings.deltaruneFolder, "mus");
     } else {
         return null;
     }
 
     if (fileName.startsWith("../extras")) {
-        baseDir = path.join(__dirname, "mus", "extras");
+        baseDir = join(__dirname, "mus", "extras");
     }
 
-    const fullPath = path.normalize(path.join(baseDir, fileName));
+    const fullPath = normalize(join(baseDir, fileName));
 
-    if (!fs.existsSync(fullPath)) return null;
+    if (!existsSync(fullPath)) return null;
 
     return fullPath;
 }
@@ -138,9 +140,9 @@ function safeResolve(filePath) {
     const allowedDirs = getAllowedDirs();
 
     for (const base of allowedDirs) {
-        const full = path.resolve(base, filePath);
+        const full = resolve(base, filePath);
 
-        if (full.startsWith(path.resolve(base)) && fs.existsSync(full)) {
+        if (full.startsWith(resolve(base)) && existsSync(full)) {
             return full;
         }
     }
@@ -165,18 +167,18 @@ Object.values(MUSIC_DATA).forEach(album => {
     });
 });
 
-app.use("/static", express.static(path.join(BASE_PATH, "sources", "static")));
+app.use("/static", express.static(join(BASE_PATH, "sources", "static")));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(BASE_PATH, "sources", "templates", "index.html"));
+    res.sendFile(join(BASE_PATH, "sources", "templates", "index.html"));
 });
 
 app.get("/app/", (req, res) => {
-    res.sendFile(path.join(BASE_PATH, "sources", "templates", "app.html"));
+    res.sendFile(join(BASE_PATH, "sources", "templates", "app.html"));
 });
 
 app.get("/dev/", (req, res) => {
-    res.sendFile(path.join(BASE_PATH, "sources", "templates", "dev.html"))
+    res.sendFile(join(BASE_PATH, "sources", "templates", "dev.html"))
 });
 
 app.get('/api/track-dev', (req, res) => {
@@ -331,7 +333,7 @@ app.get("/api/unregistered-music", (req, res) => {
         return res.status(404).json({ error: "Arquivo não encontrado" });
     }
 
-    const ext = path.extname(safePath).toLowerCase();
+    const ext = extname(safePath).toLowerCase();
     const allowed = ['.mp3', '.ogg', '.wav', '.flac'];
 
     if (!allowed.includes(ext)) {
@@ -391,6 +393,7 @@ app.post("/api/playlists/:id/tracks", (req, res) => {
     const { track, album } = req.body;
     
     if (!track || !album) {
+        console.error("Faixa e álbum são obrigatórios")
         return res.status(400).json({ error: "Faixa e álbum são obrigatórios" });
     }
 
@@ -398,12 +401,13 @@ app.post("/api/playlists/:id/tracks", (req, res) => {
     const playlist = playlists.find(p => p.id === id);
     
     if (!playlist) {
+        console.error("Playlist não encontrada")
         return res.status(404).json({ error: "Playlist não encontrada" });
     }
 
     const trackEntry = {
         ...track,
-        album,
+        album: album.id,
         addedAt: new Date().toISOString()
     };
 
@@ -438,6 +442,46 @@ app.delete("/api/playlists/:id/tracks/:trackIndex", (req, res) => {
     savePlaylists(playlists);
     
     res.json(removed);
+});
+
+app.put("/api/playlists/:id/reorder", (req, res) => {
+    const { id } = req.params;
+    const { tracks } = req.body;
+
+    if (!Array.isArray(tracks)) {
+        return res.status(400).json({ error: "Tracks inválidos" });
+    }
+
+    let playlists = loadPlaylists();
+    const playlist = playlists.find(p => p.id === id);
+
+    if (!playlist) {
+        return res.status(404).json({ error: "Playlist não encontrada" });
+    }
+
+    // Validação básica: garantir que não perderam ou duplicaram músicas
+    if (tracks.length !== playlist.tracks.length) {
+        return res.status(400).json({ error: "Quantidade de faixas inconsistente" });
+    }
+
+    // (Opcional mas recomendado) validar IDs das tracks
+    const originalIds = playlist.tracks.map(t => t.id);
+    const newIds = tracks.map(t => t.id);
+
+    const sameTracks =
+        originalIds.length === newIds.length &&
+        originalIds.every(id => newIds.includes(id));
+
+    if (!sameTracks) {
+        return res.status(400).json({ error: "Tracks não correspondem à playlist original" });
+    }
+
+    playlist.tracks = tracks;
+    playlist.updatedAt = new Date().toISOString();
+
+    savePlaylists(playlists);
+
+    res.json({ success: true });
 });
 
 app.get("/api/settings", (req, res) => {
@@ -477,10 +521,8 @@ app.get("/api/unregistered-files", (req, res) => {
     }
 });
 
-function startServer() {
+export function startServer() {
     app.listen(5000, "127.0.0.1", () => {
         console.log("Server rodando em http://127.0.0.1:5000");
     });
 }
-
-module.exports = { startServer, loadSettings };

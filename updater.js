@@ -1,11 +1,14 @@
-const { Notification, BrowserWindow, ipcMain } = require("electron");
-const { autoUpdater } = require("electron-updater");
-const log = require("electron-log");
+import { Notification, BrowserWindow, ipcMain } from "electron";
+import updaterPkg from "electron-updater";
+import logPkg from "electron-log";
+
+const { autoUpdater } = updaterPkg;
+const { error } = logPkg
 
 /**
  * @param {BrowserWindow} mainWindow 
  */
-function initUpdater(mainWindow) {
+export function initUpdater(mainWindow) {
     autoUpdater.autoDownload = false;
     autoUpdater.autoInstallOnAppQuit = false;
 
@@ -54,14 +57,14 @@ function initUpdater(mainWindow) {
             });
             notification.show();
         }
-        log.error("Erro no updater:", err);
+        error("Erro no updater:", err);
         mainWindow.webContents.send("update-error");
     });
 
     autoUpdater.checkForUpdates();
 }
 
-function setupIPC() {
+export function setupIPC() {
     ipcMain.handle("update-download", () => {
         autoUpdater.downloadUpdate();
     });
@@ -74,5 +77,3 @@ function setupIPC() {
         autoUpdater.checkForUpdates();
     });
 }
-
-module.exports = { initUpdater, setupIPC };

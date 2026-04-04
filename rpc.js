@@ -1,5 +1,5 @@
-const { Client } = require("@xhayper/discord-rpc");
-const { ActivityType, TeamMemberMembershipState } = require("discord-api-types/v10");
+import { Client } from "@xhayper/discord-rpc";
+import { ActivityType } from "discord-api-types/v10";
 
 const CLIENT_ID = "1403051221136179330";
 
@@ -37,7 +37,7 @@ rpc.on("disconnected", () => {
     connected = false;
 });
 
-function loadRPC(enabled = true) {
+export function loadRPC(enabled = true) {
     if (!enabled || connected) return;
 
     rpc.login().catch((err) => {
@@ -45,7 +45,7 @@ function loadRPC(enabled = true) {
     });
 }
 
-function updateMusic(track, start, end) {
+export function updateMusic(track, start, end) {
     if (!connected) return;
     let displayIndex = parseInt(track.id);
     displayIndex = track.album.id === "deltarune-chapter4" ? displayIndex + 38 : displayIndex;
@@ -71,15 +71,11 @@ function updateMusic(track, start, end) {
     });
 }
 
+export const getConnected = () => connected
 
-module.exports = {
-    loadRPC,
-    updateMusic,
-    getConnected: () => connected,
-    disconnectRPC: () => {
-        if (connected) {
-            rpc.destroy();
-            connected = false;
-        }
+export const disconnectRPC = () => {
+    if (connected) {
+        rpc.destroy();
+        connected = false;
     }
 }

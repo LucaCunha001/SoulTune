@@ -51,7 +51,7 @@ export class Playlists {
 
         const count = document.createElement('p');
         count.className = 'album-artist';
-        count.textContent = `${playlist.tracks.length} faixa(s)`;
+        count.textContent = `${playlist.tracks.length} faixa${playlist.tracks.length > 1 ? 's' : ''}`;
 
         card.append(cover, title, count);
 
@@ -74,7 +74,7 @@ export class Playlists {
         cover.textContent = '🎵';
         title.textContent = playlist.name;
         description.textContent =
-            `${playlist.tracks.length} faixa(s) • Criada em ${
+            `${playlist.tracks.length} faixa${playlist.tracks.length > 1 ? 's' : ''} • Criada em ${
                 new Date(playlist.createdAt).toLocaleDateString('pt-BR')
             }`;
 
@@ -90,6 +90,78 @@ export class Playlists {
         });
 
         lucide.createIcons();
+
+        this.app.player.playingTrack(this.app.currentTrack);
+    }
+
+    showPlaylistsMenu(track, album) {
+        const modal = document.createElement('div');
+        modal.className = 'playlist-select-modal';
+
+        const content = document.createElement('div');
+        content.className = 'playlist-select-content';
+
+        const title = document.createElement('h3');
+        title.textContent = 'Adicionar à playlist';
+
+        const list = document.createElement('div');
+        list.className = 'playlist-select-list';
+
+        if (this.playlists.length === 0) {
+            list.appendChild(this.createEmptyMessage('Nenhuma playlist disponível.'));
+        } else {
+            this.playlists.forEach(playlist => {
+                const item = document.createElement('button');
+                item.className = 'playlist-select-item';
+                item.textContent = playlist.name;
+
+                item.addEventListener('click', async () => {
+                    await this.addTrackToPlaylist(playlist.id, track, album);
+                    document.body.removeChild(modal);
+                });
+
+                list.appendChild(item);
+            });
+        }
+
+        const close = document.createElement('button');
+        close.className = 'playlist-select-close';
+        close.textContent = 'Cancelar';
+
+        close.addEventListener('click', () => {
+            document.body.removeChild(modal);
+        });
+
+        content.append(title, list, close);
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+    }
+
+    async addTrackToPlaylist(playlistId, track, album) {
+        try {
+            const res = await fetch(`/api/playlists/${playlistId}/tracks`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    track,
+                    album
+                })
+            });
+
+            if (!res.ok) throw new Error();
+
+            const updatedPlaylist = await res.json();
+
+            const updated = [...this.playlists];
+            const index = updated.findIndex(p => p.id === playlistId);
+            updated[index] = updatedPlaylist;
+
+            this.playlists = updated;
+
+            this.app.ui.toast?.('Música adicionada à playlist');
+        } catch {
+            this.app.ui.toast?.('Erro ao adicionar música');
+        }
     }
 
     createTrackItem(track, index, playlist) {
@@ -115,7 +187,7 @@ export class Playlists {
 
         const artist = document.createElement('div');
         artist.className = 'track-artist';
-        artist.textContent = track.album.artist;
+        artist.textContent = track.authors?.join(', ') || 'Toby Fox';
 
         info.append(title, artist);
         left.append(number, info);
@@ -129,7 +201,9 @@ export class Playlists {
 
         const removeBtn = document.createElement('button');
         removeBtn.className = 'icon-btn';
-        removeBtn.setAttribute('data-lucide', 'x');
+        const lucideIcon = document.createElement('i');
+        lucideIcon.setAttribute('data-lucide', 'x');
+        removeBtn.appendChild(lucideIcon);
 
         removeBtn.addEventListener('click', async (e) => {
             e.stopPropagation();
@@ -139,8 +213,10 @@ export class Playlists {
         right.append(duration, removeBtn);
         li.append(left, right);
 
-        li.addEventListener('click', () => {
-            this.app.player.playTrack(track, track.album);
+        li.addEventListener('click', async () => {
+            const albums = await this.app.albums.getAlbuns();
+            const album = albums.find(a => a.id === track.album)
+            this.app.player.playTrack(track, album);
         });
 
         li.addEventListener('dragstart', (e) => this.handleDragStart(e, playlist));

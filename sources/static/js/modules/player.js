@@ -20,6 +20,8 @@ export class Player {
     }
 
     playingTrack(track) {
+        if (!track?.title) return;
+        
         document.querySelectorAll(".track-item").forEach((element) => {
             const title = element.querySelector(".track-title").innerHTML;
             if (title == track.title) {

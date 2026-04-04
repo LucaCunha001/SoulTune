@@ -1,14 +1,16 @@
-const { app, BrowserWindow, ipcMain, globalShortcut, Menu, dialog, shell } = require("electron");
-const { join } = require("path");
-const { spawn } = require("child_process");
+import { app, BrowserWindow, ipcMain, globalShortcut, Menu, dialog, shell } from "electron";
+import { join } from "path";
 
-const { startServer, loadSettings } = require("./server");
-const { loadRPC, updateMusic, disconnectRPC } = require("./rpc");
+import { startServer, loadSettings } from "./server.js";
+import { loadRPC, updateMusic, disconnectRPC } from "./rpc.js";
 
-const { initUpdater, setupIPC } = require("./updater");
-const log = require("electron-log");
+import { initUpdater, setupIPC } from "./updater.js";
+import logPkg from "electron-log";
 
-log.transports.file.level = "info";
+const { transports } = logPkg;
+const __dirname = import.meta.dirname;
+
+transports.file.level = "info";
 
 /**
  * @type {BrowserWindow}

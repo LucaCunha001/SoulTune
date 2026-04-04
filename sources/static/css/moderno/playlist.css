@@ -59,3 +59,40 @@
     border-radius: var(--radius);
     object-fit: cover;
 }
+
+.playlist-select-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.playlist-select-content {
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 250px;
+}
+
+.playlist-select-item {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: var(--primary);
+    border: none;
+}
+
+.playlist-select-close {
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 10px;
+    background: var(--primary);
+    border: none;
+    cursor: pointer;
+}

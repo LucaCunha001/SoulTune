@@ -16,7 +16,7 @@
     gap: 10px;
 }
 
-.player-controls button {
+.player button {
     background: #000;
     border: 2px solid #fff;
     color: #fff;
@@ -27,7 +27,7 @@
     
 }
 
-.player-controls button:hover {
+.player button:hover {
     background: #fff;
     color: #000;
 }

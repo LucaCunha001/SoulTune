@@ -1,19 +1,22 @@
 {
-  "name": "soultune-electron",
+  "name": "soultune",
   "version": "1.0.6",
-  "description": "Software para escutar todas as músicas de Undertale e Deltarune.",
-  "main": "main.js",
+  "description": "**SoulTune** é um aplicativo desenvolvido **JavaScript** usando **Electron** para que todos possam apreciar as incríveis trilhas sonoras de **Undertale** e **Deltarune**, compostas pelo lendário **Robert F. \"Toby\" Fox**, um verdadeiro gênio musical.",
+  "homepage": "https://github.com/LucaCunha001/SoulTune#readme",
+  "bugs": {
+    "url": "https://github.com/LucaCunha001/SoulTune/issues"
+  },
   "repository": {
-    "url": "https://github.com/LucaCunha001/SoulTune"
+    "type": "git",
+    "url": "git+https://github.com/LucaCunha001/SoulTune.git"
   },
-  "author": {
-    "name": "Luceno",
-    "email": "lcunhalula@gmail.com"
-  },
+  "license": "ISC",
+  "author": "Luceno",
+  "type": "module",
+  "main": "main.js",
   "scripts": {
-    "start": "electron . --trace-warnings",
-    "build": "electron-builder",
-    "release": "electron-builder --publish always"
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "build": {
     "appId": "com.viora.soultune",
@@ -55,18 +58,14 @@
     ]
   },
   "devDependencies": {
-    "cross-env": "^10.1.0",
-    "electron": "^25.0.0",
-    "electron-builder": "^26.8.1",
-    "eslint": "^10.1.0"
+    "electron": "^41.1.1",
+    "electron-builder": "^26.8.1"
   },
   "dependencies": {
-    "@xhayper/discord-rpc": "^1.3.1",
-    "discord-api-types": "^0.38.42",
-    "dotenv": "^17.3.1",
+    "@xhayper/discord-rpc": "^1.3.3",
+    "discord-api-types": "^0.38.44",
     "electron-log": "^5.4.3",
     "electron-updater": "^6.8.3",
-    "express": "^4.18.0"
-  },
-  "icon": "icon.ico"
+    "express": "^5.2.1"
+  }
 }
