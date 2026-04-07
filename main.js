@@ -53,12 +53,14 @@ app.whenReady().then(() => {
 
     Menu.setApplicationMenu(null);
 
-    globalShortcut.register('CommandOrControl+Shift+C', () => {
-        const focused = BrowserWindow.getFocusedWindow();
-        if (focused) {
-            focused.webContents.toggleDevTools();
-        }
-    });
+    if (isDev) {
+        globalShortcut.register('CommandOrControl+Shift+C', () => {
+            const focused = BrowserWindow.getFocusedWindow();
+            if (focused) {
+                focused.webContents.toggleDevTools();
+            }
+        });
+    }
 
     mainWindow = createWindow(true);
     mainWindow.loadFile("sources/templates/index.html");
