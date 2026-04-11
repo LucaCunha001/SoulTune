@@ -61,22 +61,29 @@ export class UI {
             switch (e.key) {
                 case " ":
                 case "k":
-                case "K":
                     e.preventDefault();
                     this.app.player.togglePlayPause();
                     break;
                 
                 case "m":
-                case "M":
                     this.app.player.toggleMute();
                     break;
+
+                case "n":
+                    if (e.shiftKey) this.app.player.nextTrack();
+                    break
+                case "p":
+                    if (e.shiftKey) this.app.player.previousTrack();
+                    break
             }
         });
 
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.navigateToPage(e.target.dataset.page);
+                if (e.target.dataset.page != 'lightners') {
+                    e.preventDefault();
+                    this.navigateToPage(e.target.dataset.page);
+                }
             });
         });
 
@@ -109,6 +116,10 @@ export class UI {
             this.app.player.toggleShuffleMode();
         });
 
+        document.getElementById('autorun-switch').addEventListener('click', () => {
+            this.app.player.toggleAutoRun();
+        });
+
         document.getElementById('progress-bar').addEventListener('input', (e) => {
             this.app.player.seekTo(e.target.value);
         });
@@ -130,6 +141,7 @@ export class UI {
         this.updateLoopUI();
         this.updateSoundUI();
         this.updateShuffleUI();
+        this.updateAutoRunUI();
     }
 
     updateLoopUI() {
@@ -201,6 +213,14 @@ export class UI {
         lucide.createIcons();
     }
 
+    updateAutoRunUI() {
+        const autoRunSwitch = document.getElementById('autorun-switch');
+        if (!autoRunSwitch) return;
+
+        console.log(this.app.player.autoRunMode);
+        autoRunSwitch.checked = this.app.player.autoRunMode;
+    }
+
     setupModalListeners() {
         const modal = document.getElementById('playlist-modal');
         const closeBtn = document.getElementById('modal-close');
@@ -254,6 +274,8 @@ export class UI {
                 break;
             case 'settings':
                 this.app.settingsManager.showSettings();
+                break;
+            case 'lightners':
                 break;
         }
     }

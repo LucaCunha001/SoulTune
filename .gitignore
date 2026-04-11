@@ -9,3 +9,5 @@ mus/undertale/
 package.json
 package-lock.json
 *.txt
+gml/
+GMLConverter.js

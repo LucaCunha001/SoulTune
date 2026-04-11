@@ -57,6 +57,66 @@
     font-family: monospace;
 }
 
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 88px;
+    height: 40px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    background: #000;
+    border: 2px solid #fff;
+    transition: 0.2s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    transition: 0.2s;
+}
+
+.switch input:checked + .slider {
+    background: #000;
+    border-color: #ff0000;
+}
+
+.switch input:checked + .slider::before {
+    background: #ff0000;
+    transform: translate(44px, -50%);
+}
+
+.switch:hover .slider {
+    background: #fff;
+}
+
+.switch:hover .slider::before {
+    background: #000;
+}
+
+.switch input:checked:hover .slider {
+    background: #ff0000;
+}
+
+.switch input:checked:hover .slider::before {
+    background: #000;
+}
+
 .player-progress {
     display: flex;
     align-items: center;

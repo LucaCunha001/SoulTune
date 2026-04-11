@@ -40,6 +40,7 @@
                 <a href="#" class="nav-item" data-page="playlists">Suas Playlists</a>
                 <a href="#" class="nav-item" data-page="unregistered">Arquivos Não Registrados</a>
                 <a href="#" class="nav-item" data-page="settings">Configurações</a>
+                <a href="/lightners" class="nav-item" data-page="lightners">Lightners Live</a>
             </nav>
             <div class="playlists-section">
                 <h3>Playlists</h3>
@@ -176,11 +177,16 @@
 
     <div class="player">
         <div class="player-controls">
-            <button id="prev-btn"><i data-lucide="skip-back"></i></button>
-            <button id="play-pause-btn"><i data-lucide="play"></i></button>
-            <button id="next-btn"><i data-lucide="skip-forward"></i></button>
+            <button id="prev-btn" title="Shift P"><i data-lucide="skip-back"></i></button>
+            <button id="play-pause-btn" title="K/Espaço"><i data-lucide="play"></i></button>
+            <button id="next-btn" title="Shift N"><i data-lucide="skip-forward"></i></button>
             <button id="loop-btn"><i data-lucide="repeat"></i></button>
             <button id="shuffle-btn"><i data-lucide="shuffle"></i></button>
+
+            <label class="switch" title="Reprodução Automática">
+                <input type="checkbox" id="autorun-switch">
+                <span class="slider"></span>
+            </label>
         </div>
         <div class="player-progress">
             <span id="current-time">0:00</span>

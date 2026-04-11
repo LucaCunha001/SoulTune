@@ -178,7 +178,16 @@ app.get("/app/", (req, res) => {
 });
 
 app.get("/dev/", (req, res) => {
-    res.sendFile(join(BASE_PATH, "sources", "templates", "dev.html"))
+    res.sendFile(join(BASE_PATH, "sources", "templates", "dev.html"));
+});
+
+app.get("/lightners/", (req, res) => {
+    res.sendFile(join(BASE_PATH, "sources", "templates", "lightnersliving.html"));
+});
+
+app.get("/api/lightners/music/:file", (req, res) => {
+    const settings = loadSettings();
+    res.sendFile(join(settings.deltaruneFolder, "mus", req.params.file))
 });
 
 app.get('/api/track-dev', (req, res) => {
@@ -459,12 +468,10 @@ app.put("/api/playlists/:id/reorder", (req, res) => {
         return res.status(404).json({ error: "Playlist não encontrada" });
     }
 
-    // Validação básica: garantir que não perderam ou duplicaram músicas
     if (tracks.length !== playlist.tracks.length) {
         return res.status(400).json({ error: "Quantidade de faixas inconsistente" });
     }
 
-    // (Opcional mas recomendado) validar IDs das tracks
     const originalIds = playlist.tracks.map(t => t.id);
     const newIds = tracks.map(t => t.id);
 

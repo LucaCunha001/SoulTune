@@ -1,6 +1,6 @@
 {
   "name": "soultune",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "**SoulTune** é um aplicativo desenvolvido **JavaScript** usando **Electron** para que todos possam apreciar as incríveis trilhas sonoras de **Undertale** e **Deltarune**, compostas pelo lendário **Robert F. \"Toby\" Fox**, um verdadeiro gênio musical.",
   "homepage": "https://github.com/LucaCunha001/SoulTune#readme",
   "bugs": {

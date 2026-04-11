@@ -5,7 +5,9 @@ export class Player {
         this.shuffleMode = 'none'; // 'none', 'context' (current album/playlist), 'all' (all albums)
         this.shuffledIndices = [];
         this.shuffledIndex = 0;
+        this.autoRunMode = false;
         this.loadShuffleSettings();
+        this.loadAutoRunSettings();
     }
 
     loadShuffleSettings() {
@@ -17,6 +19,17 @@ export class Player {
 
     saveShuffleSettings() {
         localStorage.setItem('shuffleMode', this.shuffleMode);
+    }
+
+    loadAutoRunSettings() {
+        const saved = localStorage.getItem('autoRunMode');
+        if (saved) {
+            this.autoRunMode = saved === "true";
+        }
+    }
+
+    saveAutoRunSettings() {
+        localStorage.setItem('autoRunMode', this.autoRunMode);
     }
 
     playingTrack(track) {
@@ -181,7 +194,7 @@ export class Player {
         }
         this.playingTrack(track);
         this.updateMusic(track, album);
-        this.updateRPC();
+        await this.updateRPC();
         this.app.ui.updateSoundUI();
 
         if (track.video) {
@@ -208,7 +221,7 @@ export class Player {
 
                 case 'none':
                 default:
-                    this.nextTrack();
+                    if (this.autoRunMode) this.nextTrack();
                     return;
             }
         }
@@ -234,6 +247,9 @@ export class Player {
 
         audio.play();
         this.initVolume();
+        if (['track', 'queue'].includes(this.app.loopMode)) {
+            this.updateRPC();
+        }
     }
 
     toggleLoopMode() {
@@ -367,6 +383,11 @@ export class Player {
         this.updatePlayerUI();
     }
 
+    toggleAutoRun() {
+        this.autoRunMode = !this.autoRunMode;
+        this.saveAutoRunSettings();
+    }
+
     async getCurrentProgress() {
         if (!this.app.currentAudio) return { progress: 0, globalTime: 0, total: 0 };
 
@@ -461,7 +482,7 @@ export class Player {
         this.stopCurrentPlayback();
         this.app.currentAudioIndex = index;
         this.playNextInQueue();
-        this.updateRPC();
+        await this.updateRPC();
 
         setTimeout(() => {
             if (this.app.currentAudio) {

@@ -3,7 +3,7 @@
     bottom: 0;
     width: 100%;
     height: 90px;
-    background: rgba(24,24,24,0.95);
+    background: rgba(24, 24, 24, 0.95);
     backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
@@ -43,6 +43,58 @@
     font-size: 10px;
     color: var(--primary);
     font-weight: bold;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 22px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #333;
+    border-radius: 999px;
+    transition: var(--transition);
+    border: 1px solid #222;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.switch input:checked + .slider {
+    background: var(--primary);
+}
+
+.switch input:checked + .slider::before {
+    transform: translate(20px, -50%);
+}
+
+.switch:hover .slider {
+    background: #444;
+}
+
+.switch input:checked:hover + .slider {
+    filter: brightness(1.1);
 }
 
 .player-controls button:hover {
