@@ -18,7 +18,6 @@ export class Albums {
             this.renderAlbums(albums);
         } catch (error) {
             console.error('Erro ao carregar álbuns:', error);
-            this.loadAlbumsFallback();
         }
     }
 
@@ -44,34 +43,6 @@ export class Albums {
         });
     }
 
-    loadAlbumsFallback() {
-        const albums = [
-            {
-                id: 'undertale-ost',
-                title: 'Undertale Soundtrack',
-                artist: 'Toby Fox',
-                cover: '/static/images/undertale-cover.jpg',
-                tracks: [
-                    { id: '1', title: 'Once Upon a Time', duration: 75 },
-                    { id: '2', title: 'Start Menu', duration: 52 },
-                    { id: '3', title: 'Your Best Friend', duration: 171 },
-                ]
-            },
-            {
-                id: 'deltarune-chapter1',
-                title: 'DELTARUNE Chapter 1',
-                artist: 'Toby Fox',
-                cover: '/static/images/deltarune-ch1-cover.jpg',
-                tracks: [
-                    { id: '1', title: 'ANOTHER HIM', duration: 135 },
-                    { id: '2', title: 'The Legend', duration: 151 },
-                    { id: '3', title: 'Rude Buster', duration: 105 },
-                ]
-            }
-        ];
-        this.renderAlbums(albums);
-    }
-
     async showAlbum(album) {
         this.app.currentPlaylist = album;
         this.app.ui.clearMainContent();
@@ -84,10 +55,23 @@ export class Albums {
         const trackList = document.getElementById('track-list');
         trackList.innerHTML = '';
 
-        const loading = document.createElement('div');
-        loading.id = 'track-loading';
-        loading.textContent = 'Carregando faixas...';
-        trackList.appendChild(loading);
+        for (let i = 0; i < 8; i++) {
+            const skeleton = document.createElement('li');
+            skeleton.className = 'track-item skeleton';
+            skeleton.innerHTML = `
+                <div class="track-left">
+                    <span class="track-number skeleton-box"></span>
+                    <div class="track-info">
+                        <div class="track-title skeleton-box"></div>
+                        <div class="track-artist skeleton-box"></div>
+                    </div>
+                </div>
+                <div class="track-right">
+                    <span class="track-duration skeleton-box"></span>
+                </div>
+            `;
+            trackList.appendChild(skeleton);
+        }
 
         const tracksWithDuration = await Promise.all(album.tracks.map(async (track) => {
             const duration = await this.app.player.getTrackDurationFromData(track, album);
@@ -97,8 +81,7 @@ export class Albums {
         trackList.innerHTML = '';
 
         for (let index = 0; index < tracksWithDuration.length; index++) {
-            let displayIndex = album.id === "deltarune-chapter4" ? index + 38 : index;
-            displayIndex += 1;
+            let displayIndex = index + 1;
             displayIndex = displayIndex.toString().padStart(album.id === "undertale-ost" ? 3 : 2, '0');
             const { track, duration } = tracksWithDuration[index];
 

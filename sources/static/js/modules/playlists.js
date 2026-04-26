@@ -71,7 +71,9 @@ export class Playlists {
 
         view.style.display = 'block';
 
-        cover.textContent = '🎵';
+        cover.src = "/static/images/spr_napstablook_d_headphone.png";
+        cover.style.height = "180px";
+        cover.style.objectFit = "cover";
         title.textContent = playlist.name;
         description.textContent =
             `${playlist.tracks.length} faixa${playlist.tracks.length > 1 ? 's' : ''} • Criada em ${

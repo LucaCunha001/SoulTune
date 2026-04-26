@@ -6,7 +6,9 @@ contextBridge.exposeInMainWorld("api", {
     selectFolder: () => ipcRenderer.invoke("select-folder"),
     maximize: () => ipcRenderer.invoke('maximize'),
     setAutoStart: (enabled) => ipcRenderer.invoke('set-auto-start', enabled),
-    setDiscordRpc: (enabled) => ipcRenderer.invoke('set-discord-rpc', enabled)
+    setDiscordRpc: (enabled) => ipcRenderer.invoke('set-discord-rpc', enabled),
+    startApp: () => ipcRenderer.invoke("start-app"),
+    updateIcon: (iconPath) => ipcRenderer.invoke("update-icon", iconPath)
 });
 
 const isDev = process.argv.includes("--isdev=true");

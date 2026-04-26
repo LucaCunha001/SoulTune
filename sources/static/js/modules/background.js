@@ -39,6 +39,7 @@ export class Background {
             appRoot.style.backgroundSize = '';
             appRoot.style.backgroundRepeat = '';
             appRoot.style.backgroundPosition = '';
+            appRoot.classList.remove("background-active");
         } else {
             appRoot.style.backgroundImage = `url('${background.value}')`;
             appRoot.style.backgroundSize = 'cover';
@@ -46,6 +47,7 @@ export class Background {
             appRoot.style.backgroundPosition = 'center';
             appRoot.style.backgroundColor = 'rgba(0,0,0,0.5)';
             appRoot.style.imageRendering = 'pixelated';
+            appRoot.classList.add("background-active");
         }
     }
 

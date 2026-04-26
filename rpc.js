@@ -48,7 +48,6 @@ export function loadRPC(enabled = true) {
 export function updateMusic(track, start, end) {
     if (!connected) return;
     let displayIndex = parseInt(track.id);
-    displayIndex = track.album.id === "deltarune-chapter4" ? displayIndex + 38 : displayIndex;
     displayIndex = displayIndex.toString().padStart(track.album.id === "undertale-ost" ? 3 : 2, '0');
     
     let cover = "icone";

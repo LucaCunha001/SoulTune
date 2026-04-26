@@ -71,4 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const v = await window.env.getVersion();
     const version = document.getElementById("version");
     version.innerText = "v" + (v || "Dev");
+    
+    const favicon = document.querySelector("link[rel~='icon']").href;
+    window.api.updateIcon(favicon);
 });

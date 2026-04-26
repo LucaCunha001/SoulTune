@@ -725,7 +725,7 @@
                     ]
                 },
                 "pitch": 1.0,
-                "duration": 116.633106575963716,
+                "duration": 116.63310657596372,
                 "lyrics": null
             },
             {
@@ -1798,11 +1798,11 @@
             }
         ]
     },
-    "deltarune-chapter3": {
-        "id": "deltarune-chapter3",
-        "title": "DELTARUNE Chapter 3",
+    "deltarune-chapter3-4": {
+        "id": "deltarune-chapter3-4",
+        "title": "DELTARUNE Chapter 3+4",
         "artist": "Toby Fox",
-        "cover": "/static/images/deltarune-ch3-cover.jpg",
+        "cover": "/static/images/deltarune-ch3-4-cover.jpg",
         "tracks": [
             {
                 "id": "1",
@@ -1819,7 +1819,7 @@
                 "pitch": 1.0,
                 "duration": 41.0,
                 "lyrics": null,
-                "video": "../chapter3_windows/tennaIntroF1_compressed_28.mp4"
+                "video": "../chapter3_windows/vid/tennaIntroF1_compressed_28.mp4"
             },
             {
                 "id": "3",
@@ -2150,17 +2150,9 @@
                 "pitch": 1.0,
                 "duration": 65.08475,
                 "lyrics": null
-            }
-        ]
-    },
-    "deltarune-chapter4": {
-        "id": "deltarune-chapter4",
-        "title": "DELTARUNE Chapter 4",
-        "artist": "Toby Fox",
-        "cover": "/static/images/deltarune-ch4-cover.jpg",
-        "tracks": [
+            },
             {
-                "id": "1",
+                "id": "39",
                 "title": "Old wooden rafters",
                 "file": "church_lw.ogg",
                 "pitch": 1.0,
@@ -2168,7 +2160,7 @@
                 "lyrics": null
             },
             {
-                "id": "2",
+                "id": "40",
                 "title": "Hymn",
                 "file": "church_hymn.ogg",
                 "pitch": 1.0,
@@ -2176,7 +2168,7 @@
                 "lyrics": null
             },
             {
-                "id": "3",
+                "id": "41",
                 "title": "Another day in hometown",
                 "file": "town_day.ogg",
                 "pitch": 1.0,
@@ -2184,7 +2176,7 @@
                 "lyrics": null
             },
             {
-                "id": "4",
+                "id": "42",
                 "title": "Friends",
                 "file": "susie_diner.ogg",
                 "pitch": 1.0,
@@ -2192,7 +2184,7 @@
                 "lyrics": null
             },
             {
-                "id": "5",
+                "id": "43",
                 "title": "Castle Funk",
                 "file": "castle_funk_long.ogg",
                 "pitch": 1.0,
@@ -2200,7 +2192,7 @@
                 "lyrics": null
             },
             {
-                "id": "6",
+                "id": "44",
                 "title": "Knock You Down!! (Rhythm Ver.)",
                 "file": "rhythm_knockdown_combined.ogg",
                 "pitch": 1.0,
@@ -2208,7 +2200,7 @@
                 "lyrics": null
             },
             {
-                "id": "7",
+                "id": "45",
                 "title": "Gingerbread House",
                 "file": "noelle_house_wip.ogg",
                 "pitch": 1.0,
@@ -2216,7 +2208,7 @@
                 "lyrics": null
             },
             {
-                "id": "8",
+                "id": "46",
                 "title": "The distance between two",
                 "file": "noelle_distant.ogg",
                 "pitch": 1.0,
@@ -2224,7 +2216,7 @@
                 "lyrics": null
             },
             {
-                "id": "9",
+                "id": "47",
                 "title": "C",
                 "file": "carol_appeared.ogg",
                 "pitch": 1.0,
@@ -2232,7 +2224,7 @@
                 "lyrics": null
             },
             {
-                "id": "10",
+                "id": "48",
                 "title": "ATRIUM",
                 "file": "darkchurch_intro.ogg",
                 "pitch": 1.0,
@@ -2240,7 +2232,7 @@
                 "lyrics": null
             },
             {
-                "id": "11",
+                "id": "49",
                 "title": "Dark Sanctuary",
                 "file": "church_wip.ogg",
                 "pitch": 1.0,
@@ -2248,7 +2240,7 @@
                 "lyrics": null
             },
             {
-                "id": "12",
+                "id": "50",
                 "title": "From Now On (Battle 2)",
                 "file": "ch4_battle.ogg",
                 "pitch": 1.0,
@@ -2256,7 +2248,7 @@
                 "lyrics": null
             },
             {
-                "id": "13",
+                "id": "51",
                 "title": "Gyaa Ha ha!",
                 "file": "gerson_theme_intro.ogg",
                 "pitch": 1.0,
@@ -2264,7 +2256,7 @@
                 "lyrics": null
             },
             {
-                "id": "14",
+                "id": "52",
                 "title": "Fireplace",
                 "file": "church_dark_study.ogg",
                 "pitch": 1.0,
@@ -2272,7 +2264,7 @@
                 "lyrics": null
             },
             {
-                "id": "15",
+                "id": "53",
                 "title": "A DARK ZONE",
                 "file": "pumpkin_boss.ogg",
                 "pitch": 1.0,
@@ -2280,7 +2272,7 @@
                 "lyrics": null
             },
             {
-                "id": "16",
+                "id": "54",
                 "title": "Mysterious Ringing",
                 "file": "bell_ambience.ogg",
                 "pitch": 1.0,
@@ -2288,7 +2280,7 @@
                 "lyrics": null
             },
             {
-                "id": "17",
+                "id": "55",
                 "title": "Ever Higher",
                 "file": "climb.ogg",
                 "pitch": 1.0,
@@ -2296,7 +2288,7 @@
                 "lyrics": null
             },
             {
-                "id": "18",
+                "id": "56",
                 "title": "Wise words",
                 "file": "gerson_defeated.ogg",
                 "pitch": 1.0,
@@ -2304,7 +2296,7 @@
                 "lyrics": null
             },
             {
-                "id": "19",
+                "id": "57",
                 "title": "Piano that may not be played that well",
                 "file": "kris_piano_lower.ogg",
                 "pitch": 1.0,
@@ -2312,7 +2304,7 @@
                 "lyrics": null
             },
             {
-                "id": "20",
+                "id": "58",
                 "title": "Hammer of Justice",
                 "file": "ch4_extra_boss.ogg",
                 "pitch": 1.0,
@@ -2320,7 +2312,7 @@
                 "lyrics": null
             },
             {
-                "id": "21",
+                "id": "59",
                 "title": "12am",
                 "file": "church_lw_night.ogg",
                 "pitch": 1.0,
@@ -2328,7 +2320,7 @@
                 "lyrics": null
             },
             {
-                "id": "22",
+                "id": "60",
                 "title": "The Second Sanctuary",
                 "file": "second_church.ogg",
                 "pitch": 1.0,
@@ -2336,7 +2328,7 @@
                 "lyrics": null
             },
             {
-                "id": "23",
+                "id": "61",
                 "title": "Ripple",
                 "file": "",
                 "pitch": 1.0,
@@ -2344,7 +2336,7 @@
                 "lyrics": null
             },
             {
-                "id": "24",
+                "id": "62",
                 "title": "13am",
                 "file": "tin_night.ogg",
                 "pitch": 1.0,
@@ -2352,7 +2344,7 @@
                 "lyrics": null
             },
             {
-                "id": "25",
+                "id": "63",
                 "title": "The Third Sanctuary",
                 "file": "church_zone3.ogg",
                 "pitch": 1.0,
@@ -2360,7 +2352,7 @@
                 "lyrics": null
             },
             {
-                "id": "26",
+                "id": "64",
                 "title": "Dark Place",
                 "file": "dark_place.ogg",
                 "pitch": 1.0,
@@ -2368,7 +2360,7 @@
                 "lyrics": null
             },
             {
-                "id": "27",
+                "id": "65",
                 "title": "Heavy Footsteps",
                 "file": "titan_pre.ogg",
                 "pitch": 1.0,
@@ -2376,7 +2368,7 @@
                 "lyrics": null
             },
             {
-                "id": "28",
+                "id": "66",
                 "title": "Crumbling Tower",
                 "file": "titan_tower.ogg",
                 "pitch": 1.0,
@@ -2384,7 +2376,7 @@
                 "lyrics": null
             },
             {
-                "id": "29",
+                "id": "67",
                 "title": "SPAWN",
                 "file": "titan_spawn.ogg",
                 "pitch": 1.0,
@@ -2392,7 +2384,7 @@
                 "lyrics": null
             },
             {
-                "id": "30",
+                "id": "68",
                 "title": "GUARDIAN",
                 "file": "titan_battle.ogg",
                 "pitch": 1.0,
@@ -2400,7 +2392,7 @@
                 "lyrics": null
             },
             {
-                "id": "31",
+                "id": "69",
                 "title": "Need a Hand!?",
                 "file": "oldman_helps_out.ogg",
                 "pitch": 1.0,
@@ -2408,7 +2400,7 @@
                 "lyrics": null
             },
             {
-                "id": "32",
+                "id": "70",
                 "title": "The place where it rained",
                 "file": "rain.ogg",
                 "pitch": 1.0,
@@ -2416,7 +2408,7 @@
                 "lyrics": null
             },
             {
-                "id": "33",
+                "id": "71",
                 "title": "The Ol' Jitterbug",
                 "file": "jitterbug.ogg",
                 "pitch": 1.0,
@@ -2424,7 +2416,7 @@
                 "lyrics": null
             },
             {
-                "id": "34",
+                "id": "72",
                 "title": "Neverending Night",
                 "file": "ch4_credits.ogg",
                 "pitch": 1.0,
@@ -2432,15 +2424,14 @@
                 "lyrics": null
             },
             {
-                "id": "35",
+                "id": "73",
                 "title": "The LEGEND...?",
                 "file": "legend_altered.ogg",
-                "pitch": 1.0,
-                "duration": 26.1818125,
+                "pitch": 0.95,
                 "lyrics": null
             },
             {
-                "id": "36",
+                "id": "74",
                 "title": "With Hope Crossed On Our Hearts",
                 "file": "quiet_church.ogg",
                 "pitch": 1.0,
@@ -2448,7 +2439,7 @@
                 "lyrics": null
             },
             {
-                "id": "37",
+                "id": "75",
                 "title": "Volume Adjustment",
                 "file": "mike_zone.ogg",
                 "pitch": 1.0,
@@ -2456,7 +2447,7 @@
                 "lyrics": null
             },
             {
-                "id": "38",
+                "id": "76",
                 "title": "Catswing",
                 "file": "mike.ogg",
                 "pitch": 1.0,
@@ -2464,7 +2455,7 @@
                 "lyrics": null
             },
             {
-                "id": "39",
+                "id": "77",
                 "title": "Air Waves",
                 "file": "spamton_dance.ogg",
                 "pitch": 1.0,
@@ -2472,12 +2463,118 @@
                 "lyrics": null
             },
             {
-                "id": "40",
+                "id": "78",
                 "title": "Concert for you",
                 "file": "../extras/snd_pianonoise.ogg",
                 "pitch": 1.0,
                 "duration": 0.0,
                 "lyrics": null
+            }
+        ]
+    },
+    "piano-kris": {
+        "id": "piano-kris",
+        "title": "Kris Tocando Piano",
+        "artist": "Toby Fox",
+        "cover": "/static/images/kitchen-piano.png",
+        "tracks": [
+            {
+                "id": "1",
+                "title": "Piano that may not be played that well",
+                "file": "kris_piano_lower.ogg"
+            },
+            {
+                "id": "2",
+                "title": "Seven Four",
+                "file": "kris_piano_sevenfour.ogg"
+            },
+            {
+                "id": "3",
+                "title": "Quiz!",
+                "file": "kris_piano_quiz.ogg"
+            },
+            {
+                "id": "4",
+                "title": "Lancer",
+                "file": "kris_piano_lancer_waltz.ogg"
+            },
+            {
+                "id": "5",
+                "title": "Roulxls Kaard",
+                "file": "kris_piano_rouxls.ogg"
+            },
+            {
+                "id": "6",
+                "title": "Waiting Room",
+                "file": "kris_piano_waitingroom.ogg"
+            },
+            {
+                "id": "7",
+                "title": "Shop",
+                "file": "kris_piano_shop.ogg"
+            },
+            {
+                "id": "8",
+                "title": "Last Profecy",
+                "file": "kris_piano_last_prophecy.ogg"
+            },
+            {
+                "id": "9",
+                "title": "Profecy",
+                "file": "kris_piano_prophecy.ogg"
+            },
+            {
+                "id": "10",
+                "title": "Noelle",
+                "file": "noelle.ogg"
+            }
+        ]
+    },
+    "dogs": {
+        "id": "dogs",
+        "title": "Annoying Dog",
+        "artist": "Toby Fox",
+        "cover": "/static/images/dog-walk.png",
+        "tracks": [
+            {
+                "id": "1",
+                "title": "Dogsong",
+                "file": "mus_dogsong.ogg"
+            },
+            {
+                "id": "2",
+                "title": "Dance of Dog",
+                "file": "mus_dance_of_dog.ogg"
+            },
+            {
+                "id": "3",
+                "title": "Dog Appear",
+                "file": "mus_dogappear.ogg"
+            },
+            {
+                "id": "4",
+                "title": "Dog Room",
+                "file": "mus_dogroom.ogg"
+            },
+            {
+                "id": "5",
+                "title": "Dog Shire 1",
+                "file": "mus_dogshrine_1.ogg"
+            },
+            {
+                "id": "6",
+                "title": "Dog Shire 2",
+                "file": "mus_dogshrine_2.ogg"
+            },
+            {
+                "id": "7",
+                "title": "Sigh of Dog",
+                "file": "mus_sigh_of_dog.ogg"
+            },
+            {
+                "id": "8",
+                "title": "Dog Check",
+                "file": "dogcheck.ogg"
             }
         ]
     }

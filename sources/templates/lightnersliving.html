@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,85 @@
 
     <link rel="shortcut icon" href="/favicon" type="image/x-icon">
 </head>
+
 <body>
-    <h1>Lightners Living</h1>
-    <p>Em construção!</p>
+    <main class="borderer">
+        <h1>Lightners Living</h1>
+        <p>Em construção!</p>
+        <span id="tocandoAgora"></span>
+    </main>
+
+    <a href="/app">
+        <button class="borderer hoverable">
+            Voltar à página principal
+        </button>
+    </a>
+
+    <script>
+        function load() {
+            const musicas = [
+                {
+                    track1_id: "ch3_karaoke_full",
+                    name: "Raise Up Your Bat"
+                },
+                {
+                    track1_id: "ch3-practice_song_combined",
+                    name: "Sound Check"
+                },
+                {
+                    track1_id: "tenna_battle",
+                    track2_id: "tenna_battle_guitar",
+                    name: "It's TV Time!"
+                },
+                {
+                    track1_id: "ch3_tvtime",
+                    track2_id: "ch3_tvtime_guitar",
+                    name: "MIKE, the BOARD, please!"
+                },
+                {
+                    track1_id: "board4_rhythm",
+                    name: "Doom Board"
+                },
+                {
+                    track1_id: "rudebuster_boss",
+                    name: "Ruder Buster"
+                },
+                {
+                    track1_id: "battle_vapor",
+                    name: "Vapor Booster"
+                },
+                {
+                    track1_id: "tenna_battle_old",
+                    name: "It's TV Time (Versão antiga)"
+                },
+                {
+                    track1_id: "battle",
+                    name: "Rude Buster"
+                },
+                {
+                    track1_id: "field_of_hopes",
+                    name: "Field of Hopes and Dreams"
+                },
+                {
+                    name: "Knock You Down!! (Rhythm Ver.)",
+                    track1_id: "rhythm_knockdown_no_guit",
+                    track2_id: "rhythm_knockdown_combined"
+                }
+            ];
+            const index = Math.random() * musicas.length;
+            const musica = musicas[Math.floor(index)];
+            const track1 = new Audio(`/api/lightners/music/${musica.track1_id}.ogg`);
+            track1.addEventListener("ended", () => load());
+            if (musica?.track2_id) {
+                const track2 = new Audio(`/api/lightners/music/${musica.track2_id}.ogg`)
+                track2.play();
+            }
+            track1.play();
+            document.getElementById("tocandoAgora").innerText = `Tocando agora: ${musica.name}`;
+        }
+
+        load();
+    </script>
 </body>
+
 </html>

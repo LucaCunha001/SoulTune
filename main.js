@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain, globalShortcut, Menu, dialog, shell } from "electron";
 import { join } from "path";
 
-import { startServer, loadSettings } from "./server.js";
+import { startServer, loadSettings, saveSettings } from "./server.js";
 import { loadRPC, updateMusic, disconnectRPC } from "./rpc.js";
 
 import { initUpdater, setupIPC } from "./updater.js";
@@ -16,14 +16,38 @@ transports.file.level = "info";
  * @type {BrowserWindow}
  */
 let mainWindow;
+/**
+ * @type {BrowserWindow}
+ */
+let updaterWindow;
 
 const isDev = !app.isPackaged;
 
-function createWindow(inicialWindow = false) {
-    const window = new BrowserWindow({
+function createUpdaterWindow() {
+    updaterWindow = new BrowserWindow({
         title: "SoulTune",
         width: 800,
         height: 600,
+        resizable: false,
+        frame: false,
+        webPreferences: {
+            preload: join(__dirname, "preload.js"),
+            contextIsolation: true,
+            nodeIntegration: false,
+            additionalArguments: [
+                `--isdev=${isDev}`
+            ]
+        },
+        icon: join(__dirname, "sources", "static", "images", "icon.ico")
+    });
+
+    updaterWindow.loadFile("sources/templates/index.html");
+}
+
+function createMainWindow() {
+    mainWindow = new BrowserWindow({
+        width: 1200,
+        height: 800,
         webPreferences: {
             preload: join(__dirname, "preload.js"),
             contextIsolation: true,
@@ -31,19 +55,37 @@ function createWindow(inicialWindow = false) {
             additionalArguments: [
                 `--isdev=${isDev}`
             ],
-            nodeIntegration: false
+            autoplayPolicy: "no-user-gesture-required",
+            backgroundThrottling: false
         },
-        closable: !inicialWindow,
-        minimizable: !inicialWindow,
-        maximizable: !inicialWindow,
-        icon: join(__dirname, "icon.ico")
+        icon: join(__dirname, "sources", "static", "images", "icon.ico")
     });
 
-    return window;
+    mainWindow.webContents.on('will-navigate', (event, url) => {
+        const parsed = new URL(url);
+
+        if (parsed.hostname === '127.0.0.1' && parsed.port === '5000') {
+            event.preventDefault();
+            mainWindow.loadURL(url);
+            return;
+        }
+
+        event.preventDefault();
+        shell.openExternal(url);
+    });
+
+    const saveSize = (max = false) => {
+        const settings = loadSettings();
+        settings.maximized = max;
+        saveSettings(settings);
+    }
+    mainWindow.addListener("maximize", () => saveSize(true));
+    mainWindow.addListener("minimize", () => saveSize(false));
+
+    mainWindow.loadURL("http://127.0.0.1:5000/app/");
 }
 
 app.whenReady().then(() => {
-    startServer();
     const settings = loadSettings();
     loadRPC(settings.discordRpc);
 
@@ -62,31 +104,14 @@ app.whenReady().then(() => {
         });
     }
 
-    mainWindow = createWindow(true);
-    mainWindow.loadFile("sources/templates/index.html");
+    createUpdaterWindow();
+    startServer();
 
     setupIPC();
 
     if (!isDev) {
-        initUpdater(mainWindow);
+        initUpdater(updaterWindow);
     }
-
-    mainWindow.webContents.on('will-navigate', (event, url) => {
-        const parsed = new URL(url);
-
-        if (parsed.hostname === '127.0.0.1' && parsed.port === '5000') {
-            if (parsed.pathname.startsWith('/dev')) {
-                event.preventDefault();
-
-                const newWindow = createWindow();
-                newWindow.loadURL(url);
-            }
-            return;
-        }
-
-        event.preventDefault();
-        shell.openExternal(url);
-    });
 });
 
 app.on('will-quit', () => {
@@ -107,6 +132,21 @@ function setAutoStart(enabled) {
         });
     }
 }
+
+ipcMain.handle("start-app", () => {
+    if (updaterWindow) {
+        updaterWindow.close();
+        updaterWindow = null;
+    }
+
+    createMainWindow();
+
+    const settings = loadSettings();
+
+    if (settings?.maximized) {
+        mainWindow.maximize();
+    }
+});
 
 ipcMain.handle("set-auto-start", (_, enabled) => {
     setAutoStart(enabled);
@@ -145,4 +185,9 @@ ipcMain.handle("maximize", () => {
 
 ipcMain.handle("get-version", () => {
     return app.getVersion();
+});
+
+ipcMain.handle("update-icon", (event, iconPath) => {
+    const icon = iconPath.replace("http://127.0.0.1:5000", ".");
+    mainWindow.setIcon(icon);
 });

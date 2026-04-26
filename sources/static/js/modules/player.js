@@ -66,7 +66,7 @@ export class Player {
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: track.title,
                 artist: album?.artist || '',
-                artwork: [{ src: album?.cover || 'static/images/icon.ico', sizes: '512x512', type: 'image/jpg' }],
+                artwork: [{ src: album?.cover || '/static/images/icon.ico', sizes: '512x512', type: 'image/jpg' }],
                 album: album?.title
             });
 

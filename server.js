@@ -25,9 +25,11 @@ if (!existsSync(APP_DIR)) {
 
 const PLAYLISTS_PATH = join(APP_DIR, "playlists.json");
 const SETTINGS_PATH = join(APP_DIR, "settings.json");
+const SCORE_PATH = join(APP_DIR, "score.json");
 
 if (!existsSync(PLAYLISTS_PATH)) writeFileSync(PLAYLISTS_PATH, "[]");
 if (!existsSync(SETTINGS_PATH)) writeFileSync(SETTINGS_PATH, "{}");
+if (!existsSync(SCORE_PATH)) writeFileSync(SCORE_PATH, "{}");
 
 function loadPlaylists() {
     try {
@@ -49,8 +51,22 @@ export function loadSettings() {
     }
 }
 
-function saveSettings(settings) {
-    writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 2));
+export function saveSettings(settings) {
+    writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 4));
+}
+
+function loadRhythmScore() {
+    try {
+        return JSON.parse(readFileSync(SCORE_PATH, "utf-8"));
+    } catch {
+        return {};
+    }
+}
+
+function saveRhythmScore(key, value) {
+    const scores = loadRhythmScore();
+    scores[String(key)] = value;
+    writeFileSync(SCORE_PATH, JSON.stringify(scores, null, 4));
 }
 
 function getUnregisteredFiles(undertaleFolder, deltaruneFolder) {
@@ -110,10 +126,11 @@ function resolveMusicPath(albumId, fileName) {
 
     if (albumId === "undertale-ost") {
         baseDir = settings.undertaleFolder;
-    } else if (albumId.startsWith("deltarune")) {
-        baseDir = join(settings.deltaruneFolder, "mus");
+    } else if (albumId === "dogs") {
+        let uPath = join(settings.undertaleFolder, fileName);
+        baseDir = existsSync(uPath) ? settings.undertaleFolder : join(settings.deltaruneFolder, "mus");
     } else {
-        return null;
+        baseDir = join(settings.deltaruneFolder, "mus");
     }
 
     if (fileName.startsWith("../extras")) {
@@ -168,6 +185,7 @@ Object.values(MUSIC_DATA).forEach(album => {
 });
 
 app.use("/static", express.static(join(BASE_PATH, "sources", "static")));
+app.use('/html5game', express.static(join(BASE_PATH, "Rhythm Game", "html5game")))
 
 app.get("/", (req, res) => {
     res.sendFile(join(BASE_PATH, "sources", "templates", "index.html"));
@@ -182,12 +200,26 @@ app.get("/dev/", (req, res) => {
 });
 
 app.get("/lightners/", (req, res) => {
-    res.sendFile(join(BASE_PATH, "sources", "templates", "lightnersliving.html"));
+    res.sendFile(join(BASE_PATH, "Rhythm Game", "lightners.html"));
 });
 
 app.get("/api/lightners/music/:file", (req, res) => {
     const settings = loadSettings();
     res.sendFile(join(settings.deltaruneFolder, "mus", req.params.file))
+});
+
+app.get("/api/lightners/scores", (req, res) => {
+    const scores = loadRhythmScore();
+    res.json({
+        scores
+    });
+});
+
+app.post("/api/lightners/save-flag/", (req, res) => {
+    const { key, value } = req.body;
+    console.log(`Flag recebida: ${key} - ${value}`);
+    saveRhythmScore(key, value);
+    res.sendStatus(200);
 });
 
 app.get('/api/track-dev', (req, res) => {
@@ -287,7 +319,7 @@ app.get("/api/music/:albumId/:index", (req, res) => {
     const track = album.tracks.find(t => String(t.id) === req.params.index);
     if (!track) return res.status(404).json({ error: "Música não encontrada" });
 
-    if (req.query.video === 'true' && track.video) {
+    if (req.query.video === 'true' && track?.video) {
         const filePath = resolveMusicPath(album.id, track.video);
 
         if (!filePath) {
@@ -296,16 +328,17 @@ app.get("/api/music/:albumId/:index", (req, res) => {
         return res.sendFile(filePath);
     }
 
-    if (track.file) {
+    if (track?.file) {
         const filePath = resolveMusicPath(album.id, track.file);
 
         if (!filePath) {
+            console.log("Arquivo não encontrado no sistema");
             return res.status(404).json({ error: "Arquivo não encontrado no sistema" });
         }
         return res.sendFile(filePath);
     }
 
-    if (track.files) {
+    if (track?.files) {
         const part = parseInt(req.query.part);
         if (isNaN(part)) return res.status(400).json({ error: "Part required" });
 

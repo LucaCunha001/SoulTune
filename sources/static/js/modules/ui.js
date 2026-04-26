@@ -217,7 +217,6 @@ export class UI {
         const autoRunSwitch = document.getElementById('autorun-switch');
         if (!autoRunSwitch) return;
 
-        console.log(this.app.player.autoRunMode);
         autoRunSwitch.checked = this.app.player.autoRunMode;
     }
 

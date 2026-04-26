@@ -70,8 +70,7 @@ function createupdateUI(data) {
 function continueApp() {
     setStatus("Carregando aplicação...", 90);
     setTimeout(() => {
-        window.api.maximize();
-        window.location.href = "http://127.0.0.1:5000/app/";
+        window.api.startApp();
     }, 500);
 }
 

@@ -21,6 +21,13 @@
     font-family: '8Bitoperator JVE Regular';
 }
 
+.app.background-active {
+    --bg: #00000080;
+    --sidebar: #00000080;
+    --card: #00000080;
+    --hover: #11111180;
+}
+
 body {
     letter-spacing: 1px;
     background: var(--bg);
@@ -35,7 +42,7 @@ body {
 }
 
 .sidebar {
-    background: #000;
+    background: var(--bg);
     border-right: 2px solid #fff;
 }
 
@@ -54,7 +61,7 @@ body {
 .nav-item:hover,
 .nav-item.active {
     border: 2px solid #fff;
-    background: #000;
+    background: var(--hover);
     color: #fff;
 }
 
@@ -63,7 +70,7 @@ body {
     grid-row: 1;
     position: sticky;
     top: 0;
-    background: #000;
+    background: var(--bg);
     z-index: 50;
     padding: 15px;
     border-bottom: 2px solid #fff;
@@ -71,18 +78,43 @@ body {
 }
 
 .right-panel {
-    background: #000;
-    border-left: 2px solid #fff;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    line-height: 1.6;
+    position: relative;
+    top: 0;
+    width: 300px;
+    height: calc(100vh - 90px);
+    background: var(--sidebar);
+    padding: 20px;
+    padding-top: 75px;
+    overflow-y: auto;
+    border-left: 1px solid var(--text);
+
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    overflow-x: hidden;
 }
 
 #album-content,
 #lyrics-content {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    overflow-x: hidden;
+    word-break: normal;
+}
+
+.right-panel.active,
+#album-content.active,
+#lyrics-content.active {
+    transform: translateX(0);
     opacity: 1;
-    transform: none;
     pointer-events: auto;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .right-panel h3 {
@@ -98,7 +130,7 @@ body {
 }
 
 .lyrics-line.active {
-    color: #ff0000;
+    color: var(--primary);
     font-weight: bold;
 }
 
@@ -109,7 +141,7 @@ body {
 
 .settings-group {
     margin-bottom: 35px;
-    background: #000;
+    background: var(--card);
     padding: 20px;
     border: 2px solid #fff;
 }
@@ -134,11 +166,11 @@ body {
 }
 
 .setting-checkbox {
-    accent-color: #ff0000;
+    accent-color: var(--primary);
 }
 
 .setting-button {
-    background: #000;
+    background: var(--card);
     border: 2px solid #fff;
     color: #fff;
     height: 30px;
@@ -151,7 +183,7 @@ body {
 
 .setting-button:hover {
     background: #fff;
-    color: #000;
+    color: var(--hover);
 }
 
 .path-input-group {
@@ -162,7 +194,7 @@ body {
 
 .setting-path {
     flex: 1;
-    background: #000;
+    background: var(--bg);
     border: 2px solid #fff;
     padding: 10px 12px;
     color: #fff;
@@ -175,7 +207,7 @@ body {
 }
 
 .setting-select {
-    background: #000;
+    background: var(--bg);
     border: 2px solid #fff;
     padding: 10px 12px;
     color: #fff;
@@ -184,11 +216,11 @@ body {
 }
 
 .setting-select:focus {
-    border-color: #ff0000;
+    border-color: var(--primary);
 }
 
 .browse-btn {
-    background: #000;
+    background: var(--card);
     border: 2px solid #fff;
     color: #fff;
     width: 40px;

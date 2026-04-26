@@ -10,14 +10,14 @@
 }
 
 .album-card {
-    background: #000;
+    background: var(--card);
     padding: 12px;
     cursor: pointer;
     border: 2px solid #fff;
 }
 
 .album-card:hover {
-    background: #111;
+    background: var(--hover);
 }
 
 .album-cover {
